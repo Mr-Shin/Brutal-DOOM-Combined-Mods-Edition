@@ -1,0 +1,180 @@
+OptionMenu "OptionsMenu"
+{
+	Title "OPTIONS"
+	Submenu "Brutal Doom Performance Options",			"BrutalDoomOptionsPerformance"
+	Submenu "Brutal Doom Level Options",			"BrutalDoomOptionsLevel"
+	Submenu "Brutal Doom Gameplay Options",			"BrutalDoomOptionsGame"
+	Submenu "Multiplayer Options",		"ZA_MultiplayerOptions" // [TP]
+	StaticText " "
+	Submenu "Customize Controls",		"CustomizeControls"
+	Submenu "Mouse options",			"MouseOptions"
+	Submenu "Joystick options",			"JoystickOptions"
+	StaticText " "
+	Submenu "Player Setup",				"PlayerMenu"
+	Submenu "Gameplay Options",			"GameplayOptions"
+	Submenu "Compatibility Options",	"CompatibilityOptions"
+	Submenu "Automap Options",			"AutomapOptions"
+	Submenu "HUD Options",				"HUDOptions"
+	Submenu "Miscellaneous Options",	"MiscOptions"
+	Submenu "Sound Options",			"SoundOptions"
+	Submenu "Display Options",			"VideoOptions"
+	Submenu "Set video mode",			"VideoModeMenu"
+	StaticText " "
+	SafeCommand "Reset to defaults",	"reset2defaults"
+	SafeCommand	"Reset to last saved",	"reset2saved"
+	Command "Go to console",			"menuconsole"
+}
+
+
+
+OptionMenu "BrutalDoomOptionsPerformance"
+{
+
+  
+  
+   Title "Performance Options"
+   StaticText "All changes made here have immediate effect."
+   StaticText " "
+	
+  Option "Please, select engine you are using.", "isrunningzandronum", "SelectEngineType"
+  StaticText " "
+  StaticText " "
+  
+  Option "Max Wall Decals", "cl_maxdecals", "maxdecals"
+  Option "Max Gibs and Blood Pools", "sv_corpsequeuesize", "maxgibs"
+  StaticText " "
+  
+  Option "Blood Amount (Client)", "bd_bloodamount", "BrutalBlood"
+  Option "Blood Amount (Server)", "zdoombrutalblood", "BrutalBlood"
+  StaticText "How much blood you want to see?"
+  StaticText " "
+  Option "Enable Janitor (Client)", "bd_lowgraphicsmode", "YesOrNo"
+  Option "Enable Janitor  (Server)", "zdoombrutaljanitor", "YesOrNo"
+  StaticText "Makes gibs disappear after 30 seconds."
+  StaticText " "
+  
+
+}
+
+
+OptionMenu "BrutalDoomOptionsLevel"
+{
+
+  
+  
+   Title "Level Options"
+   StaticText "All changes made here will take effect on next level, or when you start a new game."
+   StaticText " "
+   
+  Option "Vanilla Monsters", "bd_classicmonsters", "YesOrNo"
+  StaticText "Disables new enemy AI and new attacks."
+  StaticText " "
+  
+   Option "Brutal Doom v18", "bd_v18stuff", "YesOrNo"
+  StaticText "Are you playing Brutal DOOM v18 Class?"
+  StaticText " "
+  
+  Option "Brutal Doom v20", "bd_v20stuff", "YesOrNo"
+  StaticText "Are you playing Brutal DOOM v20 Class?"
+  StaticText " "
+  
+  Option "Advanced Decorative Objects", "bd_disabledecorations", "DisabledOption"
+  StaticText "Fancy particle effects for torches and lamps are disabled"
+  StaticText " "
+  
+  Option "Level Enhancement System", "bd_disablemapenhancements", "DisabledOption"
+  StaticText "Improves several maps with better textures, new decorations, and sometimes new enemies."
+  
+  Option "New Weapons", "bd_disablenewguns", "DisabledOption"
+  StaticText "Selects if the new weapons should be spawned or not."
+  StaticText "(Submachinegun, Assault Shotgun, Railgun, etc.)"
+}
+
+
+
+
+OptionMenu "BrutalDoomOptionsGame"
+{
+
+  
+  
+   Title "Gameplay Options"
+   StaticText "All changes made here will take effect on next level, or when you start a new game."
+   StaticText " "
+   
+   
+   Command "Enable Reloading to all weapons",			"take turboreload"
+   Command "Disable Reloading to all weapons",			"give turboreload"
+   
+   
+   Command "Enable Sprinting",			"give istacticalclass"
+   Command "Disable Sprinting",			"take istacticalclass"
+   
+   
+   Option "Sprinting Enabled BY Default", "bd_enablesprint", "YesOrNo"
+   
+}
+
+OptionValue "BrutalBlood"
+{
+	1, "1) Low"
+	2, "2) Normal"
+	3, "3) Lots"
+	4, "4) Extreme"
+	666, "5) Comical"
+}
+
+OptionValue "YesOrNo"
+{
+	0, "No"
+	1, "Yes"
+}
+
+OptionValue "DisabledOption"
+{
+	0, "Enabled"
+	1, "Disabled"
+}
+
+
+
+
+
+OptionValue "YesOrNoFalse"
+{
+	1, "No"
+	0, "Yes"
+}
+
+
+
+OptionValue "SelectEngineType"
+{
+	1, "Client"
+	0, "Server"
+}
+
+OptionValue "maxdecals"
+{
+	1, "0"
+	128, "128"
+	512, "512"
+	1024, "1024"
+	2056, "2056"
+	5102, "5102"
+	9999, "9999"
+}
+
+
+OptionValue "maxgibs"
+{
+	1, "0"
+	100, "100"
+	100, "500"
+	1000, "1000"
+	2000, "2000"
+	5000, "5000"
+	10000, "10000"
+	25000, "25000"
+	50000, "50000"
+}

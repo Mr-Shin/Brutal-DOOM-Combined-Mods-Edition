@@ -1,0 +1,214 @@
+#include doomwalls.bm
+#include doommonsters.bm
+
+
+brightmap sprite BG2GA0
+{
+	map "brightmaps/BFG10K/B10BA0.png"
+}
+
+brightmap sprite BG2GB0
+{
+	map "brightmaps/BFG10K/B10BB0.png"
+}
+
+brightmap sprite BG2GC0
+{
+	map "brightmaps/BFG10K/B10BC0.png"
+}
+
+brightmap sprite BG2GD0
+{
+	map "brightmaps/BFG10K/B10BD0.png"
+}
+
+brightmap sprite BG2GE0
+{
+	map "brightmaps/BFG10K/B10BE0.png"
+}
+
+brightmap sprite BG2GF0
+{
+	map "brightmaps/BFG10K/B10BF0.png"
+}
+
+brightmap sprite BG2GG0
+{
+	map "brightmaps/BFG10K/B10BG0.png"
+}
+
+brightmap sprite BG2GH0
+{
+	map "brightmaps/BFG10K/B10BH0.png"
+}
+
+brightmap sprite BG2GI0
+{
+	map "brightmaps/BFG10K/B10BI0.png"
+}
+
+brightmap sprite BG2GJ0
+{
+	map "brightmaps/BFG10K/B10BJ0.png"
+}
+
+brightmap sprite BG2GK0
+{
+	map "brightmaps/BFG10K/B10BK0.png"
+}
+
+brightmap sprite BG2GL0
+{
+	map "brightmaps/BFG10K/B10BL0.png"
+}
+
+brightmap sprite BG2GM0
+{
+	map "brightmaps/BFG10K/B10BM0.png"
+}
+
+brightmap sprite BG2GN0
+{
+	map "brightmaps/BFG10K/B10BN0.png"
+}
+
+brightmap sprite BG2GO0
+{
+	map "brightmaps/BFG10K/B10BO0.png"
+}
+
+
+
+brightmap sprite BARIA0
+{
+	map "brightmaps/doom/BARBRI.png"
+}
+
+brightmap sprite BARIB0
+{
+	map "brightmaps/doom/BARBRI.png"
+}
+
+brightmap sprite BARIC0
+{
+	map "brightmaps/doom/BARBRI.png"
+}
+
+brightmap sprite BARID0
+{
+	map "brightmaps/doom/BARBRI.png"
+}
+
+brightmap sprite THRGA0
+{
+	map "brightmaps/barrelweapon/THRGAB.png"
+}
+
+brightmap sprite THRGE0
+{
+	map "brightmaps/barrelweapon/THRGEB.png"
+}
+
+brightmap sprite THRGB0
+{
+	map "brightmaps/barrelweapon/THRGBB.png"
+}
+
+brightmap sprite THRGC0
+{
+	map "brightmaps/barrelweapon/THRGCB.png"
+}
+
+brightmap sprite THRGD0
+{
+	map "brightmaps/barrelweapon/THRGDB.png"
+}
+
+brightmap sprite CBRAB0
+{
+	map "brightmaps/doom/LABRABR1.png"
+}
+
+brightmap sprite CBRAC0
+{
+	map "brightmaps/doom/LABRABR3.png"
+}
+
+brightmap sprite CBRAD0
+{
+	map "brightmaps/doom/LABRABR4.png"
+}
+
+brightmap sprite CBRAE0
+{
+	map "brightmaps/doom/LABRABR2.png"
+}
+
+
+brightmap sprite BURBA0
+{
+	map "brightmaps/doom/BURBAB1.png"
+}
+
+brightmap sprite BURBB0
+{
+	map "brightmaps/doom/BURBAB2.png"
+}
+
+brightmap sprite BURBC0
+{
+	map "brightmaps/doom/BURBAB3.png"
+}
+
+brightmap sprite BON2B0
+{
+	map "brightmaps/doom/BON2BR.png"
+}
+
+brightmap sprite BON2C0
+{
+	map "brightmaps/doom/BON2CR.png"
+}
+
+brightmap sprite BON2D0
+{
+	map "brightmaps/doom/BON2DR.png"
+}
+
+
+brightmap sprite RAILA0 {	map "brightmaps/doom/RAIBA.png" }
+brightmap sprite RAILB0 {	map "brightmaps/doom/RAIBA.png" }
+brightmap sprite RAILC0 {	map "brightmaps/doom/RAIBA.png" }
+brightmap sprite RAILD0 {	map "brightmaps/doom/RAIBA.png" }
+
+brightmap sprite FLMTA0 {	map "brightmaps/doom/FLMBA0.png" }
+brightmap sprite FLMTB0 {	map "brightmaps/doom/FLMBB0.png" }
+brightmap sprite FLMTC0 {	map "brightmaps/doom/FLMBC0.png" }
+
+
+brightmap texture LITEBLU3
+{
+	map "brightmaps/LITB3.PNG"
+}
+
+
+
+brightmap Texture SPACM1
+{
+   map "brightmaps/SPACOM1B.png"
+}
+
+brightmap Texture SPACM2
+{
+   map "brightmaps/SPACOM1B.png"
+}
+
+brightmap Texture SPACM3
+{
+   map "brightmaps/SPACOM1B.png"
+}
+
+brightmap Texture SPACM4
+{
+   map "brightmaps/SPACOM1B.png"
+}

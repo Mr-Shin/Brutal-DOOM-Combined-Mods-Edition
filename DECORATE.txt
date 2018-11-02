@@ -1,0 +1,164 @@
+
+// IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS
+
+
+Actor DebrisGeneral
+{
++MISSILE
++NOBLOCKMAP
++NOGRAVITY
++DROPOFF
++NOTELEPORT
++FORCEXYBILLBOARD
++NOTDMATCH
++GHOST
+radius 1
+height 1
+mass 1
+damage 0
+}
+
+#include "Decorates/WEAPONS/MAIN/MISC/DEFAULTWEAPON.txt"
+
+#include TOKENS.txt
+//Gore N' Blood
+#include GORE.txt
+#include GOREGROUPS.txt
+#include BLOOD.txt
+#include BLOODSPLASH.txt
+#include BURN.txt
+#include DEAD.txt
+
+
+//MISC
+#include HEAD_SYS.txt
+#include PARTICLES.txt
+#include SMOKE.txt
+#include CASING.txt
+#include FIRE.txt
+#include SPARKS.txt
+#include FLARES.txt
+#include ARTIFACT.txt
+#include HEALTH2.txt
+#include BOSSBOX.txt
+#include DROPABLES.txt
+#include PUFF.txt
+#include AMMO.txt
+#include EEEVILLL.txt
+#include EXECUTIONS.txt
+//#include ARACHBOX
+
+
+//Guns Guns Guns
+#include "Decorates/WEAPONS/MAIN/Slot 2/Pistol.txt"
+#include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 1/MELEE.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 1/SAW.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 4/RIFLE.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 4/DualRifle.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 3/SHOTGUN.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 3/SSG.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 5/MINIGUN.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 6/ROCKETLAUNCHER.txt"
+#include "Decorates/WEAPONS/MAIN/MISC/EXPLOSIVES.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 7/PLASMA.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 7/DUALPLASMA.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 8/BFG.txt"
+#include "Decorates/WEAPONS/MAIN/MISC/Throwables.txt"
+
+
+//Enemies
+#include "Decorates/MONSTERS/ZOMBIES/ZOMBIEMEN.txt"
+#include "Decorates/MONSTERS/ZOMBIES/SERGEANTS.txt"
+#include "Decorates/MONSTERS/ZOMBIES/COMANDO.txt"
+#include "Decorates/MONSTERS/ZOMBIES/LABGUY.txt"
+#include "Decorates/MONSTERS/IMPS/IMPS.txt"
+#include "Decorates/MONSTERS/DEMONS/DEMONS.txt"
+#include "Decorates/MONSTERS/DEMONS/SPECTRE.txt"
+#include "Decorates/MONSTERS/HELLKNIGHTS/KNIGHT.txt"
+#include "Decorates/MONSTERS/BARONSOFHELL/BARON.txt"
+#include "Decorates/MONSTERS/LOSTSOULS/LOSTSOUL.txt"
+#include "Decorates/MONSTERS/ARACHNOTRON/SPIDERS.txt"
+#include "Decorates/MONSTERS/ARACHNOTRON/SPIDERS2.txt"
+#include "Decorates/MONSTERS/REVENANTS/REVENANT.txt"
+#include "Decorates/MONSTERS/MANCUBI/MANCUBUS.txt"
+#include "Decorates/MONSTERS/CACODEMONS/CACODEMO.txt"
+#include "Decorates/MONSTERS/PAINELEMENTAL/PAINELEMENTAL.txt"
+#include "Decorates/MONSTERS/ARCHVILES/ARCHVILE.txt"
+#include "Decorates/MONSTERS/CYBERDEMONS/CYBERDEMON.txt"
+#include "Decorates/MONSTERS/SPIDERDEMONS/MASTERMIND.txt"
+#include "Decorates/MONSTERS/ICONOFHELL/ABOMINATION.txt"
+//ST Monsters
+
+//Bosses
+
+#include "Decorates/WEAPONS/MAIN/Slot 2/MP40.txt"
+#include "Decorates/MONSTERS/NAZIS/NAZIS.txt"
+
+
+//DECORATIONS
+#include FURNITURE.txt
+#include LAMPS.txt
+#include NATURAL.txt
+#include FIREWORKS.txt
+#include TORCHES.txt
+
+#include SPLASHES.txt
+
+#include MapDetection.txt
+#include MapSpecificDec.txt
+#include OthermapsRemap.txt
+#include Tank.txt
+#include ArtilleryTank.txt
+#include Mech.txt
+#include Helicopter.txt
+#include HeavyMachinegun.txt
+#include VehicleCrashes.txt
+#include Repairs.txt
+#include EnemyTanks.txt
+#include Critters.txt
+//MeatShields
+#include IMPSHIELD.txt
+#include ZMANSHIELD.txt
+#include SGUYSHIELD.txt
+
+#include "Decorates/WEAPONS/MAIN/Slot 9/FlameCannon.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 9/HellishMissile.txt"
+
+//Player Classes
+#include PLAYER.txt
+#include MARINES.txt
+#include Purist.txt
+#include "Decorates/WEAPONS/MAIN/MISC/ClassicWeapons.txt"
+
+#include "Decorates/MONSTERS/ICONOFHELL/BossBrain.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 0/Grenades.txt"
+#include "Decorates/MONSTERS/MISC/VanillaMonsters.txt"
+#include "Decorates/MONSTERS/MISC/DyingGuys.txt"
+#include "Decorates/MONSTERS/MISC/LastStandMonsters.txt"
+#include "Decorates/MONSTERS/MISC/SpecialDoom1Bosses.txt"
+#include CapturedMarine.txt
+#include ChaingunMarine.txt
+#include ShotgunMarine.txt
+#include PlasmagunMarine.txt
+#include RocketLauncherMarine.txt
+#include BFGMarine.txt
+#include "Decorates/MONSTERS/MISC/UnderwaterMonsters.txt"
+#include "Decorates/MONSTERS/MISC/StealthMonsters.txt"
+#include Epic2Stuff.txt
+#include STICKY.txt
+#include BlueBlood.txt
+#include GreenBlood.txt
+#include UnderwaterBlood.txt
+#include Junk.txt
+#include Leg.txt
+#include Teleports.txt
+#include Water.txt
+#include FlatDecals.txt
+#include BrutalChexQuest.txt
+#include Frozen.txt
+
+
+
+
+
