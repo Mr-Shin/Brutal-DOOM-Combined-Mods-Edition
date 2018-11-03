@@ -1,0 +1,294 @@
+// Health bonus -------------------------------------------------------------
+
+ACTOR HealthPlus : Health Replaces HealthBonus
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 2
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "$GOTHTHBONUS"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		MARN A 0 ACS_ExecuteAlways(795, 0, 0, 0, 0)//Check if advanced decorations are disabled.
+	Spawn2:	
+        TNT1 A 0 A_CheckSight ("Spawn3")
+		BON1 ABCDCB 2 A_SpawnItem("BlueFlareSmall",0,7)
+		Loop
+	Spawn3:
+		BON1 A 9
+		Goto Spawn2
+	Vanilla:
+		BON1 ABCDCB 2
+		Loop
+	}
+}
+
+// Armor bonus --------------------------------------------------------------
+
+Actor ArmorShard : BasicArmorBonus Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMBONUS"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 2
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		BON2 AAABCDB 2 //A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON2 A 9
+		Goto Spawn
+	}
+}
+
+
+
+
+
+
+ACTOR Stimpack2 : Health Replaces Stimpack
+{
+	Game Doom
+	SpawnID 23
+	Inventory.Amount 10
+	Inventory.PickupMessage "$GOTSTIM"
+	States
+	{
+	Spawn:
+		STIM A 2
+		STIM A -1
+		Stop
+	}
+}
+
+// Medikit -----------------------------------------------------------------
+
+ACTOR Medikit2 : Health Replaces Medikit
+{
+	Game Doom
+	SpawnID 24
+	Inventory.Amount 25
+	Inventory.PickupMessage "$GOTMEDIKIT"
+	Health.LowMessage 25, "$GOTMEDINEED"
+	States
+	{
+	Spawn:
+        MEDI A 1
+		MEDI A -1
+		Stop	
+	BecomeRealistic:
+		TNT1 A 0
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem("RealisticMedikit")
+		Stop
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Green armor --------------------------------------------------------------
+
+Actor LightArmor : BasicArmorPickup Replaces GreenArmor
+{
+	Game Doom
+    //Scale 0.8
+	Scale 1.3
+	SpawnID 68
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Light Armor"
+	Inventory.Icon "ARM1A0"
+	Armor.SavePercent 40
+	Armor.SaveAmount 100
+    Inventory.PickupSound "ARMOR"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		ARM1 A 10
+		ARM1 BBBBBB 2 bright A_SpawnItem("GreenFlareMedium",0,10)
+		loop
+	Spawn2:
+		ARM1 A 19
+		Goto Spawn
+	}
+}
+
+// Blue armor ---------------------------------------------------------------
+
+Actor HeavyArmor : BasicArmorPickup Replaces BlueArmor
+{
+	Game Doom
+    //Scale 0.8
+	SpawnID 69
+	Scale 1.3
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Heavy Armor"
+	Inventory.Icon "ARM2A0"
+	Armor.Savepercent 70
+	Armor.Saveamount 200
+    Inventory.PickupSound "ARMOR"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		ARM2 A 10
+		ARM2 BBBBB 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		loop
+	Spawn2:
+		ARM2 A 19
+		Goto Spawn	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR GiveHealth : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 1
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "$GOTHTHBONUS"
+	States
+	{
+	Spawn:
+		BON1 AAABBBCCCDDDCCCBBB 2
+		Loop
+	}
+}
+
+// Armor bonus --------------------------------------------------------------
+
+Actor GiveArmor : BasicArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMBONUS"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 1
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+		BON2 AAABBBCCCDDDCCCBBB 2
+		loop
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR CrueltyBonus5health : Health
+{
+	Game Doom
+	SpawnID 152
+	-COUNTITEM
+	Radius 220
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 5
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +5 health ***"
+	States
+	{
+	Spawn:
+        TNT1 A 50
+		Stop
+	}
+}
+ACTOR CrueltyBonus5armor : BasicArmorBonus
+{
+	Game Doom
+	SpawnID 152
+	-COUNTITEM
+	Radius 220
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 5
+	Armor.Maxsaveamount 9999
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +5 Armor ***"
+	States
+	{
+	Spawn:
+        TNT1 A 50
+		Stop
+	}
+}
+
+
+ACTOR CrueltyBonus15armor : CrueltyBonus5armor
+{
+	Armor.Saveamount 15
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +15 Armor ***"
+}
+
+ACTOR CrueltyBonus10armor : CrueltyBonus5armor
+{
+	Armor.Saveamount 10
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +10 Armor ***"
+}
+
+
+ACTOR CrueltyBonus1health : CrueltyBonus5health
+{
+	Inventory.Amount 1
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +1 Health ***"
+}
