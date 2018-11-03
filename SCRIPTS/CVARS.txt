@@ -1,0 +1,299 @@
+#library "CVARS"
+#include "zcommon.acs"
+
+
+
+	
+
+script 649 REspawn NET
+{
+//Sbar Type
+
+	TakeInventory("sbartype1", 1);
+	TakeInventory("sbartype2", 1);
+	TakeInventory("sbartype3", 1);
+	TakeInventory("sbartype4", 1);
+	TakeInventory("sbartype5", 1);
+	TakeInventory("sbartype6", 1);
+	TakeInventory("sbartype7", 1);
+	TakeInventory("GenderFemale", 1);
+	TakeInventory("GenderMale", 1);
+	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
+	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
+	if	(GetCvar( "bd_sbartype") == 3) { GiveInventory("sbartype3", 1); }
+	if	(GetCvar( "bd_sbartype") == 4) { GiveInventory("sbartype4", 1); }
+	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
+	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
+	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
+	// Detect Player Gender
+		
+		
+	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
+		GiveInventory("GenderMale", 1);		
+
+	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
+		GiveInventory("GenderFemale", 1);	
+		
+	//===========================
+
+
+}
+
+script 647 enter
+{
+	
+
+    // Fade In
+    GiveInventory("CheckMarines", 1);
+	setfont("BLASCR");
+	
+	if	(GameType () == GAME_SINGLE_PLAYER) 
+		{
+		HudMessageBold(s:"a"; HUDMSG_FADEOUT, 1, CR_BLACK, 1.2, 0.1, 0.5, 1.0);
+		}
+
+	//setfont("SmallFONT");
+	//HudMessageBold(s:"Dev Build August 21 2018"; HUDMSG_PLAIN, 8, CR_WHITE, 2.0, 0.01, 9999.1, 1.0);
+		
+		
+	//===================	
+	//Sbar Type
+
+	if	(GetCvar( "bd_sbartype") == 1) { GiveInventory("sbartype1", 1); }
+	if	(GetCvar( "bd_sbartype") == 2) { GiveInventory("sbartype2", 1); }
+	if	(GetCvar( "bd_sbartype") == 3) { GiveInventory("sbartype3", 1); }
+	if	(GetCvar( "bd_sbartype") == 4) { GiveInventory("sbartype4", 1); }
+	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
+	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
+	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
+
+	
+	// Detect Player Gender
+		
+		
+	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 0)
+		GiveInventory("GenderMale", 1);		
+
+	if	(GetPlayerInfo(PlayerNumber(), PLAYERINFO_GENDER) == 1)
+		GiveInventory("GenderFemale", 1);	
+		
+	//===========================
+	
+	//Game compatibilities
+	//GiveInventory("LifeItem", 2); //Stronghold
+	
+	
+	if (checkinventory("istacticalclass") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
+	if (checkinventory("isplayingaspurist") == 1) { SetActorProperty (0, APROP_Speed, 1.0); }
+	if (checkinventory("isplayingaspurist") == 1) { TAkeInventory("IsTacticalClass", 1); }
+	
+	if	(GameType () == GAME_NET_COOPERATIVE) 
+		{
+		ConsoleCommand("compat_clientssendfullbuttoninfo 1");
+		}
+		
+		
+		
+	
+	//if	(GetCvar("sv_corpsequeuesize") == 64)
+//{
+	//delay(35);
+	//setfont("SmallFont");
+	//HudMessageBold(s:"Warning: sv_corpsequeuesize is at 64. This means that you will not see persistent
+	//gore. If you want to change it go to Brutal Doom Options > Performance, and increase the max number
+	//of gibs."; HUDMSG_PLAIN, 0, CR_RED, 0.5, 0.19, 10.0, 1.0);
+	//print (s:"Warning: sv_corpsequeuesize is at 64. This means that you will not see persistent gore. If you want to change it go to Brutal Doom Options > Performance, and increase the max number of gibs.");
+//}
+
+
+	if	(GetCvar("sv_corpsequeuesize") == 32)
+{
+	delay(120);
+	print (s:"Warning: sv_corpsequeuesize is at 32. This means that you will not see persistent gore. If you want to change it go to Brutal Doom Options > Performance, and increase the max number of gibs.");
+}
+		
+		
+	delay(35);
+}
+
+SCRIPT 648 OPEN
+{
+	ReplaceTextures ("DSAND1", "SANDS1");
+	ReplaceTextures ("DSAND3", "SANDS1");
+	ReplaceTextures ("DSAND4", "SANDS1");
+	ReplaceTextures ("DSAND5", "SANDS1");
+	ReplaceTextures ("ETEX34", "SANDS1");
+	ReplaceTextures ("WALL81", "SANDS1");
+	ReplaceTextures ("ECEIL13", "SANDS1");
+	ReplaceTextures ("ECEIL15", "SANDS1");
+	ReplaceTextures ("GROUND20", "DESERT01");
+	ReplaceTextures ("SLUDGE01", "SLIME08");
+	ReplaceTextures ("DBRAIN1", "LFALL01");//Revilution Lava
+	ReplaceTextures ("LFALL1", "LFALL01");
+	ReplaceTextures ("LAVA1", "LAVAFL");
+	ReplaceTextures ("LAVA2", "LAVAFL");
+	ReplaceTextures ("LAVA3", "LAVAFL");
+	ReplaceTextures ("LAVA4", "LAVAFL");
+	ReplaceTextures ("LAVA01", "LAVAFL");
+	ReplaceTextures ("LAVA02", "LAVAFL");
+	ReplaceTextures ("LAVA03", "LAVAFL");
+	ReplaceTextures ("LAVA04", "LAVAFL");
+	ReplaceTextures ("LAVFALL1", "LFALL01");//Sunlust Lava
+	ReplaceTextures ("BLODGR1", "LFALL01");//AV Lava
+	ReplaceTextures ("SLMFALL1", "CRFAL01");//CRAPFALLS
+	ReplaceTextures ("SLMFALL2", "CRFAL01");//CRAPFALLS
+	ReplaceTextures ("SLMFALL3", "CRFAL01");//CRAPFALLS
+	
+	// Replaces similar textures so the flat checking scripts have less stuff
+	ReplaceTextures ("NUKAGE3", "NUKAGE1");
+	ReplaceTextures ("NUKAGE2", "NUKAGE1");
+	ReplaceTextures ("SLIME04", "SLIME01");
+	ReplaceTextures ("SLIME03", "SLIME01");
+	ReplaceTextures ("SLIME02", "SLIME01");
+	ReplaceTextures ("SLIME08", "SLIME05");
+	ReplaceTextures ("SLIME06", "SLIME05");
+	ReplaceTextures ("SLIME07", "SLIME05");
+	ReplaceTextures ("BLOOD3", "BLOOD1");
+	ReplaceTextures ("BLOOD2", "BLOOD1");
+}	
+
+
+Script 799 (VOID)
+{
+
+if
+	(GetCvar("isrunningzandronum") == 1)
+{
+if	(GetCvar( "bd_bloodamount") == 0) { SetActorState(0,"LowBlood"); }
+if	(GetCvar( "bd_bloodamount") == 1) { SetActorState(0,"LowBlood"); }
+if	(GetCvar( "bd_bloodamount") == 3) { SetActorState(0,"LotsOfBlood"); }
+if	(GetCvar( "bd_bloodamount") >= 4) { SetActorState(0,"AbsurdBlood"); }
+}
+
+
+if
+	(GetCvar("isrunningzandronum") == 0)
+{
+if	(GetCvar("zdoombrutalblood") == 0) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("zdoombrutalblood") == 1) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("zdoombrutalblood") == 3) { SetActorState(0,"LotsOfBlood"); }
+if	(GetCvar("zdoombrutalblood") >= 4) { SetActorState(0,"AbsurdBlood"); }
+}
+
+
+if
+	(GetCvar("isrunningzandronum") == 1)
+{
+if	(GetCvar("bd_bloodamount") == 666)
+	{
+	SetActorState(0,"AbsurdBlood"); 
+	GiveInventory("AnimuGore", 1);
+	}
+}
+
+if
+	(GetCvar("isrunningzandronum") == 0)
+{
+if	(GetCvar("zdoombrutalblood") == 666)
+	{
+	SetActorState(0,"AbsurdBlood"); 
+	GiveInventory("AnimuGore", 1);
+	}
+}
+
+
+}
+
+Script 798 (VOID)
+{
+if	(GetCvar("bd_lowgraphicsmode") == 1) { GiveInventory("LowGraphicsMode", 1); }
+if	(GetCvar("zdoombrutaljanitor") == 1) { GiveInventory("LowGraphicsMode", 1); }
+if	(GameType () == GAME_NET_DEATHMATCH) { GiveInventory("LowGraphicsMode", 1); }
+}
+
+Script 789 (VOID)
+{
+if	(GetCvar("bd_infinitecasings") == 0) { GiveInventory("LowGraphicsMode", 1); }
+}
+
+Script 794 (VOID)//Making limbs not bounce with explosives
+{
+if	(GetCvar("bd_lowgraphicsmode") == 1) { SetActorState(0, "NoColision", 1); }
+if	(GetCvar("zdoombrutaljanitor") == 1) { SetActorState(0, "NoColision", 1); }
+}
+
+
+
+Script 797 (VOID)
+{
+if	(GetCvar("bd_bloodamount") == 1) { SetActorState(0,"Vanish"); }
+if	(GetCvar("bd_bloodamount") == 0) { SetActorState(0,"Vanish"); }
+}
+
+Script 796 (VOID)
+{
+if	(GetCvar("bd_classicmonsters") == 1) { SetActorState(0,"ReplaceVanilla"); }
+}
+
+Script 795 (VOID)
+{
+if	(GetCvar("bd_disabledecorations") == 1) { SetActorState(0,"Vanilla"); }
+}
+
+Script 792 (VOID)
+{
+if	(GetCvar("bd_disablemapenhancements") == 1) { SetActorState(0,"Vanilla"); }
+}
+
+
+Script 791 (VOID)
+{
+if	(GetCvar("bd_disablenewguns") == 1) { SetActorState(0,"Vanilla"); }
+}
+
+
+
+Script 719 (VOID)
+{
+	if	(GameType () == GAME_NET_DEATHMATCH) 	SetActorState(0,"DM"); 
+	if	(GameType () == GAME_NET_DEATHMATCH) 	GiveInventory("DMGame", 1);
+}
+
+Script 728 (VOID)
+{
+if	(GetCvar("bd_nobulletpenetration") == 0) { TakeInventory("nopenetration", 1);}
+if	(GetCvar("bd_nobulletpenetration") == 1) { GiveInventory("nopenetration", 1);}
+if	(GetCvar("bd_shotgunstrap") == 1) { GiveInventory("useshotgunstrap", 1);}
+if	(GetCvar("zdoombd_shotgunstrap") == 1) { GiveInventory("useshotgunstrap", 1);}
+if	(GetCvar("bd_disablenewenemies") == 1) { GiveInventory("nonewenemies", 1);}
+}
+
+
+
+Script 727 (VOID)
+{
+if	(GetCvar("bd_disablewaterripples") > 0) { GiveInventory("Clip2", 10); }
+}
+
+Script 726 (VOID)
+{
+if	(GetCvar("bd_disablefriendlymarines") > 0) { GiveInventory("Clip2", 10); }
+}
+
+
+Script 725 (VOID)
+{
+if	(GetCvar("bd_shootablerocketammo") < 1) { GiveInventory("Clip1", 10); }
+}
+
+
+Script 724 (VOID)
+{
+if	(GetCvar("bd_footstepsounds") == 0) { GiveInventory("FootStepDisabled", 1); }
+}
+
+
+Script "DemonRuneCheck" (VOID)
+{
+if	(GetCvar("bd_disabledemonspheres") == 1) { SetACtorState(0, "Cancels"); }
+}

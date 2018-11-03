@@ -1,0 +1,55 @@
+#include "zcommon.acs"
+
+
+
+
+
+
+script 177 (void)
+{
+if (CheckActorFloorTexture(0, "FLAT5_4"))
+    GiveActorInventory(748, "NaziVerification1", 1);
+else
+    ;
+	
+if (CheckActorCeilingTexture(0, "CEIL4_2"))
+    GiveActorInventory(748, "NaziVerification2", 1);
+else
+    ;
+	
+	
+if (CheckActorCeilingTexture(0, "ACEIL42"))
+    GiveActorInventory(748, "Epic2AlienVerification", 1);
+else
+    ;	
+	
+if (CheckActorFloorTexture(0, "ACEIL22"))
+    GiveActorInventory(748, "Epic2AlienVerification", 1);
+else
+
+if (CheckActorFloorTexture(0, "ACEIL42"))
+    GiveActorInventory(748, "Epic2AlienVerification", 1);
+else
+
+if (CheckActorcEILINGTexture(0, "ACEIL22"))
+    GiveActorInventory(748, "Epic2AlienVerification", 1);
+else
+    ;		
+	
+if (CheckActorFloorTexture(0, "ACEIL68"))
+    GiveActorInventory(748, "Epic2AlienVerification", 1);
+else	
+
+if (CheckActorFloorTexture(0, "FL0"))
+    GiveActorInventory(748, "AltEasyMarineVerification", 1);
+else	
+	
+	
+if	(GetCvar("bd_isnazilevel") == 1) { SetActorState(0,"ISANazi"); }	
+
+
+if (CheckActorcEILINGTexture(0, "F_SKY1"))
+    GiveActorInventory(728, "TVRRainVerification", 1);
+else
+    ;	
+}

@@ -1,0 +1,14 @@
+#include "zcommon.acs"
+#library "CHECKFRIENDS"
+
+script 647 enter
+{
+    //ClearInventory();
+    GiveInventory("CheckMarines", 1);
+	Thing_ChangeTID (0, 568);
+}
+
+script 648 (VOID)
+{
+    TakeActorInventory(568, "NumberOfAllies", 1);
+}
