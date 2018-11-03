@@ -1,0 +1,234 @@
+// Invulnerability Sphere ---------------------------------------------------
+
+ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
+{
+	Game Doom
+	SpawnID 133
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.BIGPOWERUP
+	Inventory.MaxAmount 0
+	Powerup.Type Invulnerable
+	//Powerup.Color White //InverseMap
+	Powerup.Colormap 0.0, 0.0, 0.0, 1.0,1.0,1.0
+	Inventory.PickupMessage "$GOTINVUL"
+	States
+	{
+	Spawn:
+		PINV AAABBBCCCDDD 2 Bright A_SpawnItem("GreenFlareMedium",0,20)
+		Loop
+	}
+}
+
+
+
+
+// Soulsphere --------------------------------------------------------------
+
+ACTOR LifeSphere : CustomInventory Replaces SoulSphere
+{
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupMessage "Soulsphere"
+	Inventory.PickupSound "misc/p_pkup"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		SOUL AAABBBCCCDDDCCCBBB 2 Bright A_SpawnItem("BlueFlareMedium2",0,20)
+		Loop
+	Spawn2:
+		SOUL ABCDCB 2 BRIGHT
+		Goto Spawn
+	Pickup:
+        TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveInventory("SoulSphereHealth", 1)
+		Stop
+	}
+}
+
+ACTOR SoulSphereHealth : Health	
+{
+	Inventory.Amount 100
+	Inventory.MaxAmount 200
+	+INVENTORY.ALWAYSPICKUP
+}
+
+ACTOR EnergySphere : CustomInventory Replaces Megasphere
+{
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupMessage "Megasphere"
+	Inventory.PickupSound "misc/p_pkup"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		MEGA AABBCCDD 2 BRIGHT A_SpawnItem("LensFlare",0,35)
+		Loop
+	Spawn2:	
+		MEGA AABBCCDD 2 BRIGHT
+		Goto Spawn
+	Pickup:
+        TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveInventory("BlueArmorForMegasphere", 1)
+		TNT1 AA 0 A_GiveInventory("SoulsphereHealth", 1)
+		Stop
+	}
+}	
+
+
+// infrared -----------------------------------------------------------------
+
+ACTOR NightVision : CustomInventory Replaces InfraRed
+{
+	Game Doom
+	SpawnID 138
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupMessage "You got the Infrared Vision Googles."
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		SVIS E 7
+		SVIS D 3 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS C 2 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS BAB 1 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS C 2 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS D 3 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		Loop
+	Spawn2:
+		SVIS E 4
+		SVIS DCBACD 2 BRIGHT
+		Goto Spawn
+		
+	Pickup:
+		TNT1 A 1
+		TNT1 A 0 A_GiveInventory("HasInfrared", 1)
+		TNT1 A 0 A_GiveInventory("NightVisionGiver", 1)
+     TNT1 A 0 A_GiveInventory("HasInfraRed", 1)
+	 TNT1 A 0 ACS_ExecuteAlways(398, 0, 0, 0, 0)
+	 TNT1 A 1
+		Stop
+		
+	}
+}
+
+
+ACTOR NightVisionGiver : PowerupGiver
+{
+	Game Doom
+	SpawnID 138
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.MaxAmount 0
+	Powerup.Type Torch
+	Powerup.Color 99 99 99
+	Inventory.PickupMessage "$GOTVISOR"
+	//Powerup.Colormap 0.0, 0.0, 0.0, 1.0,0.5,0.5
+	Powerup.Duration 4200
+	States
+	{
+	Spawn:
+		SVIS E 7
+		SVIS D 3 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS C 2 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS BAB 1 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS C 2 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		SVIS D 3 Bright A_SpawnItem("RedFlareVerySmall",0,10)
+		Loop
+		
+	
+	}
+}
+
+
+
+// Berserk ------------------------------------------------------------------
+
+
+
+ACTOR Berserl1 : CustomInventory Replaces Berserk
+{
+	Game Doom
+    Scale 1.2
+	SpawnID 134
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupMessage "$GOTBERSERK"
+	Inventory.PickupSound "misc/p_pkup"
+    Inventory.PickupSound "BERSPKUP"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		PSTR A 2 A_SpawnItem("RedFlareVerySmall",0,10)
+		Loop
+	Spawn2:
+		PSTR A 14
+		Goto Spawn
+	Pickup:
+		TNT1 A 0 A_GiveInventory("PowerStrength")
+		TNT1 A 0 HealThing(100, 0)
+		TNT1 A 0 A_SelectWeapon("Melee_Attacks")
+		TNT1 A 20
+		TNT1 A 0 A_Print ("Press Reload (R) to alternate execution modes")
+		Stop
+	}
+}
+
+ACTOR SuperBlurSphere : CustomInventory //Replaces BlurSphere
+{
+  +COUNTITEM
+  +VISIBILITYPULSE
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  +INVENTORY.BIGPOWERUP
+  RenderStyle Translucent
+  Inventory.PickupMessage "$GOTINVIS" // "Partial Invisibility"
+  States
+  {
+  Spawn:
+     PINS AABBCCDDCCBB 2 Bright A_SpawnItem("RedFlare", 0, 24)
+     Loop
+  Pickup:
+	 TNT1 A 1
+     TNT1 A 0 A_GiveInventory("IsInvisible", 1)
+	 TNT1 A 0 A_GiveInventory("Blursphere", 1)
+	 TNT1 A 0 ACS_ExecuteAlways(397, 0, 0, 0, 0)
+	 TNT1 A 1
+	 Stop
+  }
+}
+
+
+ACTOR DemonStrengthRune : Berserl1
+{
+	Game Doom
+    Scale 1.0
+	SpawnID 134
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupMessage "You got the Demon Strength Rune. RIP AND TEAR!"
+	Inventory.PickupSound "misc/p_pkup"
+	States
+	{
+	Spawn:
+		DPRF AABBCCBB 2 A_SpawnItem("RedFlareSmall",0,20)
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("PowerStrength")
+		TNT1 A 0 HealThing(10, 0)
+		TNT1 A 20
+		TNT1 A 0 A_Print ("You got the Demon Strength Rune. RIP AND TEAR!")
+		Stop
+	}
+}
+
+
+
+
+
