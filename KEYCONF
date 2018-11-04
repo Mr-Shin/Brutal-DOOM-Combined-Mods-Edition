@@ -1,0 +1,80 @@
+clearplayerclasses
+addplayerclass BDoomer //nomenu
+//addplayerclass BDBOT //nomenu
+
+
+
+
+
+   addkeysection "BrutalDoom - Advanced Actions" BrutalDoomActions               // the last unquoted bit used to say MySampleKeysection
+   
+   addmenukey "Kick" kickem
+   alias kickem "puke 301"
+   defaultbind Q kickem
+
+   addmenukey "Reload" reload
+   alias reload "puke 303"
+   defaultbind R reload
+   
+   addmenukey "Flashlight" flashlightswitch
+   alias flashlightswitch "puke 313"
+   defaultbind F flashlightswitch
+   
+
+
+	addmenukey "Toss Grenade" grenadetoss
+   alias grenadetoss "puke 315"
+   defaultbind G grenadetoss
+   
+   addmenukey "Unload Gun" unreloader
+   alias unreloader "puke 363"
+   
+     AddMenuKey "Quick Melee/Combo" punchem
+   Alias punchem "puke 3757"
+   DefaultBind V punchem
+   
+      AddMenuKey "Throw Mine" usemine
+   Alias usemine "pukename PromixityMineHotkey"
+   DefaultBind ENTER usemine
+
+   addkeysection "Brutal Doom - Interactions" BrutalDoomInteractions               // here too
+
+  
+   addmenukey "Offend" brutaltaunt
+   alias brutaltaunt "puke 302"
+   defaultbind H brutaltaunt
+   
+   addmenukey "Wave(1)" wave1
+   alias wave1 "puke 431"
+   defaultbind V wave1
+
+   addmenukey "Wave(2)" wave2
+   alias wave2 "puke 432"
+   defaultbind X wave2
+   
+   addmenukey "Advanced Taunt" advtaunt
+   alias advtaunt "puke 304"
+   defaultbind J advtaunt
+   
+   addmenukey "One-Liners" oneliner
+   alias oneliner "puke 305"
+   defaultbind K oneliner
+   
+   
+   
+   
+
+   
+   
+   addkeysection "Brutal Doom - Advanced Moves" BrutalDoomAdvMoves              // here too
+
+   addmenukey "Roll Left" roleft
+   alias roleft "puke 306"
+   defaultbind Z roleft
+   
+   
+   addmenukey "Roll Right" roright
+   alias roright "puke 307"
+   defaultbind C roright
+   
+   

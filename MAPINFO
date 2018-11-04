@@ -1,0 +1,165 @@
+map TITLEMAP "BDCME_Intro"
+{
+	music = "D_DM2INT"
+}
+
+clearskills
+
+skill easyhard
+{
+   AutoUseHealth
+   AmmoFactor = 1
+   DamageFactor = 0.5
+   EasyBossBrain
+   SpawnFilter = hard
+   name = "Power-Fantasy"
+   mustconfirm = "This is barely a challenge. Press Y or N"
+}
+
+skill easy
+{
+   AmmoFactor = 1
+   DamageFactor = 1.0
+   SpawnFilter = easy
+   name = "I'm Too Young To Die"
+}
+
+skill normal
+{
+   AmmoFactor = 1
+   DamageFactor = 1.0
+   SpawnFilter = normal
+   name = "Hurt Me Plenty!"
+   defaultskill
+}
+
+
+skill Hard
+{
+   AmmoFactor = 1
+   DamageFactor = 1.0
+   SpawnFilter = Hard
+   name = "Ultra Violence"
+}
+
+skill HyperHard
+{
+   AmmoFactor = 1
+   FastMonsters
+   DisableCheats
+   RespawnTime = 20
+   SpawnFilter = Nightmare
+   name = "Nightmare!"
+   mustconfirm = "Faster enemies. Enemies Respawn"
+}
+
+//6
+skill BlackMetal
+{
+   AmmoFactor = 1
+   DamageFactor = 1.5
+   FastMonsters
+   DisableCheats
+   ACSReturn = 31
+   RespawnTime = 60
+   SpawnFilter = Nightmare
+   name = "Black Metal"
+   mustconfirm = "Much faster enemies, plus 50% bonus damage. Double Ammo. Press Y or N"
+}
+
+
+
+skill Brutal
+{
+   DamageFactor = 9.0
+   MonsterHealth = 0.4
+   FriendlyHealth = 0.4
+   ACSReturn = 32
+   //FastMonsters
+   //DisableCheats
+   SpawnFilter = hard
+   name = "Realism Mode"
+   //ReplaceActor = "Medikit", "RealisticMedikit"
+   mustconfirm = "Do you have what it takes to survive? Press Y or N"
+}
+
+
+
+map MAP13B lookup "HUSTR_13"
+{
+	titlepatch = "CWILV12"
+	next = "MAP14"
+	secretnext = "MAP31"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 210
+	music = "$MUSIC_DOOM"
+}
+
+map MAP15B lookup "HUSTR_15"
+{
+	titlepatch = "CWILV14"
+	next = "MAP16B"
+	secretnext = "MAP31"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 210
+	music = "$MUSIC_RUNNI2"
+}
+
+map MAP16B lookup "HUSTR_16"
+{
+	titlepatch = "CWILV15"
+	next = "MAP17B"
+	secretnext = "MAP17"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 150
+	music = "$MUSIC_DEAD2"
+}
+
+map MAP17B lookup "HUSTR_17"
+{
+	titlepatch = "CWILV16"
+	next = "MAP18B"
+	secretnext = "MAP18"
+	sky1 = "SKYCIT1"
+	cluster = 7
+	par = 420
+	music = "$MUSIC_STLKS3"
+}
+
+
+
+map PSXMAP16 "Hellgate"
+{
+	next = "MAP18"
+	secretnext = "MAP18"
+	sky1 = "SKYHEL1", 0.1
+	cluster = 7
+	par = 420
+	music = "$MUSIC_STLKS3"
+}
+
+
+
+map PSXMAP57 "The Marshes"
+{
+	next = "PSXMAP58"
+	secretnext = "PSXMAP58"
+	sky1 = "SKYEAR3", 0.1
+	cluster = 7
+	par = 420
+	music = "$MUSIC_ADRIAN"
+}
+
+
+map PSXMAP58 "Twilight Descends"
+{
+	next = "MAP15"
+	secretnext = "MAP15"
+	sky1 = "SKYEAR3", 0.1
+	cluster = 7
+	par = 420
+	music = "$MUSIC_ADRIAN"
+}
