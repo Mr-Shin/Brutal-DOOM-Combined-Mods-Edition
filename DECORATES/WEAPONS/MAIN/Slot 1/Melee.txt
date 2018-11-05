@@ -2,7 +2,7 @@ Actor Kicking : Inventory
 {
 inventory.maxamount 1
 }
-
+Actor GoEmergencyGunAbility : Inventory {}
 Actor Punching : Inventory
 {
 inventory.maxamount 1
@@ -41,6 +41,7 @@ Actor PSeq2 : Inventory
 inventory.maxamount 1
 }
 
+Actor GoSwitchAmmo : Inventory {}
 
 Actor PSeq3 : Inventory
 {
@@ -116,7 +117,10 @@ ACTOR Melee_Attacks : CMEWeapon Replaces Fist
 		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"ReadyBarrel")
         TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
-				TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
         PUNG A 1 A_WeaponReady

@@ -2,7 +2,20 @@ ACTOR DoPunch : Inventory
 {
 Inventory.MaxAmount 1
 }
+Actor DetonatePipeBomb : Inventory {inventory.maxamount 1}
 
+Actor ThrowPipeBomb : Inventory {inventory.maxamount 1}
+
+//**
+
+ACTOR NowFireRightActor : INventory {inventory.maxamount 1}
+
+
+ACTOR GoSwitchAmmo : Inventory {Inventory.MaxAmount 1}
+
+ACTOR EmergencyAmmo1 : Inventory {Inventory.MaxAmount 1}
+
+ACTOR EmergencyAmmo2 : Inventory {Inventory.MaxAmount 1}
 ACTOR CMEWeapon : DoomWeapon
 {
 	Weapon.BobRangeX 0.3
@@ -13,6 +26,7 @@ ACTOR CMEWeapon : DoomWeapon
  Inventory.ForbiddenTo Purist
 	States
 	{
+	RealReady:
 	GoingToReady:
 	SelectingAnimation:
 		TNT1 A 2
@@ -903,9 +917,147 @@ ACTOR CMEWeapon : DoomWeapon
 		TNT1 A 0 A_SelectWeapon("BarrelThrower")
 		TNT1 AAAAAAAAAAAAAAAAAAA 0 A_Lower
 		Wait
+		SwitchEmergency:
+		TNT1 A 0 A_TakeInventory("GoSwitchAmmo", 1)
+		TNT1 A 0 A_JumpIfInventory("EmergencyAmmo1", 1, "SwitchingGauss")
+		TNT1 A 0 A_GiveInventory("EmergencyAmmo1", 1)
 		
+		TNT1 A 0 A_Print("BuckShot Active")
+		Goto RealReady
+	SwitchingGauss:
+		TNT1 A 0 A_TakeInventory("EmergencyAmmo1", 1)
+		TNT1 A 0 A_Print("Gauss Rail Active")
+		Goto RealReady
+		
+
+	FireEmergency:
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoEmergencyGunAbility", 1)
+		TNT1 A 0 A_JumpIfInventory("EmergencyAmmo1",1,"AmmoCheckShell")
+	AmmoCheckRocket:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,"FireEmergencyReal")
+		Goto NoEmergencyAmmo
+	AmmoCheckShell:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Shell2",1,"FireEmergencyReal")
+		Goto NoEmergencyAmmo
+		
+	FireEmergencyReal:
+		TNT1 A 0 A_JumpIfInventory("NowFireRightActor", 1, "FireEmergencyRight")
+		PANC A 1 A_ZoomFactor(0.95)
+		PANC B 1 A_ZoomFactor(0.9)
+		PANC C 1 A_ZoomFactor(0.85)
+		PANC D 1 A_ZoomFactor(0.8)
+		PANC E 1 
+		PANF A 1 BRIGHT A_GunFlash("EmergencyFlash")
+		PANC E 1 A_Giveinventory("NowFireRightActor", 1)
+		PANC E 1 A_Setpitch(Pitch-3)
+		PANC D 1 A_Setpitch(Pitch+1)
+		PANC C 1 A_Setpitch(Pitch+1)
+		PANC B 1 A_Setpitch(Pitch+1)
+		PANC A 1 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("GoEmergencyGunAbility", 1)
+		PANC AAAAA 1 A_JumpIfInventory("GoEmergencyGunAbility",1,"FireEmergencyRight")
+		TNT1 A 0 A_TakeInventory("GoEmergencyGunAbility", 1)
+		Goto GoingToReady
+		
+	EmergencyFlash:
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0,0,0,0)
+		TNT1 A 0 A_JumpIfInventory("EmergencyAmmo1",1,"EMFlashShell")
+		TNT1 A 0 A_PlaySound("Weapons/OkudzhavaFire",6)
+		TNT1 A 0 A_TakeInventory("RocketAmmo2", 1)
+		XMFF A 0 A_FireCustomMissile("GaussProjectile", 0, 0, -12, -6, 0, random(-3,3))//GaussProjectile
+		Goto Flash
+	
+	EMFlashShell:
+		TNT1 A 0 A_PlaySound("r6/sg/fire",6)
+		TNT1 A 0 A_TakeInventory("Shell2", 1)
+		TNT1 AAAAAA 0 A_FireBullets (5, 5, -1, 45, "HitPuff")
+        RIFF AAAAAA 0 A_FireCustomMissile("Tracer",  0, 0, Random(-12,-11), Random(-5,-6), 0, random(-3,3))
+		Goto Flash
+		
+	FireEmergencyRight:
+		TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,2)
+		Goto NoEmergencyAmmo
+		TNT1 AAAAA 0
+		
+		PANC F 1 A_ZoomFactor(0.95)
+		PANC G 1 A_ZoomFactor(0.9)
+		PANC H 1 A_ZoomFactor(0.85)
+		PANC I 1 A_ZoomFactor(0.8)
+		PANC J 1
+		PANF B 1 BRIGHT A_GunFlash("EmergencyFlash2")
+		PANC J 1 A_Takeinventory("NowFireRightActor")
+		PANC J 1 A_Setpitch(Pitch-3)
+		PANC I 1 A_Setpitch(Pitch+1)
+		PANC H 1 A_Setpitch(Pitch+1)
+		PANC G 1 A_Setpitch(Pitch+1)
+		PANC F 1 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("GoEmergencyGunAbility", 1)
+		PANC FFFFF 1 A_JumpIfInventory("GoEmergencyGunAbility",1,"FireEmergency")
+		Goto Ready
+		
+	EmergencyFlash2:
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0,0,0,0)
+		TNT1 A 0 A_JumpIfInventory("EmergencyAmmo1",1,"EMFlashShell2")
+		TNT1 A 0 A_PlaySound("Weapons/OkudzhavaFire",6)
+		TNT1 A 0 A_TakeInventory("RocketAmmo2", 1)
+		XMFF A 0 A_FireCustomMissile("GaussProjectile", 0, 0, 12, -6, 0, random(-3,3))//GaussProjectile
+		Goto Flash
+	
+	EMFlashShell2:
+		TNT1 A 0 A_PlaySound("r6/sg/fire",6)
+		TNT1 A 0 A_TakeInventory("Shell2", 1)
+		TNT1 AAAAAA 0 A_FireBullets (5, 5, -1, 45, "HitPuff")
+        RIFF AAAAAA 0 A_FireCustomMissile("Tracer",  0, 0, Random(12,11), Random(-5,-6), 0, random(-3,3))
+		Goto Flash
+	
+	NoEmergencyAmmo:
+		TNT1 A 0
+		TNT1 A 0 A_Print("Find some ammo, peasant!!")
+		Goto GoingToReady
 	}	
 
+}
+ACTOR GaussProjectile : FastProjectile
+{
+  Speed 300
+  Radius 10
+  Height 7
+  Damage 100
+  Renderstyle Add
+  DamageType Fire
+  +RIPPER
+  //-CANNOTPUSH
+  +EXTREMEDEATH
+  +NODAMAGETHRUST
+  +DONTBLAST
+  MissileType "GaussTrailCalibrator"
+  MissileHeight 7
+  SeeSound "Weapons/OkudzhavaFly"
+  DeathSound "Weapons/OkudzhavaRod"
+  states
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 ThrustThingZ(0,10,0,1)
+  Looplet:
+    TNT1 A 0 ThrustThingZ(0,-2,0,1)
+    TNT1 A 1 A_PlaySound("Weapons/OkudzhavaLoop","SoundSlot5",1,1.0,1)
+    Loop
+  Death:
+    TNT1 A 0 //A_SpawnItemEx("GaussWallRod",0,0,0,0,0,0,0,128,0)
+  XDeath:
+    TNT1 A 0 A_StopSound(5)
+    TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplosionParticleHeavy",random(2,-2),random(2,-2),random(2,-2),random(4,-4),random(4,-4),random(7,-1),random(0,359),128,0)
+    TNT1 A 1
+    stop
+  }
 }
 ACTOR FlashlightProjectile: FastProjectile
 {
