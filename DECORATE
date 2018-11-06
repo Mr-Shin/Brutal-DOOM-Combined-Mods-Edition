@@ -158,7 +158,7 @@ damage 0
 #include BrutalChexQuest.txt
 #include Frozen.txt
 
-
+actor ExplosionSplashSpawner : BigRicochet {}
 
 
 
