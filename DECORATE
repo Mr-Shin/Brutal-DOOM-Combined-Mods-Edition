@@ -1,7 +1,7 @@
 
 // IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS
 
-
+Actor IsFlashLightOn : Inventory {}
 Actor DebrisGeneral
 {
 +MISSILE
