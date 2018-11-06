@@ -1139,6 +1139,7 @@ ACTOR CMEWeapon : DoomWeapon
 	NoEmergencyAmmo:
 		TNT1 A 0
 		TNT1 A 0 A_Print("Find some ammo, peasant!!")
+		TNT1 AA 0 A_Jump(255, "Ready")
 		Goto GoingToReady
 	}	
 
