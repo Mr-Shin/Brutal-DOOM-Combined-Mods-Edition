@@ -43,6 +43,12 @@ Inventory.PickUpSound "weapons/chainsaw/draw"
 	Tag "Chainsaw"
 states
 	{
+	Spawn:
+		TNT1 A 1 
+		TNT1 A 0 A_SpawnItemEx("EvidenceCheckerChainsaw",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	Spawned:
+		CSAW A -1
+		Stop
 		
 	Select:
 	TNT1 A 0
