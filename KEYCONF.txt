@@ -62,7 +62,6 @@ addplayerclass BDoomer //nomenu
    
    
    
-   
 
    
    
@@ -77,4 +76,10 @@ addplayerclass BDoomer //nomenu
    alias roright "puke 307"
    defaultbind C roright
    
+   addmenukey "Emergency Gun" emergencygun
+   alias emergencygun "pukename IB600"
+   defaultbind E emergencygun
    
+   addmenukey "Switch Emergency Ammo Type" emgunswitchammo
+   alias emgunswitchammo "pukename IB500"
+   defaultbind M emgunswitchammo

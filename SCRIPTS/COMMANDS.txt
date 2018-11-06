@@ -99,7 +99,7 @@ Script 307 (VOID) NET
  GiveInventory("GoSpecial", 1);
 }
 
-Script 500 (VOID) NET //before, was script 3756, but cause issues with zan-zan...
+Script "IB500" (VOID) NET //before, was script 3756, but cause issues with zan-zan...
 //-_-
 {
  GiveInventory("GoSwitchAmmo", 1);
@@ -123,7 +123,7 @@ if (buttons & BT_ALTATTACK)
  }
 }
 
-Script 600 (VOID) NET //before, was script 3756, but cause issues with zan-zan...
+Script "IB600" (VOID) NET //before, was script 3756, but cause issues with zan-zan...
 //-_-
 {
  GiveInventory("GoEmergencyGunAbility", 1);
