@@ -2,6 +2,7 @@ user int bd_bloodamount	= 2;
 user int bd_lowgraphicsmode = 0;
 
 user int bd_enablesprint = 0;
+user int bdcme_pbkick = 0;
 
 server int bd_v20stuff = 0;
 server int zdoombrutalblood	= 2;
