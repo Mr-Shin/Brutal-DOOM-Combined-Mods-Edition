@@ -174,7 +174,15 @@ Decal "BulletDecalNew1"
 	stop
   }
 }
+Actor ExtremeBulletPuff: HitPuff
+{
+DamageType Saw
+}
 
+Actor ExtremeBulletPuff2: HitPuff
+{
+DamageType Cut
+}
 actor shotpuff : HitPuff
 {
 DamageType SSG

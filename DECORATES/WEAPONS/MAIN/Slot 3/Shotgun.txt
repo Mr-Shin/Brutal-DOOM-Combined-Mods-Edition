@@ -60,6 +60,8 @@ ACTOR Shot_Gun : CMEWeapon replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 	OkToFire:
 		SHTN A 1 A_WeaponReady(WRF_ALLOWRELOAD)
@@ -144,6 +146,8 @@ ACTOR Shot_Gun : CMEWeapon replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
 		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
 		SHT8 A 1 A_WeaponReady(WRF_ALLOWRELOAD)

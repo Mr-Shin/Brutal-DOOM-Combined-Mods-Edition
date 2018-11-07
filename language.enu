@@ -1,3 +1,4 @@
 [enu default]
 
 GOTCLIP = "Picked up a Magazine.";
+GOTRIFLE = "You got the assault rifle!";

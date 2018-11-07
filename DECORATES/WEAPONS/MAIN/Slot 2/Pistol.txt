@@ -20,6 +20,8 @@ ACTOR BrutalPistol : CMEWeapon
 	Ready3:
 	Ready:
 		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
         TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")

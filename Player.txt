@@ -75,7 +75,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "RailgunAmmo", 50
 	Player.StartItem "IsPlayer", 1
 	Player.StartItem "HandGrenades", 1
-	Player.StartItem "GrenadeAmmo", 1
+	Player.StartItem "GrenadeAmmo", 3
 	Player.StartItem "LeftRifleAmmo", 31
 	Player.StartItem "JustStartedGame", 1
 	Player.StartItem "NeverSelectedShotgun", 1

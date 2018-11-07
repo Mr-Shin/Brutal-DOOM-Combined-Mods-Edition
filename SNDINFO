@@ -527,7 +527,11 @@ marine/superfist3 plspnch3
 marine/superfist4 plspnch4
 marine/superfist5 plspnch5
 
-
+Weapons/OkudzhavaFly		GAUSFLY
+Weapons/OkudzhavaRod		GAUSROD
+Weapons/OkudzhavaLoop		GAUSLOOP
+Weapons/OkudzhavaEnd		GAUSEND
+Weapons/OkudzhavaFire		GAUSFIRE
 $random BURNZOM {BURNZOM1 BURNZOM2 BURNZOM3}
 BURNZOM1 BURNZOM1
 BURNZOM2 BURNZOM2
