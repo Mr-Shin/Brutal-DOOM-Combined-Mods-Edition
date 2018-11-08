@@ -7,6 +7,7 @@ Actor TypeZombieman : Inventory
 {
 inventory.maxamount 1
 }
+Actor GiveLessHealth : Inventory {}
 Actor FinisherToken : Inventory {}
 Actor EverSeenThePlayer : Inventory
 {
@@ -74,7 +75,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 	Obituary "%o has been gunned down by a Zombie Soldier."
 	damagefactor "Taunt", 1.0
 	DamageFactor "CauseObjectsToSplash", 0.0
-	WoundHealth 25
+	WoundHealth 15
 	States
 	{
 	Wound:
@@ -134,7 +135,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		Loop
 	
 	Death.GloryKill:
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		TNT1 A 0 A_GiveToTarget("GiveLessHealth",1)//A_SpawnItemEx("GloryLowPinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Death.Fatality
 	ReplaceVanilla:
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)

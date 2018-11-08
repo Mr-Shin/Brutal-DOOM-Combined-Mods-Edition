@@ -209,6 +209,7 @@ ACTOR Melee_Attacks : CMEWeapon Replaces Fist
 	PermormGloryKill:
 		TNT1 A 0
 		TNT1 A 0 A_Takeinventory("Kicking",1)
+		TNT1 A 0 A_GiveInventory("Punching",1)
 		PUNG A 1 A_CustomPunch(10000,1,0,"GloryKillPuff",150,0,0,None)
 		TNT1 A 0
 		Goto Steady
