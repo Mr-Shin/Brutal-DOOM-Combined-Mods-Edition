@@ -7,7 +7,7 @@ Actor TypeZombieman : Inventory
 {
 inventory.maxamount 1
 }
-
+Actor FinisherToken : Inventory {}
 Actor EverSeenThePlayer : Inventory
 {
 inventory.maxamount 1
@@ -74,8 +74,68 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 	Obituary "%o has been gunned down by a Zombie Soldier."
 	damagefactor "Taunt", 1.0
 	DamageFactor "CauseObjectsToSplash", 0.0
+	WoundHealth 25
 	States
 	{
+	Wound:
+		"####" "#" 0 A_ChangeFlag("GHOST", 0)
+		"####" "#" 0 A_ChangeFlag("FORCEXYBILLBOARD", 0)
+		"####" "#" 1
+		{
+			if(GetCvar("be_ExecutionsON"))
+			{
+				if(countinv("FinisherToken")==0) //if it isnt healing already
+				{								//will heal and give the token that indicates it's executable
+					A_SpawnItemEx("ZombieHighlight",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_NOCHECKPOSITION); //to highlight if ON, and to remove the token after the monster heals
+					A_GiveInventory("FinisherToken",1);	//token to allow melee attack to execute
+				}
+				
+				if(GetCvar(be_MonsterStagger)==1) //will the monsters stagger at all?
+				{
+					return state("Stagger");	//stays there for a few seconds
+				}
+				else
+				{
+					return state(0);
+				}
+			}
+			return state(0);
+		}
+		Goto See
+	Stagger:
+		POSS G 0 
+		{
+			if(getcvar(be_ExecutionHighlight)==1)
+			{	return state("PrepareStaggerHighlight");}
+			else
+			{	return state("StagLooper");	}
+		}
+		Goto StagLooper
+	PrepareStaggerHighlight:
+		//RFTR X 0
+		PGSS G 0
+		Goto StagLooper
+	
+	StagLooper:
+		"####" "#" 1
+		{
+			if(!countinv("FinisherToken"))
+			{
+				return state("See");
+			}
+			if(getcvar(be_NoisyStagger) && countinv("PainSoundToken"))
+			{ 
+				A_Pain; 
+				A_TakeInventory("PainSoundToken");
+			}
+			return state(0);
+		}
+		"####" "#" 0 { A_SpawnItem ("HeadshotTarget4", 0, 40,0); A_SpawnItem ("LegTargetBase", 10); }
+		Loop
+	
+	Death.GloryKill:
+		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.Fatality
 	ReplaceVanilla:
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)

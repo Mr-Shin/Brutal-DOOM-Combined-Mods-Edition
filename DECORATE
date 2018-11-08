@@ -97,6 +97,8 @@ Actor PBKick : Inventory {}
 #include "Decorates/WEAPONS/MAIN/Slot 2/MP40.txt"
 #include "Decorates/MONSTERS/NAZIS/NAZIS.txt"
 
+//Glory Kills
+#include GLORYKILL.txt
 
 //DECORATIONS
 #include FURNITURE.txt

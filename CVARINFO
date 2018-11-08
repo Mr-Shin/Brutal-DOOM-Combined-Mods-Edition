@@ -18,3 +18,8 @@ server int bd_disablemapenhancements = 0;
 
 server int bd_disablenewguns = 1;
 server int bd_v18stuff =  0;
+server bool be_ExecutionsON = true;
+server bool be_ExecutionHighlight = true;
+server bool be_MonsterStagger = true;
+server bool be_NoisyStagger = true;
+server int be_StaggerLenght = 4;

@@ -206,8 +206,23 @@ ACTOR Melee_Attacks : CMEWeapon Replaces Fist
         ////////////////////
 		TNT1 A 0 A_Raise
 		Wait
+	PermormGloryKill:
+		TNT1 A 0
+		TNT1 A 0 A_Takeinventory("Kicking",1)
+		PUNG A 1 A_CustomPunch(10000,1,0,"GloryKillPuff",150,0,0,None)
+		TNT1 A 0
+		Goto Steady
 	Fire:
         TNT1 A 0
+		//Advanced DECORATE
+		TNT1 A 0
+		{
+			if(countinv("FinisherToken",AAPTR_PLAYER_GETTARGET)>=1 && A_CheckLOF("Null",CLOFF_SETTARGET|CLOFF_NOAIM_VERT|CLOFF_IGNOREGHOST|CLOFF_MUSTBESOLID ,180))
+			{
+				return state("PermormGloryKill");
+			}
+			return state(0);
+		}
 		TNT1 A 0 A_JumpIfInventory("ShotgunguyHead",1,"ShotgunguyHeadFire")
 		TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"LSFire")
 		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"FireBarrel")

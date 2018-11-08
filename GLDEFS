@@ -1839,3 +1839,129 @@ object HDFlamesGFX1
     frame NF1R { light BIGREDTORCHNOSELF }
 	frame NF2R { light BIGREDTORCHNOSELF }
 }
+//GLORY KILL SHADER
+
+//ZOMBIE
+hardwareshader sprite PGSSG1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGSSG2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGSSG3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGSSG4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGSSG5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGSSG6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGSSG7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGSSG8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//SERGEANT
+hardwareshader sprite SPGSG1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SPGSG2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SPGSG3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SPGSG4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SPGSG5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SPGSG6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SPGSG7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SPGSG8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//CHAINGUNGUY
+hardwareshader sprite MPGSG1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite MPGSG2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite MPGSG3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite MPGSG4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite MPGSG5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite MPGSG6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite MPGSG7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite MPGSG8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//IMP
+hardwareshader sprite TRGOH1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite TRGOH2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite TRGOH3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite TRGOH4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite TRGOH5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite TRGOH6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite TRGOH7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite TRGOH8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//DEMON AND SPECTRE
+hardwareshader sprite SGRGH1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SGRGH2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SGRGH3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SGRGH4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SGRGH5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SGRGH6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SGRGH7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SGRGH8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//HELLKNIGHT
+hardwareshader sprite BGS2H1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGS2H2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGS2H3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGS2H4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGS2H5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGS2H6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGS2H7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGS2H8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//BARONOFHELL
+hardwareshader sprite BGSSH1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGSSH2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGSSH3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGSSH4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGSSH5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGSSH6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGSSH7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGSSH8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+
+//PAINELEMENTAL
+hardwareshader sprite PGING1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGING2G8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGING3G7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGING4G6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite PGING5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//Arachnotron
+hardwareshader sprite BGPII1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGPII2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGPII3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGPII4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGPII5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGPII6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGPII7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite BGPII8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//CACODEMON
+hardwareshader sprite HGADF1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite HGADF2F8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite HGADF3F7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite HGADF4F6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite HGADF5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//REVENANT
+hardwareshader sprite SKGLL1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SKGLL2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SKGLL3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SKGLL4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SKGLL5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SKGLL6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SKGLL7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite SKGLL8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//FATSO
+hardwareshader sprite FGTTJ1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite FGTTJ2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite FGTTJ3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite FGTTJ4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite FGTTJ5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite FGTTJ6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite FGTTJ7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite FGTTJ8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//ARCHVILLE
+hardwareshader sprite DIGBQ1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite DIGBQ2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite DIGBQ3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite DIGBQ4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite DIGBQ5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite DIGBQ6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite DIGBQ7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite DIGBQ8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
