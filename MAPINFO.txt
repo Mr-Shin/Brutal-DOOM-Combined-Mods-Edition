@@ -1,165 +1,133 @@
-map TITLEMAP "BDCME_Intro"
+map TITLEMAP "PB_Introduction"
 {
 	music = "D_DM2INT"
 }
 
-clearskills
+ClearSkills
 
-skill easyhard
+
+Skill baby
 {
-   AutoUseHealth
-   AmmoFactor = 1
+   AmmoFactor = 1.0
    DamageFactor = 0.5
+   MonsterHealth = 0.5
    EasyBossBrain
-   SpawnFilter = hard
-   name = "Power-Fantasy"
-   mustconfirm = "This is barely a challenge. Press Y or N"
+   SlowMonsters
+   SpawnFilter = Baby
+   Textcolor = Green
+   DisableCheats
+   Name = "Power Fantasy"
+   MustConfirm = "The recommended difficulty for the dead. Press Y to Continue or N to Select Other Skill."
 }
 
-skill easy
+Skill easy
 {
    AmmoFactor = 1
-   DamageFactor = 1.0
-   SpawnFilter = easy
-   name = "I'm Too Young To Die"
+   DamageFactor = 0.75
+   MonsterHealth = 0.75
+   SpawnFilter = Normal
+   Textcolor = Green
+   DisableCheats
+   Name = "Can I Play Daddy?"
+   MustConfirm = "The recommended difficulty for kids. Press Y to Continue or N to Select Other Skill."
 }
 
-skill normal
+Skill normal
 {
    AmmoFactor = 1
-   DamageFactor = 1.0
-   SpawnFilter = normal
-   name = "Hurt Me Plenty!"
-   defaultskill
-}
-
-
-skill Hard
-{
-   AmmoFactor = 1
-   DamageFactor = 1.0
+   DamageFactor = 0.90
+   MonsterHealth = 0.90
    SpawnFilter = Hard
-   name = "Ultra Violence"
+   Textcolor = Gold
+   DisableCheats
+   Name = "Harsh"
+   MustConfirm = "The recommended difficulty for newcomers to Project Brutality. Press Y to Continue or N to Select Other Skill."
 }
 
-skill HyperHard
+Skill Hard
 {
    AmmoFactor = 1
-   FastMonsters
-   DisableCheats
-   RespawnTime = 20
+   DamageFactor = 1.0
+ //  Aggressiveness = .10
    SpawnFilter = Nightmare
-   name = "Nightmare!"
-   mustconfirm = "Faster enemies. Enemies Respawn"
+   Textcolor = Yellow
+   DisableCheats
+   Name = "Brutal"
+   MustConfirm = "The true Project Brutality experiece. Press Y to Continue or N to Select Other Skill."
 }
 
-//6
-skill BlackMetal
+Skill Brutal
+{  
+   AmmoFactor = 1
+   DamageFactor = 1.25
+   SpawnFilter = Nightmare
+   Aggressiveness = 0.10
+   DisableCheats
+   Textcolor = "Orange"
+   Name = "Man and a Half"
+   MustConfirm = "Your enemies are significantly more aggressive, inflict more damage, and are very proficient. Press Y to Continue or N to Select Other Skill."
+
+}
+
+Skill Superbad
 {
    AmmoFactor = 1
-   DamageFactor = 1.5
+   DamageFactor = 1.0
    FastMonsters
-   DisableCheats
-   ACSReturn = 31
-   RespawnTime = 60
    SpawnFilter = Nightmare
-   name = "Black Metal"
-   mustconfirm = "Much faster enemies, plus 50% bonus damage. Double Ammo. Press Y or N"
+   Textcolor = "Dark Red"
+   DisableCheats
+   Name = "12 on 10 Point Scale of Bad"
+   MustConfirm = "Your enemies are significantly faster. Press Y to Continue or N to Select Other Skill."
 }
 
+Skill BlackMetal
+{
+   AmmoFactor = 1
+   DamageFactor = 1.25
+   MonsterHealth = 1.20
+   SpawnFilter = Nightmare
+   Aggressiveness = 0.15
+   DisableCheats
+   Name = "I AM THE PAINKILLER!!!"
+   Textcolor = "Reddish Brick"
+   MustConfirm = "Your enemies have 20% more health, are extremely aggressive, and inflict more damage.  Press Y if you can take it!"
+}
 
-
-skill Brutal
+Skill HELL
+{
+   AmmoFactor = 1
+   DamageFactor = 1.50
+   MonsterHealth = 1.20
+   FastMonsters
+   Aggressiveness = 0.20
+   SpawnFilter = Nightmare
+   Textcolor = Red
+   DisableCheats
+  // PicName = "M_NMARE"
+   name = "Last Man on Earth"
+   mustconfirm = "The monsters you will face came straight out of the depths of hell. You will learn to fear and respect what true terror is. Press Y to start your death wish."
+}
+/*
+Skill Realistic
 {
    DamageFactor = 9.0
    MonsterHealth = 0.4
    FriendlyHealth = 0.4
    ACSReturn = 32
    //FastMonsters
-   //DisableCheats
+   DisableCheats
    SpawnFilter = hard
    name = "Realism Mode"
-   //ReplaceActor = "Medikit", "RealisticMedikit"
+   Textcolor = Black
+   PicName = "M_NMARE"
    mustconfirm = "Do you have what it takes to survive? Press Y or N"
 }
+*/
 
-
-
-map MAP13B lookup "HUSTR_13"
+GameInfo
 {
-	titlepatch = "CWILV12"
-	next = "MAP14"
-	secretnext = "MAP31"
-	sky1 = "SKYCIT1"
-	cluster = 7
-	par = 210
-	music = "$MUSIC_DOOM"
-}
-
-map MAP15B lookup "HUSTR_15"
-{
-	titlepatch = "CWILV14"
-	next = "MAP16B"
-	secretnext = "MAP31"
-	sky1 = "SKYCIT1"
-	cluster = 7
-	par = 210
-	music = "$MUSIC_RUNNI2"
-}
-
-map MAP16B lookup "HUSTR_16"
-{
-	titlepatch = "CWILV15"
-	next = "MAP17B"
-	secretnext = "MAP17"
-	sky1 = "SKYCIT1"
-	cluster = 7
-	par = 150
-	music = "$MUSIC_DEAD2"
-}
-
-map MAP17B lookup "HUSTR_17"
-{
-	titlepatch = "CWILV16"
-	next = "MAP18B"
-	secretnext = "MAP18"
-	sky1 = "SKYCIT1"
-	cluster = 7
-	par = 420
-	music = "$MUSIC_STLKS3"
-}
-
-
-
-map PSXMAP16 "Hellgate"
-{
-	next = "MAP18"
-	secretnext = "MAP18"
-	sky1 = "SKYHEL1", 0.1
-	cluster = 7
-	par = 420
-	music = "$MUSIC_STLKS3"
-}
-
-
-
-map PSXMAP57 "The Marshes"
-{
-	next = "PSXMAP58"
-	secretnext = "PSXMAP58"
-	sky1 = "SKYEAR3", 0.1
-	cluster = 7
-	par = 420
-	music = "$MUSIC_ADRIAN"
-}
-
-
-map PSXMAP58 "Twilight Descends"
-{
-	next = "MAP15"
-	secretnext = "MAP15"
-	sky1 = "SKYEAR3", 0.1
-	cluster = 7
-	par = 420
-	music = "$MUSIC_ADRIAN"
+DimColor = "Black"
+DimAmount = 0.70
+NoRandomPlayerClass = True
 }
