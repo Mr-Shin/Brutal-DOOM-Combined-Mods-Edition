@@ -75,7 +75,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 	Obituary "%o has been gunned down by a Zombie Soldier."
 	damagefactor "Taunt", 1.0
 	DamageFactor "CauseObjectsToSplash", 0.0
-	WoundHealth 15
+	//WoundHealth 15
 	States
 	{
 	Wound:

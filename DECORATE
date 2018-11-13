@@ -190,3 +190,73 @@ translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
 
+ACTOR HitSpark: ExplosionParticleHeavy
+{
+ speed 10
+  Scale 0.02
+ Gravity 0.7
+ RADIUS 1
+ HEIGHT 1
+   -NOCLIP
+   +DOOMBOUNCE
+   BOUNCEFACTOR 0.5
+    States
+    {
+     Spawn:
+	   SPKO S 20 BRIGHT
+       SPKO SSSSSSSSSS 1 Bright A_FadeOut(0.1)
+        stop
+     Death:
+     TNT1 A 0
+       Stop
+    }
+}
+
+ACTOR HitSpark22: HitSpark
+{
+ speed 8
+  Gravity 0.8
+  Scale 0.03
+  Bouncefactor 0.01
+  States
+    {
+     Spawn:
+	   SPKO S 30 BRIGHT
+       SPKO SSSSSSSSSS 1 Bright A_FadeOut(0.1)
+        stop
+		}
+}
+
+
+ACTOR HitSpark23: HitSpark
+{
+ speed 8
+  Scale 0.06
+  Gravity 1.0
+  -DOOMBOUNCE
+  States
+    {
+     Spawn:
+	   SPKO S 40 BRIGHT
+       SPKO SSSSSSSSSS 1 Bright A_FadeOut(0.1)
+        stop
+		}
+}
+ACTOR HitSparkPlasma: HitSpark
+{
+ speed 8
+  Scale 0.06
+  Gravity 1.0
+  -DOOMBOUNCE
+  States
+    {
+     Spawn:
+	   SPKO S 40 BRIGHT
+       SPKO SSSSSSSSSS 1 Bright 
+	   {
+		A_FadeOut(0.1);
+		return A_CheckFloor("Death");
+	   }
+	   stop
+		}
+}
