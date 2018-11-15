@@ -195,9 +195,9 @@ ACTOR HitSpark: ExplosionParticleHeavy
  speed 10
   Scale 0.02
  Gravity 0.7
- RADIUS 1
- HEIGHT 1
-   -NOCLIP
+
+ +USEBOUNCESTATE
+	//-BOUNCEONFLOORS
    +DOOMBOUNCE
    BOUNCEFACTOR 0.5
     States
@@ -206,8 +206,9 @@ ACTOR HitSpark: ExplosionParticleHeavy
 	   SPKO S 20 BRIGHT
        SPKO SSSSSSSSSS 1 Bright A_FadeOut(0.1)
         stop
+	Bounce.Floor:
      Death:
-     TNT1 A 0
+     TNT1 A 1
        Stop
     }
 }

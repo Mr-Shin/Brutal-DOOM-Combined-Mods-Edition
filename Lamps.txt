@@ -110,6 +110,9 @@ States
 		TNT1 A 0
 		//TNT1 A 0 A_SpawnItem("Spark_DownOnce")
 		TNT1 A 0 A_PlaySound ("DSBOTTLE")
+		TNT1 AAAA 0 A_CustomMissile ("HitSpark", 2, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+		TNT1 AA 0 A_CustomMissile ("HitSpark22", 2, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+		TNT1 A 0 A_CustomMissile ("HitSpark23", 2, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("GlassPart",0,random(-3,3),random(0,360),2,random(40,70))
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy",0,random(-3,3),random(0,360),2,random(0,70))
 		TNT1 AAAA 0 A_CustomMissile("PlasmaSmoke",0,random(-3,3),random(0,360),2,random(0,70))
@@ -158,6 +161,10 @@ states
 		Goto Stay
 	Death:
 		COLU B 1
+		TNT1 AAAA 0 A_CustomMissile ("HitSpark", 48, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+		TNT1 AA 0 A_CustomMissile ("HitSpark22", 48, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+		TNT1 A 0 A_CustomMissile ("HitSpark23", 48, 0, frandom(0,1)*frandom (0, 360), 2, frandom(0,1)*frandom (30, 360))
+		
 		TNT1 AAAA 0 A_CustomMissile ("BDExplosionparticlesSmall", 48, 0, random (0, 180), 2, random (40, 90))
 		TNT1 A 0 A_PlaySound ("DSBOTTLE")
 		TNT1 AAAAA 0 A_CustomMissile("GlassPart",16,random(-3,3),random(0,360),2,random(40,70))

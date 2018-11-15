@@ -55,7 +55,7 @@ ACTOR ExplosionParticleHeavy
 	   SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02)
         stop
      Death:
-       Stop
+       Goto NUll
     }
 }
 

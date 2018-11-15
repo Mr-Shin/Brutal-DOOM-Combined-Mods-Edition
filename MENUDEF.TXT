@@ -70,6 +70,7 @@ OptionMenu "BrutalDoomOptionsLevel"
   StaticText "Disables new enemy AI and new attacks."
   StaticText " "
   
+
    Option "Brutal Doom v18", "bd_v18stuff", "YesOrNo"
   StaticText "Are you playing Brutal DOOM v18 Class?"
   StaticText " "
@@ -102,7 +103,10 @@ OptionMenu "BrutalDoomOptionsGame"
    StaticText "All changes made here will take effect on next level, or when you start a new game."
    StaticText " "
    
-   
+     Option "Alternate Rifle Fire Sound", "bd_beriflefiresound" , "YesOrNo"
+  StaticText "Switches between rifle sounds (does not require restart)."
+  StaticText " "
+  
    Command "Enable Reloading to all weapons",			"take turboreload"
    Command "Disable Reloading to all weapons",			"give turboreload"
    
