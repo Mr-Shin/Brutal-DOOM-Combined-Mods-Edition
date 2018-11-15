@@ -195,7 +195,7 @@ ACTOR HitSpark: ExplosionParticleHeavy
  speed 10
   Scale 0.02
  Gravity 0.7
-
+-NOCLIP
  +USEBOUNCESTATE
 	//-BOUNCEONFLOORS
    +DOOMBOUNCE
