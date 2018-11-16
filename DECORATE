@@ -48,6 +48,7 @@ Actor PBKick : Inventory {}
 #include AMMO.txt
 #include EEEVILLL.txt
 #include EXECUTIONS.txt
+#include POWERUPS.txt
 //#include ARACHBOX
 
 
@@ -190,12 +191,11 @@ translation "168:191=192:207","16:47=240:247"
 Decal BlueBloodSplat
 }
 
-ACTOR HitSpark: ExplosionParticleHeavy
+ACTOR HitSpark1: ExplosionParticleHeavy replaces HitSpark
 {
  speed 10
   Scale 0.02
  Gravity 0.7
--NOCLIP
  +USEBOUNCESTATE
 	//-BOUNCEONFLOORS
    +DOOMBOUNCE
