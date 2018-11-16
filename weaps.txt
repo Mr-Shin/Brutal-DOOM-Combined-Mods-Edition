@@ -1,0 +1,232 @@
+Slot 1:
+
+Fists
+Chainsaw
+Axe
+Sledgehammer
+
+Slot 2:
+
+Hanguns:
+
+M9 Berreta
+TAC-15
+G17C
+G18
+FN-67
+USP .45
+DOOM 2016 Blaster
+
+Magnums & Revolvers:
+
+Desert Eagle MK1
+Desert Eagle MK3
+Skull Cracker
+Testicle Imploder
+
+Sub-Machine Guns:
+
+PPSh-91
+MP27
+UMP-50
+MP5
+MP7
+MP40
+G7Bullpup
+PDW-91
+TMP-9
+POW-90
+UZI
+
+Machine Pistols: 
+
+BD v21 Machine Pistol
+Soviet Machine Pistol
+
+Slot 3:
+
+Shotguns:
+
+BD v21 Shotgun
+BD Assault Shotgun
+UTS-15
+NAIL Shotgun
+Model 1887
+Doom 4 SG Prototype
+Breaker Shotgun
+AS-RIOT-4
+MK23
+AA48
+M1216
+XM1014
+Q4 Shotgun
+MK5VOPS
+Doom 2016 Shotgun
+Remington 870 MCS
+XR-12
+UAC-1270
+
+Super Shotguns:
+
+BD v20 SSG
+Sawed-Off
+Coach Gun
+Q3 SSG
+Stryker DBS
+COBRA SSG
+DOOM 2016 SSG
+QUAD BARREL SHOTGUN
+
+Slot 4:
+
+Assault Rifles:
+FG-42
+Repeater
+XM10
+XM30
+M41A9
+M4A6
+AK-47
+AKRSYD-47T
+M4A4
+M16
+SCOR-H
+LEGION-1
+ACR
+DOOM 2016 HAR
+S-94
+
+Designated Marksman Rifles:
+
+FAL
+M110-AMR
+MI-4-EBR
+
+Carbines:
+
+G41K
+G36C
+CM666
+PHALANTAX
+CZ-805
+
+Slot 5:
+
+Miniguns:
+
+M401 Vulcan
+Shredder
+Stinger
+HailStorm
+Chaingun
+M160
+DN34
+DOOM 2016 Chaingun
+TEMPEST-50
+
+Machine Guns:
+
+MG42
+Quake 4 MG
+BD v21 Machine Gun
+AUG-A9
+AUGR-DM1
+M72RIOT
+HAMR-5
+Nailgun
+PB 3.0 Nailgun
+M60
+HAMR-1
+Tactical Nailgun
+QBB-ASW
+APDMLMO
+ANARCHY-50
+DRACONIAN
+
+Slot 6:
+
+Rocket Launchers:
+
+BD v20 RPG
+Duke RPG
+UT2004 RL
+DS-9000
+Sting Ray
+DOOM 2016 Rocket Launcher
+KRATOS
+WAR Head
+RPG-7
+
+Grenade Launchers:
+
+Skulltag Grenade Launcher
+Insanity Launcher
+Quake 1 Launcher
+Quake 4 Launcher
+M79 Grenade Launcher
+Super Grenade Launcher
+Excavator
+
+Slot 7: 
+
+Plasma Guns:
+
+IRC-1
+Quake 4 Hyperblaster
+DOOM 2016 Plasma Gun
+Hyperblaster
+Hyperblaster MK2
+M2 Plasma Rifle
+Petrovic M2
+Plasma Minigun
+CML-6
+
+Railguns:
+
+Skulltag Railgun
+Gauss Cannon
+
+Freezer:
+
+PB 3.0 Cryo Rifle
+
+Dark Matter:
+ION Blaster
+Pulse Rifle
+Vortex Rifle
+
+Slot 8:
+
+BFG Family:
+
+DOOM 2016 BFG
+BFG 9k
+BFG 9k Mark II
+BFG 10k
+BFG 10k Mark IV
+BFG 11k 
+BFG 11k Nuclear
+
+MISC:
+
+Karasawa
+BFS
+Black Hole Generator
+EX-099
+
+Slot 9:
+
+PB 3.0 Mancubus Cannon
+PB 3.0 Hellish Missile Launcher
+Unmaker
+Hell rifle
+
+Slot 0:
+
+Snipers:
+L96A1
+M50
+
+MISC:
+Flamethrower
+Pyro-1

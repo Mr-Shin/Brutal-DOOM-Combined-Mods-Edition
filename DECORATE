@@ -53,7 +53,7 @@ Actor PBKick : Inventory {}
 
 
 //Guns Guns Guns
-#include "Decorates/WEAPONS/MAIN/Slot 2/Pistol.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 2/M9.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/MELEE.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/SAW.txt"
@@ -68,6 +68,22 @@ Actor PBKick : Inventory {}
 #include "Decorates/WEAPONS/MAIN/Slot 7/DUALPLASMA.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 8/BFG.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/Throwables.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 2/DEagle.txt"
+#include "decorates/weapons/main/slot 2/FG-42.txt"
+#include "decorates/weapons/main/slot 2/FN-67.txt"
+#include "decorates/weapons/main/slot 2/G18.txt"
+#include "decorates/weapons/main/slot 2/MP5.txt"
+#include "decorates/weapons/main/slot 2/MP7.txt"
+#include "decorates/weapons/main/slot 2/MP27.txt"
+#include "decorates/weapons/main/slot 2/PDW-91.txt"
+#include "decorates/weapons/main/slot 2/POW-90.txt"
+#include "decorates/weapons/main/slot 2/PPSh-91.txt"
+#include "decorates/weapons/main/slot 2/Skull Cracker.dat"
+#include "decorates/weapons/main/slot 2/Skull Cracker Rico.txt"
+#include "decorates/weapons/main/slot 2/SovietMachinePistol.txt"
+#include "decorates/weapons/main/slot 2/TAC-15.txt"
+#include "decorates/weapons/main/slot 2/TesticleImploder.dat"
+#include "decorates/weapons/main/slot 2/Testicle Imploder Explo.txt"
 
 
 //Enemies
