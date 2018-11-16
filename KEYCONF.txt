@@ -76,6 +76,15 @@ addplayerclass BDoomer //nomenu
    alias roright "puke 307"
    defaultbind C roright
    
+   AddMenuKey "Dual Wield/Weapon Special" weaponspecial
+   Alias weaponspecial "puke 3756"
+   DefaultBind V weaponspecial
+   
+   
+   AddMenuKey "Throw Mine" usemine
+   Alias usemine "pukename PromixityMineHotkey"
+   DefaultBind H usemine
+   
    addmenukey "Emergency Gun" emergencygun
    alias emergencygun "pukename IB600"
    defaultbind E emergencygun

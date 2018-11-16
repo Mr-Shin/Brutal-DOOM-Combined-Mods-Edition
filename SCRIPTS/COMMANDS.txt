@@ -17,6 +17,10 @@ Script 312 (void) NET
 	}
 	SetActorProperty(0, APROP_INVULNERABLE, OFF);
 }
+Script "PromixityMineHotkey" (VOID) NET
+{
+ GiveInventory("DoMine", 1);
+}
 
 Script 301 (VOID) NET
 {

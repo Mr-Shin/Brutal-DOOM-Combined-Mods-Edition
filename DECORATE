@@ -196,9 +196,13 @@ ACTOR HitSpark1: ExplosionParticleHeavy replaces HitSpark
  speed 10
   Scale 0.02
  Gravity 0.7
+ BounceType "Doom"
  +USEBOUNCESTATE
-	//-BOUNCEONFLOORS
-   +DOOMBOUNCE
+	-BOUNCEONFLOORS
+	-NOBLOCKMAP
+	+BOUNCELIKEHERETIC
+	-NOCLIP
+   
    BOUNCEFACTOR 0.5
     States
     {
@@ -234,7 +238,7 @@ ACTOR HitSpark23: HitSpark
  speed 8
   Scale 0.06
   Gravity 1.0
-  -DOOMBOUNCE
+  //BounceType "None"
   States
     {
      Spawn:
@@ -248,7 +252,7 @@ ACTOR HitSparkPlasma: HitSpark
  speed 8
   Scale 0.06
   Gravity 1.0
-  -DOOMBOUNCE
+  BounceType "None"
   States
     {
      Spawn:
