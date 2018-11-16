@@ -1,0 +1,179 @@
+ACTOR RevolverRicoPuff1 : HitPuff
+{
+  renderstyle Translucent
+  alpha 0.4
+  Scale 1.5
+  radius 0
+  height 0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  Gravity 0.01
+  +NOEXTREMEDEATH
+  +FORCEXYBILLBOARD
+DamageType Bullet
+Decal "BulletDecalNew1"
++DONTSPLASH
+-EXPLODEONWATER
++FRIENDLY
+MONSTER
+  states
+  {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+   //TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+   TNT1 A 1 A_Look
+    TNT1 A 2 BRIGHT A_CustomMissile("RevolverRicoTracer1")
+  Melee:
+    //PUFF CD 6
+	TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+   TNT1 AAA 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (0, 360), 2, random (0, 360))
+   stop
+  See:
+  TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+     TNT1 A 0 A_CustomBulletAttack(0,0,0,0,"HitPuff",512,1)
+    TNT1 A 2 A_FaceTarget
+   TNT1 A 2 BRIGHT A_CustomMissile("RevolverRicoTracer1")
+
+    stop
+  }
+}
+
+ACTOR RevolverRicoPuff2 : HitPuff
+{
+  renderstyle Translucent
+  alpha 0.4
+  Scale 1.5
+  radius 0
+  height 0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  Gravity 0.01
+  +NOEXTREMEDEATH
+  +FORCEXYBILLBOARD
+DamageType Bullet
+Decal "BulletDecalNew1"
++FRIENDLY
+MONSTER
+  states
+  {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+  //TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+   TNT1 A 1 A_Look
+    TNT1 A 2 BRIGHT A_CustomMissile("RevolverRicoTracer2")
+  Melee:
+  TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    //PUFF CD 6
+   TNT1 AAA 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (0, 360), 2, random (0, 360))
+   stop
+  See:
+ TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+     TNT1 A 0 A_CustomBulletAttack(0,0,0,0,"HitPuff",512,1)
+    TNT1 A 2 A_FaceTarget
+   TNT1 A 2 BRIGHT A_CustomMissile("RevolverRicoTracer2")
+
+    stop
+  }
+}
+
+Actor RevolverRicoTracer1: Tracer
+{
++BLOODSPLATTER
++THRUGHOST
++RIPPER
+-DONTSPLASH
+speed 35
+damage 3
+Decal "BulletChip"
+DamageType Bullet
+States
+{
+Death:
+    TNT1 A 1 A_SpawnItem("RevolverRicoPuff2")
+    Stop
+}
+}
+
+Actor RevolverRicoTracer2: Tracer
+{
++BLOODSPLATTER
++THRUGHOST
++RIPPER
+-DONTSPLASH
+speed 35
+damage 3
+Decal "BulletChip"
+DamageType Bullet
+States
+{
+Death:
+    TNT1 A 1 A_SpawnItem("HitPuff")
+    Stop
+}
+}
+Actor OldschoolRocketSmokeTrail1: AltSmoke
+{
+	Alpha 0.6
+Speed 1
++CLIENTSIDEONLY
+Scale 1.5
+States
+    {
+    SmokeChoke:
+		TNT1 A 1
+		Stop
+    Spawn:
+		TNT1 A 1 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)     
+	    TNT1 A 3
+		TNT1 A 0 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)
+        PUFY CCCCCCCCCCCCCCCCCCCCCCCC 2 A_FadeOut(0.050)
+		//PUFF AAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.030)
+Stop
+}
+}
+
+
+Actor OldschoolRocketSmokeTrail2: AltSmoke
+{
+	Alpha 0.7
+Speed 1
++CLIENTSIDEONLY
+Scale 0.2
+States
+    {
+    SmokeChoke:
+		TNT1 A 1
+		Stop
+    Spawn:
+		TNT1 A 1 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0) 
+	    TNT1 A 2
+		TNT1 A 0 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)
+        SMK3 BCDEFGHIJKKLLMMN 2
+		Stop
+		
+Stop
+}
+}
+
+Actor OldschoolRocketSmokeTrail3: AltSmoke
+{
+	Alpha 0.6
+Speed 1
++CLIENTSIDEONLY
+Scale 1.5
+States
+    {
+    SmokeChoke:
+		TNT1 A 1
+		Stop
+    Spawn:
+		TNT1 A 1 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)      
+	    TNT1 A 3
+		TNT1 A 0 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)
+        PUFF CCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDD 2 A_FadeOut(0.050)  //PUFY
+		//PUFF AAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.030)
+Stop
+}
+}

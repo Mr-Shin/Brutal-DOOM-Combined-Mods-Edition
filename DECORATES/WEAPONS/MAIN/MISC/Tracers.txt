@@ -202,36 +202,6 @@ TNT1 A 1
 Stop	
 }
 }
-Actor SentryTracer1: MarineTracer
-{
-Scale .26
-damage 10
-//damagetype Cutless
-States
-{
-	Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-9, 9),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-		
-	Spawn2:
-		TRAC A 1 BRIGHT
-		Loop	
-}
-}
-
-Actor SentryTracer2: SentryTracer1
-{
-	damage 11
-//	damagetype saw
-}
-
-Actor SentryTracer3: SentryTracer1
-{
-	damage 12
-//	damagetype blast
-}
 
 Actor MarineStrongTracer: MarineTracer
 {
