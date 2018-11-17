@@ -9,6 +9,7 @@ ACTOR Shot_Gun : CMEWeapon replaces Shotgun
 	Weapon.AmmoGive2 0
 	Weapon.AmmoType1 "Shell2"
 	Weapon.AmmoType2 "ShotgunAmmo"
+	Tag "Shotgun"
 	Inventory.PickupMessage "$GOTSHOTGUN"
     Inventory.PickupSound "weapons/sgpump"
 	Obituary "$OB_MPSHOTGUN"
