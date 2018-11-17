@@ -59,7 +59,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	
 	Player.ColorRange 112, 127
 	Player.StartItem "Rifle"
-	Player.StartItem "BrutalPistol"
+	Player.StartItem "M9Beretta"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "Clip2", 90
 	Player.StartItem "Clip1", 45
@@ -95,7 +95,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	 Player.StartItem "SlotOWN9", 1
 	 Player.StartItem "SlotOWN0", 1
 	Player.WeaponSlot 1, Chain_Saw, Melee_Attacks
-	Player.WeaponSlot 2, TesticleImploder, TAC15, SovietMP, SkullCracker, PPSH91, POW90, PDW91, MP27, MP7, MP5, G18, FN67, FG42, DesertEagle, M9Beretta, MP40
+	Player.WeaponSlot 2, G17C, G7, TesticleImploder, TAC15, SovietMP, SkullCracker, PPSH91, POW90, PDW91, MP27, MP7, MP5, G18, FN67, FG42, DesertEagle, M9Beretta, MP40
 	Player.WeaponSlot 3, Shot_Gun, SSG 
 	Player.WeaponSlot 4, DualRifles, Rifle
 	Player.WeaponSlot 5, MiniGun, HitlersBuzzsaw

@@ -10,38 +10,38 @@ Slot 2:
 Hanguns:
 
 M9 Berreta
-TAC-15
-G17C
-G18
-FN-67
-USP .45
+TAC-15 IB
+G17C IB
+G18 IB
+FN-67 IB
+USP .45 IB
 DOOM 2016 Blaster
 
 Magnums & Revolvers:
 
-Desert Eagle MK1
-Desert Eagle MK3
-Skull Cracker
-Testicle Imploder
+Desert Eagle MK1 IB
+Desert Eagle MK3 IB
+Skull Cracker IB
+Testicle Imploder IB
 
 Sub-Machine Guns:
 
-PPSh-91
-MP27
-UMP-50
-MP5
-MP7
-MP40
-G7Bullpup
-PDW-91
-TMP-9
-POW-90
-UZI
-
+PPSh-91 IB
+MP27 IB
+UMP-50 IB
+MP5 IB
+MP7 IB
+MP40 
+G7Bullpup IB
+PDW-91 IB
+TMP-9 IB
+POW-90 IB
+UZI IB
+ 
 Machine Pistols: 
 
 BD v21 Machine Pistol
-Soviet Machine Pistol
+Soviet Machine Pistol IB
 
 Slot 3:
 

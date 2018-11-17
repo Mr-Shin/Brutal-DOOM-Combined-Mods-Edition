@@ -68,7 +68,7 @@ Actor PBKick : Inventory {}
 #include "Decorates/WEAPONS/MAIN/Slot 7/DUALPLASMA.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 8/BFG.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/Throwables.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 2/DEagle.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 2/DEagle3.txt"
 #include "decorates/weapons/main/slot 2/FG-42.txt"
 #include "decorates/weapons/main/slot 2/FN-67.txt"
 #include "decorates/weapons/main/slot 2/G18.txt"
@@ -84,6 +84,8 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 2/TAC-15.txt"
 #include "decorates/weapons/main/slot 2/TesticleImploder.dat"
 #include "decorates/weapons/main/slot 2/Testicle Imploder Explo.txt"
+#include "decorates/weapons/main/slot 2/G7Bullpup.txt"
+#include "decorates/weapons/main/slot 2/G17C.txt"
 
 
 //Enemies

@@ -15,9 +15,8 @@ Skill baby
    SlowMonsters
    SpawnFilter = Baby
    Textcolor = Green
-   DisableCheats
    Name = "Power Fantasy"
-   MustConfirm = "The recommended difficulty for the dead. Press Y to Continue or N to Select Other Skill."
+   MustConfirm = "Easy Beyond Belief. This difficulty is recommended for babies. Press Y to Continue or N to Select Other Skill."
 }
 
 Skill easy
@@ -27,9 +26,8 @@ Skill easy
    MonsterHealth = 0.75
    SpawnFilter = Normal
    Textcolor = Green
-   DisableCheats
    Name = "Can I Play Daddy?"
-   MustConfirm = "The recommended difficulty for kids. Press Y to Continue or N to Select Other Skill."
+   MustConfirm = "The recommended difficulty for children. Press Y to Continue or N to Select Other Skill."
 }
 
 Skill normal
@@ -39,9 +37,8 @@ Skill normal
    MonsterHealth = 0.90
    SpawnFilter = Hard
    Textcolor = Gold
-   DisableCheats
-   Name = "Harsh"
-   MustConfirm = "The recommended difficulty for newcomers to Project Brutality. Press Y to Continue or N to Select Other Skill."
+   Name = "Hurt Me Plenty"
+   MustConfirm = "The recommended difficulty for newcomers to DOOM or Brutal DOOM. Press Y to Continue or N to Select Another Skill."
 }
 
 Skill Hard
@@ -51,9 +48,8 @@ Skill Hard
  //  Aggressiveness = .10
    SpawnFilter = Nightmare
    Textcolor = Yellow
-   DisableCheats
-   Name = "Brutal"
-   MustConfirm = "The true Project Brutality experiece. Press Y to Continue or N to Select Other Skill."
+   Name = "Ultra-Violence"
+   MustConfirm = "The true DOOM experience. Press Y to Continue or N to Select Another Skill."
 }
 
 Skill Brutal
@@ -108,7 +104,6 @@ Skill HELL
    name = "Last Man on Earth"
    mustconfirm = "The monsters you will face came straight out of the depths of hell. You will learn to fear and respect what true terror is. Press Y to start your death wish."
 }
-/*
 Skill Realistic
 {
    DamageFactor = 9.0
@@ -121,9 +116,9 @@ Skill Realistic
    name = "Realism Mode"
    Textcolor = Black
    PicName = "M_NMARE"
-   mustconfirm = "Do you have what it takes to survive? Press Y or N"
+   mustconfirm = "This difficulty is designed to make or break the will of any player foolish enough to select it. This seperates the kids from the men. Press Y to test your might."
 }
-*/
+
 
 GameInfo
 {
