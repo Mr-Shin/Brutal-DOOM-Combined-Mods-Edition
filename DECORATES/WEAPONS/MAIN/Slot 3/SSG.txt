@@ -25,6 +25,7 @@ ACTOR SSG : CMEWeapon Replaces SuperShotgun
 	Weapon.AmmoType2 "SSGAmmo"
 	Weapon.AmmoUse1 0
 	Weapon.AmmoUse2 0
+	Tag "Sawed-Off Shotgun"
     +WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
