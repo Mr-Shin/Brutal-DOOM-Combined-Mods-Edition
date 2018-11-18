@@ -1,29 +1,4 @@
-// Armor bonus --------------------------------------------------------------
 
-Actor ArmorShard : BasicArmorBonus Replaces ArmorBonus
-{
-	Game Doom
-	SpawnID 22
-	Radius 20
-	Height 16
-	Inventory.Pickupmessage "$GOTARMBONUS"
-	Inventory.Icon "BON2A0"
-	Armor.Savepercent 33.335
-	Armor.Saveamount 2
-	Armor.Maxsaveamount 9999
-	+COUNTITEM
-	+INVENTORY.ALWAYSPICKUP
-	States
-	{
-	Spawn:
-        //TNT1 A 0 A_CheckSight ("Spawn2")
-		BON2 AAABCDB 2 //A_SpawnItem("GreenFlareSmall",0,7)
-		Loop
-	Spawn2:
-		BON2 A 9
-		Goto Spawn
-	}
-}
 
 // Green Armor Variants --------------------------------------------------------
 
@@ -366,7 +341,206 @@ Actor EliteCommanderArmor : BasicArmorPickup
   
  }
 
-// Armor bonus --------------------------------------------------------------
+
+ACTOR ArmorBonusSpawn : RandomSpawner replaces ArmorBonus
+{
+dropitem "ArmorShard"
+dropitem "HelmetArmorBonus"
+dropitem "ArmorShard2"
+dropitem "HelmetArmorBonus2"
+dropitem "QuakeArmorShard"
+dropitem "BloodArmorShard"
+dropitem "SuperArmorShard"
+}
+
+Actor ArmorShard : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up an Armor Shard"
+	inventory.pickupsound "ABONUS"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 70
+	Armor.Saveamount 2
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON2 ABCDCB 1 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON2 A 2
+		Goto Spawn
+	}
+}
+
+Actor HelmetArmorBonus : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Helmet"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 70
+	inventory.pickupsound "ABONUS"
+	Armor.Saveamount 4
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		HLMB ABCD 1 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		HLMB A 1
+		Goto Spawn
+	}
+}
+
+Actor HelmetArmorBonus2 : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Marine Helmet"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 70
+	inventory.pickupsound "ABONUS"
+	Armor.Saveamount 6
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON4 ABCDCB 1 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON4 A 1
+		Goto Spawn
+	}
+}
+
+Actor ArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up an Armor Shard"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 70
+	inventory.pickupsound "ABONUS"
+	Armor.Saveamount 6
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		ARSD ABCB 1 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		ARSD A 1
+		Goto Spawn
+	}
+}
+
+Actor QuakeArmorShard : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Quake Armor Shard"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 70
+	Armor.Saveamount 15
+	inventory.pickupsound "ABONUS3"
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	scale 0.7
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		QKAB A 2 A_SpawnItem("RedFlareSmall",0,7)
+		Loop
+	Spawn2:
+		QKAB A 2 A_SpawnItem("RedFlareSmall",0,7)
+		Goto Spawn
+	}
+}
+
+Actor BloodArmorShard : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Demonic Armor Bonus"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 70
+	Armor.Saveamount 10
+	inventory.pickupsound "ABONUS2"
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		BLAB ABCD 2 A_SpawnItem("YellowFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BLAB ABCD 2 A_SpawnItem("YellowFlareSmall",0,7)
+		Goto Spawn
+	}
+}
+
+// Super health bonus -------------------------------------------------------
+
+Actor SuperArmorShard : BasicArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Super Armor Bonus."
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 25
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+FLOORCLIP
+	+DONTGIB
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickUpSound "ABONUS"
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		BON6 AAABCDB 2 //A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON6 A 2
+		Goto Spawn
+	}
+}
+
+// Extra Shit --------------------------------------------------------------
 
 Actor GiveArmor : BasicArmorBonus
 {
@@ -376,9 +550,9 @@ Actor GiveArmor : BasicArmorBonus
 	Height 16
 	Inventory.Pickupmessage "$GOTARMBONUS"
 	Inventory.Icon "BON2A0"
-	Armor.Savepercent 33.335
+	Armor.Savepercent 99
 	Armor.Saveamount 1
-	Armor.Maxsaveamount 9999
+	Armor.Maxsaveamount 99999999
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	States
@@ -390,10 +564,24 @@ Actor GiveArmor : BasicArmorBonus
 }
 
 
-
-
-
-
+ACTOR CrueltyBonus5health : Health
+{
+	Game Doom
+	SpawnID 152
+	-COUNTITEM
+	Radius 220
+	+INVENTORY.ALWAYSPICKUP
+	//inventory.pickupsound "FATALITY"
+	Inventory.Amount 5
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +5 health ***"
+	States
+	{
+	Spawn:
+        TNT1 A 50
+		Stop
+	}
+}
 ACTOR CrueltyBonus5armor : BasicArmorBonus
 {
 	Game Doom
@@ -402,6 +590,7 @@ ACTOR CrueltyBonus5armor : BasicArmorBonus
 	Radius 220
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.Icon "BON2A0"
+	//inventory.pickupsound "FATALITY"
 	Armor.Savepercent 33.335
 	Armor.Saveamount 5
 	Armor.Maxsaveamount 9999
@@ -414,17 +603,26 @@ ACTOR CrueltyBonus5armor : BasicArmorBonus
 	}
 }
 
-
 ACTOR CrueltyBonus15armor : CrueltyBonus5armor
 {
 	Armor.Saveamount 15
+	//inventory.pickupsound "FATALITY"
 	Inventory.PickupMessage "*** Cruelty Bonus awarded! +15 Armor ***"
 }
 
 ACTOR CrueltyBonus10armor : CrueltyBonus5armor
 {
 	Armor.Saveamount 10
+	//inventory.pickupsound "FATALITY"
 	Inventory.PickupMessage "*** Cruelty Bonus awarded! +10 Armor ***"
+}
+
+
+ACTOR CrueltyBonus1health : CrueltyBonus5health
+{
+	Inventory.Amount 1
+	//inventory.pickupsound "FATALITY"
+	Inventory.PickupMessage "*** Cruelty Bonus awarded! +1 Health ***"
 }
 Actor LightArmorSpawn : RandomSpawner Replaces GreenArmor
 {

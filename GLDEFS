@@ -1965,3 +1965,73 @@ hardwareshader sprite DIGBQ5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite DIGBQ6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite DIGBQ7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite DIGBQ8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+// New Powerups
+pointlight QuadSphereGlow
+{
+    color 0.0 1.0 1.0
+    size 64
+}
+
+object QuadSphere
+{
+    frame QDMGA { light QuadSphereGlow }
+    frame QDMGB { light QuadSphereGlow }
+    frame QDMGC { light QuadSphereGlow }
+}
+
+// Greater Soul Sphere
+pulselight GTRZOULSPHERE
+{
+    color 1.0 0.0 0.0
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 16 0
+}
+
+object NewLifeSphere
+{
+    frame GZUL { light GTRZOULSPHERE }
+}
+
+object StrongHealthPlus
+{
+    frame BON3 { light CYANITEM  }
+}
+
+object SuperHealthPlus
+{
+    frame BON5 { light REDITEM  }
+}
+
+object StrongArmorShard
+{
+    frame BON4 { light GREENITEM  }
+}
+
+object SuperArmorShard
+{
+    frame BON6 { light GREENITEM  }
+}
+
+
+
+pulselight CYANITEM
+{
+    color 0.1 0.6 1.0
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
+
+
+pulselight REDITEM
+{
+    color 1.0 0.0 0.0
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
