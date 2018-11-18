@@ -16,7 +16,7 @@ server int bd_classicmonsters = 0;
 server int bd_disabledecorations = 0;
 
 server int bd_disablemapenhancements = 0;
-
+server int bd_smokechoke = 0;
 server int bd_disablenewguns = 1;
 server int bd_v18stuff =  0;
 server bool be_ExecutionsON = true;

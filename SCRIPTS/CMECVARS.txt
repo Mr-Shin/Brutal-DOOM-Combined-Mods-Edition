@@ -19,3 +19,7 @@ script 853 (void)
 	}
 	delay (1);
 }
+Script "SmokeChoke" (VOID) NET //Removes all blood
+{
+if	(GetCvar("bd_smokechoke") == 1) { SetActorState(0,"SmokeChoke"); }
+}
