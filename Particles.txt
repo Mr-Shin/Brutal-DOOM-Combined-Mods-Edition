@@ -189,12 +189,12 @@ ACTOR ShotgunParticles2 : ShotgunParticles
 }
 
 
-ACTOR HitSpark: ExplosionParticleHeavy
+/*ACTOR HitSpark: ExplosionParticleHeavy
 {
  speed 6
   Scale 0.04
  Gravity 1.0
-   +NOCLIP
+   -NOCLIP
     States
     {
      Spawn:
@@ -203,7 +203,7 @@ ACTOR HitSpark: ExplosionParticleHeavy
      Death:
        Stop
     }
-}
+}*/
 
 
 

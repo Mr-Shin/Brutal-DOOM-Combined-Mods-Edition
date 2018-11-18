@@ -567,7 +567,24 @@ ACTOR Sparks: BulletPuff
     stop
   }
 }
-
+ACTOR HitPuffTracer : HitPuff
+{
+  states
+  {
+  Spawn:
+    TNT1 A 0
+    //TNT1 A 0 A_SpawnItem ("RicoChet", 0, -5)
+	TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    TNT1 AAAA 0
+    //PUFF A 6
+    //PUFF B 6
+    //Intentional fall-through
+  Melee:
+    //PUFF CD 6
+	TNT1 A 1
+	stop
+  }
+}
 
 
 

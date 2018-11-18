@@ -8,7 +8,7 @@ Model MudDust      // Name of actor in DECORATE
    FrameIndex DIRP B 0 0         // The sprite lump, sprite frame, model index, frame number
 }
 
-Model HitSpark1      // Name of actor in DECORATE
+Model HitSpark      // Name of actor in DECORATE
 {
    Path "MD3/Projectiles"    // Path to model in PK3
    Model 0 "tracer.md3"    // Model index, model file
