@@ -1,7 +1,7 @@
 ACTOR Rifle : CMEWeapon Replaces Pistol
 {
 	Weapon.AmmoUse1 0
-	Weapon.AmmoGive1 5
+	Weapon.AmmoGive1 15
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
 	YScale 0.6

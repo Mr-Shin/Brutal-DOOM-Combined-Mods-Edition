@@ -41,7 +41,8 @@ Actor PBKick : Inventory {}
 #include SPARKS.txt
 #include FLARES.txt
 #include ARTIFACT.txt
-#include HEALTH2.txt
+#include "decorates/items/health and armor/Health2.txt"
+#include "decorates/items/health and armor/Armor.txt"
 #include BOSSBOX.txt
 #include DROPABLES.txt
 #include PUFF.txt
