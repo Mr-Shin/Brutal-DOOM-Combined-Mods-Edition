@@ -26,12 +26,12 @@ ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
 
 // Soulsphere --------------------------------------------------------------
 
-ACTOR LifeSphere : CustomInventory Replaces SoulSphere
+ACTOR LifeSphere : CustomInventory 
 {
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.PickupMessage "Soulsphere"
-	Inventory.PickupSound "misc/p_pkup"
+	Inventory.PickupSound "SSPH"
 	States
 	{
 	Spawn:
@@ -51,16 +51,16 @@ ACTOR LifeSphere : CustomInventory Replaces SoulSphere
 ACTOR SoulSphereHealth : Health	
 {
 	Inventory.Amount 100
-	Inventory.MaxAmount 200
+	Inventory.MaxAmount 9999
 	+INVENTORY.ALWAYSPICKUP
 }
 
-ACTOR EnergySphere : CustomInventory Replaces Megasphere
+ACTOR EnergySphere : CustomInventory 
 {
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.PickupMessage "Megasphere"
-	Inventory.PickupSound "misc/p_pkup"
+	Inventory.PickupSound "MEGASPH"
 	States
 	{
 	Spawn:
@@ -77,7 +77,72 @@ ACTOR EnergySphere : CustomInventory Replaces Megasphere
 		Stop
 	}
 }	
+ACTOR NewLifeSphere : CustomInventory
+{
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	+DONTGIB
+	+FloatBob
+	Inventory.PickupMessage "Greater Soulsphere"
+	Inventory.PickupSound "SSPH"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		GZUL AAABBBCCCDDDCCCBBB 2 Bright A_SpawnItem("RedFlareMedium2",0,30)
+		Loop
+	Spawn2:
+		GZUL ABCDCB 2 BRIGHT
+		Goto Spawn
+	Pickup:
+        TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveInventory("GreaterSoulSphereHealth", 1)
+		Stop
+	}
+}
 
+ACTOR GreaterSoulSphereHealth : Health	
+{
+	Inventory.Amount 200
+	Inventory.MaxAmount 9999
+	+INVENTORY.ALWAYSPICKUP
+}
+
+ACTOR UltraSphere : CustomInventory
+{
+	+COUNTITEM
+	+DONTGIB
+	+FloatBob
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupMessage "Ultrasphere"
+	Inventory.PickupSound "MEGASPH"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		ULTR AABBCCDD 2 BRIGHT A_SpawnItem("LensFlareExtra",0,35)
+		Loop
+	Spawn2:	
+		ULTR AABBCCDD 2 BRIGHT
+		Goto Spawn
+	Pickup:
+        TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_GiveInventory("EliteArmorForUltraSphere", 1)
+		TNT1 AA 0 A_GiveInventory("GreaterSoulsphereHealth", 1)
+		Stop
+	}
+}
+
+Actor SoulSphereSpawn: RandomSpawner Replaces SoulSphere
+{
+dropitem "LifeSphere"
+dropitem "NewLifeSphere"
+}
+Actor MegasphereSpawn: RandomSpawner Replaces MegaSphere
+{
+dropitem "EnergySphere"
+dropitem "UltraSphere"
+}
 
 // infrared -----------------------------------------------------------------
 

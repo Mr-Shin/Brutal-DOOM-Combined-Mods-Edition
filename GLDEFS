@@ -2005,10 +2005,6 @@ object SuperHealthPlus
     frame BON5 { light REDITEM  }
 }
 
-object StrongArmorShard
-{
-    frame BON4 { light GREENITEM  }
-}
 
 object SuperArmorShard
 {

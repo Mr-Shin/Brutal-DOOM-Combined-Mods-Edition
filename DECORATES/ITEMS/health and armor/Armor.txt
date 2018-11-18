@@ -341,6 +341,11 @@ Actor EliteCommanderArmor : BasicArmorPickup
   
  }
 
+Actor EliteArmorForUltraSphere : EliteCommanderArmor
+{
+Armor.SavePercent 85
+Armor.Saveamount 500
+}
 
 ACTOR ArmorBonusSpawn : RandomSpawner replaces ArmorBonus
 {
