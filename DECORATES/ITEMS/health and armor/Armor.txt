@@ -440,7 +440,7 @@ Actor ArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
 	Inventory.Pickupmessage "Picked up an Armor Shard"
 	Inventory.Icon "BON2A0"
 	Armor.Savepercent 70
-	inventory.pickupsound "ABONUS"
+	inventory.pickupsound "misc/abonus_pickup"
 	Armor.Saveamount 6
 	Armor.Maxsaveamount 9999
 	+COUNTITEM
@@ -449,7 +449,7 @@ Actor ArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
 	{
 	Spawn:
         TNT1 A 0 A_CheckSight ("Spawn2")
-		ARSD ABCB 1 A_SpawnItem("GreenFlareSmall",0,7)
+		ARSD ABCD 1 A_SpawnItem("GreenFlareSmall",0,7)
 		Loop
 	Spawn2:
 		ARSD A 1
@@ -527,7 +527,7 @@ Actor SuperArmorShard : BasicArmorBonus
 	+FLOORCLIP
 	+DONTGIB
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.PickUpSound "ABONUS"
+	Inventory.PickUpSound "misc/abonus_pickup"
 	States
 	{
 	Spawn:

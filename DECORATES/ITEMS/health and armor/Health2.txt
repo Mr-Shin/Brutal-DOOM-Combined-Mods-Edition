@@ -1,6 +1,18 @@
 // Health bonus -------------------------------------------------------------
 
-ACTOR HealthPlus : Health Replaces HealthBonus
+
+
+
+ACTOR HealthBonusSpawn : RandomSpawner replaces HealthBonus
+{
+dropitem "HealthPlus"
+dropitem "HealthPlus2"
+dropitem "HealthPlusBig"
+dropitem "StrongHealthPlus"
+dropitem "SuperHealthPlus"
+}
+
+ACTOR HealthPlus : Health
 {
 	Game Doom
 	SpawnID 152
@@ -8,30 +20,107 @@ ACTOR HealthPlus : Health Replaces HealthBonus
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.Amount 2
 	Inventory.MaxAmount 9999
-	Inventory.PickupMessage "$GOTHTHBONUS"
+	inventory.pickupsound "soul/pkup"
+	Inventory.PickupMessage "Scavenged a Health Bonus"
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		MARN A 0 ACS_ExecuteAlways(795, 0, 0, 0, 0)//Check if advanced decorations are disabled.
-	Spawn2:	
-        TNT1 A 0 A_CheckSight ("Spawn3")
-		BON1 ABCDCB 2 A_SpawnItem("BlueFlareSmall",0,7)
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON1 ABCDCB 1 A_SpawnItem("BlueFlareSmall",0,7)
 		Loop
-	Spawn3:
-		BON1 A 9
-		Goto Spawn2
-	Vanilla:
-		BON1 ABCDCB 2
+	Spawn2:
+		BON1 A 2
+		Goto Spawn
+	}
+}
+
+ACTOR HealthPlus2 : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 4
+	Inventory.MaxAmount 9999
+	inventory.pickupsound "soul/pkup"
+	Inventory.PickupMessage "Scavenged a Double Health Bonus"
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON3 ABCDCB 1 A_SpawnItem("BlueFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON3 A 2
+		Goto Spawn
+	}
+}
+
+ACTOR HealthPlusBig : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 5
+	Inventory.MaxAmount 9999
+	inventory.pickupsound "soul/pkup"
+	Inventory.PickupMessage "Scavenged a Small health pack"
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		HFHB ABCDEDCB 1 A_SpawnItem("BlueFlareSmall",0,7)
+		Loop
+	Spawn2:
+		HFHS A 2
+		Goto Spawn
+	}
+}
+
+// Strong health bonus ------------------------------------------------------
+
+ACTOR StrongHealthPlus : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+FLOORCLIP
+	+DONTGIB
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 6
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "Picked up a strong health bonus."
+	Inventory.PickUpSound "misc/hbonus_PickUp"
+	States
+	{
+	Spawn:
+		BON7 ABCD 4
 		Loop
 	}
 }
 
+// Super health bonus -------------------------------------------------------
 
-
-
-
-
+ACTOR SuperHealthPlus : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+FLOORCLIP
+	+DONTGIB
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 10
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "Picked up a super health bonus."
+	Inventory.PickUpSound "misc/hbonus_PickUp"
+	States
+	{
+	Spawn:
+		BON8 ABCD 4
+		Loop
+	}
+}
 
 ACTOR Stimpack2 : Health Replaces Stimpack
 {
