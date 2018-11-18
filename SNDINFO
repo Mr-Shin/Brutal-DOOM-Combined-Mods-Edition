@@ -645,7 +645,110 @@ bigspl1 bigspl1
 
 
 
+//"I WILL EAT YOUR SOUL" VOICES
+$random grunt/sight { grunt/sight1
+grunt/sight2
+grunt/sight3
+grunt/sight4
+grunt/sight5
+grunt/sight6
+grunt/sight7
+grunt/sight8
+grunt/sight9
+grunt/sight10
+grunt/sight11 }
 
+grunt/sight1	zomsit1
+grunt/sight2	zomsit2
+grunt/sight3	zomsit3
+grunt/sight4	zomsit4
+grunt/sight5	zomsit5
+grunt/sight6	zomsit6
+grunt/sight7	zomsit7
+grunt/sight8	zomsit8
+grunt/sight9	zomsit9
+grunt/sight10	zomsit10
+grunt/sight11	zomsit11
+
+$volume grunt/sight 0.80
+
+$random grunt/death
+{ grunt/death1
+grunt/death2
+grunt/death3
+grunt/death4
+grunt/death5
+grunt/death6
+grunt/death7 }
+
+grunt/death1	zomdth1
+grunt/death2	zomdth2
+grunt/death3	zomdth3
+grunt/death4	zomdth4
+grunt/death5	zomdth5
+grunt/death6	zomdth6
+grunt/death7	zomdth7
+
+$random grunt/pain 
+{ grunt/pain1
+grunt/pain2
+grunt/pain3
+grunt/pain4
+grunt/pain5
+grunt/pain6
+grunt/pain7
+grunt/pain8
+grunt/pain9
+grunt/pain10
+grunt/pain11 }
+
+grunt/pain1		zompn1
+grunt/pain2		zompn2
+grunt/pain3		zompn3
+grunt/pain4		zompn4
+grunt/pain5		zompn5
+grunt/pain6		zompn6
+grunt/pain7		zompn7
+grunt/pain8		zompn8
+grunt/pain9		zompn9
+grunt/pain10	zompn10
+grunt/pain11	zompn11
+
+$random grunt/active { grunt/active1 grunt/active2 grunt/active3 grunt/active4 grunt/active5 NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING }
+grunt/active1	zomact1
+grunt/active2	zomact2
+grunt/active3	zomact3
+grunt/active4	zomact4
+grunt/active5	zomact5
+
+$volume grunt/active 0.76
+
+
+$random commando/sight { ZCSIT1 ZCSIT2 ZCSIT3 ZCSIT4 }
+ZCSIT1 ZCSIT1
+ZCSIT2 ZCSIT2
+ZCSIT3 ZCSIT3
+ZCSIT4 ZCSIT4
+ZCSIT5 ZCSIT5
+
+$random commando/pain { ZCPAIN1 ZCPAIN2 ZCPAIN3 ZCPAIN4 }
+ZCPAIN1 ZCPAIN1
+ZCPAIN2 ZCPAIN2
+ZCPAIN3 ZCPAIN3
+ZCPAIN4 ZCPAIN4
+
+$random commando/death { ZCDIE1 ZCDIE2 ZCDIE3 ZCDIE4 }
+ZCDIE1 ZCDIE1
+ZCDIE2 ZCDIE2
+ZCDIE3 ZCDIE3
+ZCDIE4 ZCDIE4
+
+$random commando/active { ZCI1 ZCI2 ZCI3 ZCI4 ZCI5 }
+ZCI1 ZCI1
+ZCI2 ZCI2
+ZCI3 ZCI3
+ZCI4 ZCI4
+ZCI5 ZCI5
 
 
 $random nazi/sight { nazisight1 nazisight2 nazisight3 nazisight4 nazisight5 nazisight6 nazisight7 nazisight8 }

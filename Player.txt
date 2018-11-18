@@ -63,8 +63,8 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "Clip2", 90
 	Player.StartItem "Clip1", 45
-	Player.StartItem "BDPistolAmmo", 15
-	Player.StartItem "RifleAmmo", 30
+	Player.StartItem "BDPistolAmmo", 16
+	Player.StartItem "RifleAmmo", 31
 	Player.StartItem "DoubleRifleAmmo", 31
 	Player.StartItem "ShotgunAmmo", 10
 	Player.StartItem "AssaultShotgunAmmo", 20
@@ -81,7 +81,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "NeverSelectedShotgun", 1
 	Player.StartItem "IsPlayingAsV20", 1
 	Player.JumpZ 7.4
-	Player.DisplayName "Brutal DOOM V20"
+	Player.DisplayName "Brutal DOOM CME"
 	Player.CrouchSprite "PLYC"
 	
 			Player.StartItem "SlotOWN1", 1
