@@ -5,7 +5,7 @@ Inventory.MaxAmount 1
 Actor DetonatePipeBomb : Inventory {inventory.maxamount 1}
 
 Actor ThrowPipeBomb : Inventory {inventory.maxamount 1}
-Actor GoWeaponSpecialAbility : Inventory {}
+Actor GoWeaponSpecialAbility : Inventory {inventory.maxamount 1}
 ACTOR DoMine : Inventory
 {
 Inventory.MaxAmount 1

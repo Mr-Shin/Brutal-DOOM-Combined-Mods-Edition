@@ -179,7 +179,7 @@ Actor HeavyArmor : BasicArmorPickup
 	Radius 20
 	Height 16
 	Inventory.Pickupmessage "Picked up the Heavy Battle Armor"
-	Inventory.Icon "ARM2A0"
+	Inventory.Icon "3RM2A0"
 	Armor.Savepercent 60
 	Armor.Saveamount 275
     Inventory.PickupSound "ARMOR"
@@ -293,7 +293,7 @@ Actor DemonWarriorArmor : BasicArmorPickup
 	+FLOORCLIP
 	+DONTGIB
   Inventory.Pickupmessage "Picked up the Demonic Warrior Armor"
-  Inventory.PickupSound "ARMOR"
+  Inventory.PickupSound "ARMOR4"
   Inventory.Icon "ARM7A0"
   Armor.Savepercent 80
   Armor.Saveamount 450
@@ -320,7 +320,7 @@ Actor EliteMarineArmor : BasicArmorPickup
 	+FLOORCLIP
 	+DONTGIB
   Inventory.Pickupmessage "Picked up the Elite Marine Armor"
-  Inventory.PickupSound "ARMOR"
+  Inventory.PickupSound "ARMOR4"
   Inventory.Icon "ARM6A0"
   Armor.Savepercent 85
   Armor.Saveamount 500
@@ -347,7 +347,7 @@ Actor EliteCommanderArmor : BasicArmorPickup
 	+FLOORCLIP
 	+DONTGIB
   Inventory.Pickupmessage "Picked up the Elite Commander Armor"
-  Inventory.PickupSound "ARMOR"
+  Inventory.PickupSound "ARMOR4"
   Inventory.Icon "4RM5A0"
   Armor.Savepercent 85
   Armor.Saveamount 500
@@ -440,7 +440,7 @@ Actor HeavyArmorSpawn : RandomSpawner Replaces BlueArmor
 dropitem "HeavyVest"
 dropitem "HeavyArmor"
 dropitem "HeavyChestplate"
-dropitem "HeavyTechArmor"
+dropitem "HeavyTechArmor" 
 dropitem "DemonTechArmor"
 dropitem "DemonVest"
 dropitem "DemonWarriorArmor"

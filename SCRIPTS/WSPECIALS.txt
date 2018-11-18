@@ -1,0 +1,32 @@
+#library "command"
+#include "zcommon.acs"
+
+Script 450 (VOID) NET //before, was script 3756, but cause issues with zan-zan...
+//-_-
+{
+ GiveInventory("GoWeaponSpecialAbility", 1);
+}
+
+Script 500 (VOID) NET //before, was script 3756, but cause issues with zan-zan...
+//-_-
+{
+ GiveInventory("GoSwitchAmmo", 1);
+}
+
+Script 600 (VOID) NET //before, was script 3756, but cause issues with zan-zan...
+//-_-
+{
+ GiveInventory("GoEmergencyGunAbility", 1);
+}
+
+Script 601 (VOID) NET //before, was script 3756, but cause issues with zan-zan...
+//-_-
+{
+ GiveInventory("ThrowPipeBomb", 1);
+}
+
+Script 602 (VOID) NET //before, was script 3756, but cause issues with zan-zan...
+//-_-
+{
+ GiveInventory("DetonatePipeBomb", 1);
+}
