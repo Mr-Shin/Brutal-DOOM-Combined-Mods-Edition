@@ -186,8 +186,8 @@ Railguns:
 Skulltag Railgun
 Gauss Cannon
 
-Freezer:
-
+Misc:
+Lightning Gun
 PB 3.0 Cryo Rifle
 
 Dark Matter:

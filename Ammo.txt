@@ -8,6 +8,7 @@ ACTOR AmmoSuply : BackpackItem Replaces Backpack
 	+COUNTITEM
 	+DONTGIB
 	+INVENTORY.ALWAYSPICKUP
+	inventory.pickupsound "BACKPK2"
 	Inventory.PickupMessage "$GOTBACKPACK"
 	States
 	{
