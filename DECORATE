@@ -54,23 +54,24 @@ Actor PBKick : Inventory {}
 //#include ARACHBOX
 
 
-//Guns Guns Guns
+//Base weapons
 #include "Decorates/WEAPONS/MAIN/Slot 2/Handguns/M9.txt"
-#include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/MELEE.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/SAW.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 4/RIFLE.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 4/DualRifle.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 3/SHOTGUN.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 3/SSG.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 3/Pump Shotguns/SHOTGUN.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 3/Super Shotguns/SSG.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 5/MINIGUN.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 6/ROCKETLAUNCHER.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/EXPLOSIVES.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 7/PLASMA.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 7/DUALPLASMA.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 8/BFG.txt"
+#include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/Throwables.txt"
 
+//New Weapons
 #include "Decorates/WEAPONS/MAIN/Slot 2/M&RS/DEagle3.txt"
 #include "decorates/weapons/main/slot 2/FG-42.txt"
 #include "decorates/weapons/main/slot 2/Handguns/FN-67.txt"
