@@ -1,0 +1,169 @@
+Actor 2016PistolplasmaTracer: FastProjectile
+{
++BLOODSPLATTER 
+-DONTSPLASH
+speed 200
+damage (random(13,14))
+scale 0.3
+RenderStyle Add
+Alpha 0.2
+radius 2
+height 2
+damagetype Normal
+damagetype "plasma"
+Decal "BulletPuff"
+States
+{
+
+	Spawn:
+		TNT1 A 1 BRIGHT A_SpawnItemEx("2016PistolplasmaTracerTrail", 0,               0,              2)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail10", (18*momx)/-35.0, -(18*momy)/-35.0, 2+(18*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail11", (20*momx)/-35.0, -(20*momy)/-35.0, 2+(20*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolplasmaTracerTrail12", (22*momx)/-35.0, -(22*momy)/-35.0, 2+(22*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		Loop
+	Death:
+		TNT1 AAAAA 0 A_SpawnItem("BlueFlareSmall")
+		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		BL1I ABCD 1 BRIGHT A_SpawnItem("BlueFlareSmall")
+		TNT2 AA 3 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		Stop
+}
+}
+
+actor 2016PistolplasmaTracerTrail
+{
+    Scale 0.04
+    RenderStyle Add
+    Alpha 0.9
+    +NOINTERACTION
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+        SPKB A 2 BRIGHT
+        stop
+    }
+}
+
+
+
+actor 2016PistolplasmaTracerTrail2: 2016PistolplasmaTracerTrail {    Alpha 0.85 }
+actor 2016PistolplasmaTracerTrail3: 2016PistolplasmaTracerTrail {    Alpha 0.80 }
+actor 2016PistolplasmaTracerTrail4: 2016PistolplasmaTracerTrail {    Alpha 0.75 }
+actor 2016PistolplasmaTracerTrail5: 2016PistolplasmaTracerTrail {    Alpha 0.70 }
+actor 2016PistolplasmaTracerTrail6: 2016PistolplasmaTracerTrail {    Alpha 0.65 }
+actor 2016PistolplasmaTracerTrail7: 2016PistolplasmaTracerTrail {    Alpha 0.60 }
+actor 2016PistolplasmaTracerTrail8: 2016PistolplasmaTracerTrail {    Alpha 0.55 }
+actor 2016PistolplasmaTracerTrail9: 2016PistolplasmaTracerTrail {    Alpha 0.50 }
+actor 2016PistolplasmaTracerTrail10: 2016PistolplasmaTracerTrail {    Alpha 0.45 }
+actor 2016PistolplasmaTracerTrail11: 2016PistolplasmaTracerTrail {    Alpha 0.40 }
+actor 2016PistolplasmaTracerTrail12: 2016PistolplasmaTracerTrail {    Alpha 0.35 }
+actor 2016PistolplasmaTracerTrail13: 2016PistolplasmaTracerTrail {    Alpha 0.30 }
+actor 2016PistolplasmaTracerTrail14: 2016PistolplasmaTracerTrail {    Alpha 0.25 }
+actor 2016PistolplasmaTracerTrail15: 2016PistolplasmaTracerTrail {    Alpha 0.20 }
+actor 2016PistolplasmaTracerTrail16: 2016PistolplasmaTracerTrail {    Alpha 0.15 }
+actor 2016PistolplasmaTracerTrail17: 2016PistolplasmaTracerTrail {    Alpha 0.10 }
+actor 2016PistolplasmaTracerTrail18: 2016PistolplasmaTracerTrail {    Alpha 0.05 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Actor 2016PistolheavyplasmaTracer: FastProjectile
+{
++BLOODSPLATTER 
+-DONTSPLASH
+speed 200
+damage (random(70,80))
+scale .9
+RenderStyle Add
+Alpha 0.9
+radius 2
+height 2
+damagetype Plasma
+Decal "BulletPuff"
+States
+{
+
+	Spawn:
+		TNT1 A 1 BRIGHT A_SpawnItemEx("2016PistolheavyplasmaTracerTrail", 0,               0,              2)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail10", (18*momx)/-35.0, -(18*momy)/-35.0, 2+(18*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail11", (20*momx)/-35.0, -(20*momy)/-35.0, 2+(20*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("2016PistolheavyplasmaTracerTrail12", (22*momx)/-35.0, -(22*momy)/-35.0, 2+(22*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		Loop
+	Death:
+		TNT1 AAAAA 0 A_SpawnItem("BlueFlareSmall")
+		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaFireNonStatic", 2, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("BlueplasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		BL1I ABCD 1 BRIGHT A_SpawnItem("BlueFlareSmall")
+		TNT2 AA 3 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		Stop
+}
+}
+
+actor 2016PistolheavyplasmaTracerTrail
+{
+    Scale 0.1
+    RenderStyle Add
+    Alpha 0.9
+    +NOINTERACTION
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+        SPKB A 2 BRIGHT
+        stop
+    }
+}
+
+
+
+actor 2016PistolheavyplasmaTracerTrail2: 2016PistolheavyplasmaTracerTrail {    Alpha 0.85 }
+actor 2016PistolheavyplasmaTracerTrail3: 2016PistolheavyplasmaTracerTrail {    Alpha 0.80 }
+actor 2016PistolheavyplasmaTracerTrail4: 2016PistolheavyplasmaTracerTrail {    Alpha 0.75 }
+actor 2016PistolheavyplasmaTracerTrail5: 2016PistolheavyplasmaTracerTrail {    Alpha 0.70 }
+actor 2016PistolheavyplasmaTracerTrail6: 2016PistolheavyplasmaTracerTrail {    Alpha 0.65 }
+actor 2016PistolheavyplasmaTracerTrail7: 2016PistolheavyplasmaTracerTrail {    Alpha 0.60 }
+actor 2016PistolheavyplasmaTracerTrail8: 2016PistolheavyplasmaTracerTrail {    Alpha 0.55 }
+actor 2016PistolheavyplasmaTracerTrail9: 2016PistolheavyplasmaTracerTrail {    Alpha 0.50 }
+actor 2016PistolheavyplasmaTracerTrail10: 2016PistolheavyplasmaTracerTrail {    Alpha 0.45 }
+actor 2016PistolheavyplasmaTracerTrail11: 2016PistolheavyplasmaTracerTrail {    Alpha 0.40 }
+actor 2016PistolheavyplasmaTracerTrail12: 2016PistolheavyplasmaTracerTrail {    Alpha 0.35 }
+actor 2016PistolheavyplasmaTracerTrail13: 2016PistolheavyplasmaTracerTrail {    Alpha 0.30 }
+actor 2016PistolheavyplasmaTracerTrail14: 2016PistolheavyplasmaTracerTrail {    Alpha 0.25 }
+actor 2016PistolheavyplasmaTracerTrail15: 2016PistolheavyplasmaTracerTrail {    Alpha 0.20 }
+actor 2016PistolheavyplasmaTracerTrail16: 2016PistolheavyplasmaTracerTrail {    Alpha 0.15 }
+actor 2016PistolheavyplasmaTracerTrail17: 2016PistolheavyplasmaTracerTrail {    Alpha 0.10 }
+actor 2016PistolheavyplasmaTracerTrail18: 2016PistolheavyplasmaTracerTrail {    Alpha 0.05 }

@@ -92,6 +92,14 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 1/SLEDGEHAMMER.txt"
 #include "decorates/weapons/main/slot 2/M&RS/DesertEagle.txt"
 #include "decorates/weapons/main/slot 2/Handguns/USP-45.txt"
+#include "decorates/weapons/main/slot 2/Handguns/Doom2016Blaster.txt"
+#include "decorates/weapons/main/slot 2/Handguns/Doom2016BlasterProjectile.txt"
+#include "decorates/weapons/main/slot 2/Handguns/Doom2016BlasterPickup.txt"
+#include "decorates/weapons/main/slot 2/Handguns/Doom2016BlasterUpgrade.txt"
+#include "decorates/weapons/main/slot 2/SMGS/UMP-50.txt"
+#include "decorates/weapons/main/slot 2/SMGS/UZI.txt"
+#include "decorates/weapons/main/slot 2/SMGS/TMP9.txt"
+
 
 //Enemies
 #include "Decorates/MONSTERS/ZOMBIES/ZOMBIEMEN.txt"

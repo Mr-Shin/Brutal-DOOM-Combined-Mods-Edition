@@ -95,7 +95,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	 Player.StartItem "SlotOWN9", 1
 	 Player.StartItem "SlotOWN0", 1
 	Player.WeaponSlot 1, Sledge, Chain_Saw, Melee_Attacks
-	Player.WeaponSlot 2, USP45, DesertEagle, G17C, G7, TesticleImploder, TAC15, SovietMP, SkullCracker, PPSH91, POW90, PDW91, MP27, MP7, MP5, G18, FN67, FG42, DesertEagle3, M9Beretta, MP40
+	Player.WeaponSlot 2, TMP9, UZI, UMP50, Doom2016Blaster, USP45, DesertEagle, G17C, G7, TesticleImploder, TAC15, SovietMP, SkullCracker, PPSH91, POW90, PDW91, MP27, MP7, MP5, G18, FN67, FG42, DesertEagle3, M9Beretta, MP40
 	Player.WeaponSlot 3, Shot_Gun, SSG 
 	Player.WeaponSlot 4, DualRifles, Rifle
 	Player.WeaponSlot 5, MiniGun, HitlersBuzzsaw
