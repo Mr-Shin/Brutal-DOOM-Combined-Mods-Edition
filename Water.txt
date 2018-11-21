@@ -74,6 +74,7 @@ states
 Actor BlueParticleXSpawner: BloodParticleXSpawner
 {
 Translation "176:191=192:196"
++DONTSPLASH
 states
 	{
 	Spawn:
@@ -96,6 +97,7 @@ states
 Actor SpawnBlueLiquidParticleX
 {
 +NOCLIP
++DONTSPLASH
 +NOGRAVITY
 +NOTELEPORT
 states
@@ -111,6 +113,7 @@ Actor BlueLiquidParticleX: BloodLiquidParticleX
 {
   Translation "176:191=192:196"
   RenderStyle Add
+  +DONTSPLASH
   Alpha 0.6
   //decal BloodWaterDecal
   States
@@ -530,6 +533,7 @@ actor WaterSplashBase2
 
 Actor WaterSplashWaves
 {
+	+DONTSPLASH
 	+CLIENTSIDEONLY
 	+THRUACTORS
 	Scale 1.6
