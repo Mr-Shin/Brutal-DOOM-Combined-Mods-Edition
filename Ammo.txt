@@ -261,11 +261,14 @@ ACTOR 2Clip2 : Clip2
 	SpawnID 11
 	Inventory.PickupMessage "Picked up 2 Magazines."
 	inventory.pickupsound "clip/pkup"
-	inventory.amount 30
 	States
 	{
 	Spawn:
 		CLI2 B -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("Clip2", 15)
+		TNT1 A 0 A_GiveInventory("Clip2", 15)
 		Stop
 	}
 }
@@ -276,11 +279,16 @@ ACTOR 3Clip2 : Clip2
 	SpawnID 11
 	Inventory.PickupMessage "Picked up 3 Magazines."
 	inventory.pickupsound "clip/pkup"
-	inventory.amount 45
 	States
 	{
 	Spawn:
 		CLI3 B -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("Clip2", 15)
+		TNT1 A 0 A_GiveInventory("Clip2", 15)
+		TNT1 A 0 A_GiveInventory("Clip2", 15)
+
 		Stop
 	}
 }

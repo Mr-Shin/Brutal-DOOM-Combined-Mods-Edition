@@ -90,7 +90,8 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 2/SMGS/G7Bullpup.txt"
 #include "decorates/weapons/main/slot 2/Handguns/G17C.txt"
 #include "decorates/weapons/main/slot 1/SLEDGEHAMMER.txt"
-
+#include "decorates/weapons/main/slot 2/M&RS/DesertEagle.txt"
+#include "decorates/weapons/main/slot 2/Handguns/USP-45.txt"
 
 //Enemies
 #include "Decorates/MONSTERS/ZOMBIES/ZOMBIEMEN.txt"
@@ -117,7 +118,7 @@ Actor PBKick : Inventory {}
 
 //Bosses
 
-#include "Decorates/WEAPONS/MAIN/Slot 2/MP40.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 2/SMGS/MP40.txt"
 #include "Decorates/MONSTERS/NAZIS/NAZIS.txt"
 
 //Glory Kills
