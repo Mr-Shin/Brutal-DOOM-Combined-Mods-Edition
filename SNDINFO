@@ -1083,3 +1083,14 @@ NBOXPKUP	NBOXPKUP
 APPKUP	APPKUP
 
 BACKPK2	BACKPK2
+
+//Sledge
+$random Weapons/Sledge/Hit { Sledge1 Sledge2 Sledge3 }
+Sledge1 Sledge1
+Sledge2 Sledge2
+Sledge3 Sledge3
+Weapons/Sledge/Swing SLESWING
+Weapons/Sledge/Wall SLEDWALL
+Weapons/Sledge/Pick SLEDPIK
+$limit Weapons/Sledge/Wall 0
+

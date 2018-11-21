@@ -45,20 +45,23 @@ Soviet Machine Pistol IB
 
 Slot 3:
 
-Shotguns:
+Auto Shotguns:
 
-BD v21 Shotgun
-BD Assault Shotgun
+XM1618
+AA48
+M1216
+AS-RIOT-4
+MK23
+XM1014
+
+Pump Shotguns:
+
+UAC1897 Trench Gun
 UTS-15
 NAIL Shotgun
 Model 1887
 Doom 4 SG Prototype
 Breaker Shotgun
-AS-RIOT-4
-MK23
-AA48
-M1216
-XM1014
 Q4 Shotgun
 MK5VOPS
 Doom 2016 Shotgun
@@ -68,7 +71,7 @@ UAC-1270
 
 Super Shotguns:
 
-BD v20 SSG
+UAC1881 SSG
 Sawed-Off
 Coach Gun
 Q3 SSG
@@ -80,6 +83,7 @@ QUAD BARREL SHOTGUN
 Slot 4:
 
 Assault Rifles:
+
 FG-42
 Repeater
 XM10
@@ -128,13 +132,13 @@ Machine Guns:
 
 MG42
 Quake 4 MG
-BD v21 Machine Gun
+M144-RIOT
 AUG-A9
 AUGR-DM1
-M72RIOT
+M72-RIOT
 HAMR-5
 Nailgun
-PB 3.0 Nailgun
+Super Nailgun
 M60
 HAMR-1
 Tactical Nailgun
@@ -147,7 +151,7 @@ Slot 6:
 
 Rocket Launchers:
 
-BD v20 RPG
+AT5
 Duke RPG
 UT2004 RL
 DS-9000
@@ -211,7 +215,6 @@ MISC:
 
 Karasawa
 BFS
-Black Hole Generator
 EX-099
 
 Slot 9:
