@@ -13,7 +13,7 @@ ACTOR SSGAmmo : Ammo
 // Super Shotgun
 //
 // --------------------------------------------------------------------------
-ACTOR SSG : CMEWeapon Replaces SuperShotgun
+ACTOR UAC1881 : CMEWeapon Replaces SuperShotgun
 {
 	Game Doom
 	SpawnID 33

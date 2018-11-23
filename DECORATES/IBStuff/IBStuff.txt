@@ -1,0 +1,3940 @@
+actor ppbolt_boomwave {
+	var int user_scale;
+	//scale 0.7
+	alpha 1.0
+	renderstyle add
+	+NOINTERACTION
+	+FORCEXYBILLBOARD
+	states{
+		spawn:
+			TNT1 A 0
+			TNT1 A 0 A_SetUserVar("user_scale",4)
+		scaledown:
+			TNT1 A 0 A_SetScale((user_scale*0.01)) 
+			TNT1 A 0 A_JumpIf(user_scale>=110,"LoopEnd") 
+			PPEW B 1 bright A_FadeOut(0.06)
+			TNT1 A 0 A_SetUserVar("user_scale",user_scale+10)
+			loop
+		loopend:
+			PPEW B 1 Bright A_FadeOut(0.1)
+			wait
+			
+	}
+}
+
+ACTOR PlanetBeam : FastProjectile
+{
+  Speed 100
+  Radius 19
+  Height 10
+  Damage 0
+  Renderstyle Add
+  +RIPPER
+  -CANNOTPUSH
+  -NODAMAGETHRUST
+  +EXTREMEDEATH
+  +FORCERADIUSDMG
+  +EXPLODEONWATER
+  +DONTBLAST
+  DeathSound "BFGEXPLO"
+  MissileType "PlanetBeamTrail"
+  MissileHeight 10
+  Scale 0.2
+  states
+  {
+  Spawn:
+      TNT1 A 0
+      TNT1 A 1 A_Explode(3000,92,0,0)
+      Loop
+  Death:
+      //TNT1 a 0 A_playsound("PCBLST", 5)
+	  //TNT1 A 0 Radius_Quake(1,24,0,24,0)
+	  //TNT1 A 0 A_Explode(10,5000)
+	  //TNT1 A 0 Radius_Quake(2,27,0,21,0)
+	  //TNT1 A 0 A_Explode(20,4000)
+	  //TNT1 A 0 Radius_Quake(3,30,0,18,0)
+	  //TNT1 A 0 A_Explode(30,3000)
+	  //TNT1 A 0 Radius_Quake(3,32,0,15,0)
+	  //TNT1 A 0 A_Explode(40,2000)
+	  //TNT1 A 0 Radius_Quake(4,34,0,12,0)//(intensity, duration, damrad, tremrad, tid)
+	  //TNT1 A 0 Radius_Quake(5,36,0,9,0)
+	  //TNT1 A 0 A_Explode(50,1000)
+	  TNT1 A 0 Radius_Quake(6,38,0,6,0)
+	  TNT1 A 0 A_Explode(75,900)
+	  TNT1 A 0 Radius_Quake(7,40,0,3,0)
+	  TNT1 A 0 A_Explode(100,800)
+	  TNT1 a 0 A_playsound("PCHIT", 4)
+	  TNT1 A 0 A_SpawnItemEx("ppbolt_boomwave",0,0,0, 0,0,0)
+	  //TNT1 A 0 A_Explode(3000,600, 0)
+	 //TNT1 A 0 A_PlaySoundEx("weapons/PlanetCrackerImpact","Normal")
+      //TNT1 A 0 A_Explode(5000,256,0,1)
+	  TNT1 A 0 A_SpawnItemEx("ppbolt_boomwave",0,0,0, 0,0,0)
+      //TNT1 A 0 A_BFGSpray("PlanetCrackerProjectileSpray",30,30)
+      TNT1 A 0 A_SpawnItemEx("PlanetCrackerImpact1", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+      TNT1 A 0 A_SpawnItemEx("PlanetCrackerImpact2", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+      TNT1 A 0 A_SpawnItemEx("PlanetCrackerImpact3", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+      TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("IonRainFlare",random(-150,150),random(-150,150),random(-25,50),0,0,frandom(1,2),0,128,0)
+      TNT1 A 1 A_SpawnItemEx("PlanetCrackerBeamHit", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+      TNT1 AAAAAAAAAAA 1 A_SpawnItemEx("IonRainFlare",random(-150,150),random(-150,150),random(-25,50),0,0,frandom(1,2),0,128,0)
+      TNT1 A 0 A_SpawnItemEx("ppbolt_boomwave",0,0,0, 0,0,0)
+	  Stop
+  }
+}
+
+ACTOR PlanetCrackerImpact1
+{
+  +NOGRAVITY
+  +NOINTERACTION
+  Renderstyle Add
+  Alpha 0.99
+  Scale 0.5
+  States
+  {
+  Spawn:
+  TNT1 A 2
+  Looplet:
+  TNT1 A 0 A_SetScale(ScaleX +0.04, ScaleY +0.04)
+  TNT1 A 0 A_FadeOut(0.07)
+  BLUF A 1 Bright
+  Loop
+  }
+}
+
+ACTOR PlanetCrackerImpact2 : PlanetCrackerImpact1
+{
+  Scale 0.75
+  Alpha 0.8
+  States
+  {
+  Spawn:
+  TNT1 A 4
+  Looplet:
+  TNT1 A 0 A_SetScale(ScaleX +0.05, ScaleY +0.05)
+  TNT1 A 0 A_FadeOut(0.07)
+  BLUF A 1 Bright
+  Loop
+  }
+}
+
+ACTOR PlanetCrackerImpact3 : PlanetCrackerImpact1
+{
+  Scale 0.9
+  Alpha 0.7
+  States
+  {
+  Spawn:
+  TNT1 A 6
+  Looplet:
+  TNT1 A 0 A_SetScale(ScaleX +0.06, ScaleY +0.06)
+  TNT1 A 0 A_FadeOut(0.07)
+  BLUF A 1 Bright
+  Loop
+  }
+}
+
+ACTOR PlanetCrackerMiniImpact : PlanetCrackerImpact1
+{
+  Scale 0.2
+  States
+  {
+  Spawn:
+  TNT1 A 2
+  Looplet:
+  TNT1 A 0 A_SetScale(ScaleX +0.05, ScaleY +0.05)
+  TNT1 A 0 A_FadeOut(0.07)
+  BLUF A 1 Bright
+  Loop
+  }
+}
+
+ACTOR PlanetCrackerBeamHit
+{ 
+    Projectile
+    Scale 2.5
+    Alpha 0.8
+    RenderStyle Add
+    +NOINTERACTION
+    +NOGRAVITY
+    States
+    {
+    Spawn:
+      PBOM ABCDEFGHIJKLMN 1 BRIGHT A_SetScale(ScaleX +0.06, ScaleY +0.06)
+      Stop
+    }
+}
+
+ACTOR PlanetBeamTrail
+{
+  RenderStyle Add
+  Alpha 0.75
+  Scale 0.15
+  +NOCLIP
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    BLUF A 0
+    BLUF A 0 A_SpawnItemEx("PlanetCrackerProjectileTrail1", random(15,-15), random(15,-15), random(15,-15), 0, 0, 0, 0, 128, 0)
+  Looplet:
+    BLUF A 0 A_SetScale(ScaleX -0.006, ScaleY -0.006)
+    BLUF A 2 bright A_FadeOut(0.05)
+    Loop
+  }
+}
+
+ACTOR PlanetCrackerProjectileTrail1
+{ 
+    Scale 1
+    Alpha 0.25
+	+NOGRAVITY
+    States
+    {
+    Spawn:
+      PBOM EFGHIJKLMN 2 BRIGHT
+      Stop
+    }
+}
+
+Actor IonRain
+{
+ +NoInteraction
+ Height 3
+ Radius 2
+ RenderStyle Add
+ Scale 0.1
+ reactiontime 11
+ States
+ {
+  Spawn:
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 3 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 2 A_SpawnItemEx("IonRainFlare",random(-1200,1200),random(-1200,1200),random(50,800),0,0,frandom(1,2),0,128,0)
+   TNT1 A 0 A_Countdown
+   loop
+  Death:
+   TNT1 A 0
+   stop
+ }
+}
+
+
+actor IonRainFlare
+{
+  RenderStyle Add
+  alpha 1
+  +NOINTERACTION
+  +RANDOMIZE
+  +NOCLIP
+  +NOGRAVITY
+  Scale 0.1
+  states
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_ChangeVelocity (frandom(-0.2, 0.2), frandom(-0.2, 0.2), frandom(-0.1, 0.1), 0)
+    //TNT1 A 0 A_CustomMissile("PlanetCrackerIonBolter",0,0,random(0,360),4,random(45,0))
+    PBAL B 5 bright A_FadeOut(0.1)
+    Loop
+  }
+}
+
+ACTOR PetrovecBolt
+{
+	Radius 7
+	Height 3
+	Speed 20
+	Damage 125
+	PROJECTILE
+	+SEEKERMISSILE
+	+SCREENSEEKER
+	+DONTBLAST
+	Renderstyle Add
+	deathsound "impact/plasma"
+	Alpha 0.99
+	Scale 0.9
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("Petrovec/Fly",5,1.0,1)
+		YPBB A 0 A_Jump(255,"SpawnA","SpawnB","SpawnC","SpawnD","SpawnE","SpawnF","SpawnG","SpawnH","SpawnI","SpawnJ","SpawnK","SpawnL")
+	SpawnA:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB A 1 Bright
+		Loop
+	SpawnB:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB B 1 Bright
+		Loop
+	SpawnC:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB C 1 Bright
+		Loop
+	SpawnD:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB D 1 Bright
+		Loop
+	SpawnE:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB E 1 Bright
+		Loop
+	SpawnF:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB F 1 Bright
+		Loop
+	SpawnG:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB G 1 Bright
+		Loop
+	SpawnH:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB H 1 Bright
+		Loop
+	SpawnI:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB I 1 Bright
+		Loop
+	SpawnJ:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB J 1 Bright
+		Loop
+	SpawnK:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB K 1 Bright
+		Loop
+	SpawnL:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(2,2,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB L 1 Bright
+		Loop
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(5)
+		TNT1 A 0 A_PlaySound("Petrovec/Hit")
+		TNT1 A 0 A_PlaySoundEx("Petrovec/Explode","SoundSlot6")
+		TNT1 A 0 A_Explode(175,128,0,0)
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingExp")
+		TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("PetrovecBoltParticleExp",random(11,-11),frandom(11,-11),frandom(9,-9),frandom(1,2),frandom(1,2),frandom(2,-2),random(0,359))
+		TNT1 AAAAAA 0 A_SpawnItemEx("PetrovecBoltExplode",random(19,-19),random(19,-19),random(12,-12),frandom(1,-1),frandom(1,-1),frandom(1,-1),random(0,359))
+		TNT1 A 10
+		TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("PetrovecBoltSmokeExp",random(12,-12),random(12,-12),random(7,-7),frandom(1,-1),frandom(1,-1),frandom(1,-1),random(0,359))
+		stop
+	}
+}
+
+ACTOR PetrovecBolt2 : PetrovecBolt
+{
+    PROJECTILE
+    +BOUNCEONACTORS
+	+DONTBLAST
+    BounceType Hexen
+    BounceCount 10
+    BounceFactor 1.0
+    WallBounceFactor 1.0
+	ReactionTime 210
+    BounceSound "Petrovec/Bounce"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("Petrovec/Fly",5,1.0,1)
+		YPBB A 0 A_Jump(255,"SpawnA","SpawnB","SpawnC","SpawnD","SpawnE","SpawnF","SpawnG","SpawnH","SpawnI","SpawnJ","SpawnK","SpawnL")
+	SpawnA:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB A 1 Bright A_Countdown
+		Loop
+	SpawnB:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB B 1 Bright A_Countdown
+		Loop
+	SpawnC:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB C 1 Bright A_Countdown
+		Loop
+	SpawnD:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB D 1 Bright A_Countdown
+		Loop
+	SpawnE:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB E 1 Bright A_Countdown
+		Loop
+	SpawnF:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB F 1 Bright A_Countdown
+		Loop
+	SpawnG:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB G 1 Bright A_Countdown
+		Loop
+	SpawnH:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB H 1 Bright A_Countdown
+		Loop
+	SpawnI:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB I 1 Bright A_Countdown
+		Loop
+	SpawnJ:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB J 1 Bright A_Countdown
+		Loop
+	SpawnK:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB K 1 Bright A_Countdown
+		Loop
+	SpawnL:
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltParticleTrail",frandom(3,-3),frandom(3,-3),frandom(3,-3))
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingTrail",frandom(2,-2),frandom(2,-2),frandom(2,-2))
+		TNT1 AA 0 A_SpawnItemEx("PetrovecBoltSmokeTrail",-4+random(4,-4),random(4,-4),random(4,-4))
+		TNT1 A 0 A_SeekerMissile(5,10,SMF_LOOK|SMF_PRECISE,256,1)
+                YPBB L 1 Bright A_Countdown
+		Loop
+	}
+}
+
+ACTOR PetrovecBoltSmokeTrail
+{
+	Scale 0.35
+	Alpha 0.95
+	+NOINTERACTION
+	Renderstyle Add
+	States
+	{
+		Spawn:
+			YPBS A 0
+			YPBS BDMKHFEDCBAA 1 Bright A_FadeOut(0.04)
+			Stop
+	}
+}
+
+ACTOR PetrovecBoltRingTrail
+{
+	Scale 0.15
+	Alpha 0.1
+	+NOINTERACTION
+	Renderstyle Add
+	States
+	{
+		Spawn:
+			YPBR A 0
+			YPBR A 0 A_SetScale(ScaleX +0.075, ScaleY +0.075)
+			YPBR A 1 Bright A_FadeIn(0.025)
+			YPBR A 0 A_SetScale(ScaleX +0.075, ScaleY +0.075)
+			YPBR A 1 Bright A_FadeIn(0.025)
+			YPBR A 0 A_SetScale(ScaleX +0.075, ScaleY +0.05)
+			YPBR A 1 Bright A_FadeIn(0.025)
+			YPBR A 0 A_SetScale(ScaleX +0.075, ScaleY +0.05)
+			YPBR A 1 Bright A_FadeIn(0.025)
+			YPBR A 0 A_SetScale(ScaleX +0.075, ScaleY +0.025)
+			YPBR A 1 Bright A_FadeIn(0.025)
+
+			YPBR A 0 A_SetScale(ScaleX -0.075, ScaleY -0.025)
+			YPBR A 1 Bright A_FadeOut(0.025)
+			YPBR A 0 A_SetScale(ScaleX -0.075, ScaleY -0.05)
+			YPBR A 1 Bright A_FadeOut(0.025)
+			YPBR A 0 A_SetScale(ScaleX -0.075, ScaleY -0.05)
+			YPBR A 1 Bright A_FadeOut(0.025)
+			YPBR A 0 A_SetScale(ScaleX -0.075, ScaleY -0.075)
+			YPBR A 1 Bright A_FadeOut(0.025)
+			YPBR A 0 A_SetScale(ScaleX -0.075, ScaleY -0.075)
+			YPBR A 1 Bright A_FadeOut(0.025)
+			Stop
+	}
+}
+
+ACTOR PetrovecBoltParticleTrail
+{
+	Scale 0.04
+	Alpha 0.99
+	+NOINTERACTION
+	Renderstyle Add
+	States
+	{
+		Spawn:
+			YPBB A 0
+			YPBB A 0 A_Jump(255,"SpawnA","SpawnB","SpawnC","SpawnD","SpawnE","SpawnF","SpawnG","SpawnH","SpawnI","SpawnJ","SpawnK","SpawnL")
+		SpawnA:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB A 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnB:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB B 1 Bright A_FadeOut(0.05+random(0.0075,-0.0075))
+			Loop
+		SpawnC:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB C 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnD:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB D 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnE:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB E 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnF:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB F 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnG:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB G 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnH:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB H 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnI:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB I 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+		SpawnJ:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB J 1 Bright A_FadeOut(0.05+random(0.0075,-0.0075))
+			Loop
+		SpawnK:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB K 1 Bright A_FadeOut(0.05+random(0.0075,-0.0075))
+			Loop
+		SpawnL:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.2, -0.2),frandom(0.2, -0.2), frandom(0.2, -0.2), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB L 1 Bright A_FadeOut(0.04+random(0.0075,-0.0075))
+			Loop
+	}
+}
+
+ACTOR PetrovecBoltExplode
+{
+	Scale 2
+	Alpha 0.75
+	+NOINTERACTION
+	Renderstyle Add
+	States
+	{
+		Spawn:
+			YPBS A 0
+			YPBS ABCDEFGHIJKLMNOP 2 Bright A_FadeOut(0.05)
+			Wait
+	}
+}
+
+
+ACTOR PetrovecBoltSmokeExp
+{
+	Scale 1.75
+	Alpha 0.5
+	+NOINTERACTION
+	Renderstyle Add
+	States
+	{
+		Spawn:
+			YPBS A 0
+			YPBS P 1 Bright A_FadeOut(0.005)
+			Wait
+	}
+}
+
+ACTOR PetrovecBoltRingExp
+{
+	Scale 0.25
+	Alpha 0.99
+	+NOINTERACTION
+	Renderstyle Add
+	States
+	{
+		Spawn:
+			YPBR A 0
+			YPBR A 0 A_SetScale(ScaleX +0.1, ScaleY +0.1)
+			YPBR A 1 Bright A_FadeOut(0.05)
+			YPBR A 0 A_SetScale(ScaleX +0.1, ScaleY +0.1)
+			YPBR A 1 Bright A_FadeOut(0.05)
+			YPBR A 0 A_SetScale(ScaleX +0.1, ScaleY +0.1)
+			YPBR A 1 Bright A_FadeOut(0.05)
+			YPBR A 0 A_SetScale(ScaleX +0.1, ScaleY +0.1)
+			YPBR A 1 Bright A_FadeOut(0.05)
+		Looplet:
+			YPBR A 0 A_SetScale(ScaleX +0.1, ScaleY +0.1)
+			YPBR A 1 Bright A_FadeOut(0.03)
+			Loop
+	}
+}
+
+ACTOR PetrovecBoltParticleExp : PetrovecBoltParticleTrail
+{
+	Scale 0.1
+	Alpha 0.99
+	+NOINTERACTION
+	Renderstyle Add
+	States
+	{
+		Spawn:
+			YPBB A 0
+			YPBB A 0 A_Jump(255,"SpawnA","SpawnB","SpawnC","SpawnD","SpawnE","SpawnF","SpawnG","SpawnH","SpawnI","SpawnJ","SpawnK","SpawnL")
+		SpawnA:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB A 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnB:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB B 1 Bright A_FadeOut(0.05+random(0.0075,-0.0075))
+			Loop
+		SpawnC:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB C 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnD:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB D 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnE:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB E 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnF:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB F 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnG:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB G 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnH:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB H 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnI:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB I 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+		SpawnJ:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB J 1 Bright A_FadeOut(0.05+random(0.0075,-0.0075))
+			Loop
+		SpawnK:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB K 1 Bright A_FadeOut(0.05+random(0.0075,-0.0075))
+			Loop
+		SpawnL:
+   			YPBB A 0 A_ChangeVelocity (frandom(0.6, -0.6),frandom(0.6, -0.6), frandom(0.6, -0.6), 0)
+			YPBB A 0 A_SetScale(ScaleX -0.00025, ScaleY -0.00025)
+			YPBB L 1 Bright A_FadeOut(0.03+random(0.0075,-0.0075))
+			Loop
+	}
+}
+
+ACTOR FreezerBall : FastProjectile
+{
+	Radius 4
+	Height 8
+	Speed 52
+	Damage 0
+	Projectile
+	DamageType "Freeze"
+	RenderStyle Add
+	Alpha 0.95
+	+NODAMAGETHRUST
+	+FORCEXYBILLBOARD
+	DeathSound "FRZIMP"
+	MissileType "CryoTrail"
+	MissileHeight 8
+	Decal "PlasmaScorchLower"
+	States
+	{
+	Spawn:
+		FRPJ A 1 Bright A_SpawnItem("PlasmaFlare",0,0)
+		TNT1 A 0 A_CustomMissile("BlueFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_CustomMissile ("Icetracer", 0, 0, random (0, 360), 2, random (0, 360))
+		FRPJ B 1 Bright A_SpawnItem("PlasmaFlare",0,0)
+		TNT1 A 0 A_CustomMissile("BlueFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_CustomMissile ("Icetracer", 0, 0, random (0, 360), 2, random (0, 360))
+		FRPJ C 1 Bright A_SpawnItem("PlasmaFlare",0,0)
+		TNT1 A 0 A_CustomMissile("BlueFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_CustomMissile ("Icetracer", 0, 0, random (0, 360), 2, random (0, 360))
+		Loop
+	Death:		
+		BXPL A 0 Bright A_StopSound(CHAN_BODY)
+		//BXPL A 0 Bright A_Explode(1, 128, 0) // Break frozen things.
+		BXPL A 0 Bright A_ChangeFlag("ICEDAMAGE", 1)
+		BXPL A 0 Bright A_ChangeFlag("NODAMAGETHRUST", 0)
+		BXPL A 0 Bright A_Explode(85*random(3,4),180, 0) // Simulated impact damage 
+		BXPL A 0 Bright A_Explode(random(50,55), 315, 0) // Freezy radius damage. (was 128)
+		BXPL AAAAAAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke", 0, 0, 0, random(10, 30)*0.1, 0, random(0, 10)*0.1, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
+		BXPL AAAAA 0 Bright A_SpawnItemEx("CryoSmoke3", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		BXPL AAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke2", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		BXPL ABCDEFGH 1 Bright A_SpawnItemEx("CauterizerSparkBlast")
+		BXPL IJKLLM 1 Bright A_SpawnItemEx("CauterizerSparkBlast")
+		Stop
+	}
+}
+
+ACTOR CryoSmoke
+{
+    Radius 2
+    Height 2
+    +NOINTERACTION
+    +FORCEXYBILLBOARD
+    RenderStyle Shaded
+    StencilColor "A0 A0 A0"
+    Alpha 0.6
+    Scale 0.65
+    States
+    {
+    Spawn:
+		SMKO A 0
+        SMKO A 2 A_FadeOut (0.05)
+        Wait
+    }
+}
+
+Actor CryoSmoke2 : CryoSmoke { StencilColor "DD DD DD" Scale 0.7 Alpha 0.5 VSpeed 2.5
+	States {
+	Spawn:
+		TNT1 A 0
+		SMKO A 6 A_FadeOut(0.04)
+		Wait
+	}
+}
+
+Actor CryoSmoke3 : CryoSmoke { StencilColor "AA FF FF" Scale 0.7 Alpha 0.4 VSpeed 2.25
+	States {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("Weapons/FreezerRecharge")
+		SMKO A 6 A_FadeOut(0.04)
+		Wait
+	}
+}
+
+Actor MiniCryoSmoke1 : CryoSmoke { StencilColor "AA FF FF" Scale 0.7 Alpha 0.4 VSpeed 2.25
+	Scale 0.15
+	States {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("Weapons/FreezerRecharge")
+		SMKO A 6 A_FadeOut(0.04)
+		Wait
+	}
+}
+
+Actor IceTracer
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+ // -NoGravity
+  +LowGravity
+  +DontSplash
+  +DoomBounce
+  +FORCEXYBILLBOARD
+  BounceFactor 0.2
+  Gravity 0.1
+  RenderStyle Add
+  Scale 1
+  //Speed 2
+  Speed 0
+  -DOOMBOUNCE
+  RenderStyle Add
+  Alpha 1
+  States
+  {
+  Spawn:
+  Death:
+    SHEX AABBCCDDEE 1 Bright A_FadeOut(0.04)
+    Stop
+  }
+}
+
+ACTOR CryoShot : FastProjectile
+{
+	Radius 4
+	Height 8
+	Speed 125
+	Damage 8
+	Damagetype "Freeze"
+	Projectile
+	RenderStyle Add
+	Alpha 0.9
+	+FORCERADIUSDMG
+	+NODAMAGETHRUST
+	+NoExtremeDeath
+	DeathSound "weapons/cryobowhit"
+	MissileType "CryoTrail"
+	MissileHeight 8
+	Decal "PlasmaScorchLower"
+	States
+	{
+	Spawn:
+		BSHT A 0 Bright
+		BSHT A 0 Bright A_PlaySound("weapons/cryobowflyby", CHAN_BODY, 1.0, 1)
+		BSHT A 1 Bright A_SpawnItem("PlasmaFlare",0,0)
+		TNT1 A 0 A_CustomMissile("BlueFlareSpawn",0,0,0,0)
+		Loop
+	Death:		
+		BXPL A 0 Bright A_StopSound(CHAN_BODY)
+		BXPL A 0 Bright A_SpawnItemEx("CauterizerSparkBlast")
+		BXPL A 0 Bright A_ChangeFlag("ICEDAMAGE", 1)
+		BXPL A 0 Bright A_ChangeFlag("NODAMAGETHRUST", 0)
+		BXPL A 0 Bright A_Explode(85*random(3,4),180, 0) // Simulated impact damage 
+		BXPL A 0 Bright A_Explode(random(50,55), 315, 0) // Freezy radius damage. (was 128)
+		BXPL AA 0 Bright A_SpawnItemEx("CryoSmoke", 0, 0, 0, random(10, 30)*0.1, 0, random(0, 10)*0.1, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
+		BXPL AA 0 Bright A_SpawnItemEx("CryoSmoke3", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		BXPL AA 0 Bright A_SpawnItemEx("CryoSmoke2", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		BXPL ABCDE 1 Bright A_SpawnItemEx("CauterizerSparkBlast")
+		BXPL FGHIJKLLM 1 Bright A_FadeOut(0.1)
+		Stop
+	}
+}
+
+ACTOR CryoTrail
+{
+	+NOINTERACTION
+	Radius 4
+	Height 8
+	Renderstyle Add
+	Alpha 0.5
+	States
+	{
+	Spawn:
+		BSHT AABBCDEFG 1 Bright
+		Stop
+	}
+}
+
+ACTOR CauterizerTrailSpawner
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 1 A_SpawnItemEx("CauterizerTrail",0,0,0,0,0,0,0,128,0)
+      Stop
+    }
+}
+
+ACTOR CauterizerTrail
+{ 
+    Scale 0.125
+    Alpha 0.98
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  WINS A 0 A_SetScale(ScaleX-0.01,ScaleY-0.01)
+	  XELB A 1 A_FadeOut(0.1)
+	  Loop
+    }
+}
+
+ACTOR CauterizerSpark
+{ 
+    Scale 0.15
+    Alpha 1
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  XELC AAABBBCCCDDDEEEFFF 1 A_FadeOut(0.025)
+	  Stop
+    }
+}
+
+ACTOR CauterizerSparkBlast
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 50
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerSpark",random(24,-24),random(24,-24),random(24,-24),frandom(3.0,10.0),frandom(3.0,10.0),frandom(-10.0,10.0),frandom(0.0,360.0))
+	TNT1 A 0 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerSuperSparkBlast
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 250
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerSpark",random(24,-24),random(24,-24),random(24,-24),frandom(9.0,25.0),frandom(9.0,25.0),frandom(-15.0,15.0),frandom(0.0,360.0))
+	TNT1 A 0 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerDisruption
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 30
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerForce",random(3,-3),random(3,-3),random(3,-3),frandom(2.0,3.0),frandom(2.0,3.0),frandom(-3.0,3.0),frandom(0.0,359.0))
+	TNT1 A 1 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerSuperDisruption
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 30
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerSuperForce",random(9,-9),random(9,-9),random(9,-9),frandom(3.0,4.0),frandom(3.0,4.0),frandom(-4.0,4.0),frandom(0.0,359.0))
+	TNT1 A 1 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerForce
+{ 
+    Scale 0.05
+    Alpha 1
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  WINS A 0 A_SetScale(ScaleX+0.01,ScaleY+0.01)
+	  XELB A 1 A_FadeOut(0.075)
+	  Loop
+    }
+}
+
+ACTOR CauterizerSuperForce : CauterizerForce
+{ 
+    Scale 0.07
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  WINS A 0 A_SetScale(ScaleX+0.015,ScaleY+0.015)
+	  XELB A 1 A_FadeOut(0.075)
+	  Loop
+    }
+}
+
+ACTOR CauterizerTrailSpawnerMini
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 1 A_SpawnItemEx("CauterizerTrailMini",0,0,0,0,0,0,0,128,0)
+      Stop
+    }
+}
+
+ACTOR CauterizerTrailMini
+{ 
+    Scale 0.0625
+    Alpha 0.98
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  WINS A 0 A_SetScale(ScaleX-0.01,ScaleY-0.01)
+	  XELB A 1 A_FadeOut(0.1)
+	  Loop
+    }
+}
+
+ACTOR CauterizerSparkMini
+{ 
+    Scale 0.075
+    Alpha 1
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  XELC AAABBBCCCDDDEEEFFF 1 A_FadeOut(0.025)
+	  Stop
+    }
+}
+
+ACTOR CauterizerSparkBlastMini
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 50
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerSparkMini",random(24,-24),random(24,-24),random(24,-24),frandom(3.0,10.0),frandom(3.0,10.0),frandom(-10.0,10.0),frandom(0.0,360.0))
+	TNT1 A 0 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerSuperSparkBlastMini
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 250
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerSparkMini",random(24,-24),random(24,-24),random(24,-24),frandom(9.0,25.0),frandom(9.0,25.0),frandom(-15.0,15.0),frandom(0.0,360.0))
+	TNT1 A 0 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerDisruptionMini
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 30
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerForceMini",random(3,-3),random(3,-3),random(3,-3),frandom(2.0,3.0),frandom(2.0,3.0),frandom(-3.0,3.0),frandom(0.0,359.0))
+	TNT1 A 1 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerSuperDisruptionMini
+{
+    +NOGRAVITY
+    +NOINTERACTION
+    ReactionTime 30
+	States
+    {
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItemEx("CauterizerSuperForceMini",random(9,-9),random(9,-9),random(9,-9),frandom(3.0,4.0),frandom(3.0,4.0),frandom(-4.0,4.0),frandom(0.0,359.0))
+	TNT1 A 1 A_Countdown
+	Loop
+	Death:
+	Stop
+	}
+}
+
+ACTOR CauterizerForceMini
+{ 
+    Scale 0.005
+    Alpha 1
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  WINS A 0 A_SetScale(ScaleX+0.01,ScaleY+0.01)
+	  XELB A 1 A_FadeOut(0.075)
+	  Loop
+    }
+}
+
+ACTOR CauterizerSuperForceMini : CauterizerForce
+{ 
+    Scale 0.014
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  WINS A 0 A_SetScale(ScaleX+0.015,ScaleY+0.015)
+	  XELB A 1 A_FadeOut(0.075)
+	  Loop
+    }
+}
+
+ACTOR CryoFire
+{
+	Radius 13
+	Height 8
+	Speed 25
+	Damage 30
+	Projectile
+	+RANDOMIZE
+	+NOBOSSRIP
+	+NODAMAGETHRUST
+	-BLOODSPLATTER
+	+BLOODLESSIMPACT
+	RenderStyle Add
+	Alpha 0.66
+	Scale 0.5
+	DeathSound "weapons/flamehit"
+	Obituary "$OB_MPFLAMETHROWER"
+	Decal "PlasmaScorchLower"
+	DamageType "Freeze"
+	States
+	{
+	Spawn:
+		TNT1 A 0 BRIGHT A_PlaySound("weapons/flamehit")
+		TNT1 AAAA 1 BRIGHT A_SpawnItemEx("CryoStreamTrail", 0, 0, 0, Random(-1,1)+MOMX, Random(-1,1)+MOMY, Random(-1,1)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+        TNT1 A 1 BRIGHT A_SpawnItemEx("CryoStreamTrail", 0, 0, 0, Random(-2,2)+MOMX, Random(-2,2)+MOMY, Random(-2,2)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 0 BRIGHT A_SpawnItemEx("CryoStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 1 BRIGHT A_SpawnItemEx("CryoStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 0 BRIGHT A_SpawnItemEx("CryoStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 1 BRIGHT A_SpawnItemEx("CryoStreamTrail", 0, 0, 0, Random(-4,4)+MOMX, Random(-4,4)+MOMY, Random(-4,4)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 18 BRIGHT
+		Stop
+	Death:
+		TNT1 A 0 A_SpawnItemEx("IgnitedCryoSurface", random(-8,8), Random(-8,8), 0, 0, 0, Random(1, 2), 0, 128, 64)
+		stop
+	}
+}
+ACTOR CryoFire2 : CryoFire // Map hack D:
+{
+	Decal ""
+	speed 25
+	States
+	{
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+actor IgnitedCryoFlame
+{
+	Scale 0.3
+	Alpha 0.7
+	+NOINTERACTION
+	 Height 2
+ Radius 2
+ Speed 3
+ RenderStyle Add
+ Alpha 0.9
+ +NOGRAVITY
+ +FORCEXYBILLBOARD
+ +DONTSPLASH
+ +NOTELEPORT
+ +NOBLOCKMAP
+ +RIPPER
+ +BLOODLESSIMPACT
+ +CANNOTPUSH
+ -BLOODSPLATTER
+ -ACTIVATEPCROSS
+ Damagetype "Freeze"
+ -ACTIVATEIMPACT
+ -NOCLIP
+ States
+ {
+ Spawn:
+ 	FIR1 A 0
+ 	FIR1 A 0 A_Jump(127, "Spawn2", "Spawn3")
+ 	10F1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+ 	stop
+ Spawn2:
+ 	10F1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+ 	stop
+ Spawn3:
+ 	10F1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+ 	stop
+}}
+
+actor CryoStreamTrail : IgnitedCryoFlame
+{
+	Scale 0.36
+	Alpha 0.32
+	Damage 0
+	+MISSILE
+	-ACTIVATEIMPACT
+	-ACTIVATEPCROSS
+	States
+	{
+		Death:
+			TNT1 AA 1
+			stop
+	}
+}
+
+actor IgnitedCryoSurface
+{
+Projectile
+Height 5
+Radius 2
+BounceFactor 0.0
+obituary "%o was purified by %k's cleansing liquid nitrogen."
+RenderStyle Add
+Scale 0.5
+ReactionTime 160
+DamageType "Freeze"
+-SOLID
++NODAMAGETHRUST
++LOWGRAVITY
+-NOGRAVITY
++HEXENBOUNCE
++SKYEXPLODE
++DONTSPLASH
+States
+{
+Spawn:
+TFIR A 0 A_CountDown
+TNT1 A 0 A_SpawnItemEx("IgnitedCryoFlame", random(-8,8), Random(-8,8), 0, 0, 0, Random(1, 2), 0, 128, 64)
+TNT1 A 2 A_Explode(3, 18, 1)
+TNT1 A 0 A_JumpIf(waterlevel == 3, "Disappear")
+loop
+Death:
+TNT1 A 1
+stop
+Disappear:
+TNT1 A 0
+TNT1 A 1
+stop
+}
+}
+
+Actor OmegaBFGBall : BFGBall
+{
+    +EXTREMEDEATH
+	Damage 100
+  Decal BFGLightning
+	DeathSound "BFGEXPLO"
+    //DamageType Desintegrate
+	Scale 0.7
+	Species "Marines"
+	+THRUSPECIES
+	+MTHRUSPECIES
+  States
+  {
+  DM:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFLag("THRUSPECIES", 0)
+		TNT1 A 0 A_ChangeFLag("MTHRUSPECIES", 0)
+		Goto Spawn1
+	
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_ExecuteAlways(719, 0, 0, 0, 0)//Check if Coop
+
+	Spawn1:
+    TNT1 A 0 A_SpawnItemEx("BFGFOG", 0, 0)
+    BFS1 A 1 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItem("BFGGreenBlur",0,0)
+    BFS1 A 1 BRIGHT A_SpawnItemEx("BFGTrailParticle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
+    TNT1 A 0 A_SpawnItem("BFGGreenBlur",0,0)
+	TNT1 A 0 A_SpawnItemEx("BFGFOG", 0, 0)
+    BFS1 B 1 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
+    TNT1 A 0 A_SpawnItem("BFGGreenBlur",0,0)
+	BFS1 B 1 BRIGHT A_SpawnItemEx("BFGTrailParticle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
+    TNT1 A 0 A_SpawnItem("BFGGreenBlur",0,0)
+    Loop
+ 
+ Death:
+    TNT1 A 0 A_Quake (6, 70, 0, 1024, none)
+    TNT1 A 0 A_Quake (4, 105, 0, 1536, none)
+    TNT1 A 0 A_Quake (2, 140, 0, 2048, none)
+    TNT1 A 0 A_PlaySound("BMK2EXP",5,0.5,0)
+    TNT1 A 0 A_Explode((200*random(2,3)),256,0,1)
+    TNT1 A 0 A_Explode((100*random(2,3)),512,0)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_BFGSpray("DreadfulFlash",20,20)
+	TNT1 A 0 A_SpawnItemEx("DreadfulSmokeSpawner")
+	TNT1 A 0 A_SpawnItemEx("DreadfulShockwaver")
+	TNT1 A 0 A_SpawnItemEx("DreadfulBlast")
+	TNT1 A 0 A_SpawnItemEx("DreadfulParticleBlastSpawner")
+	TNT1 A 0 A_SpawnItemEx("DreadfulLightningSpawner")
+	TNT1 A 0 A_SpawnItemEx("DreadfulParticleSpawner")
+	TNT1 A 0 A_SpawnItemEx("DreadfulDamager",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+	//TNT1 A 0 A_SpawnItemEx("DreadfulRing")
+	TNT1 A 0 A_SpawnItemEx("DreadfulSphere")
+	TNT1 A 185
+	TNT1 B 55
+    Stop
+  }
+}
+
+
+
+//Flight
+
+ACTOR DreadfulTrailSpawner
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 1 A_SpawnItemEx("DreadfulTrail",frandom(2.0,-2.0),frandom(2.0,-2.0),frandom(2.0,-2.0),0,0,0,0,128,0)
+      Stop
+    }
+}
+
+ACTOR DreadfulTrail
+{ 
+    Scale 0.3
+	Alpha 0.98
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  TNT1 A 0 A_SetScale(ScaleX-0.01,ScaleY-0.01)
+	  3EXB A 1 Bright A_FadeOut(0.075)
+	  Loop
+    }
+}
+
+ACTOR DreadfulShockwaveTrail
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	Renderstyle Add
+    Scale 1
+	Alpha 0.99
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_FadeOut(0.025)
+      TNT1 A 0 A_SetScale(ScaleX+0.025,ScaleY+0.025)
+      3EXR A 1 Bright
+      Loop
+    }
+}
+
+ACTOR DreadfulFlightSmoke
+{ 
+    Scale 0.2
+    Alpha 0.79
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+	  TNT1 A 0 A_Jump(255,"SmokeA","SmokeB","SmokeC","SmokeD")
+	SmokeA:
+	  3EXS A 0
+	  Goto RandomScale
+	SmokeB:
+	  3EXS B 0
+	  Goto RandomScale
+	SmokeC:
+	  3EXS A 0
+	  Goto RandomScale
+	SmokeD:
+	  3EXS B 0
+	  Goto RandomScale
+	RandomScale:
+	  "####" "#" 0 A_SetScale(ScaleX+random(0.1,0.25))
+	Looplo:
+	  "####" "#" 0 A_SetScale(ScaleX+0.01,ScaleY+0.01)
+	  "####" "#" 1 A_FadeOut(0.01)
+	  Loop
+    }
+}
+
+ACTOR DreadfulParticle
+{ 
+    Scale 0.2
+	Alpha 0.99
+    Renderstyle Add
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+	  TNT1 AA 0 A_ChangeVelocity (frandom(-0.4, 0.4), frandom(-0.4, 0.4), frandom(-0.1, 0.2), 0)
+	  TNT1 A 0 A_SetScale(ScaleX+0.01,ScaleY+0.01)
+	  3EXP A 1 Bright A_FadeOut(0.02)
+	  Loop
+    }
+}
+
+ACTOR DreadfulParticle2 : DreadfulParticle
+{ 
+    States
+    {
+    Spawn:
+	  TNT1 AA 0 A_ChangeVelocity (frandom(-0.1, 0.1), frandom(-0.1, 0.1), frandom(-0.1, 0.1), 0)
+	  TNT1 A 0 A_SetScale(ScaleX+0.01,ScaleY+0.01)
+	  3EXP A 1 Bright A_FadeOut(0.0125)
+	  Loop
+    }
+}
+
+ACTOR DreadfulParticleBlast
+{
+    +NOINTERACTION
+    +NOGRAVITY
+    ReactionTime 200
+    States
+    {
+    Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("DreadfulParticle2",random(30,-30),random(30,-30),random(30,-30),frandom(15.0,5.0),frandom(15.0,5.0),frandom(-15.0,15.0),frandom(0.0,359.0))
+    TNT1 A 0 A_Countdown
+    Loop
+    Death:
+    Stop
+    }
+}
+
+ACTOR DreadfulParticleBlastSpawner
+{
+    +NOINTERACTION
+    +NOGRAVITY
+    ReactionTime 10
+    States
+    {
+    Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("DreadfulParticleBlast")
+    TNT1 A 2 A_Countdown
+    Loop
+    Death:
+    Stop
+    }
+}
+
+ACTOR DreadfulLightning
+{
+	+NOINTERACTION
+	+NOGRAVITY
+	Renderstyle Add
+	Alpha 0.99
+	Scale 1
+	States
+	{
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(255,"Spawn1A","Spawn1B","Spawn1C","Spawn1D","Spawn2A","Spawn2B","Spawn2C","Spawn2D")
+	Spawn1A:
+	1LIT A 1 Bright A_FadeOut(0.02)
+	Wait
+	Spawn1B:
+	1LIT B 1 Bright A_FadeOut(0.02)
+	Wait
+	Spawn1C:
+	1LIT C 1 Bright A_FadeOut(0.02)
+	Wait
+	Spawn1D:
+	1LIT D 1 Bright A_FadeOut(0.02)
+	Wait
+	Spawn2A:
+	2LIT A 1 Bright A_FadeOut(0.02)
+	Wait
+	Spawn2B:
+	2LIT B 1 Bright A_FadeOut(0.02)
+	Wait
+	Spawn2C:
+	2LIT C 1 Bright A_FadeOut(0.02)
+	Wait
+	Spawn2D:
+	2LIT D 1 Bright A_FadeOut(0.02)
+	Wait
+	}
+}
+
+//BFG Spray
+
+ACTOR DreadfulFlash
+{
+    +NOGRAVITY
+    +NOINTERACTION
+	States
+	{
+	Spawn:
+	TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("DreadfulLightning")
+    TNT1 AAAA 0 A_SpawnItemEx("DreadfulFlightSmoke",random(10,-10),random(10,-10),random(10,-10),frandom(0.05,-0.05),frandom(0.05,-0.05),frandom(0.05,-0.05),frandom(0.0,359.0),128,0)
+	TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("DreadfulParticle2",random(30,-30),random(30,-30),random(30,-30),frandom(6.0,3.0),frandom(6.0,3.0),frandom(6.0,-6.0),frandom(0.0,359.0))
+	Stop
+	}
+}
+
+//Impact
+
+ACTOR DreadfulFX //For GLDEF
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+    States
+    {
+    Spawn:
+      TNT1 A 105
+      Stop
+    }
+}
+
+ACTOR DreadfulBlast
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	Renderstyle Add
+	Alpha 0.99
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_SpawnItemEx("DreadfulBlast1")
+      TNT1 A 0 A_SpawnItemEx("DreadfulBlast2")
+      TNT1 A 0 A_SpawnItemEx("DreadfulBlast3")
+      TNT1 A 0 A_SpawnItemEx("DreadfulBlast4")
+      Stop
+    }
+}
+
+ACTOR DreadfulBlast1 : DreadfulBlast
+{ 
+    Scale 0.5
+	Alpha 0.9
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_FadeOut(0.01)
+      TNT1 A 0 A_SetScale(ScaleX+0.07,ScaleY+0.07)
+      3EXF A 1 Bright
+      Loop
+    }
+}
+
+ACTOR DreadfulBlast2 : DreadfulBlast
+{ 
+    Scale 0.75
+	Alpha 0.8
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_FadeOut(0.01)
+      TNT1 A 0 A_SetScale(ScaleX+0.06,ScaleY+0.06)
+      3EXF A 1 Bright
+      Loop
+    }
+}
+
+ACTOR DreadfulBlast3 : DreadfulBlast
+{ 
+    Scale 1
+	Alpha 0.7
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_FadeOut(0.0125)
+      TNT1 A 0 A_SetScale(ScaleX+0.05,ScaleY+0.05)
+      3EXF A 1 Bright
+      Loop
+    }
+}
+
+ACTOR DreadfulBlast4 : DreadfulBlast
+{ 
+    Scale 1.5
+	Alpha 0.6
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_FadeOut(0.015)
+      TNT1 A 0 A_SetScale(ScaleX+0.05,ScaleY+0.05)
+      3EXF A 1 Bright
+      Loop
+    }
+}
+
+ACTOR DreadfulShockwaver
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	ReactionTime 30
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 6 A_SpawnItemEx("DreadfulShockwave")
+	  TNT1 A 0 A_Countdown
+      Loop
+	Death:
+	  Stop
+    }
+}
+
+ACTOR DreadfulShockwave
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	Renderstyle Add
+    Scale 2.5
+	Alpha 0.99
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_FadeOut(0.025)
+      TNT1 A 0 A_SetScale(ScaleX+0.15,ScaleY+0.15)
+      3EXR A 1 Bright
+      Loop
+    }
+}
+
+ACTOR DreadfulLightningSpawner
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	ReactionTime 50
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 3 A_SpawnItemEx("DreadfulLightning",random(190,-190),random(190,-190),random(190,-190))
+	  TNT1 A 0 A_Countdown
+      Loop
+	Death:
+      TNT1 AA 6 A_SpawnItemEx("DreadfulLightning",random(190,-190),random(190,-190),random(190,-190))
+	  Stop
+    }
+}
+
+ACTOR DreadfulSmokeSpawner
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	ReactionTime 37
+    States
+    {
+    Spawn:
+	  TNT1 A 15
+	Looplet:
+      TNT1 A 0
+      TNT1 A 3 A_SpawnItemEx("DreadfulSmoker")
+	  TNT1 A 0 A_Countdown
+      Loop
+	Death:
+	  Stop
+    }
+}
+
+ACTOR DreadfulSmoker
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	ReactionTime 7
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_SpawnItemEx("DreadfulSmoke",random(170,-170),random(170,-170),random(170,-170),frandom(0.05,-0.05),frandom(0.05,-0.05),frandom(0.05,-0.05),frandom(0.0,360.0))
+	  TNT1 A 0 A_Countdown
+      Loop
+	Death:
+	  Stop
+    }
+}
+
+ACTOR DreadfulSmoke : DreadfulFlightSmoke
+{ 
+    Scale 0.25
+    Alpha 0.89
+}
+
+ACTOR DreadfulSphere
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	Renderstyle Add
+	Scale 0.3
+	Alpha 0.99
+    ReactionTime 100
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      3EXB A 0 A_SetScale(ScaleX-0.001,ScaleY-0.001)
+      3EXB A 1 A_FadeOut(0.005)
+      Loop
+    Death:
+      3EXB A 1 A_FadeOut(0.01)
+      Wait
+    }
+}
+
+ACTOR DreadfulParticleSpawner
+{ 
+    +NOGRAVITY
+    +NOINTERACTION
+	ReactionTime 45
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 3 A_SpawnItemEx("DreadfulParticler",random(90,-90),random(90,-90),random(90,-90))
+	  TNT1 A 0 A_Countdown
+      Loop
+	Death:
+	  Stop
+    }
+}
+
+ACTOR DreadfulParticler
+{
+    +NOINTERACTION
+    +NOGRAVITY
+    ReactionTime 7
+    States
+    {
+    Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("DreadfulParticle2",random(90,-90),random(90,-90),random(90,-90),frandom(2.0,02.0),frandom(2.0,-2.0),frandom(-2.0,2.0),frandom(0.0,360.0))
+    TNT1 A 0 A_Countdown
+    Loop
+    Death:
+    Stop
+    }
+}
+
+ACTOR DreadfulDamager
+{ 
+    Radius 1
+    Height 1
+    +NOGRAVITY
+    +NOINTERACTION
+    +DONTSPLASH
+    +FORCERADIUSDMG
+    Projectile
+    ReactionTime 44
+	DamageType Explosive
+    ProjectileKickBack 0
+    States
+    {
+    Spawn:
+      TNT1 A 0
+      TNT1 A 0 A_Explode(20*random(2,3),584,0)
+      TNT1 A 4 A_Countdown
+      Loop
+    Death:
+      Stop
+    }
+}
+
+ACTOR GaussProjectile : FastProjectile
+{
+  Speed 300
+  Radius 10
+  Height 7
+  Damage 100
+  Renderstyle Add
+  DamageType Fire
+  +RIPPER
+  //-CANNOTPUSH
+  +EXTREMEDEATH
+  +NODAMAGETHRUST
+  +DONTBLAST
+  MissileType "GaussTrailCalibrator"
+  MissileHeight 7
+  SeeSound "Weapons/OkudzhavaFly"
+  DeathSound "Weapons/OkudzhavaRod"
+  states
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 ThrustThingZ(0,10,0,1)
+  Looplet:
+    TNT1 A 0 ThrustThingZ(0,-2,0,1)
+    TNT1 A 1 A_PlaySound("Weapons/OkudzhavaLoop","SoundSlot5",1,1.0,1)
+    Loop
+  Death:
+    TNT1 A 0 A_SpawnItemEx("GaussWallRod",0,0,0,0,0,0,0,128,0)
+  XDeath:
+    TNT1 A 0 A_StopSound(5)
+    TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplosionParticleHeavy",random(2,-2),random(2,-2),random(2,-2),random(4,-4),random(4,-4),random(7,-1),random(0,359),128,0)
+    TNT1 A 1
+    stop
+  }
+}
+
+ACTOR GaussTrailCalibrator
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("GaussHotRod",0,0,0,frandom(-2,2),frandom(-2,2),frandom(1,3),0,0,0)
+    TNT1 A 0 A_SpawnItemEx("ExplosionParticleHeavy",0,0,0,frandom(-2,2),frandom(-2,2),frandom(1,3),0,0,0)
+    TNT1 A 0 A_SpawnItemEx("GaussTrail",0,0,0,0,0,0,0,0,0)
+    Stop
+  }
+}
+
+ACTOR GaussHotRod
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  Renderstyle Add
+  Scale 0.85
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    GRNP A 1 A_FadeOut(0.2)
+    Wait
+  }
+}
+
+ACTOR GaussWallRod
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  +BLOODLESSIMPACT
+  DamageType Fire
+  ReactionTime 50
+  Scale 0.85
+  States
+  {
+  Spawn:
+    GRNP A 0
+    TNT1 A 0 A_PlaySoundEx("Weapons/OkudzhavaLoop","SoundSlot5",1,-1)
+    GRNP A 6 A_Explode(1,18)
+    GRNP A 0 A_Jump(128,1)
+    GRNP A 0 A_SpawnItemEx("ExplosionParticleHeavy",random(24,-24),3+frandom(1,-1),frandom(1,-1),frandom(-1,1),frandom(-1,1),frandom(2,3),0,0,0)
+    GRNP A 0 A_Jump(128,1)
+    GRNP A 0 A_SpawnItemEx("ExplosionParticleHeavy",random(24,-24),3+frandom(1,-1),frandom(1,-1),frandom(-1,1),frandom(-1,1),frandom(2,3),0,0,0)
+    GRNP A 0 A_Countdown
+    Loop
+  Death:
+    TNT1 A 0
+    TNT1 A 0 A_PlaySoundEx("Weapons/OkudzhavaEnd","SoundSlot5",0,-1)
+    GRNP A 35
+    GRNP A 1 A_FadeOut(0.1)
+    Wait
+  }
+}
+
+ACTOR GaussTrail
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("GaussTrailMain",0.1*random(15,-15),0.1*random(15,-15),0.1*random(15,-15),0,0,0,0,0,0)
+    Stop
+  }
+}
+
+ACTOR GaussTrailMain
+{
+  RenderStyle Normal
+  Scale 0.075
+  Alpha 0.35
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_FadeOut(0.01)
+    TNT1 A 0 A_Jump(255,"TrailA","TrailB","TrailC","TrailD")
+  TrailA:
+    NSMK A 3
+  Looper:
+    NSMK A 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    NSMK A 1 A_FadeOut(0.01)
+    Loop
+  TrailB:
+    NSMK B 3
+  Looper:
+    NSMK B 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    NSMK B 1 A_FadeOut(0.01)
+    Loop
+  TrailC:
+    NSMK C 3
+  Looper:
+    NSMK C 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    NSMK C 1 A_FadeOut(0.01)
+    Loop
+  TrailD:
+    NSMK D 3
+  Looper:
+    NSMK D 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    NSMK D 1 A_FadeOut(0.01)
+    Loop
+  }
+}
+
+ACTOR NuclearSmallSphere
+{
+	Radius 6
+	Height 10
+	Speed 30
+	Damage 60
+    DamageType Explosive
+	Decal "Scorch"
+	Projectile
+    Renderstyle ADD
+    Alpha 0.90
+    Scale 0.5
+	DeathSound "impact/plasma"
+    SeeSound "None"
+	StencilColor "Yellow"
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+    +PUFFGETSOWNER
+	States
+	{
+	Spawn:
+	FRPG J 1 BRIGHT A_SpawnItem("YellowFlareSpawn",0,0)
+    TNT1 A 0 A_SpawnItemEx("HomingRocketBlur", 0, 0)
+    FRPG K 1 BRIGHT A_SpawnItem("YellowFlareMedium",0,0)
+    TNT1 A 0 A_SpawnItemEx("HomingRocketBlur", 0, 0)
+    FRPG J 1 BRIGHT A_SpawnItem("YellowFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItemEx("HomingRocketBlur", 0, 0)
+	Loop
+	Death:
+	TNT1 A 0
+		TNT1 A 0 A_StopSound(5)
+		TNT1 A 0 A_PlaySound("Petrovec/Hit")
+		TNT1 A 0 A_PlaySoundEx("Petrovec/Explode","SoundSlot6")
+		TNT1 A 0 A_Explode(175,128,0,0)
+		TNT1 A 0 A_SpawnItemEx("PetrovecBoltRingExp")
+		TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("PetrovecBoltParticleExp",random(11,-11),frandom(11,-11),frandom(9,-9),frandom(1,2),frandom(1,2),frandom(2,-2),random(0,359))
+		TNT1 AAAAAA 0 A_SpawnItemEx("PetrovecBoltExplode",random(19,-19),random(19,-19),random(12,-12),frandom(1,-1),frandom(1,-1),frandom(1,-1),random(0,359))
+		TNT1 A 10
+		TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("PetrovecBoltSmokeExp",random(12,-12),random(12,-12),random(7,-7),frandom(1,-1),frandom(1,-1),frandom(1,-1),random(0,359))
+	Stop
+	}
+}
+
+ACTOR SmokeShockWaveSmall
+{ 
+   Speed 0
+   Height 16
+   Radius 8
+   Scale 0.7
+   Damage 0
+   RenderStyle ADD
+   Alpha 0.9
+   +DROPOFF 
+   +NOBLOCKMAP 
+   +NOGRAVITY
+   +PUFFONACTORS
+   +PUFFGETSOWNER
+   States 
+   { 
+   Spawn: 
+      GSHK A 1 BRIGHT
+      Goto Death 
+   Death: 
+      GSHK BCEFGIJKLNOQR 1 BRIGHT A_FadeOut(0.03)
+      Stop 
+   } 
+}
+
+ACTOR NuclearBeam : MageWandMissile
+{
+  Speed 230
+  Radius 13
+  Height 8
+  Damage (random(20,21))
+  Decal "Scorch"
+  damagetype "Explosive"
+  MissileType "NuclearBeamTrail"
+  StencilColor "Yellow"
+  +RIPPER
+	+NOBOSSRIP
+  -CANNOTPUSH
+  -NODAMAGETHRUST
+  +BLOODLESSIMPACT
+  states
+  {
+  Death:
+	TNT1 B 1 A_Explode(random(2,3),50,1)
+    APBX BCDEBCDE 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	TNT1 A 0 A_SpawnItemEx("FireballExplosionFlamesSmall", 0, 0, 0, 0, 0, 0, 0, 128)
+	TNT1 AAAAA 5 A_CustomMissile("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+    stop
+  }
+}
+
+ACTOR NuclearBeamTrail : MageWandSmoke// replaces MageWandSmoke
+{
+  RenderStyle Add
+  Scale 0.8
+  DeathSound "9KEXPL"
+  SeeSound "None"
+  Decal "Scorch"
+   damagetype "Desintegrate"
+   StencilColor "Yellow"
+   +BLOODLESSIMPACT
+  States
+  {
+  Spawn:
+    APBX BCDBCD 1 BRIGHT A_SpawnItem("YellowFlareSmall",0,0)
+	TNT1 A 0 A_SpawnItemEx("FireballExplosionFlamesSmall", 0, 0, 0, 0, 0, 0, 0, 128)
+    stop
+  }
+}
+
+
+ACTOR NBFGFOG
+{
+    Radius 1
+    Height 1
+	Alpha 0.7
+	RenderStyle Add
+	Scale 0.4
+	Speed 8
+	Gravity 0
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+        NBGM ABCDEF 3 BRIGHT A_SpawnItem("YellowFlareMedium",0,0)
+        Goto Death
+	Death:
+	    NBGM F 1 BRIGHT A_SpawnItem("YellowFlareMedium",0,0)
+		Stop
+    }
+}
+
+Actor NuclearBFGBall : BFGBall
+{
+    +EXTREMEDEATH
+	Damage 150
+  Decal BFGLightning
+	DeathSound "NUKEBOOM"
+    //DamageType Desintegrate
+  States
+  {
+  Spawn:
+    TNT1 A 0 A_SpawnItemEx("NBFGFOG", 0, 0)
+    NBGM AB 1 BRIGHT A_SpawnItem("YellowFlareMedium",0,0)
+    NBGM CD 1 BRIGHT A_SpawnItemEx("NBFGTrailParticle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
+    TNT1 A 0 A_SpawnItemEx("NBFGFOG", 0, 0)
+    NBGM E 1 BRIGHT A_SpawnItem("YellowFlareMedium",0,0)
+    NBGM F 1 BRIGHT A_SpawnItemEx("NBFGTrailParticle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
+    Loop
+ 
+ Death:
+    TNT1 A 0
+    TNT1 A 0 Radius_Quake(4,34,0,12,0)
+	EXPL A 0 A_CustomMissile ("NukeBoom", 0, 0, random (0, 360), 2, random (0, 360))
+    Stop
+  }
+}
+
+
+Actor NBFGTrailParticle
+{
+  Height 0
+  Radius 0
+  Mass 0
+  Speed 3
+  +Missile
+  +NoBlockMap
+  +NoGravity
+  +DontSplash
+  RenderStyle Add
+  Scale 0.05
+  States
+  {
+  Spawn:
+    NBGM ABCDEF 1 Bright A_FadeOut(0.02)
+    Loop
+  }
+}
+Actor NukeBoom
+{
+ +NoBlockmap
+ +NoGravity
+ +ForceRadiusDmg
+ DamageType "Explosive"
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 A 0 A_PlaySoundEx("BFNMBOOM", "SoundSlot5", 0, 2)
+   TNT1 A 0 A_Quake(9, 210, 0, 1048576, "None")
+   TNT1 A 1 A_Explode(10485769, 2569, 1)
+   TNT1 A 1 A_Explode(262144, 512, 1)
+   TNT1 A 1 A_Explode(65536, 1024, 1)
+   TNT1 A 1 A_Explode(16384, 2048, 1)
+   TNT1 A 0 A_SpawnItemEx("MegaNukeFlare", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS)
+   TNT1 AAAAA 0 A_SpawnItemEx("MegaNukeSmokeFloor", 0, 0, 0, 0, 0, 0, 0, SXF_CLIENTSIDE)
+   //TNT1 A 0 A_SpawnItemEx("MegaNukeFloor", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS)
+   TNT1 A 0 A_SpawnItemEx("MegaNukeMushroom", 0, 0, 0, 0, 0, 10, 0, SXF_TRANSFERPOINTERS, 0)
+   TNT1 A 0 A_SpawnItemEx("MegaNukeFlareMushroom", 0, 0, 0, 0, 0, 10, 0, SXF_CLIENTSIDE, 0)
+   TNT1 AA 0 A_SpawnItemEx("MegaNukeSmokeMushroom", 0, 0, 0, 0, 0, 10, 0, SXF_CLIENTSIDE, 0)
+   TNT1 A 0 A_SpawnItemEx("MegaNukePillar", 0, 0, 0, 0, 0, 0, 12, SXF_TRANSFERPOINTERS, 0)
+   TNT1 AA 0 A_SpawnItemEx("MegaNukeSmokePillar", 0, 0, 0, 0, 0, 12, 0, SXF_CLIENTSIDE, 0)
+   Stop
+ }
+}
+
+Actor MegaNuke
+{
+ +NoBlockmap
+ +NoGravity
+ +ForceRadiusDmg
+ DamageType "Explosive"
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 A 0 A_PlaySoundEx("BFNMBOOM", "SoundSlot5", 0, 2)
+   TNT1 A 0 A_Quake(9, 210, 0, 1048576, "None")
+   TNT1 A 1 A_Explode(1048576, 256, 1)
+   TNT1 A 1 A_Explode(262144, 512, 1)
+   TNT1 A 1 A_Explode(65536, 1024, 1)
+   TNT1 A 1 A_Explode(16384, 2048, 1)
+   TNT1 A 0 A_SpawnItemEx("MegaNukeFlare", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS)
+   TNT1 AAAAA 0 A_SpawnItemEx("MegaNukeSmokeFloor", 0, 0, 0, 0, 0, 0, 0, SXF_CLIENTSIDE)
+   TNT1 A 0 A_SpawnItemEx("MegaNukeFloor", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS)
+   TNT1 A 0 A_SpawnItemEx("MegaNukeMushroom", 0, 0, 0, 0, 0, 10, 0, SXF_TRANSFERPOINTERS, 0)
+   TNT1 A 0 A_SpawnItemEx("MegaNukeFlareMushroom", 0, 0, 0, 0, 0, 10, 0, SXF_CLIENTSIDE, 0)
+   TNT1 AA 0 A_SpawnItemEx("MegaNukeSmokeMushroom", 0, 0, 0, 0, 0, 10, 0, SXF_CLIENTSIDE, 0)
+   TNT1 A 0 A_SpawnItemEx("MegaNukePillar", 0, 0, 0, 0, 0, 0, 12, SXF_TRANSFERPOINTERS, 0)
+   TNT1 AA 0 A_SpawnItemEx("MegaNukeSmokePillar", 0, 0, 0, 0, 0, 12, 0, SXF_CLIENTSIDE, 0)
+   Stop
+ }
+}
+
+Actor MegaNukeFire : MegaNuke
+{
+ RenderStyle Add
+ +NoInteraction
+ DamageType "Explosive"
+ States
+ {
+  Spawn:
+   TNT1 AA 0 A_Jump(256, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+  Spawn1:
+   TNT1 A 0 A_Explode(4000,512,1)
+   FLA1 A 0 A_SetScale(ScaleX +0.002, ScaleY +0.002)
+   FLA1 A 1 Bright A_FadeOut(0.005)
+   Loop
+  Spawn2:
+   TNT1 A 0 A_Explode(4000,512,1)
+   FLA2 A 0 A_SetScale(ScaleX +0.002, ScaleY +0.002)
+   FLA2 A 1 Bright A_FadeOut(0.005)
+   Loop
+  Spawn3:
+   TNT1 A 0 A_Explode(4000,512,1)
+   FLA3 A 0 A_SetScale(ScaleX +0.002, ScaleY +0.002)
+   FLA3 A 1 Bright A_FadeOut(0.005)
+   Loop
+  Spawn4:
+   TNT1 A 0 A_Explode(4000,512,1)
+   FLA4 A 0 A_SetScale(ScaleX +0.002, ScaleY +0.002)
+   FLA4 A 1 Bright A_FadeOut(0.005)
+   Loop
+ }
+}
+
+Actor MegaNukeSmoke : MegaNuke
+{
+ +NoInteraction
+ Scale 1.5
+ Alpha 0.1
+ States
+ {
+  Spawn:
+   TNT1 AA 0 A_Jump(256, "Spawn1", "Spawn2", "Spawn3", "Spawn4", "Spawn5", "Spawn6")
+  Spawn1:
+   SMKH A 0 A_JumpIfInventory("SmokeCount",40,"Spawn1X")
+   SMKH A 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH A 2 A_FadeIn(0.01)
+   SMKH A 0 A_GiveInventory("SmokeCount",1)
+   Loop
+  Spawn1X:
+   SMKH A 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH A 2 A_FadeOut(0.002)
+   Loop
+  Spawn2:
+   SMKH B 0 A_JumpIfInventory("SmokeCount",40,"Spawn2X")
+   SMKH B 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH B 2 A_FadeIn(0.01)
+   SMKH B 0 A_GiveInventory("SmokeCount",1)
+   Loop
+  Spawn2X:
+   SMKH B 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH B 2 A_FadeOut(0.002)
+   Loop
+  Spawn3:
+   SMKH C 0 A_JumpIfInventory("SmokeCount",40,"Spawn3X")
+   SMKH C 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH C 2 A_FadeIn(0.01)
+   SMKH C 0 A_GiveInventory("SmokeCount",1)
+   Loop
+  Spawn3X:
+   SMKH C 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH C 2 A_FadeOut(0.002)
+   Loop
+  Spawn4:
+   SMKH D 0 A_JumpIfInventory("SmokeCount",40,"Spawn4X")
+   SMKH D 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH D 2 A_FadeIn(0.01)
+   SMKH D 0 A_GiveInventory("SmokeCount",1)
+   Loop
+  Spawn4X:
+   SMKH D 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH D 2 A_FadeOut(0.002)
+   Loop
+  Spawn5:
+   SMKH E 0 A_JumpIfInventory("SmokeCount",40,"Spawn5X")
+   SMKH E 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH E 2 A_FadeIn(0.01)
+   SMKH E 0 A_GiveInventory("SmokeCount",1)
+   Loop
+  Spawn5X:
+   SMKH E 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH E 2 A_FadeOut(0.002)
+   Loop
+  Spawn6:
+   SMKH F 0 A_JumpIfInventory("SmokeCount",40,"Spawn6X")
+   SMKH F 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH F 2 A_FadeIn(0.01)
+   SMKH F 0 A_GiveInventory("SmokeCount",1)
+   Loop
+  Spawn6X:
+   SMKH F 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   SMKH F 2 A_FadeOut(0.002)
+   Loop
+ }
+}
+
+Actor MegaNukeSmoke2 : MegaNukeSmoke
+{
+ Scale 2.5
+ Alpha 0.05
+}
+
+Actor MegaNukeSmoke3 : MegaNukeSmoke
+{
+ Alpha 0.05
+}
+
+Actor MegaNukeSmokeSpawner : MegaNukeSmoke
+{
+ +FORCERADIUSDMG
+ States
+ {
+  Spawn:
+   TNT1 A 0 A_JumpIfInventory("SmokeCount",20,"SpawnX")
+   TNT1 A 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   TNT1 A 2
+   TNT1 A 0 A_GiveInventory("SmokeCount",1)
+   Loop
+  SpawnX:
+   SMKH A 0 A_JumpIfInventory("SmokeCount",80,"SpawnEnd")
+   SMKH A 0 A_SetScale(ScaleX +0.03, ScaleY +0.03)
+   TNT1 A 2
+   SMKH A 0 A_GiveInventory("SmokeCount",1)
+   SMKH A 0 A_Jump(9,1)
+   Loop
+   SMKH A 0 A_SpawnItemEx("MegaNukeSmoke2",random(32,-32),random(32,-32),random(16,-16),0.00001 * Random(0, 300000),0,0,random(0,359), SXF_CLIENTSIDE, 0)
+   Goto SpawnX
+  SpawnEnd:
+   TNT1 A 2
+   Stop
+ }
+}
+
+Actor SmokeCount : Inventory { Inventory.MaxAmount 80 +IGNORESKILL }
+
+Actor MegaNukeFlare : MegaNukeFire
+{
+ Scale 16
+ +NoInteraction
+ States
+ {
+  Spawn:
+   FLAR A 0 Bright A_SetScale(ScaleX -0.1, ScaleY -0.1)
+   FLAR A 1 Bright A_FadeOut(0.01)
+   Loop
+ }
+}
+
+Actor MegaNukeFloor : MegaNuke
+{
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("MegaNukeFire", 0, 0, Random(64,256), 0.015 * Random(1900, 2000), 0, 0, Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("MegaNukeFire", 0, 0, Random(64,256), 0.015 * Random(1900, 2000), 0, 0, Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 A 5
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", 0, 0, 0, 0.00001 * Random(0, 400000), 0.00001 * Random(0, 400000), 0.5, Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   Stop
+ }
+}
+
+Actor MegaNukeSmokeFloor : MegaNuke
+{
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("MegaNukeSmokeSpawner", 0, 0, Random(64,256), 0.016 * Random(1900, 2000), 0, -0.4, Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("MegaNukeSmokeSpawner", 0, 0, Random(64,256), 0.015 * Random(1900, 2000), 0, -0.4, Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 A 5
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("MegaNukeSmoke3", Random(0,2048), 0, Random(64,192), 0.00001 * Random(0, -500000), 0, 0.00001 * Random(0, -500000), Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke3", 0, 0, Random(64,192), 0.00001 * Random(0, 500000), 0, 0, Random(0, 359), SXF_CLIENTSIDE, 0)
+   Stop
+ }
+}
+
+Actor MegaNukePillar : MegaNuke
+{
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", 0, 0, 0, 0.00001 * Random(0, 100000), 0, 0.00001 * Random(10000, 1000000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", 0, 0, 0, 0.00001 * Random(0, 100000), 0, 0.00001 * Random(10000, 1000000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", 0, 0, 0, 0.00001 * Random(0, 100000), 0, 0.00001 * Random(10000, 1000000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 A 0 A_SpawnItem("MegaNukeSmokering", 0, 1600, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", 0, 0, 0, 0.00001 * Random(0, 100000), 0, 0.00001 * Random(10000, 1000000), Random(0, 359), SXF_TRANSFERPOINTERS, 64)
+   Stop
+ }
+}
+
+Actor MegaNukeSmokePillar : MegaNuke
+{
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke", 0, 0, 0, 0.00001 * Random(0, 100000), 0, 0.00001 * Random(-250000, 1000000), Random(0, 359), 128, 0)
+   Stop
+ }
+}
+
+Actor MegaNukeMushroom : MegaNuke
+{
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", Random(0, 128), 0, 0, 0.00001 * Random(0, 25000), 0, 0.00001 * Random(900000, 1100000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", Random(0, 192), 0, 0, 0.00001 * Random(0, 50000), 0, 0.00001 * Random(910000, 1090000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", Random(0, 256), 0, 0, 0.00001 * Random(0, 75000), 0, 0.00001 * Random(920000, 1080000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", Random(0, 320), 0, 0, 0.00001 * Random(0, 100000), 0, 0.00001 * Random(930000, 1070000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", Random(0, 384), 0, 0, 0.00001 * Random(0, 200000), 0, 0.00001 * Random(940000, 1060000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeFire", Random(0, 448), 0, 0, 0.00001 * Random(0, 350000), 0, 0.00001 * Random(950000, 1050000), Random(0, 359), SXF_TRANSFERPOINTERS, 0)
+   Stop
+ }
+}
+
+Actor MegaNukeSmokeMushroom : MegaNuke
+{
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke2", Random(0, 192), 0, 0, 0.00001 * Random(0, 100000), 0, 0.00001 * Random(1000000, 1100000), Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke2", Random(0, 240), 0, 0, 0.00001 * Random(0, 150000), 0, 0.00001 * Random(950000, 1050000), Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke2", Random(0, 288), 0, 0, 0.00001 * Random(0, 200000), 0, 0.00001 * Random(900000, 1000000), Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke2", Random(0, 336), 0, 0, 0.00001 * Random(0, 250000), 0, 0.00001 * Random(850000, 950000), Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke2", Random(0, 384), 0, 0, 0.00001 * Random(0, 300000), 0, 0.00001 * Random(800000, 900000), Random(0, 359), SXF_CLIENTSIDE, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("MegaNukeSmoke2", Random(0, 432), 0, 0, 0.00001 * Random(0, 350000), 0, 0.00001 * Random(750000, 850000), Random(0, 359), SXF_CLIENTSIDE, 0)
+   Stop
+ }
+}
+
+Actor MegaNukeFlareMushroom : MegaNukeFlare
+{
+ Scale 10
+ States
+ {
+  Spawn:
+   FLAR A 0 Bright A_SetScale(ScaleX -0.02, ScaleY -0.02)
+   FLAR A 1 Bright A_FadeOut(0.002)
+   Loop
+ }
+}
+
+Actor MegaNukeSmokering : MegaNuke
+{
+ States
+ {
+  Spawn:
+   TNT1 A 0
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("MegaNukeSmoke2", Random(256, 512), 0, 0, 0.01 * Random(750, 850), 0, 0.01 * random(175, 225), Random(0, 179)*2, 128, 0)
+   TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("MegaNukeSmoke2", Random(256, 512), 0, 0, 0.01 * Random(750, 850), 0, 0.01 * random(175, 225), Random(0, 179)*2, 128, 128)
+   Stop
+ }
+}
+
+Actor StunnerBall
+{
+  Radius 6
+  Height 8
+  Speed 45
+  Scale 0.10
+  DamageType Plasma
+  Damage 6
+  Decal StunnerScorch
+  RenderStyle Add
+  DeathSound "IONHIT"
+  Projectile
+  +Ripper
+  states
+  {
+  Spawn:
+    PBAL H 1 BRIGHT A_SpawnItem("PinkIonFlare",0,0)
+// A_SpawnItemEx("StunnerBallFX", 0, 0, 0, 0, 0, 0, 0, 128)
+    Loop
+  Death:
+    TNT1 A 0 A_SpawnItem ("IonPuff", 0)
+    TNT1 A 0 A_Explode(10,50,1)
+    TNT1 AAAAA 19 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+    Stop
+  }
+}
+
+Actor StunnerBallFX
+{
+  +NoBlockMap
+  +NoGravity
+  Scale 0.45
+  RenderStyle Add
+  Radius 1
+  Height 2
+  States
+  {
+  Spawn:
+    STPR A 1 bright A_FadeOut(0.1)
+    Loop
+  }
+}
+
+ACTOR IonPuff: BulletPuff
+{
+  RenderStyle Add
+  Alpha 0.95
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +CLIENTSIDEONLY
+  Scale 1.1
+  Translation "192:207=250:254"
+  states
+  {
+  Spawn:
+    PBEX A 0 BRIGHT// A_SpawnItem("BlueFlare",0,0)
+		TNT1 AA 0 A_CustomMissile ("IonParticleX", 12, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItemEx("PinkPlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+	//EXPL AAAA 0 A_CustomMissile ("SmallSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+    PLSE ABCDE 2 BRIGHT A_SpawnItem("PinkFlare" ,0)
+    stop
+  }
+}
+
+Actor PinkPlasmaParticleSpawner
+{
+  RenderStyle Add
+  Alpha 0.95
+  Scale 1.1
+  +NoClip
+  +NoBlockMap
+  +NoGravity
+  +Missile
+  +FORCEXYBILLBOARD
+  States
+  {
+  Spawn:
+	TNT1 AA 0 A_CustomMissile ("PinkPlasmaParticle", 0, 0, random (0, 360), 2, random (50, 130))
+	//TNT1 AAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+    PIEX A 4 BRIGHT //A_SpawnItem("BlueFlare" ,0)
+    TNT1 A 1
+    Stop
+  }
+}
+
+Actor IonParticleSpawner: PinkPlasmaParticleSpawner
+{
+  States
+  {
+  Spawn:
+    TNT1 AAAA 0 A_SpawnItemEx("IonParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
+    TNT1 AAAA 0 A_CustomMissile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360))
+    TNT1 A 1
+    Stop
+  }
+}
+
+Actor PinkPlasmaParticle
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  //+LowGravity
+  +DontSplash
+  +DoomBounce
+  +FORCEXYBILLBOARD
+  BounceFactor 0.2
+  Gravity 0.6
+  RenderStyle Add
+  Scale 0.035
+  //Speed 2
+  Speed 6
+  States
+  {
+  Spawn:
+  Death:
+    STPP A 2 Bright A_FadeOut(0.04)
+    Loop
+  }
+}
+
+Actor IonParticle: PinkPlasmaParticle
+
+{
+  States
+  {
+  Spawn:
+  Death:
+    SPKG A 2 Bright A_FadeOut(0.02)
+    Loop
+  }
+}
+
+Actor PinkFlare : Flare_General
+{
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENP A 2 bright
+		stop
+		TNT1 A 0
+		LENP B 2 bright
+		stop
+	}
+}
+
+Actor PinkIonFlare : Flare_General
+{
+alpha 0.4
+scale 0.15
+states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		LENP A 1 bright
+		stop
+		TNT1 A 0
+		LENP B 1 bright
+		stop
+	}
+}
+
+Actor IonParticleX
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  +DontSplash
+  +DoomBounce
+  +FORCEXYBILLBOARD
+  BounceFactor 0.1
+  Gravity 0.4
+  RenderStyle Add
+  Scale 0.1
+  //Speed 2
+  Speed 2
+  States
+  {
+  Spawn:
+  IONK A 1 Bright
+  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+  Goto Stand
+  Stand:
+    IONK A 2 Bright A_FadeOut(0.06)
+    Loop
+ Death:
+ TNT1 A 1
+ TNT1 A 0
+ Stop
+	
+  }
+}
+
+
+Actor BigIonParticleX: IonParticleX
+{
+  Scale 0.25
+  Speed 3
+}
+
+Actor StunnerBallCluster
+{
+	Radius 10
+	Height 8
+	Projectile
+	Speed 70
+	FastSpeed 70
+    Damage 35
+	DamageType "Plasma"
+    MeleeDamage 0
+    Gravity 0.00
+	Scale 0.1
+    Decal "Scorch"
+	RenderStyle Add
+    -NOGRAVITY
+    +EXTREMEDEATH
+    +BLOODSPLATTER 
+	+SEEKERMISSILE
+	//SeeSound "weapons/RLL"
+	DeathSound "PYHIT"
+	Obituary "$OB_MPROCKET"
+	MONSTER
+	+FRIENDLY
+States
+	{
+	Spawn:
+	    PBAL H 1 BRIGHT A_SpawnItem("PinkIonFlare",0,0)
+		PBAL H 1 BRIGHT A_SpawnItem("PinkIonFlare",0,0)
+		Loop
+	
+	Death:
+        TNT1 A 0 A_SpawnItem ("IonPuff", 0)
+    TNT1 A 0 A_Explode(10,50,1)
+    TNT1 AAAAA 0 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -50, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -40, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -30, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -22, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -15, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -9, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 0, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 9, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 15, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 22, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 30, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 40, 270)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 50, 270)
+		
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -50, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -40, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -30, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -22, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -15, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, -9, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 0, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 9, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 15, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 22, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 30, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 40, 0)
+		TNT1 A 0 A_CustomMissile("StunnerBall", 36, 15, 50, 0)
+		
+		BXPL A 0 Bright A_Explode(85*random(3,4),180, 0) // Simulated impact damage 
+		BXPL A 0 Bright A_Explode(random(50,55), 315, 0) // Freezy radius damage. (was 128)
+		//BXPL AAAAAAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke", 0, 0, 0, random(10, 30)*0.1, 0, random(0, 10)*0.1, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
+		//BXPL AAAAA 0 Bright A_SpawnItemEx("CryoSmoke3", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		//BXPL AAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke2", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		Stop
+	}
+}
+
+Actor RailShot : FastProjectile 
+{
+  Radius 10
+  Height 8
+  Speed 300
+  Damage 220
+  PROJECTILE
+  +RIPPER
+  scale 0.5
+  Renderstyle "Add"
+  Alpha 0.75
+  MissileType "RailshotTrailSpawnerMain"
+  MissileHeight 8
+  States
+  {
+  Spawn:
+	TNT1 A 0 ThrustThingZ(0,10,0,1)
+Looplet:
+	TNT1 A 0 ThrustThingZ(0,-2,0,1)
+    TNT1 A 1 //A_spawnitem("RailshotTrailSpawnerMain",0,0)
+    Loop
+  Death:
+    //TNT1 A 0 A_PlaySound("Weapons/MinibeliskDead",5)
+    NSKB E 1 BRIGHT
+	TNT1 A 0 A_spawnitem("RailShotExplosion",0,0)
+    Stop
+  }
+}
+
+Actor RailShotExplosion
+{
+Damagetype Cut
++NOCLIP
++NOGRAVITY
++FORCEXYBILLBOARD
+Scale 1.1
+States
+{
+Spawn:
+	Death:
+    //TNT1 A 0 A_SpawnItem ("PlasmaPuff", 0)
+    //TNT1 A 0 A_SpawnItem ("RailPuff", 0)
+	TNT1 B 1 A_Explode(5,90,1)
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAAAAAAAA 0 A_CustomMissile ("SuperPlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT1 B 4	
+    TNT2 AAAAAAAAAAA 4 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		Stop
+	Stop
+}
+}
+
+Actor RailShotTrailSpawner
+{
+  +NOINTERACTION
+  +NOTARGET
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 1 A_SpawnItemEx("RailShotTrail")
+  Stop
+  }
+}
+
+Actor RailShotTrail
+{
+  +NOINTERACTION
+  +NOTARGET
+  Renderstyle Add
+  Scale 0.1
+  Renderstyle "Add"
+  Alpha 0.75
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  NSKB ABCDEFGHIJKL 1 BRIGHT A_FadeOut(0.04)
+  Stop
+  }
+}
+
+Actor RailShotTrailSpawnerMain
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 0 A_SpawnItemEx("RailShotRingTrail")
+  TNT1 A 1 A_SpawnItemEx("RailShotTrailMain")
+  Stop
+  }
+}
+
+Actor RailShotRingTrail
+{
+  +NOINTERACTION
+  +NOTARGET
+  Renderstyle Stencil
+  StencilColor "Cyan"
+  Scale 0.02
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 0 A_SetScale(ScaleX+0.01,ScaleY+0.01)
+  NSKB D 1 BRIGHT A_FadeOut(0.06)
+  TNT1 A 0 A_JumpIf(Alpha<=0.6,"ScaleDown")
+  Loop
+  ScaleDown:
+  TNT1 A 0
+  TNT1 A 0 A_SetScale(ScaleX-0.008,ScaleY-0.008)
+  NSKB C 1 BRIGHT A_FadeOut(0.06)
+  Loop
+  }
+}
+
+Actor RailShotTrailMain
+{
+  +NOINTERACTION
+  +NOTARGET
+  Renderstyle "Add"
+  Alpha 0.75
+  Scale 0.02
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 0 A_SetScale(ScaleX+0.001,ScaleY+0.001)
+  NSKB AAAAAAAAAA 1 BRIGHT A_FadeOut(0.06)
+  Loop
+  }
+}
+
+Actor BFSShot : FastProjectile
+{
+  Radius 10
+  Height 8
+  Speed 300
+  Damage 220
+  PROJECTILE
+  +RIPPER
+  scale 0.5
+  Renderstyle "Add"
+  Alpha 0.75
+  MissileType "BFSShotTrailSpawnerMain"
+  MissileHeight 8
+  States
+  {
+  Spawn:
+	TNT1 A 0 ThrustThingZ(0,10,0,1)
+Looplet:
+	TNT1 A 0 ThrustThingZ(0,-2,0,1)
+    TNT1 A 1 A_spawnitem("BFSShotTrailSpawner",0,0)
+    Loop
+  Death:
+	TNT1 A 0 A_spawnitem("BFSShotExplosion",0,0)
+    Stop
+  }
+}
+
+Actor BFSShotExplosion
+{
+Damagetype Cut
++NOCLIP
++NOGRAVITY
++FORCEXYBILLBOARD
+Scale 1.1
+States
+{
+Spawn:
+	Death:
+    TNT1 A 0
+    TNT1 A 0 Radius_Quake(4,34,0,12,0)
+	TNT1 A 0 A_Explode(80,300,0)
+    TNT1 A 1 Bright A_BFGSpray
+	TNT1 A 0 A_Spawnitem("DreadfulLightning",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulLightning",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulShockwave",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulSmoker",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulParticler",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulShockwave",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulSmoker",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulParticler",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulSmoker",0,0)
+	TNT1 A 0 A_Spawnitem("DreadfulParticler",0,0)
+	TNT1 A 0 Bright A_SpawnItem("GreenShockWave",0,0,0)
+    BFE1 A 0 A_SpawnItemEx("BFGDeathParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+    BFE1 A 0 A_SpawnItemEx("BFGSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAA 0 A_CustomMissile ("DreadfulSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT1 A 0 A_SpawnItem("MegaGibRemoving")
+	TNT1 AAAAAAAAAAA 1 Bright A_SpawnItem("GreenFlare",0,0)
+	//TNT1 A 0 A_SPawnItem("SuperBFGExtraGiant")
+    TNT1 AAAAAAAAAA 1 Bright A_SpawnItem("GreenFlare",0,0)
+	Stop
+}
+}
+
+Actor BFSShotTrailSpawner
+{
+  +NOINTERACTION
+  +NOTARGET
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 1 A_SpawnItemEx("BFSShotTrail")
+  Stop
+  }
+}
+
+Actor BFSShotTrail
+{
+  +NOINTERACTION
+  +NOTARGET
+  Renderstyle Add
+  Scale 0.1
+  StencilColor "Green"
+  Renderstyle "Add"
+  Alpha 0.75
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  NSKB ABCDEFGHIJKL 1 BRIGHT A_FadeOut(0.04)
+  Stop
+  }
+}
+
+Actor BFSShotTrailSpawnerMain
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 0 A_SpawnItemEx("BFSShotRingTrail")
+  TNT1 A 1 A_SpawnItemEx("BFSShotTrailMain")
+  Stop
+  }
+}
+
+Actor BFSShotRingTrail
+{
+  +NOINTERACTION
+  +NOTARGET
+  Renderstyle Stencil
+  StencilColor "Green"
+  Scale 0.02
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 0 A_SetScale(ScaleX+0.01,ScaleY+0.01)
+  NSKB D 1 BRIGHT A_FadeOut(0.06)
+  TNT1 A 0 A_JumpIf(Alpha<=0.6,"ScaleDown")
+  Loop
+  ScaleDown:
+  TNT1 A 0
+  TNT1 A 0 A_SetScale(ScaleX-0.008,ScaleY-0.008)
+  NSKB C 1 BRIGHT A_FadeOut(0.06)
+  Loop
+  }
+}
+
+Actor BFSShotTrailMain
+{
+  +NOINTERACTION
+  +NOTARGET
+  Renderstyle "Add"
+  Alpha 0.75
+  StencilColor "Green"
+  Scale 0.02
+  States
+  {
+  Spawn:
+  TNT1 A 0
+  TNT1 A 0 A_SetScale(ScaleX+0.001,ScaleY+0.001)
+  NSKB AAAAAAAAAA 1 BRIGHT A_FadeOut(0.06)
+  Loop
+  }
+}
+
+ACTOR PossessedDemonFire
+{
+	Radius 13
+	Height 8
+	Speed 25
+	Damage 30
+	Projectile
+	+RANDOMIZE
+	+NOBOSSRIP
+	+NODAMAGETHRUST
+	-BLOODSPLATTER
+	+BLOODLESSIMPACT
+	RenderStyle Add
+	Alpha 0.66
+	Scale 0.5
+	DeathSound "weapons/flamehit"
+	Obituary "$OB_MPFLAMETHROWER"
+	Decal "FlameScorch"
+	DamageType Fire
+	States
+	{
+	Spawn:
+		TNT1 A 0 BRIGHT A_PlaySound("weapons/flamehit")
+		TNT1 AAAA 1 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-1,1)+MOMX, Random(-1,1)+MOMY, Random(-1,1)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+        TNT1 A 1 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-2,2)+MOMX, Random(-2,2)+MOMY, Random(-2,2)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 1 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 1 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-4,4)+MOMX, Random(-4,4)+MOMY, Random(-4,4)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		TNT1 A 18 BRIGHT
+		Stop
+	Death:
+		TNT1 A 0 A_SpawnItemEx("IgnitedSurface", random(-8,8), Random(-8,8), 0, 0, 0, Random(1, 2), 0, 128, 64)
+		stop
+	}
+}
+ACTOR PossessedDemonFire2 : PossessedDemonFire // Map hack D:
+{
+	Decal ""
+	speed 25
+	States
+	{
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+actor IgnitedSurfaceFlame
+{
+	Scale 0.3
+	Alpha 0.7
+	+NOINTERACTION
+	 Height 2
+ Radius 2
+ Speed 3
+ RenderStyle Add
+ Alpha 0.9
+ +NOGRAVITY
+ +FORCEXYBILLBOARD
+ +DONTSPLASH
+ +NOTELEPORT
+ +NOBLOCKMAP
+ +RIPPER
+ +BLOODLESSIMPACT
+ +CANNOTPUSH
+ -BLOODSPLATTER
+ -ACTIVATEPCROSS
+ Damagetype "Fire"
+ -ACTIVATEIMPACT
+ -NOCLIP
+ States
+ {
+ Spawn:
+ 	FIR1 A 0
+ 	FIR1 A 0 A_Jump(127, "Spawn2", "Spawn3")
+ 	FRE1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+ 	stop
+ Spawn2:
+ 	FRE1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+ 	stop
+ Spawn3:
+ 	FRE1 ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 BRIGHT
+ 	stop
+}}
+
+actor FlameStreamTrail : IgnitedSurfaceFlame
+{
+	Scale 0.36
+	Alpha 0.32
+	Damage 0
+	+MISSILE
+	-ACTIVATEIMPACT
+	-ACTIVATEPCROSS
+	States
+	{
+		Death:
+			TNT1 AA 1
+			stop
+	}
+}
+
+actor IgnitedSurface
+{
+Projectile
+Height 5
+Radius 2
+BounceFactor 0.0
+obituary "%o was purified by %k's cleansing flame."
+RenderStyle Add
+Scale 0.5
+ReactionTime 160
+DamageType "Fire"
+-SOLID
++NODAMAGETHRUST
++LOWGRAVITY
+-NOGRAVITY
++HEXENBOUNCE
++SKYEXPLODE
++DONTSPLASH
+States
+{
+Spawn:
+TFIR A 0 A_CountDown
+TNT1 A 0 A_SpawnItemEx("IgnitedSurfaceFlame", random(-8,8), Random(-8,8), 0, 0, 0, Random(1, 2), 0, 128, 64)
+TNT1 A 2 A_Explode(3, 18, 1)
+TNT1 A 0 A_JumpIf(waterlevel == 3, "Disappear")
+loop
+Death:
+TNT1 A 1
+stop
+Disappear:
+TNT1 A 0
+TNT1 A 1
+stop
+}
+}
+
+Actor Hellbullet: FastProjectile
+{
+	Projectile
+	+RANDOMIZE
+	+FORCEXYBILLBOARD
+	+DONTSPLASH
+   +BLOODSPLATTER 
+   +NOEXTREMEDEATH
+damage 12
+damagetype fire
+radius 2
+height 0
+renderstyle ADD
+alpha 0.9
+scale .15
+speed 150
+Decal "Scorch"
+deathsound "DMTEXPL"
+states
+	{
+	Spawn:
+		FX15 A 1 BRIGHT A_SpawnItem("RedFlare",0,0)
+		FX15 A 0 A_CustomMissile ("RedTracerSmall", 0, 0, random (0, 360), 2, random (0, 360))
+		//FX15 A 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-2,2)+MOMX, Random(-2,2)+MOMY, Random(-2,2)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 B 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 C 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 B 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 C 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-4,4)+MOMX, Random(-4,4)+MOMY, Random(-4,4)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		
+		FX15 B 1 BRIGHT A_SpawnItem("RedFlare",0,0)
+		FX15 A 0 A_CustomMissile ("RedTracerSmall", 0, 0, random (0, 360), 2, random (0, 360))
+		//FX15 A 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-2,2)+MOMX, Random(-2,2)+MOMY, Random(-2,2)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 B 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 C 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 B 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 C 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-4,4)+MOMX, Random(-4,4)+MOMY, Random(-4,4)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		
+		FX15 C 1 BRIGHT A_SpawnItem("RedFlare",0,0)
+		FX15 A 0 A_CustomMissile ("RedTracerSmall", 0, 0, random (0, 360), 2, random (0, 360))
+		//FX15 A 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-2,2)+MOMX, Random(-2,2)+MOMY, Random(-2,2)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 B 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 C 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 B 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-3,3)+MOMX, Random(-3,3)+MOMY, Random(-3,3)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		//FX15 C 0 BRIGHT A_SpawnItemEx("FlameStreamTrail", 0, 0, 0, Random(-4,4)+MOMX, Random(-4,4)+MOMY, Random(-4,4)+MOMZ, 0, SXF_CLIENTSIDE | SXF_ABSOLUTEMOMENTUM, 32)
+		Loop
+	Xdeath:
+	Death:
+	TNT1 AA 0 A_CustomMissile ("Shoque", 3, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItemEx ("SmallUnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    //TNT1 A 0 A_SpawnItemEx("IgnitedSurface", random(-8,8), Random(-8,8), 0, 0, 0, Random(1, 2), 0, 128, 64)
+    TNT2 A 1 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		Stop
+	}
+}
+
+Actor HellBulletEnemy : HellBullet
+{
+Damage (random(6,5))
+DamageType Fire
+Speed 100
++DONTHURTSPECIES
+Species "DemonTechTrooper"
+}
+
+Actor RedTracerSmall
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  //+LowGravity
+  +DontSplash
+  +DoomBounce
+  +FORCEXYBILLBOARD
+  BounceFactor 0.2
+  Gravity 0.8
+  RenderStyle Add
+  Scale 0.035
+  //Speed 2
+  Speed 0
+    +NoGravity
+  -DOOMBOUNCE
+  RenderStyle Add
+  Scale 0.25
+  Alpha 0.6
+  States
+  {
+  Spawn:
+  Death:
+    SHOQ ABCDEFG 2 Bright A_FadeOut(0.04)
+    Stop
+  }
+}
+
+
+ACTOR PenetratorDrillProjectile : FastProjectile
+{
+  Speed 300
+  Radius 10
+  Height 7
+  Damage 100
+  Renderstyle Add
+  DamageType Saw
+  scale 0.25
+  +RIPPER
+  //-CANNOTPUSH
+  +EXTREMEDEATH
+  +NODAMAGETHRUST
+  +DONTBLAST
+  MissileType "DrillTrailCalibrator"
+  MissileHeight 7
+  SeeSound "Weapons/OkudzhavaFly"
+  DeathSound "drillbounce"
+  states
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 ThrustThingZ(0,10,0,1)
+  Looplet:
+    TNT1 A 0 ThrustThingZ(0,-2,0,1)
+    TNT1 A 1 //A_PlaySound("Weapons/OkudzhavaLoop","SoundSlot5",1,1.0,1)
+    Loop
+  Death:
+    TNT1 A 0 A_SpawnItemEx("DrillWall",0,0,0,0,0,0,0,128,0)
+  XDeath:
+    TNT1 A 0 A_StopSound(5)
+    TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplosionParticleHeavy",random(2,-2),random(2,-2),random(2,-2),random(4,-4),random(4,-4),random(7,-1),random(0,359),128,0)
+    TNT1 A 1
+    stop
+  }
+}
+
+ACTOR DrillTrailCalibrator
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("DrillBlur",0,0,0,frandom(-2,2),frandom(-2,2),frandom(1,3),0,0,0)
+    //TNT1 A 0 A_SpawnItemEx("ExplosionParticleHeavy",0,0,0,frandom(-2,2),frandom(-2,2),frandom(1,3),0,0,0)
+    TNT1 A 0 A_SpawnItemEx("DrillTrail",0,0,0,0,0,0,0,0,0)
+    Stop
+  }
+}
+
+ACTOR DrillBlur
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  Renderstyle Add
+  Scale 0.25
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    R021 G 1 A_FadeOut(0.2)
+    Wait
+  }
+}
+
+ACTOR DrillWall
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  +BLOODLESSIMPACT
+  DamageType Fire
+  ReactionTime 50
+  Scale 0.25
+  States
+  {
+  Spawn:
+    GRNP A 0
+    TNT1 A 0 A_PlaySoundEx("Weapons/OkudzhavaLoop","SoundSlot5",1,-1)
+    R021 G 6 A_Explode(1,18)
+    GRNP A 0 A_Jump(128,1)
+    GRNP A 0 A_SpawnItemEx("ExplosionParticleHeavy",random(24,-24),3+frandom(1,-1),frandom(1,-1),frandom(-1,1),frandom(-1,1),frandom(2,3),0,0,0)
+    GRNP A 0 A_Jump(128,1)
+    GRNP A 0 A_SpawnItemEx("ExplosionParticleHeavy",random(24,-24),3+frandom(1,-1),frandom(1,-1),frandom(-1,1),frandom(-1,1),frandom(2,3),0,0,0)
+    GRNP A 0 A_Countdown
+    Loop
+  Death:
+    TNT1 A 0
+    TNT1 A 0 A_PlaySoundEx("drillbounce","SoundSlot5",0,-1)
+    R021 G 35
+    R021 G 1 A_FadeOut(0.1)
+    Wait
+  }
+}
+
+ACTOR DrillTrail
+{
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("PenetratorDrillSmokeTrailMain",0.1*random(15,-15),0.1*random(15,-15),0.1*random(15,-15),0,0,0,0,0,0)
+	TNT1 A 0 A_SpawnItemEx("PenetratorDrillTrailMain",0.1*random(15,-15),0.1*random(15,-15),0.1*random(15,-15),0,0,0,0,0,0)
+    Stop
+  }
+}
+
+ACTOR PenetratorDrillSmokeTrailMain
+{
+  RenderStyle Normal
+  Scale 0.075
+  Alpha 0.5
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_FadeOut(0.01)
+    TNT1 A 0 A_Jump(255,"TrailA","TrailB","TrailC","TrailD")
+  TrailA:
+    SMK3 ABC 1
+  Looper:
+    NSMK A 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    SMK3 D 1 A_FadeOut(0.01)
+    Loop
+  TrailB:
+    SMK3 EFG 1
+  Looper:
+    NSMK B 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    SMK3 H 1 A_FadeOut(0.01)
+    Loop
+  TrailC:
+    SMK3 IJK 1
+  Looper:
+    NSMK C 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    SMK3 M 1 A_FadeOut(0.01)
+    Loop
+  TrailD:
+    SMK3 ABC 1
+  Looper:
+    NSMK D 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    SMK3 D 1 A_FadeOut(0.01)
+    Loop
+  }
+}
+
+ACTOR PenetratorDrillTrailMain
+{
+  RenderStyle Normal
+  Scale 0.15
+  Alpha 0.25
+  +NOINTERACTION
+  +NOGRAVITY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_FadeOut(0.01)
+    TNT1 A 0 A_Jump(255,"TrailA","TrailB","TrailC","TrailD")
+  TrailA:
+    R021 G 3
+  Looper:
+    NSMK A 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    R021 G 1 A_FadeOut(0.01)
+    Loop
+  TrailB:
+    R021 G 3
+  Looper:
+    NSMK B 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    R021 G 1 A_FadeOut(0.01)
+    Loop
+  TrailC:
+    R021 G 3
+  Looper:
+    NSMK C 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    R021 G 1 A_FadeOut(0.01)
+    Loop
+  TrailD:
+    R021 G 3
+  Looper:
+    NSMK D 0 A_SetScale(ScaleX +0.005, ScaleY +0.005)
+    R021 G 1 A_FadeOut(0.01)
+    Loop
+  }
+}
+
+Actor PurplePlasmaParticle
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+  -NoGravity
+  //+LowGravity
+  +DontSplash
+  +DoomBounce
+  +FORCEXYBILLBOARD
+  BounceFactor 0.2
+  Gravity 0.8
+  RenderStyle Add
+  Scale 0.035
+  //Speed 2
+  Speed 12
+  States
+  {
+  Spawn:
+  Death:
+    WSKP A 2 Bright A_FadeOut(0.04)
+    Loop
+  }
+}
+
+Actor PurplePlasmaFire: PurplePlasmaParticle
+{
+
+  +NoGravity
+  -DOOMBOUNCE
+  RenderStyle Add
+  Scale 0.7
+  Alpha 0.9
+  Speed 0
+  States
+  {
+  Spawn:
+  Death:
+    RPBP ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04)
+    Stop
+  }
+}
+
+Actor PurplePlasmaFireSmall2 : PurplePlasmaFire
+{
+  Scale 0.4
+}
+
+Actor PurplePlasmaFireMove: PurplePlasmaFire
+{
+  Speed 1
+  Scale 0.3
+}
+
+
+Actor PurplePlasmaFireMove2: PurplePlasmaFire
+{
+  Speed 2
+  Scale 0.6
+}
+
+Actor PurplePlasmaFireMove3: PurplePlasmaFire
+{
+  Speed 2
+  Scale 0.15
+}
+
+Actor PurpleHotPlasmaGas: PurplePlasmaParticle
+{
+
+  +NoGravity
+  -DOOMBOUNCE
+  -NOCLIP
+  -NOBLOCKMAP
+  Damage 1
+  Damagetype Plasma
+  RenderStyle Add
+  Scale 0.1
+  Alpha 0.9
+  Speed 18
+  Decal "Scorch"
+  SeeSound "PLSTHRW"
+  DeathSound "imp/shotx"
+  Radius 8
+  Height 8
+  States
+  {
+  Spawn:
+    RPBP AAABB 1 BRIGHT
+	RPBP CDEFGH 1 BRIGHT A_CustomMissile ("PurplePlasmaFireMove", 0, 0, 0, 2, random (-30, 30))
+	RPBP IJKL 1 BRIGHT A_CustomMissile ("PurplePlasmaFireMove2", 0, 0, 0, 2, random (-60, 60))
+	RPBP MNOP 1 Bright A_CustomMissile ("PurplePlasmaFireMove2", 0, 0, random (0, 360), 2, random (0, 360))
+    Stop
+Death:
+    TNT1 A 0 A_Explode(5, 180, 0)
+	RPBP BCDEFGHIJKLMNOP 1 Bright A_CustomMissile ("PurplePlasmaFireMove2", 0, 0, random (0, 360), 2, random (0, 360))
+    Stop
+  }
+}
+
+Actor PurpleHotPlasmaGas2 : PurplePlasmaParticle
+{
+
+  +NoGravity
+  -DOOMBOUNCE
+  -NOCLIP
+  -NOBLOCKMAP
+  Damage 0
+  Damagetype Plasma
+  RenderStyle Add
+  Scale 0.05
+  Alpha 0.9
+  Speed 18
+  Decal "Scorch"
+  SeeSound "PLSTHRW"
+  DeathSound "imp/shotx"
+  Radius 8
+  Height 8
+  States
+  {
+  Spawn:
+    RPBP AAABB 1 BRIGHT
+	RPBP CDEFGH 1 BRIGHT A_CustomMissile ("PurplePlasmaFireMove3", 0, 0, 0, 2, random (-30, 30))
+	RPBP IJKL 1 BRIGHT A_CustomMissile ("PurplePlasmaFireMove3", 0, 0, 0, 2, random (-60, 60))
+	RPBP MNOP 1 Bright A_CustomMissile ("PurplePlasmaFireMove3", 0, 0, random (0, 360), 2, random (0, 360))
+    Stop
+Death:
+    TNT1 A 0 A_Explode(0, 180, 0)
+	RPBP BCDEFGHIJKLMNOP 1 Bright A_CustomMissile ("PurplePlasmaFireMove3", 0, 0, random (0, 360), 2, random (0, 360))
+    Stop
+  }
+}
+
+ACTOR Laserdot
+{ 
+	Decal "None"
+    Mass 0
+    Scale 0.10
+    Radius 1
+    Height 2
+    +NOBLOCKMAP
+    +NOGRAVITY
+    +BLOODLESSIMPACT
+    +ALWAYSPUFF
+    +PUFFONACTORS
+    +DONTSPLASH
+	+NOTRIGGER
+    +FORCEXYBILLBOARD
+    Renderstyle Add
+    Alpha 0.75
+    States
+    {
+	Spawn:
+		LSIT A 0
+		LSIT A 1 BRIGHT
+		Stop
+	}
+}
+
+Actor NailProjectile
+{
+  Projectile
+  Radius 3
+  Height 3
+  Speed 44
+  Damage 4
+  Scale 0.5
+  +BloodSplatter
+  SeeSound ""
+  DeathSound ""
+  Damagetype Cutless
+  Decal BulletChip
+  States
+  {
+  Spawn:
+    NLPJ A 1 A_SpawnItem("RedFlareVerySmall",0,10)
+	TNT1 A 0 A_SpawnItemEx("NailBlur", 0, 0, 0, 1, 0, 0, 180, 128)
+    NLPJ A 0 A_PlaySound("Weapons/NailFlight")
+    Loop
+  Crash:
+  XDeath:
+  Death:
+    NLPJ B 0 A_PlaySound("Weapons/NailHit")
+    //TNT1 A 0 A_SpawnItem ("Sparks", 0)
+	//TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+    //TNT1 A 0 A_SpawnItem ("RicoChet", 0)
+	TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+	TNT1 AAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 170))
+    Stop
+  }
+}
+
+Actor NailBlur       
+{
+  Height 8
+  Radius 1
+  Damage 0
+  Scale 0.6
+  Speed 0.2
+  RenderStyle Translucent
+  Alpha 0.5
+  +NoGravity
+  +DropOff
+  +NoTeleport
+  States
+  {
+  Spawn:
+    NLPJ A 1 A_FadeOut(0.4)
+    Loop
+  }
+}
+
+Actor WhiteFlarePrettySmall : Flare_General
+{
+alpha 0.05
+scale 0.05
+states
+	{
+	Spawn:
+		LENW A 5 bright
+		stop
+	}
+}
+
+ACTOR OmegaBlur
+{
+    Radius 1
+    Height 1
+	Alpha 0.7
+	RenderStyle Add
+	Scale 0.05
+	Speed 8
+	Gravity 0
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+        LEYS B 1 BRIGHT A_SpawnItem("WhiteFlarePrettySmall",0,0)
+        Goto Death
+	Death:
+	    LEYS B 1 BRIGHT A_SpawnItem("WhiteFlarePrettySmall",0,0)
+		Stop
+    }
+}
+
+
+Actor OmegaPuff
+{
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +PUFFGETSOWNER
+  +PUFFONACTORS
+  +ALWAYSPUFF
+  +SKYEXPLODE
+  Scale 0.5
+  Damagetype Plasma
+  States
+  {
+		Spawn:
+		TNT1 A 0
+		TNT1 AA 0 A_FaceTarget
+		TNT1 A 0 Acs_Execute(949,0,0,0,0)
+    OMEG AA 0 A_PlaySoundEx("OMEGEXP", "auto")
+    OMEG DDDDEEEEFFFFGGGGHHHH 1 bright A_CustomMissile ("OmegaBlur", 2, 0, random (160, 210), 2, random (-30, 30))
+    Stop
+  }
+}
+
+ACTOR Omegaeffect
+{
+  Height 4
+  Radius 2
+  //scale 0.05
+  scale 0.15
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +FORCEXYBILLBOARD
+  States
+  {
+  Spawn:
+    OMEG SS 1 bright A_CustomMissile ("OmegaBlur", 2, 0, random (160, 210), 2, random (-30, 30))
+    Stop
+  }
+}
+
+ACTOR ExplosiveHitPuff
+{
+  renderstyle Translucent
+  alpha 0.4
+  Scale 1.5
+  radius 0
+  height 0
+  +NOBLOCKMAP
+  +NOGRAVITY
+  Gravity 0.01
+  +NOEXTREMEDEATH
+  +FORCEXYBILLBOARD
+DamageType Bullet
+Decal "BulletDecalNew1"
+Seesound "skeleton/tracex"
++DONTSPLASH
+-EXPLODEONWATER
+  states
+  {
+  Spawn:
+    EXPL AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	    EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		BFE1 A 0 Bright A_Explode(7, 120, 1)
+        TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	
+		EXPL A 0
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 10
+  Melee:
+    //PUFF CD 6
+	TNT1 A 1
+	stop
+  }
+}
+
+ACTOR ExplosiveRailHitPuff : MageWandMissile
+{
+  Speed 230
+  Radius 13
+  Height 8
+  Damage (random(20,21))
+  Decal "Scorch"
+  damagetype "Explosive"
+  MissileType "NuclearSSGBeamTrail"
+  Deathsound "skeleton/tracex"
+  +RIPPER
+	+NOBOSSRIP
+  -CANNOTPUSH
+  -NODAMAGETHRUST
+  +BLOODLESSIMPACT
+  states
+  {
+  Death:
+	EXPL AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	    EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		BFE1 A 0 Bright A_Explode(7, 120, 1)
+        TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	
+		EXPL A 0
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 10
+    stop
+  }
+}
+
+ACTOR NuclearSSGBeamTrail : MageWandSmoke// replaces MageWandSmoke
+{
+  RenderStyle Add
+  Scale 0.4
+  DeathSound "9KEXPL"
+  SeeSound "None"
+  Decal "Scorch"
+   damagetype "Desintegrate"
+   +BLOODLESSIMPACT
+  States
+  {
+  Spawn:
+    APBR B 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	APBR C 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	APBR D 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	APBR E 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	APBR B 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	APBR C 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	APBR D 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	APBR E 1 bright A_SpawnItem("YellowFlareSmall",0,0)
+	APBR C 0 bright A_SpawnItem("RedFlareSmall",0,0)
+	TNT1 A 0 A_SpawnItemEx("FireballExplosionFlamesSmall", 0, 0, 0, 0, 0, 0, 0, 128)
+    stop
+  }
+}

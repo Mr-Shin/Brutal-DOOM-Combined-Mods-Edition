@@ -4,7 +4,7 @@ ACTOR TesticularAmmo : Ammo
    Inventory.MaxAmount 18
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 18
-   Inventory.Icon SVICA0
+   Inventory.Icon "RVICA0"
 }
 
 Actor RevolverAlt2 : Inventory {inventory.maxamount 1}

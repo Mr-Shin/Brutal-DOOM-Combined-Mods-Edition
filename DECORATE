@@ -52,6 +52,7 @@ Actor PBKick : Inventory {}
 #include EXECUTIONS.txt
 #include POWERUPS.txt
 //#include ARACHBOX
+#include "decorates/IBStuff/IBStuff.txt"
 
 
 //Base weapons
@@ -100,6 +101,40 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 2/SMGS/UMP-50.txt"
 #include "decorates/weapons/main/slot 2/SMGS/UZI.txt"
 #include "decorates/weapons/main/slot 2/SMGS/TMP9.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/UTS-15.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/NailSG.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/M1887.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/D4SGProT.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Beaker.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Q4SG.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/MK5VOPS.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Doom2016SG.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Doom2016SGPickup.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Doom2016SGUpgrade.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Doom2016SGUpgrade2.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Grenade2016.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/Rem870.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/Sawed-OFF.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/Coach Gun.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/Coach Gun MK2.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/Q3SSG.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/Stryker.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/COBRA.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/Doom2016SSG.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/QSG.txt"
+#include "decorates/weapons/main/slot 3/Auto Shotguns/AA48.txt"
+#include "decorates/weapons/main/slot 3/Auto Shotguns/MK23.txt"
+#include "decorates/weapons/main/slot 3/Auto Shotguns/M1216.txt"
+#include "decorates/weapons/main/slot 3/Auto Shotguns/AS-Riot-4.txt"
+#include "decorates/weapons/main/slot 3/Auto SHotguns/XM1014.txt"
+
+
+
+
+
+
+
+
 
 
 //Enemies

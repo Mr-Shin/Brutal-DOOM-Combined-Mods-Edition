@@ -1,0 +1,23 @@
+ACTOR ShotgunGrenadeIB : Rocket2
+{
+	Radius 4
+	Height 4
+	Speed 40
+	Damage 6
+    Gravity 0.4
+	Scale 1
+	SeeSound "none"
+	DeathSound "grenade/explosion"
+	Species "Marines"
+	States
+	{
+	Spawn:
+	    GRNP A 1 Bright A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail3")
+		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail3", 2, 0, random (160, 210), 2, random (-30, 30))
+		GRNP A 1 Bright A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail3")
+		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail3", 2, 0, random (160, 210), 2, random (-30, 30))
+		Loop
+	}
+}

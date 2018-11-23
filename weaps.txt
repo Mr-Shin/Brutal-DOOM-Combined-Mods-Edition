@@ -61,19 +61,18 @@ UTS-15
 NAIL Shotgun
 Model 1887
 Doom 4 SG Prototype
-Breaker Shotgun
+Beaker Shotgun
 Q4 Shotgun
 MK5VOPS
 Doom 2016 Shotgun
 Remington 870 MCS
-XR-12
-UAC-1270
 
 Super Shotguns:
 
 UAC1881 SSG
 Sawed-Off
 Coach Gun
+Coach Gun MK2
 Q3 SSG
 Stryker DBS
 COBRA SSG
