@@ -34,6 +34,7 @@ Actor PBKick : Inventory {}
 
 
 //MISC
+#include "decorates/weapons/main/misc/Flashlight.txt"
 #include HEAD_SYS.txt
 #include PARTICLES.txt
 #include SMOKE.txt
@@ -53,14 +54,14 @@ Actor PBKick : Inventory {}
 #include POWERUPS.txt
 //#include ARACHBOX
 #include "decorates/IBStuff/IBStuff.txt"
-
+#include "decorates/SPAWNERS/WeaponSpawn.txt"
 
 //Base weapons
 #include "Decorates/WEAPONS/MAIN/Slot 2/Handguns/M9.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/MELEE.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/SAW.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 4/RIFLE.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 4/DualRifle.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 4/Rifles/RIFLE.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 4/Rifles/DualRifle.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Pump Shotguns/SHOTGUN.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Super Shotguns/SSG.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 5/MINIGUN.txt"
@@ -127,7 +128,9 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 3/Auto Shotguns/M1216.txt"
 #include "decorates/weapons/main/slot 3/Auto Shotguns/AS-Riot-4.txt"
 #include "decorates/weapons/main/slot 3/Auto SHotguns/XM1014.txt"
-
+#include "decorates/weapons/main/slot 4/Rifles/Repeater.txt"
+#include "decorates/weapons/main/slot 4/Rifles/XM30.txt"
+#include "decorates/weapons/main/slot 4/Rifles/M41A9.txt"
 
 
 

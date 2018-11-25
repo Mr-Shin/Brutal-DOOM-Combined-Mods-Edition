@@ -1,0 +1,77 @@
+// ACS
+#library "light"
+#include "zcommon.acs"
+
+// Defines
+#define MAXPLAYERS 8
+int flashlightOn[MAXPLAYERS];
+
+// Scripts
+Script "FlashLightVerticalPos" (void)
+{
+SetResultValue (GetCVar("b_flashlightvpos"));
+}
+
+Script "FlashLightHorizontalPos" (void)
+{
+SetResultValue (GetCVar("b_flashlighthpos"));
+}
+
+Script "PointerPitch" (void)
+{
+	SetResultValue(GetActorPitch(0) / -182);
+}
+
+Script "ToggleFlashlight" (void)
+{
+	if (flashlightOn[PlayerNumber()])
+		flashlightOn[PlayerNumber()] = 0;
+	else
+		flashlightOn[PlayerNumber()] = 1;
+	ActivatorSound("flashlight/click", 127);
+}
+
+Script "FlashlightHandling" ENTER
+{
+	While(1)
+	{
+		if (flashlightOn[PlayerNumber()] && GetCvar("b_flashlightmode")  == 0)
+		{
+		if (GetCvar("b_flashlightlowq" )== 1)
+		{
+		TakeInventory("FlashlightDDLowSpawner", 1);
+		TakeInventory("FlashlightDDSpawner", 1);
+		TakeInventory("FlashlightSpawner", 1);
+		GiveInventory("FlashlightLowSpawner", 1);
+
+		}
+		else
+		{
+		TakeInventory("FlashlightDDLowSpawner", 1);
+		TakeInventory("FlashlightDDSpawner", 1);
+		TakeInventory("FlashlightLowSpawner",1);
+		GiveInventory("FlashlightSpawner", 1);
+		}
+		}
+		else if (flashlightOn[PlayerNumber()] && GetCvar("b_flashlightmode") == 1)
+		{
+		if (GetCvar("b_flashlightlowq") == 1)
+		{
+		TakeInventory("FlashlightSpawner", 1);
+		TakeInventory("FlashlightLowSpawner",1);
+		TakeInventory("FlashlightDDSpawner", 1);
+		GiveInventory("FlashlightDDLowSpawner", 1);
+		}
+		else
+		{
+		TakeInventory("FlashlightSpawner", 1);
+		TakeInventory("FlashlightLowSpawner",1);
+		TakeInventory("FlashlightDDLowSpawner", 1);
+		GiveInventory("FlashlightDDSpawner", 1);
+		}
+		}
+	Delay(1);	
+	}
+}
+
+// Functions

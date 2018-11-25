@@ -23,3 +23,8 @@ server bool be_ExecutionHighlight = true;
 server bool be_MonsterStagger = true;
 server bool be_NoisyStagger = true;
 server int be_StaggerLenght = 4;
+
+user int b_flashlightvpos = 18;
+user int b_flashlighthpos = 0;
+user int b_flashlightmode = 0;
+user int b_flashlightlowq = 0;

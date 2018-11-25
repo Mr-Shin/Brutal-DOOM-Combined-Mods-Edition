@@ -77,6 +77,50 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "HandGrenades", 1
 	Player.StartItem "GrenadeAmmo", 3
 	Player.StartItem "LeftRifleAmmo", 31
+	Player.StartItem "G18Ammo", 33
+	Player.StartItem "G17Ammo", 21
+	Player.StartItem "67Ammo", 20
+	Player.StartItem "USP-45Ammo", 13
+	Player.StartItem "TAC-15Ammo", 30
+	Player.StartItem "DesertEagleAmmo", 7
+	Player.StartItem "DesertEagle3Ammo", 14
+	Player.StartItem "SkullCrackinAmmo", 6
+	Player.StartItem "TesticularAmmo", 18
+	Player.StartItem "SovietMPAmmo", 100
+	Player.StartItem "FG42Ammo", 20
+	Player.StartItem "UZIAmmo", 25
+	Player.StartItem "UMPAmmo", 32
+	Player.StartItem "TMP9Ammo", 30
+	Player.StartItem "PPSHAmmo", 71
+	Player.StartItem "POW-90Ammo", 50
+	Player.StartItem "PDW-91Ammo", 64
+	Player.StartItem "MP40Ammo", 32
+	Player.StartItem "MP7Ammo", 45
+	Player.StartItem "MP27Ammo", 40
+	Player.StartItem "MP5Ammo", 30
+	Player.StartItem "G7Ammo", 25
+	Player.StartItem "CoachGunAmmo", 2
+	Player.StartItem "CoachGunMK2Ammo", 2
+	Player.StartItem "JRMYXD_SSGAmmo", 2
+	Player.StartItem "Sawed-OffAmmo", 2
+	Player.StartItem "QuadAmmo", 4
+	Player.StartItem "Quake3SGAmmo", 20
+	Player.StartItem "SSG2016Ammo", 2
+	Player.StartItem "COBRAAmmo", 2
+	Player.StartItem "AA48Ammo", 60
+	Player.StartItem "XM1014Ammo", 7
+	Player.StartItem "MK23Ammo", 20
+	Player.StartItem "AFGAmmo", 16
+	Player.StartItem "RIOTAmmo", 40
+	Player.StartItem "BeakerAmmo", 10
+	Player.StartItem "UTS-15Ammo", 14
+	Player.StartItem "Rem870Ammo", 8
+	Player.StartItem "Quake4SGAmmo", 10
+	Player.StartItem "NailSGAmmo", 6
+	Player.StartItem "MK5Ammo", 8
+	Player.StartItem "ClassicSGAmmo", 12
+	Player.StartItem "Doom2016SGAmmo", 16
+	Player.StartItem "Doom4ShotgunAmmo", 12
 	Player.StartItem "JustStartedGame", 1
 	Player.StartItem "NeverSelectedShotgun", 1
 	Player.StartItem "IsPlayingAsV20", 1
@@ -97,10 +141,10 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.WeaponSlot 1, Sledge, Chain_Saw, Melee_Attacks
 	Player.WeaponSlot 2, SovietMP, UZI, UMP50, MP40, TMP9, PPSH91, PDW91, POW90, G7, MP27, MP7, MP5, TesticleImploder, SkullCracker, DesertEagle3, DesertEagle, G18, G17C, TAC15, Doom2016Blaster, USP45, FN67, M9Beretta 
 	Player.WeaponSlot 3, QuadShotgun, Quake3SG, Doom2016SSG, CoachGunMK2, CoachGun, COBRA, Stryker, SawedOff, UAC1881, AA48, ASRIOT4, MK23, M1216, XM1014, MK5OVPS, UTS15, Doom2016SG, Doom4SGPT, Quake4SG, R870, NailSG, ClassicSG, Beaker, UAC1897
-	Player.WeaponSlot 4, DualRifles, Rifle, FG42
-	Player.WeaponSlot 5, MiniGun, HitlersBuzzsaw
+	Player.WeaponSlot 4, Rifle, FG42, Repeater, XM30, M41A9
+	Player.WeaponSlot 5, MiniGun
 	Player.WeaponSlot 6, Rocket_Launcher
-	Player.WeaponSlot 7, DualPlasmaRifles, Plasma_Gun
+	Player.WeaponSlot 7, Plasma_Gun
 	Player.WeaponSlot 8, BIG_FUCKING_GUN
 	Player.WeaponSlot 9, HellishMissileLauncher, FlameCannon
 	Player.WeaponSlot 0, HandGrenades

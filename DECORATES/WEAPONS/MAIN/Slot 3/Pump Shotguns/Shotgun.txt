@@ -1,4 +1,4 @@
-ACTOR UAC1897 : CMEWeapon replaces Shotgun
+ACTOR UAC1897 : CMEWeapon 
 {
 	Game Doom
 	SpawnID 27

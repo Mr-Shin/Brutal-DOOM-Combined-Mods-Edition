@@ -19,6 +19,7 @@ OptionMenu "OptionsMenu"
 	Submenu "Sound Options",			"SoundOptions"
 	Submenu "Display Options",			"VideoOptions"
 	Submenu "Set video mode",			"VideoModeMenu"
+	Submenu "FlashLight Options",		"BDDFLO"
 	StaticText " "
 	SafeCommand "Reset to defaults",	"reset2defaults"
 	SafeCommand	"Reset to last saved",	"reset2saved"
@@ -177,4 +178,46 @@ OptionValue "maxgibs"
 	10000, "10000"
 	25000, "25000"
 	50000, "50000"
+}
+
+OptionMenu "BDDFLO"
+{
+	Title "Flash light Options"
+	StaticText " "
+	Option "Flashlight mode", "b_flashlightmode", "FlMode" 
+	StaticText " "
+	Option "Use LQ Flashlight", "b_flashlightlowq", "YesNo"
+	StaticText " "
+	StaticText "Vertical Preset "
+	Command "Preset: Beam", "PVBeam"
+	Command "Preset: DarkDoom", "PVDark"
+	StaticText " "
+	Slider "Vertical Flashlight position", "b_flashlightvpos", -255, 255, 1, 0
+	StaticText " "
+	StaticText "Horizontal Preset "
+	Command "Preset: Beam", "PHBeam"
+	Command "Preset: DarkDoom", "PHDark"
+	Command "Preset: Right Shouder", "PHRShouder"
+	Command "Preset: Left Shouder", "PHLShouder"
+	StaticText " "
+	Slider "Horizontal Flashlight position", "b_flashlighthpos", -255, 255, 1, 0
+}
+
+OptionValue "FlMode"
+{
+	0, "Beam"
+	1, "DarkDoom"
+}
+
+OptionValue "FlVPos"
+{
+  18, "Beam"
+  32, "DarkDoom"
+}
+
+OptionValue "FlHPos"
+{
+  0, "Beam"
+  4, "DarkDoom"
+  36, "Shoulder"
 }

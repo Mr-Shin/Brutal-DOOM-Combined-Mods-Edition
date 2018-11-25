@@ -691,3 +691,79 @@ Actor DecorativeTracer: Tracer
 //seesound "weapons/minigunfire"
 //damagetype Minigun
 }
+
+Actor 50CalTracer : FastProjectile
+{
+missiletype "TracerTrailAnti"
+missileheight 7
+//DeathSound "skeleton/tracex"
+//Projectile
+//+RANDOMIZE
+//+FORCEXYBILLBOARD
+//+DONTSPLASH
+//+BLOODSPLATTER 
+//+NOEXTREMEDEATH
+//+MISSILE
+//damagetype "Explosive"
+//damage 10
+//radius 2
+//height 2
+//speed 150
+//renderstyle ADD
+//alpha 0.9
+//scale .15
+	Game Doom
+	Radius 2
+	Height 0
+	Speed 150
+	Damage 30
+	+RANDOMIZE
+	+MISSILE
+	-NOGRAVITY
+	+BLOODSPLATTER
+	Gravity 0.1
+	RenderStyle Add
+	damagetype "Blast"
+	Alpha 1.0
+	Decal "Scorch"
+	Scale 1.0
+	Obituary "$OB_MPPLASMARIFLE"
+	Species "Marines"
+states
+	{
+	Spawn:
+		TRAC A 1 BRIGHT A_SpawnItemEx("TracerTrailAnti", 0,               0,              2)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti5", (8 *momx)/-35.0, -(8 *momy)/-35.0, 2+(8 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti6", (10*momx)/-35.0, -(10*momy)/-35.0, 2+(10*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti7", (12*momx)/-35.0, -(12*momy)/-35.0, 2+(12*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti8", (14*momx)/-35.0, -(14*momy)/-35.0, 2+(14*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti9", (16*momx)/-35.0, -(16*momy)/-35.0, 2+(16*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti10", (18*momx)/-35.0, -(18*momy)/-35.0, 2+(18*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti11", (20*momx)/-35.0, -(20*momy)/-35.0, 2+(20*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti12", (22*momx)/-35.0, -(22*momy)/-35.0, 2+(22*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti13", (24*momx)/-35.0, -(24*momy)/-35.0, 2+(24*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti14", (26*momx)/-35.0, -(26*momy)/-35.0, 2+(26*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti15", (28*momx)/-35.0, -(28*momy)/-35.0, 2+(28*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti15", (30*momx)/-35.0, -(30*momy)/-35.0, 2+(30*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti16", (32*momx)/-35.0, -(32*momy)/-35.0, 2+(32*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti17", (34*momx)/-35.0, -(34*momy)/-35.0, 2+(34*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti18", (36*momx)/-35.0, -(36*momy)/-35.0, 2+(36*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti18", (38*momx)/-35.0, -(38*momy)/-35.0, 2+(38*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+        TNT1 A 0 A_SpawnItemEx("TracerTrailAnti18", (40*momx)/-35.0, -(40*momy)/-35.0, 2+(40*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
+		Loop
+	XDeath:
+	Death:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("BulletPuff")
+		TNT1 A 0 A_PlaySound ("smallexplode")
+		TNT1 A 0 A_NoBlocking
+		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 40))
+		TNT1 AAA 0 A_CustomMissile ("PlasmaSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 1
+		Stop
+	}
+}

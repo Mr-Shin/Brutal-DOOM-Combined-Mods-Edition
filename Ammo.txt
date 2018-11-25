@@ -3,7 +3,6 @@
 ACTOR AmmoSuply : BackpackItem Replaces Backpack
 {
 	Game Doom
-	SpawnID 7020
 	Height 26
 	+COUNTITEM
 	+DONTGIB

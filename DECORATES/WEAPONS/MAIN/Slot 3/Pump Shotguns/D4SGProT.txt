@@ -10,7 +10,7 @@ ACTOR Doom4ShotgunAmmo : Ammo
    Inventory.MaxAmount 12
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 12
-   Inventory.Icon "PT4PA0"
+   Inventory.Icon "DM4PA0"
 }
 
 

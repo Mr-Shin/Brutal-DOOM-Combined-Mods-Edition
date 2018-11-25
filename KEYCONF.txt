@@ -16,10 +16,6 @@ addplayerclass BDoomer //nomenu
    alias reload "puke 303"
    defaultbind R reload
    
-   addmenukey "Flashlight" flashlightswitch
-   alias flashlightswitch "puke 313"
-   defaultbind F flashlightswitch
-   
 
 
 	addmenukey "Toss Grenade" grenadetoss
@@ -92,3 +88,24 @@ addplayerclass BDoomer //nomenu
    addmenukey "Switch Emergency Ammo Type" emgunswitchammo
    alias emgunswitchammo "pukename IB500"
    defaultbind M emgunswitchammo
+
+// Key Configuration
+// Aliases
+Alias "ToggleFlashlight" "PukeName ToggleFlashlight"
+Alias "PVBeam" "b_flashlightvpos 18"
+Alias "PVDark" "b_flashlightvpos 32"
+
+Alias "PHBeam" "b_flashlighthpos 0"
+Alias "PHDark" "b_flashlighthpos 4"
+Alias "PHLShouder" "b_flashlighthpos -36"
+Alias "PHRShouder" "b_flashlighthpos 36"
+
+
+// Key Sections
+AddKeySection "Flashlight" "flashlight"
+
+// Menu Keys
+AddMenuKey "Toggle" "ToggleFlashlight"
+
+// Default Binds
+DefaultBind "F" "ToggleFlashlight"

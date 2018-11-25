@@ -96,7 +96,6 @@ Actor LightTechArmor : BasicArmorPickup
 Actor MediumArmor : BasicArmorPickup
 {
   Game Doom
-  SpawnID 7080
   Radius 20
   Height 20
   Scale 1.30
@@ -261,7 +260,6 @@ Actor DemonTechArmor : BasicArmorPickup
 Actor DemonWarriorArmor : BasicArmorPickup 
 {
   Game Doom
-  SpawnID 7090
   Radius 20
   Height 20
   Scale 1.30
@@ -288,7 +286,6 @@ Actor DemonWarriorArmor : BasicArmorPickup
 Actor EliteMarineArmor : BasicArmorPickup 
 {
   Game Doom
-  SpawnID 7090
   Radius 20
   Height 20
   Scale 1.30
@@ -315,7 +312,7 @@ Actor EliteMarineArmor : BasicArmorPickup
 Actor EliteCommanderArmor : BasicArmorPickup 
 {
   Game Doom
-  SpawnID 7090
+  Radius 20
   Radius 20
   Height 20
   Scale 1.30

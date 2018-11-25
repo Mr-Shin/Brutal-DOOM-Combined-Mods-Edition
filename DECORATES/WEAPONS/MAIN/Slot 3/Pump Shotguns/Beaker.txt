@@ -16,7 +16,7 @@ ACTOR BeakerAmmo : Ammo
 Actor BeakerSlugMode : Inventory {Inventory.maxamount 1}
 Actor BeakerNeedstoBePumped : Inventory {Inventory.maxamount 1}
 
-ACTOR Beaker : CMEWeapon
+ACTOR Beaker : Weapon
 {
 	Weapon.BobRangeX 0.3
 	Weapon.BobRangeY 0.5

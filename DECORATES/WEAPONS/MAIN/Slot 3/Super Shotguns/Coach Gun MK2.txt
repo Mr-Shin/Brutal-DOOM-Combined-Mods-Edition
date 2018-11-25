@@ -16,11 +16,6 @@ Actor CoachGunMK2Fired1 : Inventory {inventory.maxamount 1}
 // --------------------------------------------------------------------------
 ACTOR CoachGunMK2 : CMEWeapon
 {
-	Game Doom
-	Weapon.BobRangeX 0.3
-	Weapon.BobRangeY 0.5
-	Weapon.BobStyle InverseSmooth
-	Weapon.BobSpeed 2.0
 	SpawnID 33
    Weapon.Kickback 50
 	Weapon.SelectionOrder 400

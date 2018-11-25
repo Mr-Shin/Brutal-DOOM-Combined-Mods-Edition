@@ -15,7 +15,7 @@ Actor MK23SlugMode :Inventory {inventory.maxamount 1}
 //
 // --------------------------------------------------------------------------
 
-ACTOR MK23 : CMEWeapon
+ACTOR MK23 : Weapon
 {
 	Weapon.BobRangeX 0.3
 	Weapon.BobRangeY 0.5

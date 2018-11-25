@@ -37,7 +37,7 @@ ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	damagefactor "GibRemoving", 0.0
 	damagefactor "SSG", 50.0
 	DropItem "GrenadeAmmo" 15
-	DropItem "Shotgun"
+	DropItem "UAC1897"
 	damagetype "Melee"
 	Monster
 	+FLOORCLIP
