@@ -1,0 +1,724 @@
+//// --------------------------------------------------------------------------
+//
+// Heavy Assault Rifle Doom 2016
+//
+// ----------------------------------------------------------------------------
+
+Actor HeavyARFire2Dummy : Inventory {inventory.maxamount 1}
+Actor HeavyARSoundDummy : Inventory {inventory.maxamount 1}
+Actor ScopedHARActive : Inventory {inventory.maxamount 1}
+Actor MiniMissileHARActive : Inventory {inventory.maxamount 1}
+Actor ZoomedHAR : Inventory {inventory.maxamount 1}
+Actor UsingMissilesHAR : Inventory {inventory.maxamount 1}
+Actor FiredMissile : Inventory {inventory.maxamount 6}
+
+ACTOR HeavyAR : CMEWeapon
+{
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 10
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	YScale 0.6
+	XScale 0.8
+	Weapon.SelectionOrder 4500
+	Weapon.AmmoType1 "APBullets"
+	tag "Heavy Assault Rifle"
+	Obituary "%o was shot down by %k's Heavy Assault Rifle."
+    AttackSound "None"
+    Inventory.PickupSound "HAR/Select"
+	Inventory.Pickupmessage "You got the Heavy Assault Rifle!"
+	+WEAPON.WIMPY_WEAPON
+    +WEAPON.NOAUTOAIM
+    +WEAPON.NOALERT
+    +WEAPON.NOAUTOFIRE
+	+FORCEXYBILLBOARD
+	+WEAPON.NO_AUTO_SWITCH
+    Scale 1
+	States
+	{
+	PickUp:
+	TNT1 A 0 A_Playsound("PICKUPONELINER")
+	TNT1 A 0
+	Stop
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	
+	Ready:
+        TNT1 A 2 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_PlaySound("HAR/Select")
+        TNT1 A 0 A_JumpIfInventory("ScopedHARActive", 1, "ReadyScoped")
+		TNT1 A 0 A_JumpIfInventory("MiniMissileHARActive", 1, "ReadyMissile")
+		HARS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0
+        TNT1 AAAA 0
+		Goto RealReady
+	ReadyScoped:
+		HZRS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0
+        TNT1 AAAA 0
+		Goto RealReady
+	ReadyMissile:
+		TNT1 A 0 A_JumpIfInventory("UsingMissilesHAR", 1, "ReadyMissile2")
+		HMRS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0
+        TNT1 AAAA 0
+		Goto RealReady
+	ReadyMissile2:
+		HMAS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0
+        TNT1 AAAA 0
+		Goto RealReady
+	RealReady:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		
+		TNT1 A 0 A_TakeInventory("SaigaSpread", 5)
+		
+		TNT1 A 0 A_JumpIfInventory("UsingMissilesHAR", 1, "MissileReady2")
+		TNT1 A 0 A_JumpIfInventory("ScopedHARActive", 1, "ScopedReady1")
+		TNT1 A 0 A_JumpIfInventory("MiniMissileHARActive", 1, "MissileReady1")
+		HARG A 1 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	ScopedReady1:
+		HZRG A 1 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	MissileReady1:
+		HMRG A 1 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	MissileReady2:
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 5, "MisReady1Left")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 4, "MisReady2Left")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 3, "MisReady3Left")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 2, "MisReady4Left")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 1, "MisReady5Left")
+	MisReady6Left:
+		HMRA F 1 A_WeapoNReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	MisReady5Left:
+		HMRA H 1 A_WeapoNReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	MisReady4Left:
+		HMRA J 1 A_WeapoNReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	MisReady3Left:
+		HMRA L 1 A_WeapoNReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	MisReady2Left:
+		HMRA N 1 A_WeapoNReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	MisReady1Left:
+		HMRA P 1 A_WeapoNReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+		
+	RealReadyZoomed:
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 1 A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReadyZoomed
+		
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("weapon/swap", 4)
+		TNT1 A 0 A_Takeinventory("ZoomedHAR",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_JumpIfInventory("UsingMissilesHAR", 1, "DeselectMissile2")
+		TNT1 A 0 A_JumpIfInventory("ScopedHARActive", 1, "DeselectScoped")
+		TNT1 A 0 A_JumpIfInventory("MiniMissileHARActive", 1, "DeselectMissile")
+		HARS EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectScoped:
+		HZRS EDCBA 1 A_Takeinventory("ZoomedHAR",1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectMissile:
+		HMRS EDCBA 1 A_Takeinventory("ZoomedHAR",1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectMissile2:
+		HMAS EDCBA 1 A_Takeinventory("ZoomedHAR",1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+		
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		
+		Goto Ready
+	
+	WeaponSpecial:
+	ATRifleSwitch:
+	SilencerToggle:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("CoolDown_Actor2", 1)
+		TNT1 A 0 A_JumpIfInventory("UsingMissilesHAR", 1, "MissileDeselectStuff")
+		Goto ContinueAttachmentShit
+	MissileDeselectStuff:
+		TNT1 A 0 A_TakeInventory("UsingMissilesHAR", 1)
+		TNT1 A 0 A_TakeInventory("UsingMissilesHAR", 1)
+		TNT1 A 0 A_playsound("HAR/Missile/Close")
+		HMRA FEDCBA 1
+		Goto RemoveMissiles
+	ContinueAttachmentShit:
+		TNT1 A 0 A_JumpIfInventory("ScopedHARActive", 1, "RemoveScope")
+		TNT1 A 0 A_JumpIfINventory("HeavyARMiniMissileInventory", 1, "SwitchMicroMissiles")
+		TNT1 A 0 A_JumpIfINventory("2016HARUpgradeInventory", 1, "SwitchScope")
+		
+		TNT1 A 0
+		TNT1 A 0 A_Print("Upgrade Deficiency")
+		Goto RealReady
+	SwitchMicroMissiles:
+		TNT1 A 0 A_JumpIfInventory("MiniMissileHARActive", 1, "RemoveMissiles")
+		TNT1 A 0 A_GiveINventory("MiniMissileHARActive", 1)
+		TNT1 A 0 A_Print("Micro Missiles")
+		HZ2S A 8
+		TNT1 A 0 A_playsound("HAR/Missiles/Equip")
+		HM2S ABCD 1
+		HM2S E 15
+		HM2S F 1
+		Goto RealReady
+	RemoveMissiles:
+		TNT1 a 0
+		HM2S F 1
+		TNT1 A 0 A_takeINventory("ScopedHARActive", 1)
+		TNT1 A 0 A_TakeInventory("MiniMissileHARActive",1)
+		HM2S E 5 A_Playsound("MP7A1/COut")
+		HM2S DCBA 1
+		HZ2S A 4
+		TNT1 A 0 A_JumpIfINventory("2016HARUpgradeInventory", 1, "SwitchScope")
+		Goto RealReady
+	SwitchScope:
+		TNT1 A 0 A_GIveINventory("ScopedHARActive", 1)
+		TNT1 A 0 A_TakeInventory("MiniMissileHARActive",1)
+		TNT1 A 0 A_Print("Scope")
+		HZ2S A 4
+		HZ2S AAA 1
+		TNT1 A 0 A_Playsound("HAR/Scope/Equip")
+		HZ2S BCDEF 1
+		HZ2S G 12
+		HZ2S HIJKLMNO 1
+		Goto RealReady
+	RemoveScope:
+		TNT1 A 0 A_takeINventory("ScopedHARActive", 1)
+		TNT1 A 0 A_TakeInventory("MiniMissileHARActive",1)
+		TNT1 A 0 A_Print("Normal")
+		HZ2S ONMLKJI 1
+		HZ2S H 3 A_Playsound("MP7A1/COut")
+		HZ2S GFEDCBA 1
+		Goto RealReady
+		
+		
+   Fire:
+		TNT1 A 0 A_JumpIfInventory("UsingMissilesHAR", 1, "FireMissiles")
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, "FireZoomed")
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_JumpIfInventory("HeavyARSoundDummy", 1, "FireOtherSound")
+		TNT1 A 0 A_GiveInventory("HeavyARSoundDummy", 1)
+		TNT1 A 0 A_PlaySound("HAR/Fire",7)
+		Goto FinishFire
+	FireOtherSound:
+		TNT1 A 0 A_TakeInventory("HeavyARSoundDummy", 1)
+		TNT1 A 0 A_PlaySound("HAR/Fire",6)
+		Goto FinishFire
+		
+	FinishFire:
+		TNT1 A 0 A_JumpIfInventory("ScopedHARActive", 1, "FireScoped")
+		TNT1 A 0 A_JumpIfInventory("MiniMissileHARActive", 1, "FireWithMissileAttachment")
+		HARF A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 3, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		HARF B 1 BRIGHT A_FireBullets (2, 2, 1, random(10,9), "MachineGunBulletPuff")
+        RIFF A 0 A_FireCustomMissile("MinigunTracer", random(-1,1), 0, 10, -2, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-1.3 + pitch)
+		TNT1 A 0 A_Takeinventory("APBullets",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		HARF C 1 A_FireCustomMissile("RifleCaseSpawn",5,0,24,-2)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+        HARG A 2 A_WeaponReady(WRF_NOBOB)
+		RIFG A 0 A_Refire("Fire")
+		HARG A 5 A_WeaponReady(1)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_TakeInventory("SaigaSpread", 5)
+		HARG A 5 A_WeaponReady(1)
+		Goto RealReady
+		
+//Scoped Bullshit
+		
+	FireScoped:
+		HZRF A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 3, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		HZRF B 1 BRIGHT A_FireBullets (2, 2, 1, random(10,9), "MachineGunBulletPuff")
+        RIFF A 0 A_FireCustomMissile("MinigunTracer", random(-1,1), 0, 10, -2, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-1.3 + pitch)
+		TNT1 A 0 A_Takeinventory("APBullets",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		HZRF C 1 A_FireCustomMissile("RifleCaseSpawn",5,0,24,-2)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+        HZRG A 2 A_WeaponReady(WRF_NOBOB)
+		RIFG A 0 A_Refire("Fire")
+		HZRG A 5 A_WeaponReady(1)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_TakeInventory("SaigaSpread", 5)
+		HZRG A 5 A_WeaponReady(1)
+		Goto RealReady
+
+//Missile Bullshit
+	FireWithMissileAttachment:
+		HMRF A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 3, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		HMRF B 1 BRIGHT A_FireBullets (2, 2, 1, random(10,9), "MachineGunBulletPuff")
+        RIFF A 0 A_FireCustomMissile("MinigunTracer", random(-1,1), 0, 10, -2, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-1.3 + pitch)
+		TNT1 A 0 A_Takeinventory("APBullets",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		HMRF C 1 A_FireCustomMissile("RifleCaseSpawn",5,0,24,-2)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+        HMRG A 2 A_WeaponReady(WRF_NOBOB)
+		RIFG A 0 A_Refire("Fire")
+		HMRG A 5 A_WeaponReady(1)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_TakeInventory("SaigaSpread", 5)
+		HMRG A 5 A_WeaponReady(1)
+		Goto RealReady
+		
+	AltFire:
+		TNT1 A 0 A_JumpIfInventory("CoolDown_Actor2", 1, "RealReady")
+		TNT1 A 0 A_JumpIfINventory("2016HARUpgradeInventory", 1, "ContinueAltFire")
+		TNT1 A 0 A_JumpIfINventory("HeavyARMiniMissileInventory", 1, "ContinueAltFire")
+		TNT1 A 0 A_Print("Upgrade Deficiency")
+		Goto RealReady
+	ContinueAltFire:
+		TNT1 A 0 A_JumpIfInventory("ScopedHARActive", 1, "Zoom")
+		TNT1 A 0 A_JumpIfInventory("MiniMissileHARActive", 1, "SelectMissileReady2")
+		TNT1 A 0 A_Print("Upgrade Must Be Attached to Gun to Proceed")
+		Goto RealReady
+	Zoom:
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR",1,"UnZoom")
+		TNT1 A 0 A_Giveinventory("ZoomedHAR",1)
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+        TNT1 A 0 A_ZoomFactor(4.0)
+		TNT1 A 0 A_Giveinventory("ADSmode",1)
+		TNT1 A 0 A_playsound("SR9/Zoom/In", 4)
+		TNT1 A 1 A_GunFlash("ZoomHARFlash")
+		Goto RealReadyZoomed
+	
+	ZoomHARFlash:
+		HARZ A 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, 1)
+		Stop
+		HARZ B 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, 1)
+		Stop
+		HARZ C 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, 1)
+		Stop
+		HARZ D 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, 1)
+		Stop
+		HARZ E 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, 1)
+		Stop
+		HARZ F 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, 1)
+		Stop
+		HARZ G 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, "ScopyFlash")
+		Stop
+	ScopyFlash:
+		HARZ H 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ZoomedHAR", 1, "ScopyFlash")
+		Stop
+	
+	UnZoom:
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Takeinventory("ZoomedHAR",1)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_playsound("SR9/Zoom/Out", 4)
+		HARZ G 1 BRIGHT 
+		HARZ F 1 BRIGHT 
+		HARZ E 1 BRIGHT 
+		HARZ D 1 BRIGHT 
+		HARZ C 1 BRIGHT 
+        HARZ B 1 BRIGHT 
+		HARZ A 1 BRIGHT 
+        Goto RealReady
+	SelectMissileReady2:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("UsingMissilesHAR", 1, "DeselectMissileReady2")
+		TNT1 A 0 A_GiveINventory("UsingMissilesHAR", 1)
+		TNT1 A 0 A_playsound("HAR/Missile/Open")
+		HMRA ABCDEE 1
+		HMRA E 5
+		HMRA F 1 A_playsound("HAR/Missile/Ready", 4)
+		Goto MissileReady2
+	DeselectMissileReady2:
+		TNT1 A 0 
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 6, "CoolDown6")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 5, "CoolDown5")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 4, "CoolDown4")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 3, "CoolDown3")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 2, "CoolDown2")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 1, "CoolDown1")
+		Goto FinishDeselectMissileReady2
+	CoolDown6:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("CoolDown_Actor2", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("CoolDown_HeavyAR",0,28,0,0)
+		Goto FinishDeselectMissileReady2
+	CoolDown5:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("CoolDown_Actor2", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("CoolDown_HeavyAR",0,22,0,0)
+		Goto FinishDeselectMissileReady2
+	CoolDown4:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("CoolDown_Actor2", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("CoolDown_HeavyAR",0,16,0,0)
+		Goto FinishDeselectMissileReady2
+	CoolDown3:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("CoolDown_Actor2", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("CoolDown_HeavyAR",0,10,0,0)
+		Goto FinishDeselectMissileReady2
+	CoolDown2:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("CoolDown_Actor2", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("CoolDown_HeavyAR",0,6,0,0)
+		Goto FinishDeselectMissileReady2
+	CoolDown1:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("CoolDown_Actor2", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("CoolDown_HeavyAR",0,3,0,0)
+		Goto FinishDeselectMissileReady2
+	FinishDeselectMissileReady2:
+		TNT1 A 0 A_TakeInventory("UsingMissilesHAR", 1)
+		TNT1 A 0 A_TakeInventory("FiredMissile", 6)
+		TNT1 A 0 A_playsound("HAR/Missile/Close")
+		HMRA FEDCBA 1
+		Goto RealReady
+	FireZoomed:
+        TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+        Goto UnZoom
+        TNT1 AAAA 0
+   FireZoomedLoop:
+		TNT1 A 0 A_JumpIfInventory("HeavyARSoundDummy", 1, "FireOtherSound2")
+		TNT1 A 0 A_GiveInventory("HeavyARSoundDummy", 1)
+		TNT1 A 0 A_PlaySound("HAR/Zoom/Fire",7)
+		Goto FinishFire2
+	FireOtherSound2:
+		TNT1 A 0 A_TakeInventory("HeavyARSoundDummy", 1)
+		TNT1 A 0 A_PlaySound("HAR/Zoom/Fire",6)
+		Goto FinishFire2
+		
+	FinishFire2:
+		TNT1 A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_ZoomFactor(3.925)
+        TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor",0,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		TNT1 A 1 BRIGHT A_FireBullets (1, 1, 1, random(15,14), "MachineGunBulletPuff")
+        TNT1 A 0 A_ZoomFactor(3.95)
+		TNT1 A 0 A_SetPitch(pitch-0.3)
+		RIFF A 0 A_FireCustomMissile("MinigunTracer", 0, 0, 0, -2, 0, 0)//random(-0.5,0.5)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0 A_Takeinventory("APBullets",1,TIF_NOTAKEINFINITE)
+		TNT1 A 1 A_FireCustomMissile("RifleCaseSpawn",5,0,8,-2)
+		TNT1 A 0 A_SetPitch(pitch+0.1)
+		TNT1 A 0 A_ZoomFactor(3.975)
+        TNT1 A 1
+		TNT1 A 0 A_SetPitch(pitch+0.1)
+		TNT1 A 0 A_ZoomFactor(4)
+		TNT1 A 1
+		TNT1 A 0 A_SetPitch(pitch+0.1)
+		RIFG A 0 A_Refire("FireZoomed")
+		Goto RealReadyZoomed
+	FireMissiles:
+		TNT1 A 0 A_JumpIfInventory("APBullets", 3, 2)
+		Goto NoAmmo
+		TNT1 AAA 0
+		
+		TNT1 A 0 A_Takeinventory("APBullets",3,TIF_NOTAKEINFINITE)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 5, "FireLast")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 4, "Fire5th")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 3, "Fire4th")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 2, "Fire3rd")
+		TNT1 A 0 A_JumpIfInventory("FiredMissile", 1, "Fire2nd")
+		TNT1 A 0 A_TakeInventory("APBullets", 3)
+		TNT1 A 0 A_playsound("HAR/Missile", 7)
+		TNT1 A 0 A_FireCustomMissile("MachinegunRocket", random(-2,2),0,6,-3,0,random(-1,1))
+		HMRA G 2 BRIGHT A_SetPitch(-2.0 + pitch)
+		HMRA H 1
+		HMRA HH 1 A_SetPitch(1.0 + pitch)
+		TNT1 A 0 A_GiveInventory("FiredMissile", 1)
+		TNT1 A 0 A_Refire("FireMissiles")
+		Goto RealReady
+	Fire2nd:
+		TNT1 A 0 A_FireCustomMissile("MachinegunRocket", random(-2,2),0,7,-3,0,random(-1,1))
+		HMRA I 2 BRIGHT A_SetPitch(-2.0 + pitch)
+		TNT1 A 0 A_playsound("HAR/Missile", 6)
+		HMRA J 1
+		HMRA JJ 1 A_SetPitch(1.0 + pitch)
+		TNT1 A 0 A_GiveInventory("FiredMissile", 1)
+		TNT1 A 0 A_Refire("FireMissiles")
+		Goto RealReady
+	Fire3rd:
+		TNT1 A 0 A_FireCustomMissile("MachinegunRocket", random(-2,2),0,6,-4,0,random(-1,1))
+		HMRA K 2 BRIGHT A_SetPitch(-2.0 + pitch)
+		TNT1 A 0 A_playsound("HAR/Missile", 5)
+		HMRA L 1
+		HMRA LL 1 A_SetPitch(1.0 + pitch)
+		TNT1 A 0 A_GiveInventory("FiredMissile", 1)
+		TNT1 A 0 A_Refire("FireMissiles")
+		Goto RealReady
+	Fire4th:
+		TNT1 A 0 A_FireCustomMissile("MachinegunRocket", random(-2,2),0,7,-4,0,random(-1,1))
+		HMRA M 2 BRIGHT A_SetPitch(-2.0 + pitch)
+		TNT1 A 0 A_playsound("HAR/Missile", 4)
+		HMRA N 1
+		HMRA NN 1 A_SetPitch(1.0 + pitch)
+		TNT1 A 0 A_GiveInventory("FiredMissile", 1)
+		TNT1 A 0 A_Refire("FireMissiles")
+		Goto RealReady
+	Fire5th:
+		TNT1 A 0 A_FireCustomMissile("MachinegunRocket", random(-2,2),0,6,-5,0,random(-1,1))
+		HMRA O 2 BRIGHT A_SetPitch(-2.0 + pitch)
+		TNT1 A 0 A_playsound("HAR/Missile")
+		HMRA P 1
+		HMRA PP 1 A_SetPitch(1.0 + pitch)
+		TNT1 A 0 A_GiveInventory("FiredMissile", 1)
+		TNT1 A 0 A_Refire("FireMissiles")
+		Goto RealReady
+	FireLast:
+		TNT1 A 0 A_FireCustomMissile("MachinegunRocket", random(-2,2),0,7,-5,0,random(-1,1))
+		HMRA Q 2 BRIGHT A_SetPitch(-2.0 + pitch)
+		TNT1 A 0 A_playsound("HAR/Missile", 7)
+		HMRA R 1
+		HMRA RR 1 A_SetPitch(1.0 + pitch)
+		TNT1 A 0 A_GiveInventory("FiredMissile", 1)
+		Goto DeselectMissileReady2
+		
+	NoAmmo:
+	TNT1 A 0 A_JumpIfInventory("UsingMissilesHAR", 1, "DeselectMissileReady2")
+	TNT1 A 0 A_JumpIfInventory("MiniMissileHarActive", 1, "NoAmmoMissiles1")
+	TNT1 A 0 A_JumpIfInventory("ScopedHARActive", 1, "NoAmmoScoped")
+	HARG A 1 A_PlaySound("weapons/empty")
+	TNT1 A 0 A_Takeinventory("ZoomedHAR",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	Goto RealReady
+	NoAmmoScoped:
+	HZRG A 1
+	TNT1 A 0 A_Takeinventory("ZoomedHAR",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	Goto RealReady
+	NoAmmoMissiles1:
+	HMRG A 1
+	TNT1 A 0 A_Takeinventory("ZoomedHAR",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	Goto RealReady
+		
+ 	Spawn:
+		HARP A -1
+		Stop
+	}
+}
+
+ACTOR MachinegunRocket: RevenantBalls
+{
+	Radius 8
+	Height 8
+	Damage 50
+	Scale 0.5
+	Speed 45
+	-NOEXTREMEDEATH
+	-GHOST
+	-THRUGHOST
+	+SEEKERMISSILE
+	seesound "None"
+	deathsound "Micro/Explosion"//"revrocket/explosion"
+	Damagetype "ExplosiveImpact"
+	Species "Marines"
+	States
+	{
+	Spawn:
+	    MISL A 1 Bright 
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		TNT1 A 0 A_SpawnItem ("NapalmRocketFire3")
+		TNT1 A 0 A_CustomMissile ("NapalmRocketFire3", 2, 0, random (160, 210), 2, random (-30, 30))
+	
+		//TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		//TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		TNT1 A 0 ThrustThingZ(0,random(-3, 2),0,1)//
+		MISL A 1 Bright 
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		TNT1 A 0 A_SpawnItem ("NapalmRocketFire3")
+		TNT1 A 0 A_CustomMissile ("NapalmRocketFire3", 2, 0, random (160, 210), 2, random (-30, 30))
+	
+		//TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		//TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		MISL A 1 Bright 
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		TNT1 A 0 A_SpawnItem ("NapalmRocketFire3")
+		TNT1 A 0 A_CustomMissile ("NapalmRocketFire3", 2, 0, random (160, 210), 2, random (-30, 30))
+	
+		//TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		//TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		TNT1 A 0 ThrustThingZ(0,random(-3, 2),0,1)//
+		MISL A 1 Bright 
+		TNT1 A 0 A_SpawnItem("RedFlareSmall",-20,0)
+		TNT1 A 0 A_CustomMissile ("MeleeSmoke", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		
+		TNT1 A 0 A_SpawnItem ("NapalmRocketFire3")
+		TNT1 A 0 A_CustomMissile ("NapalmRocketFire3", 2, 0, random (160, 210), 2, random (-30, 30))
+	
+		//TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		//TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		
+		TNT1 A 0 ThrustThing(angle*256/360+64,random(-1, 1),1, 0)//
+		Loop
+	Death:
+		TNT1 A 0
+		EXPL AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	XDeath:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("Explosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		BFE1 A 0 Bright A_Explode(30, 120, 1)
+	
+		EXPL A 0
+		//TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		Stop
+	}
+}
