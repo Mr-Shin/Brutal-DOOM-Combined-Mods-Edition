@@ -181,6 +181,10 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 4/Rifles/2016HARUpgrade.txt"
 #include "decorates/weapons/main/slot 4/Rifles/2016HARUpgrade2.txt"
 #include "decorates/weapons/main/slot 4/Rifles/S-94.txt"
+#include "decorates/weapons/main/slot 4/DMRs/FAL.dat"
+#include "decorates/weapons/main/slot 4/DMRs/M110AMR.txt"
+#include "decorates/weapons/main/slot 4/DMRs/AMRound.txt"
+#include "decorates/weapons/main/slot 4/DMRS/MI-4.txt"
 
 //Glory Kills
 #include GLORYKILL.txt

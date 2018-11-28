@@ -1,0 +1,534 @@
+Actor ZoomedMI-4 : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor MI-4FireDummy : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor MI-4SilencerIsOn : Inventory
+{
+inventory.maxamount 1
+}
+
+
+//// --------------------------------------------------------------------------
+//
+// MI-4 DMR Ammo (overall)
+//
+// ----------------------------------------------------------------------------
+
+ACTOR MI-4Ammo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 21
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 21
+   inventory.icon "CMFLA0"
+}
+
+//// --------------------------------------------------------------------------
+//
+// Colt MI-4
+//
+// ----------------------------------------------------------------------------
+
+ACTOR MI4 : CMEWeapon
+{
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 10
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.SelectionOrder 4500
+	Weapon.AmmoType1 "APBullets"
+	Weapon.AmmoType2 "MI-4Ammo"
+	tag "MI-4 'Multiple Intelligence Rifle'"
+	Obituary "%o was shot down by %k's MI-4."
+    AttackSound "None"
+    Inventory.PickupSound "mi-4/bolt"
+	Inventory.Pickupmessage "You got the MI-4!"
+	+WEAPON.WIMPY_WEAPON
+    +WEAPON.NOAUTOAIM
+    +WEAPON.NOALERT
+    +WEAPON.NOAUTOFIRE
+	+FORCEXYBILLBOARD
+	+WEAPON.NO_AUTO_SWITCH
+    Scale 1
+	States
+	{
+	PickUp:
+	TNT1 A 0 A_Playsound("PICKUPONELINER")
+	TNT1 A 0
+	Stop
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	
+	Ready:
+        TNT1 A 2 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("mi-4/bolt")
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "ReadySil")
+        M14S ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0 //A_JumpIfInventory("MI-4Ammo",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+		GOto RealReady
+	ReadySil:
+		MI4S ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0 //A_JumpIfInventory("MI-4Ammo",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+		GOto RealReady
+	RealReady:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "RealReadySil")
+		M14G A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("ZoomedMI-4", 1, "Zoom")
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	RealReadySil:
+		MI4G A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("ZoomedMI-4", 1, "Zoom")
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto RealReady
+	
+    Ready2:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		14ZG A 1 A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
+		Loop
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("weapon/swap", 4)
+		TNT1 A 0 A_JumpIfInventory("ZoomedMI-4", 1, "DeselectZoomed")
+		TNT1 A 0 A_Takeinventory("ZoomedMI-4",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "DeselectSil")
+		M14S EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectZoomed:
+		TNT1 A 0 A_Takeinventory("ZoomedMI-4",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "DeselectSil2")
+		M14Z EDCBA 1
+		M14G A 1
+		M14S EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectSil:
+		MI4S EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectSil2:
+		MI4Z EDCBA 1
+		MI4G A 1
+		MI4S EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+		
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		
+		Goto Ready
+	
+	WeaponSpecial:
+	SilencerToggle:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility",1)
+		TNT1 A 0 A_Takeinventory("ZoomedMP5",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 a 0 A_jumpifinventory("RifleSilencerInventory", 1, "SilencerOn")
+		Goto NoSilencer
+	SilencerOn:
+		TNT1 A 0
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "SilencerOff")
+		TNT1 A 0 A_TakeInventory("SilencerOnRifle", 1)
+		TNT1 A 0 A_GiveInventory("MI-4SilencerIsOn", 1)
+		M14S EDCBA 1
+		TNT1 A 5
+		Goto Ready
+		
+	SilencerOff:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("MI-4SilencerIsOn", 1)
+		MI4S EDCBA 1
+		TNT1 A 5
+		Goto Ready
+		
+	NoSilencer:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("noupgrade")
+		TNT1 A 0 A_Print("Rifle Silencer Required to Continue")
+		Goto RealReady
+		
+   Fire:
+		TNT1 A 0 A_JumpIfInventory("ZoomedMI-4",1,"Fire2")
+		TNT1 A 0 A_JumpIfInventory("MI-4Ammo",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "FireSil")
+   FireLoud:
+		TNT1 A 0 A_JumpIFInventory("MI-4FireDummy", 1, "FireLoudLoop")
+		TNT1 A 0 A_GiveINventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("kf/m14/fire",7)
+		TNT1 A 0 A_PlaySound("mi-4/Fire",6)
+		Goto ContinueFire
+	FireLoudLoop:
+		TNT1 A 0 A_TakeInventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("kf/m14/fire",5)
+		TNT1 A 0 A_PlaySound("mi-4/Fire",4)
+		Goto ContinueFire
+	ContinueFire:
+		M14F A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 2, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		TNT1 A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
+		M14F B 1 BRIGHT A_FireBullets (2, 2, 1, random(17,9), "HitPuff")
+        RIFF A 0 A_FireCustomMissile("Tracer", 0, 0, random(10,9), -1, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-1.3 + pitch)
+		M14F C 1 A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,24,-2)
+		TNT1 A 0 A_Takeinventory("MI-4Ammo",1)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		M14F D 1 A_WeaponReady(WRF_NOBOB)
+        S94G A 0 A_SetPitch(+0.5 + pitch)
+		M14F E 1 A_WeaponReady(WRF_NOBOB)
+	DoneFiring:
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "DoneFiringSil")
+		M14G A 5 A_WeaponReady(1)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		M14G A 5 A_WeaponReady(1)
+		Goto RealReady
+		
+	FireSil:
+		TNT1 A 0 A_JumpIFInventory("MI-4FireDummy", 1, "FireSilLoop")
+		TNT1 A 0 A_GiveINventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("mi-4/silence/fire",7)
+		Goto ContinueFireSil
+	FireSilLoop:
+		TNT1 A 0 A_TakeInventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("mi-4/silence/fire",6)
+		Goto ContinueFireSil
+	ContinueFireSil:
+		MI4F A 1 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 8, 0, 0, 0)
+		MI4F B 1 BRIGHT A_FireBullets (1, 1, 1, random(11,10), "HitPuff")
+        RIFF A 0 A_FireCustomMissile("Tracer", 0, 0, random(10,9), -1, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-1.2 + pitch)
+		MI4F C 1 A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,24,-2)
+		TNT1 A 0 A_Takeinventory("MI-4Ammo",1)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		MI4F D 1 A_WeaponReady(WRF_NOBOB)
+        S94G A 0 A_SetPitch(+0.5 + pitch)
+		MI4F E 1 A_WeaponReady(WRF_NOBOB)
+		Goto DoneFiringSil
+	DoneFiringSil:
+		MI4G A 5 A_WeaponReady(1)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		MI4G A 5 A_WeaponReady(1)
+		Goto RealReady
+		
+      Fire2:
+		TNT1 A 0 A_JumpIfInventory("MI-4Ammo",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "Fire2Sil2")
+	Fire2Loud2:
+		TNT1 A 0 A_JumpIFInventory("MI-4FireDummy", 1, "FireLoudLoop2")
+		TNT1 A 0 A_GiveINventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("kf/m14/fire",7)
+		TNT1 A 0 A_PlaySound("mi-4/Fire",6)
+		Goto ContinueFire2
+	FireLoudLoop2:
+		TNT1 A 0 A_TakeInventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("kf/m14/fire",5)
+		TNT1 A 0 A_PlaySound("mi-4/Fire",4)
+		Goto ContinueFire2
+	ContinueFire2:
+		RI2G A 0 A_AlertMonsters
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 4, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,5)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,0,45)
+		14ZF A 1 BRIGHT A_FireBullets (0.1, 0.1, -1, random(17,9), "HitPuff")
+        RI2F A 0 BRIGHT A_FireCustomMissile("Tracer", 0, 0, -1, 0)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, -12, 0, 0)
+		TNT1 A 0
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_SetPitch(-0.8 + pitch)
+		TNT1 A 0 A_Takeinventory("MI-4Ammo",1)
+		14ZF B 1 
+		TNT1 A 0 A_SetPitch(+0.4 + pitch)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",1,0,8,0)
+        14ZF C 1 A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 
+		36ZG A 0 A_SetPitch(+0.2 + pitch)
+		14ZF D 1 A_WeaponReady(WRF_NOBOB)
+        14ZF E 1 A_WeaponReady(WRF_NOBOB)
+		14ZG A 10 A_WeaponReady(WRF_NOBOB)
+        RI2G A 0
+		Goto Ready2
+		
+	Fire2Sil2:
+		TNT1 A 0 A_JumpIFInventory("MI-4FireDummy", 1, "FireSilLoop2")
+		TNT1 A 0 A_GiveINventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("mi-4/silence/fire",7)
+		Goto ContinueFireSil2
+	FireSilLoop2:
+		TNT1 A 0 A_TakeInventory("MI-4FireDummy", 1)
+		TNT1 A 0 A_PlaySound("mi-4/silence/fire",6)
+		Goto ContinueFireSil2
+	ContinueFireSil2:
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 4, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,0,45)
+		I4ZF A 1 BRIGHT A_FireBullets (0.1, 0.1, -1, random(11,10), "HitPuff")
+        RI2F A 0 BRIGHT A_FireCustomMissile("Tracer", 0, 0, -1, 0)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, -12, 0, 0)
+		TNT1 A 0
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_SetPitch(-0.8 + pitch)
+		TNT1 A 0 A_Takeinventory("MI-4Ammo",1)
+		14ZF B 1 
+		TNT1 A 0 A_SetPitch(+0.4 + pitch)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",1,0,8,0)
+        14ZF C 1 A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 
+		36ZG A 0 A_SetPitch(+0.2 + pitch)
+		14ZF D 1 A_WeaponReady(WRF_NOBOB)
+        14ZF E 1 A_WeaponReady(WRF_NOBOB)
+		14ZG A 10 A_WeaponReady(WRF_NOBOB)
+        RI2G A 0
+		Goto Ready2
+		
+    AltFire:
+        TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("ZoomedMI-4",1,"UnZoom")
+		TNT1 A 0 A_Giveinventory("ZoomedMI-4",1)
+	Zoom:
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+        TNT1 A 0 A_ZoomFactor(1.6)
+		TNT1 A 0 A_Giveinventory("ADSmode",1)
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "AnimationZoom1")
+        M14Z ABC 1
+		M14Z DE 1
+        Goto Ready2
+	AnimationZoom1:
+		MI4Z ABC 1
+        M14Z DE 1
+		Goto Ready2
+	UnZoom:
+        TNT1 AAAAAA 0
+		M14Z ED 1
+        TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "AnimationZoom2")
+		M14Z CBA 1
+		GOto ContinueUnZoom
+	AnimationZoom2:
+		M14Z CBA 1
+	ContinueUnZoom:
+		TNT1 A 0 A_Takeinventory("ZoomedMI-4",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+        Goto RealReady
+		
+	NoAmmo:
+	M14G A 0 A_PlaySound("weapons/empty")
+	TNT1 A 0 A_Takeinventory("ZoomedMI-4",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	Goto Ready+12
+	
+    Reload:
+		//RIFG A 1 A_WeaponReady
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_Takeinventory("ZoomedMI-4",1)
+		TNT1 A 0 A_JumpIfInventory("MI-4Ammo",21,"RealReady")
+        TNT1 A 0 A_JumpIfInventory("APBullets",1,3)
+        Goto NoAmmo
+        TNT1 AAA 0
+		TNT1 A 0 A_Takeinventory("ZoomedMI-4",1)
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "ReloadSilAnimation")
+        M14R ABCD 1  A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
+		TNT1 A 0 A_Playsound("mi-4/clip/out", 4)
+        M14R E 1 A_FireCustomMissile("EmptyClipSpawn",-5,0,8,-4)
+        M14R F 15
+		M14R GH 1
+		M14R I 1 A_Playsound("mi-4/clip/in", 4)
+		M14R JJKK 1
+		M14R EDCBA 1
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_JumpIfInventory("MI-4Ammo",1,"InsertBullets2")
+		Goto InsertBullets
+	
+	ReloadSilAnimation:
+		MI4R ABCD 1  A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
+		TNT1 A 0 A_Playsound("mi-4/clip/out", 4)
+        MI4R E 1 A_FireCustomMissile("EmptyClipSpawn",-5,0,8,-4)
+        MI4R F 15
+		MI4R GH 1
+		MI4R I 1 A_Playsound("mi-4/clip/in", 4)
+		MI4R JJKK 1
+		MI4R EDCBA 1
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_JumpIfInventory("MI-4Ammo",1,"InsertBullets2")
+		Goto InsertBullets
+		
+	InsertBullets:
+		TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("MI-4Ammo",20,"Bolt")
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,3)
+		Goto Bolt
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("MI-4Ammo",1)
+		TNT1 A 0 A_Takeinventory("APBullets",1,TIF_NOTAKEINFINITE)
+		Goto InsertBullets
+	
+	Bolt:
+		TNT1 A 0 A_playsound("mi-4/bolt", 4)
+		TNT1 A 0 A_jumpifinventory("MI-4SilencerIsOn", 1, "BoltSil")
+		M14C AB 1
+		M14C C 1 A_giveinventory("MI-4Ammo", 1)
+		M14C D 2 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+		M14C EFF 1
+		TNT1 A 0 A_takeinventory("MI-4Ammo", 1)
+		M14C FEDCBA 1
+		Goto RealReady
+	BoltSil:
+		MI4C AB 1
+		MI4C C 1 A_giveinventory("MI-4Ammo", 1)
+		MI4C D 2 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+		MI4C EFF 1
+		TNT1 A 0 A_takeinventory("MI-4Ammo", 1)
+		MI4C FEDCBA 1
+		Goto RealReady
+	InsertBullets2:
+		TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("MI-4Ammo",21,"RealReady")
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,3)
+		Goto RealReady
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("MI-4Ammo",1)
+		TNT1 A 0 A_Takeinventory("APBullets",1,TIF_NOTAKEINFINITE)
+		Goto InsertBullets2
+		
+		TNT1 AAAAAAAAAA 0
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        Goto RealReady
+		TNT1 AAAA 0
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        Goto RealReady
+		
+		
+		
+ 	Spawn:
+		M14P A -1
+		Stop
+	}
+}

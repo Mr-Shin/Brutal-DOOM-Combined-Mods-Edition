@@ -1,0 +1,303 @@
+ACTOR M110AMRMagazineAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 11
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 11
+   Inventory.Icon "AMRPA0"
+}
+
+Actor ZoomedM110 : Inventory {inventory.maxamount 2}
+
+// --------------------------------------------------------------------------
+//
+// M110 Anti Matter Rifle
+//
+// --------------------------------------------------------------------------
+
+ACTOR M110AMR : CMEWeapon
+{
+	Game Doom
+	SpawnID 29
+	Speed 20
+	Damage 20
+	Weapon.SelectionOrder 9500
+	scale 0.6
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.AmmoGive1 6
+	Weapon.AmmoType1 "50CalAmmo"
+	Weapon.AmmoType2 "M110AMRMagazineAmmo"
+	tag "M110 Anti-Matter Explosive Sniper Rifle"
+    Inventory.PickupSound "M110/boltclose"
+    +WEAPON.NOAUTOAIM
+	+FORCEXYBILLBOARD
+	+WEAPON.AXEBLOOD
+	+WEAPON.NO_AUTO_SWITCH
+	+WEAPON.NOALERT
+	Inventory.PickupMessage "You got the M110 Explosive Sniper Rifle"
+	States
+	{
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+	    TNT1 A 0
+        TNT1 A 4 A_PlaySound("M110/boltclose")
+        AMRS ABCDE 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 AAAAA 0
+        //TNT1 A 0 A_JumpIfInventory("RocketRounds",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+	RealReady:
+       TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		AMRG A 1 A_WeaponReady
+        Goto RealReady
+		
+	RealReadyZoomed:
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"UnZoom")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		M50Z B 1 A_WeaponReady(WRF_NOBOB)
+        Goto RealReadyZoomed
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("weapon/swap", 4)
+		TNT1 A 0 A_JumpIfInventory("ZoomedM110",1,"UnZoom")
+        AMRS EDCBA 1
+		TNT1 A 0 A_Takeinventory("ZoomedM110",2)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select:
+	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+	
+		MISG A 0 A_Raise
+		Wait
+		
+	//Weapon Special
+	WeaponSpecial:
+	FireModeSwitch:
+		TNT1 A 0 A_Takeinventory("ZoomedM110",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_Print("No Attachments Available")
+		Goto RealReady
+	
+	Fire:
+        TNT1 A 0 A_JumpIfInventory("ZoomedM110",1,"FireZoomed")
+		TNT1 A 0 A_JumpIfInventory("M110AMRMagazineAmmo",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 9, 1, 0, 0)
+        TNT1 A 0 A_PlaySound ("M110/fire/loud",7)
+		TNT1 A 0 A_PlaySound ("M110/fire/quiet",6)
+		TNT1 A 0 A_ALERTMONSTERS
+		AMRF A 1 BRIGHT A_FireCustomMissile("AMRoundTracer", 0, 0, 13, -6, 0, 0)
+		AMRF BCD 1
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",-5,0,16,-4)
+		TNT1 A 0 A_Takeinventory("M110AMRMagazineAmmo",1)
+        AMRF E 1 A_SetPitch(-6.0 + pitch)
+		TNT1 A 0 A_playsound("M110/boltclose",4)
+        AMRG AAA 2 A_SetPitch(2.0 + pitch)
+		AMRG A 4
+        AMRG A 0
+        TNT1 A 0 A_Refire("Fire")
+        Goto RealReady
+	
+	Altfire:
+	Zoom:
+		TNT1 A 0 A_JumpIfInventory("ZoomedM110",2,"UnZoom")
+		TNT1 A 0 A_JumpIfInventory("ZoomedM110",1,"Magnify")
+		TNT1 A 0 A_Giveinventory("ZoomedM110",1)
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+        TNT1 A 0 A_ZoomFactor(4.0)
+		TNT1 A 0 A_Giveinventory("ADSmode",1)
+		TNT1 A 0 A_playsound("SR9/Zoom/In", 4)
+		AMRG A 1 A_SetBlend("Black",0.2,3)
+		AMRG A 1 A_SetBlend("Black",0.4,3)
+		AMRG A 1 A_SetBlend("Black",0.6,3)
+		AMRG A 1 A_SetBlend("Black",0.8,3)
+		AMRG AA 1 A_SetBlend("Black",1.0,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.8,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.6,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.4,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.2,3)
+        Goto RealReadyZoomed
+	Magnify:
+		TNT1 A 0 A_playsound("SR9/Zoom/In", 4)
+		TNT1 A 0 A_Giveinventory("ZoomedM110",1)
+		M50Z B 1 A_SetBlend("Black",0.2,3)
+		M50Z B 1 A_SetBlend("Black",0.4,3)
+		M50Z B 1 A_SetBlend("Black",0.6,3)
+		M50Z B 1 A_SetBlend("Black",0.8,3)
+		M50Z B 1 A_SetBlend("Black",1.0,3)
+		TNT1 A 0 A_ZoomFactor(8.0)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.8,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.6,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.4,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.2,3)
+		Goto RealReadyZoomed
+	UnZoom:
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_playsound("SR9/Zoom/Out", 4)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.2,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.4,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.6,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.8,3)
+        M50Z B 1 BRIGHT A_SetBlend("Black",1.0,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.8,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.6,3)
+		M50Z B 1 BRIGHT A_SetBlend("Black",0.4,3)
+        M50Z B 1 BRIGHT A_SetBlend("Black",0.2,3)
+		SNIP AAAAAAAAAA 1 BRIGHT A_SetBlend("Black",1.0,3)
+		TNT1 A 0 A_Takeinventory("ZoomedM110",2)
+        TNT1 A 0 A_ZoomFactor(1.0)
+        Goto RealReady
+	
+	FireZoomed:
+		TNT1 A 0 A_JumpIfInventory("M110AMRMagazineAmmo",1,2)
+        TNT1 A 0 A_GiveInventory("Reloading", 1)
+		Goto UnZoom
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_ALERTMONSTERS
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 4, 0, 0)
+        TNT1 A 0 A_PlaySound ("M110/fire/loud",7)
+		TNT1 A 0 A_PlaySound ("M110/fire/quiet",6)
+		TNT1 A 0 A_FireCustomMissile("Alerter")
+		M50Z B 1 BRIGHT A_FireCustomMissile("AMRoundTracer", 0, 0, 0, -4, 0, 0)
+		M50Z BBB 1 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",0,0,0,0)
+		TNT1 A 0 A_Takeinventory("M110AMRMagazineAmmo",1)
+        M50Z B 1 A_SetPitch(-6.0 + pitch)
+		TNT1 A 0 A_playsound("M110/boltclose",4)
+        M50Z BBB 2 A_SetPitch(2.0 + pitch)
+		M50Z B 4
+        AMRG A 0
+        TNT1 A 0 A_Refire("Fire")
+        Goto RealReadyZoomed
+
+    Reload:
+		AMRG A 1 A_WeaponReady
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        TNT1 A 0 A_JumpIfInventory("M110AMRMagazineAmmo",11,"NoNeedToReload")
+        TNT1 A 0 A_JumpIfInventory("50CalAmmo",1,3)
+        Goto RealReady
+        TNT1 AAAA 0
+        AMRR A 1
+		AMRR B 1 A_PlaySound ("M110/clipout",6)
+		TNT1 A 0 A_PlaySound ("M110/boltopen",4)
+		AMRR CDE 1
+		AMRR E 1 A_FireCustomMissile("EmptySMGClipSpawn",-5,0,8,-4)
+        AMRR FGHI 1
+		AMRR J 10
+		AMRR KLMNOP 1
+		AMRR Q 1 A_PlaySound ("M110/clipin",6)
+		TNT1 A 0 A_PlaySound ("M110/boltclose",4)
+		AMRR QRSTUVWW 1
+		AMRR XYZ 1
+		1MRR AB 1
+		TNT1 A 0 A_JumpIfInventory("M110AMRMagazineAmmo", 1, "FillMag")
+		Goto FinishReload
+		
+	FinishReload:
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("M110AMRMagazineAmmo",10,"Cliping")
+		TNT1 A 0 A_JumpIfInventory("50CalAmmo",1,3)
+		Goto Cliping
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("M110AMRMagazineAmmo",1)
+		TNT1 A 0 A_Takeinventory("50CalAmmo",1,TIF_NOTAKEINFINITE)
+		Goto FinishReload
+		
+	FillMag:
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("M110AMRMagazineAmmo",11,"NoNeedToReload")
+		TNT1 A 0 A_JumpIfInventory("50CalAmmo",1,3)
+		Goto NoNeedToReload
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("M110AMRMagazineAmmo",1)
+		TNT1 A 0 A_Takeinventory("50CalAmmo",1,TIF_NOTAKEINFINITE)
+		Goto FillMag
+		
+	Cliping:
+		AMRC ABC 1
+		AMRC D 1 A_giveinventory("M110AMRMagazineAmmo", 1)
+		AMRC E 1 A_PlaySound ("M110/boltopen",5)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",-5,0,32,-4)
+		TNT1 A 0 A_TakeInventory("M110AMRMagazineAmmo",1)
+		AMRC EFFGGGG 1
+		AMRC F 1 A_PlaySound ("M110/boltclose",5)
+		AMRC FEEDCBA 1
+		Goto NoNeedToReload
+		
+		NoNeedToReload:
+        AMRG A 1 A_Refire("Fire")
+        Goto RealReady
+
+
+	Spawn:
+		AMRP A -1
+		Stop
+	}
+}
