@@ -1,4 +1,4 @@
-ACTOR Rifle : CMEWeapon Replaces Pistol
+ACTOR XM10 : CMEWeapon
 {
 	Weapon.AmmoUse1 0
 	Weapon.AmmoGive1 15
