@@ -185,6 +185,12 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 4/DMRs/M110AMR.txt"
 #include "decorates/weapons/main/slot 4/DMRs/AMRound.txt"
 #include "decorates/weapons/main/slot 4/DMRS/MI-4.txt"
+#include "decorates/weapons/main/slot 4/Carbines/G41K.txt"
+#include "decorates/weapons/main/slot 4/Carbines/G36C.txt"
+#include "decorates/weapons/main/slot 4/Carbines/CM666.txt"
+#include "decorates/weapons/main/slot 4/Carbines/PHALNAX.txt"
+#include "decorates/weapons/main/slot 4/Carbines/CZ-805.txt"
+#include "decorates/weapons/main/slot 4/Carbines/M4A6.txt"
 
 //Glory Kills
 #include GLORYKILL.txt

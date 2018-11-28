@@ -141,7 +141,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.WeaponSlot 1, Sledge, Chain_Saw, Melee_Attacks
 	Player.WeaponSlot 2, SovietMP, UZI, UMP50, MP40, TMP9, PPSH91, PDW91, POW90, G7, MP27, MP7, MP5, TesticleImploder, SkullCracker, DesertEagle3, DesertEagle, G18, G17C, TAC15, Doom2016Blaster, USP45, FN67, M9Beretta 
 	Player.WeaponSlot 3, QuadShotgun, Quake3SG, Doom2016SSG, CoachGunMK2, CoachGun, COBRA, Stryker, SawedOff, UAC1881, AA48, ASRIOT4, MK23, M1216, XM1014, MK5OVPS, UTS15, Doom2016SG, Doom4SGPT, Quake4SG, R870, NailSG, ClassicSG, Beaker, UAC1897
-	Player.WeaponSlot 4, Rifle, FG42, Repeater, XM30, M41A9, AK47, AKRSYD47T, M4A4, M16, SCORH, LEGION1, ACR, HeavyAR, S94, FAL, M110AMR, MI4
+	Player.WeaponSlot 4, MI4, M110AMR, FAL, PHALANX, CM666, CZ805, G41K, G36C, M4A6, HeavyAR, Repeater, FG42, SCORH, LEGION1, ACR, M4A4, M16, M41A9, XM30,S94, AK47, AKRSYD47T, Rifle
 	Player.WeaponSlot 5, MiniGun
 	Player.WeaponSlot 6, Rocket_Launcher
 	Player.WeaponSlot 7, Plasma_Gun
