@@ -1,4 +1,4 @@
-ACTOR XM10 : CMEWeapon
+ACTOR Rifle: CMEWeapon
 {
 	Weapon.AmmoUse1 0
 	Weapon.AmmoGive1 15
