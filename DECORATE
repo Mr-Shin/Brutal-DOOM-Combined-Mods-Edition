@@ -64,12 +64,12 @@ Actor PBKick : Inventory {}
 #include "Decorates/WEAPONS/MAIN/Slot 4/Rifles/DualRifle.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Pump Shotguns/SHOTGUN.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Super Shotguns/SSG.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 5/MINIGUN.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 6/ROCKETLAUNCHER.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 5/Miniguns/MINIGUN.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 6/RLs/ROCKETLAUNCHER.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/EXPLOSIVES.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 7/PLASMA.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 7/DUALPLASMA.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 8/BFG.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 7/Plasma/PLASMA.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 7/Plasma/DUALPLASMA.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 8/BFGs/BFG.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/Throwables.txt"
 
@@ -191,6 +191,22 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 4/Carbines/PHALNAX.txt"
 #include "decorates/weapons/main/slot 4/Carbines/CZ-805.txt"
 #include "decorates/weapons/main/slot 4/Carbines/M4A6.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/Shredder.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/Stinger.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/Stinger2.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/Hailstorm.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/Chaingun.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/M160.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/DN34.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/Doom16Chaingun.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/2016ChainGunUpgrade.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/2016ChainGunUpgrade2.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/TEMPST-50.txt"
+
+
+
+
+
 
 //Glory Kills
 #include GLORYKILL.txt

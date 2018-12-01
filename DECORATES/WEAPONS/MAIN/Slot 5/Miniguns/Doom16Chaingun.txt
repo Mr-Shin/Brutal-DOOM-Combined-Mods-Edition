@@ -1,0 +1,1215 @@
+Actor SpinDoom2016Chaingun: Inventory
+{
+inventory.maxamount 1
+}
+
+Actor TurretActive2016 : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor TurretActive20162 : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor FiredTurretOnce2016 : Inventory
+{
+inventory.maxamount 1
+}
+
+// --------------------------------------------------------------------------
+//
+// Doom2016Chaingun
+//
+// --------------------------------------------------------------------------
+
+ACTOR Doom2016Chaingun : CMEWeapon
+{
+Game Doom
+SpawnID 28
+Weapon.SelectionOrder 700
+Weapon.AmmoType1 "APBullets"
+//Weapon.AmmoType2 "APBullets"
+Weapon.AmmoGive 30
+Weapon.AmmoUse1 0
+//Weapon.AmmoUse2 1
+    +WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
+	+FORCEXYBILLBOARD
+	tag "Doom 2016 Chaingun"
+	+WEAPON.NO_AUTO_SWITCH
+Inventory.PickupSound "MINIPKP"
+Inventory.PickupMessage "You got the Doom 2016 Chaingun!"
+Obituary "%o was mowed down by %k's Doom 2016 Chaingun."
+AttackSound "none"
+Scale 0.9
+States
+{
+Steady:
+	TNT1 A 1
+	Goto Ready
+
+Spawn:
+	16CP A -1
+	Stop
+	
+RotatorFlash:
+	TNT1 A 0 A_JumpIfInventory("2016ChainGunUpgradeInventory2", 1, "RotatorFlashReal")
+	Stop
+RotatorFlashReal:
+	16RT A 1
+	Stop
+	
+Ready: 
+      TNT1 A 0
+      TNT1 A 10 A_JumpIfInventory("GoFatality", 1, "Steady")
+	  TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "ReadyStalin2")
+	  TNT1 A 0 A_JumpIfInventory("2016ChainGunUpgradeInventory2", 1, "ReadyRotator")
+      16CS ABCDE 1 
+      TNT1 A 0 A_PlaySound("CHGNPKUP")
+      TNT1 AAAAAAAAAAA 0
+	  Goto Idle
+  ReadyStalin2:
+	  TNT1 A 0
+      TNT1 A 10
+	  TNT1 A 0 A_GunFlash
+      16TS ABCDE 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+      TNT1 A 0 A_PlaySound("CHGNPKUP")
+      TNT1 AAAAAAAAAAA 0
+	  Goto Idle
+  ReadyRotator:
+	  16RT EFGHI 1 
+      TNT1 A 0 A_PlaySound("CHGNPKUP")
+      TNT1 AAAAAAAAAAA 0
+	  Goto Idle
+  Idle:
+  RealReady:
+	  TNT1 A 0 A_StopSound(5)
+	  //TNT1 A 0 A_StopSound(3)
+     TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"Ready2")
+      MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Normal", 0, 0, 0, 0)
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+	  TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "RealReadyStalin")
+	  TNT1 A 0 A_GunFlash("RotatorFlash")
+	  16CG A 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("APBullets",1,"Idle")
+      Goto IdleNoAmmo
+  RealReadyStalin:
+	  16TG A 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("APBullets",1,"Idle")
+      Goto IdleNoAmmo
+
+	  
+  IdleNoAmmo:
+	  TNT1 A 0 A_StopSound(5)
+	  TNT1 A 0 A_TakeInventory ("SpinDoom2016Chaingun",1)
+	  TNT1 A 0 A_TakeInventory ("TurretActive20162",1)
+	  TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "IdleNoAmmoTurret")
+	  TNT1 A 0 A_GunFlash("RotatorFlash")
+	  16CG A 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("APBullets",1,"Idle")
+	  Loop
+  IdleNoAmmoTurret:
+	  16TG A 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("APBullets",1,"Idle")
+	  Goto IdleNoAmmo
+
+Ready2:
+	  TNT1 A 0 A_StopSound(5)
+	  MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Normal", 0, 0, 0, 0)
+	  TNT1 A 0 A_PlaySound("Doom2016CG/Spin", 4)
+      TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "RealReadyStalin2")
+	  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+	  TNT1 A 0 A_GunFlash("RotatorFlash")
+      16CG A 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+	  
+	  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+	  TNT1 A 0 A_GunFlash("RotatorFlash")
+      16CG B 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+	  
+	  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+	  TNT1 A 0 A_GunFlash("RotatorFlash")
+      16CG C 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+	  
+	  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+	  TNT1 A 0 A_GunFlash("RotatorFlash")
+      16CG D 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+      Loop
+RealReadyStalin2:
+	TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+      16TG A 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+	  
+	  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+      16TG B 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+
+	  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+      16TG C 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+	  
+	  TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	  TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	  TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+      TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+      16TG D 1 A_WeaponReady
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  TNT1 A 0 A_AlertMonsters
+	  Goto Ready2
+DeployStalinGodDammit:
+	  TNT1 A 0
+	  TNT1 A 0 Offset(0,32) A_JumpIfInventory("GoFatality", 1, "Steady")
+	  
+	  MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Slow", 0, 0, 0, 0)
+  RealReadyStalinTurret:
+	  TNT1 A 0 A_StopSound(5)
+	  TNT1 A 0 A_GiveInventory("TurretActive2016", 1)
+	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility",1, "SilencerToggle")
+	  TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+	  MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Slow", 0, 0, 0, 0)
+      16CT A 1 A_WeaponReady(WRF_NOSWITCH)
+	  TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+	  TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+	  TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+	  TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+	  TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+	  Loop
+	  
+	SilencerToggle:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility",1)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 a 0 A_jumpifinventory("TurretActive2016", 1, "TurretOn")
+		TNT1 A 0 A_print("Mobile Turret needed to Toggle")
+		Goto RealReady
+	TurretOn:
+		TNT1 A 0
+		TNT1 A 0 A_jumpifinventory("TurretActive20162", 1, "TurretOff")
+		TNT1 A 0 A_GiveInventory("TurretActive20162", 1)
+		TNT1 A 0 A_PlaySound("Chaingun/Turret/Deploy",6)
+		16TM ABCDEF 1
+		Goto DeployStalinGoddammit
+	TurretOff:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("TurretActive20162", 1)
+		MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Normal", 0, 0, 0, 0)
+		TNT1 A 0 A_PlaySound("Chaingun/Turret/Deselect",6)
+		16TM FEDCBA 1
+		Goto RealReady
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(3)
+		TNT1 A 0 A_playsound("weapon/swap", 4)
+		MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Normal", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "DeselectTurret")
+		TNT1 A 0 A_TakeInventory ("SpinDoom2016Chaingun",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
+		TNT1 A 0 A_JumpIfInventory("2016ChainGunUpgradeInventory2", 1, "DeselectRotator")
+		16CS EDCBA 1
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectRotator:
+		16RT IHGFE 1
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	DeselectTurret:
+		TNT1 A 0
+		16TG A 1 Offset(0,32)
+		16TS EDCBA 1
+		TNT1 A 0 A_TakeInventory("TurretActive20162", 1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
+		TNT1 A 0 SetPlayerProperty(0,0,0)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+		
+
+    Select:
+		TNT1 A 0 A_Giveinventory("RandomHeadExploder",1)
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Giveinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
+		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		Goto Ready
+		
+	WeaponSpecial:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_Takeinventory("SpinDoom2016Chaingun",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfINventory("2016ChainGunUpgradeInventory", 1, "BeforeYouDeployStalin")
+		TNT1 A 0 A_Print("Need Mobile Turret To Continue")
+		Goto RealReady
+	BeforeYouDeployStalin:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("APBullets", 1, "ContinueToDeployStalin")
+		TNT1 A 0 A_Print("Insufficient Ammo")
+		Goto RealReady
+	ContinueToDeployStalin:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "DeselectTurret2016")
+		TNT1 A 0 A_GiveInventory("TurretActive2016", 1)
+		16CS EDCBA 1
+		TNT1 A 0 A_Playsound("Chaingun/Turret/Switch", 7)
+		TNT1 A 35
+		Goto Ready
+	DeselectTurret2016:
+		MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Normal", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("TurretActive20162", 1)
+		TNT1 A 0 A_TakeInventory("TurretActive2016", 1)
+		16TS EDCBA 1 Offset(0,32)
+		TNT1 A 0 A_Playsound("Chaingun/Turret/Switch", 7)
+		TNT1 A 35
+		Goto Ready
+		
+    NoAmmo:
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "TurretNoAmmo")
+        16CG A 10 A_PlaySound("weapons/empty")
+        Goto RealReady
+	TurretNoAmmo:
+		TNT1 A 0 A_TakeInventory("TurretActive20162", 1)
+		16TG A 10 A_PlaySound("weapons/empty")
+        Goto RealReady
+		
+BulletFlash:
+	TNT1 A 0 A_JumpIfInventory("TurretActive20162", 1, "BulletFlashTurret")
+	TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "BulletFlash3")
+	TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun", 1, "BulletFlash2")
+	TNT1 A 0 A_FireBullets(4.0, 4.0, 1, 11, "MachineGunBulletPuff", 1)
+	CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3),0,8,-6,0,random(-2,2))
+	TNT1 A 0 A_JumpIfInventory("2016ChainGunUpgradeInventory2", 1, "RotatorFlashReal2")
+	Stop
+
+BulletFlash2:
+	TNT1 A 0 A_FireBullets(4.0, 4.0, 1, 13, "MachineGunBulletPuff", 1)
+	CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3),0,8,-6,0,random(-2,2))
+	TNT1 A 0 A_JumpIfInventory("2016ChainGunUpgradeInventory2", 1, "RotatorFlashReal2")
+	Stop
+RotatorFlashReal2:
+	TNT1 A 0 A_Jump(96, "RotatorFlashReal3")
+	TNT1 A 0 A_Jump(96, "RotatorFlashReal4")
+	16RT B 1 BRIGHT
+	Stop
+RotatorFlashReal4:
+	16RT D 1 BRIGHT
+	Stop
+RotatorFlashReal3:
+	16RT C 1 BRIGHT
+	Stop
+
+
+BulletFlash3:
+	TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun", 1, "BulletFlash4")
+	TNT1 A 0 A_FireBullets(4.0, 4.0, 1, 11, "MachineGunBulletPuff", 1)
+	CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3),0,8,-6,0,random(-2,2))
+	Stop
+BulletFlash4:
+	TNT1 A 0 A_FireBullets(4.0, 4.0, 1, 13, "MachineGunBulletPuff", 1)
+	CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3),0,8,-6,0,random(-2,2))
+	Stop
+	
+	
+	BulletFlashTurret:
+		//Middle
+		TNT1 A 0 A_FireBullets(4.0, 4.0, 1, 6, "MachineGunBulletPuff", 1)
+		CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3),0,0,-6,0,random(-2,2))
+		
+		//Left
+		TNT1 A 0 A_FireBullets(7.0, 7.0, 1, 6, "MachineGunBulletPuff", 1)
+		CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3),0,-6,-2,0,random(-2,2))
+		
+		//Right
+		TNT1 A 0 A_FireBullets(7.0, 7.0, 1, 6, "MachineGunBulletPuff", 1)
+		CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3),0,6,-2,0,random(-2,2))
+		Stop
+	
+	Fire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("TurretActive20162", 1, "FireTurretStalin")
+	    TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"Fire2")
+		TNT1 A 0 A_PlaySound("Doom2016CG/Start", 4)
+	FireFirst:
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 7)
+        
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "FireFirst1")
+        16CF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		26CG B 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		TNT1 A 0 A_Refire("FireSecond")
+		Goto Watt
+	FireFirst1:
+		16TF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		26TG BCC 1
+		26TG D 2
+		TNT1 A 0 A_Refire("FireSecond")
+		Goto Watt2
+	FireSecond:
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 6)
+        
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "FireSecond1")
+        26CF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		26CG B 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		TNT1 A 0 A_Refire("FireThird")
+		Goto Watt
+	FireSecond1:
+		26TF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		26TG BCC 1
+		26TG D 2
+		TNT1 A 0 A_Refire("FireThird")
+		Goto Watt2
+	FireThird:
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 5)
+        
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "FireThird1")
+        26CF D 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		26CG B 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		TNT1 A 0 A_Refire("FireFourth")
+		Goto Watt
+	FireThird1:
+		26TF D 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		16TG BCC 1
+		16TG D 2
+		TNT1 A 0 A_Refire("FireFourth")
+		Goto Watt2
+	FireFourth:
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		
+		TNT1 A 0 A_PlaySound("Doom2016CG/Spin", 4)
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 7)
+        
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "FireFourth1")
+        16CF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		26CG B 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG C 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		26CG D 1 A_GunFlash("RotatorFlash")
+		TNT1 A 0 A_Refire("Hold")
+		Goto Watt
+	FireFourth1:
+		16TF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		26TG BCC 1
+		26TG D 2
+		TNT1 A 0 A_Refire("Hold")
+		Goto Watt2
+	Fire2:
+		TNT1 A 0 A_JumpIfInventory("TurretActive20162", 1, "FireTurretStalin")
+		TNT1 A 0 A_GiveInventory("SpinDoom2016Chaingun",1)
+    Hold:
+		TNT1 A 0 A_JumpIfInventory("TurretActive20162", 1, "FireTurretStalin")
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_PlaySound("Doom2016CG/Spin", 4)
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 7)
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "HoldTurret1")
+        26CF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+        TNT1 A 0 A_GunFlash("RotatorFlash")
+	    16CG B 1 A_GunFlash("RotatorFlash")
+		16CG C 1 A_GunFlash("RotatorFlash")
+
+		TNT1 A 0 A_Recoil(0.1)
+		TNT1 A 0 A_SetPitch(-0.4 + pitch)
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		TNT1 A 0 A_Refire("Hold2")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4U")
+		Goto CoolDown
+		
+	Hold2:
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 6)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "HoldTurret2")
+        26CF D 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		TNT1 A 0
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		TNT1 A 0 A_GunFlash("RotatorFlash")
+	    16CG A 1 A_GunFlash("RotatorFlash")
+		16CG B 1 A_GunFlash("RotatorFlash")
+		
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		
+		TNT1 A 0 A_Refire("Hold3")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4U")
+		Goto CoolDown
+		
+	Hold3:
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_PlaySound("Doom2016CG/Spin", 4)
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 5)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "HoldTurret3")
+        26CF C 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		TNT1 A 0
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		TNT1 A 0 A_GunFlash("RotatorFlash")
+	    16CG D 1 A_GunFlash("RotatorFlash")
+		16CG A 1 A_GunFlash("RotatorFlash")
+		
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		
+		TNT1 A 0 A_Refire("Hold4")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4U")
+		Goto CoolDown
+		
+	Hold4:
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,2)
+		Goto IdleNoAmmo
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_playsound("Doom2016CG/Fire", 7)
+		TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "HoldTurret4")
+        26CF B 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		TNT1 A 0
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		TNT1 A 0 A_GunFlash("RotatorFlash")
+	    16CG C 1 A_GunFlash("RotatorFlash")
+		16CG D 1 A_GunFlash("RotatorFlash")
+		
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		
+		TNT1 A 0 A_Refire("Hold")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4U")
+		Goto CoolDown
+
+CoolDown:
+	 TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "CoolDownTurret")
+     TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	 TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	 TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	 TNT1 A 0 A_StopSound(5)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+	 TNT1 A 0 A_Refire("Hold")
+Watt:
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)		
+	 TNT1 A 0 A_TakeInventory("SpinDoom2016Chaingun",1)
+     TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	 TNT1 A 0 A_PlaySound("Doom2016CG/Stop", 4)
+	 TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	 TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16CG B 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+      
+	 TNT1 A 0 A_TakeInventory("SpinDoom2016Chaingun", 1)
+     TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	 TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	 TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	 
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 
+	 //3 frames 
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG B 1 A_WeaponReady
+
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG C 1 A_WeaponReady
+
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG D 1 A_WeaponReady
+     goto RealReady
+
+NopeFuckItNoCoolDown4U:
+     MNGG B 0 A_ReFire("Fire2")
+
+	 TNT1 A 0 A_StopSound(5)
+	 TNT1 A 0 A_PlaySound("Doom2016CG/Spin", 4)
+     TNT1 A 0 A_GunFlash("RotatorFlash")
+	 16CG A 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+	
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+     16CG B 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+	 
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+     16CG C 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+	 
+	 TNT1 A 0 A_GunFlash("RotatorFlash")
+     16CG D 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+
+        goto Ready2
+
+HoldTurret1:
+        26TF A 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+        16TG BC 1 
+
+		TNT1 A 0 A_Recoil(0.1)
+		TNT1 A 0 A_SetPitch(-0.4 + pitch)
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		TNT1 A 0 A_Refire("Hold2")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4UTurret")
+		Goto CoolDownTurret
+		
+	HoldTurret2:
+        16TF D 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		TNT1 A 0
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+	    26TG AB 1
+		
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		
+		TNT1 A 0 A_Refire("Hold3")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4UTurret")
+		Goto CoolDownTurret
+		
+	HoldTurret3:
+        26TF C 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		TNT1 A 0
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+	    16TG DA 1
+		
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		
+		TNT1 A 0 A_Refire("Hold4")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4UTurret")
+		Goto CoolDownTurret
+		
+	HoldTurret4:
+        26TF B 1 BRIGHT A_GunFlash("BulletFlash")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
+		TNT1 A 0
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+	    16TG CD 1
+		
+		TNT1 A 0 A_SetAngle(random(1, -1) + angle)
+		
+		TNT1 A 0 A_Refire("Hold")
+		TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"NopeFuckItNoCooldown4UTurret")
+		Goto CoolDownTurret
+
+CoolDownTurret:
+	 TNT1 A 0 A_JumpIfInventory("TurretActive20162", 1, "CoolDownTurretStalin")
+     TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	 TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	 TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	 TNT1 A 0 A_StopSound(5)
+	 16TG A 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG B 1 A_WeaponReady
+	 TNT1 A 0 A_Refire("Hold")
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG C 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG D 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)		
+	 TNT1 A 0 A_TakeInventory("SpinDoom2016Chaingun",1)
+     TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+Watt2:
+	 TNT1 A 0 A_PlaySound("Doom2016CG/Stop", 4)
+	 TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	 TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	 16TG A 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG B 1 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG C 2 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG D 2 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+      
+	 TNT1 A 0 A_TakeInventory("SpinDoom2016Chaingun", 1)
+     TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	 TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+	 TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	 
+	 16TG A 2
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG B 2
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG C 2 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG D 2 A_WeaponReady
+	 TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+	 16TG ABCD 2 A_WeaponReady
+	 16TG ABCD 3 A_WeaponReady
+     goto RealReady
+
+NopeFuckItNoCoolDown4UTurret:
+     MNGG B 0 A_ReFire("Fire2")
+
+	 TNT1 A 0 A_StopSound(5)
+	 TNT1 A 0 A_PlaySound("Doom2016CG/Spin", 4)
+     16TG A 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+
+     16TG B 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+
+     16TG C 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+
+     16TG D 1 A_WeaponReady
+     TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,0)
+
+        goto Ready2
+
+
+
+  AltFire:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("TurretActive20162", 1, "FireTurretStalin")
+	TNT1 A 0 A_JumpIfInventory("2016ChainGunUpgradeInventory2", 1, "ContinueAlt")
+	TNT1 A 0 A_Print("Spin Upgrade Required to Continue")
+	Goto RealReady
+ContinueAlt:
+	TNT1 A 0
+    TNT1 A 0 A_StopSound(5)
+    TNT1 A 0 A_JumpIfInventory("SpinDoom2016Chaingun",1,"StopAlt")
+    TNT1 A 0 A_GiveInventory ("SpinDoom2016Chaingun",1)
+    //TNT1 A 0 SetPlayerProperty(0,1,0)
+    TNT1 A 0 A_PlaySound("Doom2016CG/Start", 4)
+	TNT1 A 0 A_JumpIfInventory("APBullets",1,"StartSpin")
+	Goto IdleNoAmmo
+StartSpin:
+	TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "StartSpin2")
+    16CG A 1 A_GunFlash("RotatorFlash")
+	16CG A 1 A_GunFlash("RotatorFlash")
+	16CG B 1 A_GunFlash("RotatorFlash")
+	16CG B 1 A_GunFlash("RotatorFlash")
+	16CG C 1 A_GunFlash("RotatorFlash")
+	16CG C 1 A_GunFlash("RotatorFlash")
+	16CG D 1 A_GunFlash("RotatorFlash")
+	16CG D 1 A_GunFlash("RotatorFlash")
+    
+	16CG A 1 A_GunFlash("RotatorFlash")
+	16CG B 1 A_GunFlash("RotatorFlash")
+	16CG C 1 A_GunFlash("RotatorFlash")
+	16CG D 1 A_GunFlash("RotatorFlash")
+	TNT1 A 0
+    Goto Ready2
+StartSpin2:
+	16TG ABCD 2
+    16TG ABCD 1
+	TNT1 A 0
+    Goto Ready2
+StopAlt:
+	TNT1 A 0
+    TNT1 A 0 A_TakeInventory ("SpinDoom2016Chaingun",1)
+    TNT1 A 0 A_PlaySound("Doom2016CG/Stop", 4)
+    TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "StopAlt2")
+    16CG A 1 A_GunFlash("RotatorFlash")
+	16CG B 1 A_GunFlash("RotatorFlash")
+	16CG C 1 A_GunFlash("RotatorFlash")
+	16CG D 1 A_GunFlash("RotatorFlash")
+    TNT1 A 0 A_GunFlash("RotatorFlash")
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG A 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG A 1 A_WeaponReady
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG B 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG B 1 A_WeaponReady
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG C 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG C 1 A_WeaponReady
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG D 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG D 1 A_WeaponReady
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG A 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG A 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG A 1 A_WeaponReady
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG B 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG B 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG B 1 A_WeaponReady
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG C 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG C 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG C 1 A_WeaponReady
+	
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG D 1 A_WeaponReady
+	TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG D 1 A_WeaponReady
+    TNT1 A 0 A_GunFlash("RotatorFlash")
+	16CG D 1 A_WeaponReady
+    Goto RealReady
+StopAlt2:
+	16TG ABCD 1
+    16TG ABCD 2 A_WeaponReady
+	16TG ABCD 3 A_WeaponReady
+    TNT1 A 0
+    Goto RealReady
+KickFlash:
+	TNT1 A 0 A_JumpIfInventory("TurretActive2016", 1, "KickFlash2")
+	TNT1 A 0 A_JumpIfInventory("2016ChainGunUpgradeInventory2", 1, "KickFlash3")
+	16CS EDCBA 1
+	16CS AAAA 2
+	16CS ABCDE 1
+	Stop
+KickFlash3:
+	16RT IHGFE 1
+	16RT EEEE 2
+	16RT EFGHI 1
+	Stop
+KickFlash2:
+	16TS EDCBA 1
+	16TS AAAA 2
+	16TS ABCDE 1
+	Stop
+	
+	FireTurretStalin:
+		TNT1 A 0 A_JumpIfInventory("APBullets",2,2)
+		Goto CoolDownTurret
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 2,TIF_NOTAKEINFINITE)
+		
+		TNT1 A 0 A_PlaySound("Chaingun/Fire/Start", 5)
+        
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_Jump(128, "Sprite1")
+        36TF A 2 BRIGHT A_GunFlash("BulletFlash")
+		Goto ContinueFireTurretStalin
+	Sprite1:
+		TNT1 A 0
+		36TF C 2 BRIGHT A_GunFlash("BulletFlash")
+		Goto ContinueFireTurretStalin
+		
+	ContinueFireTurretStalin:
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, "SkipThingy")
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-5,5), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-5,5), 0, -1, 0, 0, random(-3,3))
+	SkipThingy:	
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("GunFireSmoke", 0,0,-6,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("GunFireSmoke", 0,0,6,0,0,0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		TNT1 A 0 A_Firecustommissile("50CaseSpawn2",0,0,12,-18)
+		TNT1 A 0 A_Refire("TurretLoopStalin")
+		Goto CoolDownTurretStalin
+		
+	TurretLoopStalin:
+		TNT1 A 0 A_JumpIfInventory("APBullets",2,2)
+		Goto CoolDownTurret
+		TNT1 AAAAAA 0
+		
+		TNT1 A 0 A_TakeInventory("APBullets", 2,TIF_NOTAKEINFINITE)
+		
+		TNT1 A 0 A_PlaySound("Chaingun/Fire/Loop", 5,1,TRUE)
+        
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+        TNT1 A 0 A_JumpIfInventory("FiredTurretOnce2016", 1, "DerpItUp")
+		TNT1 A 0 A_GiveInventory("FiredTurretOnce2016", 1)
+		TNT1 A 0 A_Jump(128, "Sprite2")
+        36TF B 2 BRIGHT A_GunFlash("BulletFlash")
+		Goto ContinueFireTurretStalin
+	Sprite2:
+		TNT1 A 0
+		36TF D 2 BRIGHT A_GunFlash("BulletFlash")
+		Goto ContinueFireTurretStalin
+		
+	DerpItUp:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("FiredTurretOnce2016", 1)
+		TNT1 A 0 A_Jump(128, "Sprite3")
+        36TF A 2 BRIGHT A_GunFlash("BulletFlash")
+		Goto ContinueFireTurretStalin
+	Sprite3:
+		TNT1 A 0
+		36TF C 2 BRIGHT A_GunFlash("BulletFlash")
+		Goto ContinueFireTurretStalin
+		
+	ContinueFireTurretStalin:
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-7,7), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", random(-7,7), 0, -1, 0, 0, random(-3,3))
+		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("GunFireSmoke", 0,0,-6,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("GunFireSmoke", 0,0,6,0,0,0)
+        TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,0,-12,-18)
+		TNT1 A 0 A_Firecustommissile("50CaseSpawn2",0,0,12,-18)
+		TNT1 A 0 A_Refire("TurretLoopStalin")
+		Goto CoolDownTurretStalin
+	
+	CoolDownTurretStalin:
+		TNT1 A 0 A_StopSound(5)
+		TNT1 A 0 A_playsound("Chaingun/Fire/End",5)
+		16CT AB 1 A_WeapoNReady
+		TNT1 A 0 A_TakeInventory("FiredTurretOnce2016", 1)
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,-6,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,6,0,0,0)
+		16CT AB 1 A_WeapoNReady
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,-6,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,6,0,0,0)
+		16CT AB 1 A_WeaponReady
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,-6,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,6,0,0,0)
+		16CT AB 1 A_WeaponReady
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,-6,0,0,0)
+		CHAF A 0 BRIGHT A_FireCustomMissile("SmokeSpawner11", 0,0,6,0,0,0)
+		16CT ABAB 2 A_WeaponReady
+		16CT ABAB 3 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("APBullets",3,"RealReadyStalinTurret")
+		Goto TurretOff
+	}
+}
