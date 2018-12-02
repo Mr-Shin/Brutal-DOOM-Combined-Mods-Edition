@@ -226,9 +226,9 @@ ACTOR Clip2 : Ammo
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a Magazine."
 	Inventory.Amount 15
-	Inventory.MaxAmount 500
+	Inventory.MaxAmount 600
 	Ammo.BackpackAmount 15
-	Ammo.BackpackMaxAmount 1000
+	Ammo.BackpackMaxAmount 1200
 	Inventory.Icon "CLIPA0"
 	inventory.pickupsound "clip/pkup"
 	States
@@ -381,10 +381,10 @@ ACTOR APBullets : Ammo
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a small box of Armor Piercing Bullets."
 	Inventory.Amount 45
-	Inventory.MaxAmount 625
+	Inventory.MaxAmount 750
 	Ammo.BackpackAmount 45
 	inventory.pickupsound "CBOXPKUP"
-	Ammo.BackpackMaxAmount 1250
+	Ammo.BackpackMaxAmount 1500
 	Inventory.Icon "ABOXB0"
 	States
 	{
@@ -480,9 +480,9 @@ ACTOR Shell2 : Ammo
 	SpawnID 11
 	Inventory.PickupMessage "Picked up 4 Shells."
 	Inventory.Amount 4
-	Inventory.MaxAmount 300
+	Inventory.MaxAmount 350
 	Ammo.BackpackAmount 4
-	Ammo.BackpackMaxAmount 600
+	Ammo.BackpackMaxAmount 700
 	inventory.pickupsound "SHELPKUP"
 	Inventory.Icon "SHELA0"
 	States

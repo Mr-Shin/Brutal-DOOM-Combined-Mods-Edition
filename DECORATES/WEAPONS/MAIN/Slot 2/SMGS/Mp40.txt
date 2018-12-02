@@ -284,6 +284,7 @@ ACTOR HitlersBuzzsaw : CMEWeapon
 	Inventory.PickupMessage "You got the Super Secret Weapon: Hitler's Buzzsaw"
 	Obituary "%o was cut in half by %k's MG42"
 	+WEAPON.NOAUTOAIM
+	+WEAPON.CHEATNOTWEAPON
 	Scale 0.4
 	States
 	{

@@ -1,0 +1,477 @@
+//// --------------------------------------------------------------------------
+//
+// HAMR-5 Special 50cal OMG and 
+//
+// --------------------------------------------------------------------------
+
+Actor HMGPOWER : Inventory {inventory.maxamount 1}
+Actor HAMR50CalMode : Inventory {inventory.maxamount 1}
+Actor HAMRAssaultMode : Inventory {inventory.maxamount 1}
+
+ACTOR HAMRAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 200
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 200
+   Inventory.Icon "OHM1A0"
+}
+
+ACTOR HAMR5 : CMEWeapon
+{
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 200
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	YScale 0.6
+	XScale 0.8
+	Weapon.SelectionOrder 4500
+	Weapon.AmmoType1 "APBullets"
+	Weapon.AmmoType2 "HAMRAmmo"
+	Obituary "%o received giant cheese holes by %k's HAMR-5."
+    AttackSound "None"
+    Inventory.PickupSound "OMRPKUP2"
+	tag "HAMR-5 - Multiple Devestation Select Fire Units"
+	Inventory.Pickupmessage "You got the HAMR-5!"
+	+WEAPON.WIMPY_WEAPON
+    +WEAPON.NOAUTOAIM
+    +WEAPON.NOALERT
+    +WEAPON.NOAUTOFIRE
+	+FORCEXYBILLBOARD
+	+WEAPON.NO_AUTO_SWITCH
+    Scale 0.8
+	States
+	{
+	PickUp:
+	TNT1 A 0 A_Playsound("PICKUPONELINER")
+	TNT1 A 0
+	Stop
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	
+	Ready:
+        TNT1 A 2 A_JumpIfInventory("GoFatality", 1, "Steady")
+		
+        TNT1 A 0 A_PlaySound("OMRPKUP2")
+        OMRS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0 //A_JumpIfInventory("XM30Ammo",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+	RealReady:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		OMRG A 1 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+        Goto Ready+9
+		
+	RealReady2:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		OMG2 A 1 BRIGHT A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+        Loop
+		
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		OMRS EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+		
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		
+		Goto Ready
+		WeaponSpecial:
+	FireModeSwitch:
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("HMGPOWER",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		OMRR SRQMN 1
+		OMRR N 1 A_playsound("OMRSWTCH", 7)
+		OMRR OOPPPPPPOONNMQRS 1
+		TNT1 A 0 A_JumpIfInventory("HAMR50CalMode",1, "UseAssault")
+		TNT1 A 0 A_JumpIfInventory("HAMRAssaultMode",1, "UseShotgun")
+		
+	Use50Cal:
+		TNT1 A 0 A_Giveinventory("HAMR50CalMode",1)
+		TNT1 A 0 A_Print("50 Cal")
+		OMRG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	UseAssault:
+		TNT1 A 0 A_Takeinventory("HAMR50CalMode",1)
+		TNT1 A 0 A_GiveInventory("HAMRAssaultMode", 1)
+		TNT1 A 0 A_Print("Assault Mode")
+		OMRG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	UseShotgun:
+		TNT1 A 0 A_Takeinventory("HAMRAssaultMode",1)
+		TNT1 A 0 A_Print("Spray and Pray")
+		OMRG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+	
+    Fire:
+		TNT1 A 0 A_JumpIfInventory("HMGPOWER",1,"Fire2")
+		
+		TNT1 A 0 A_playsound("OMRCHRG", 3)
+		OMG2 EDCBA 1 BRIGHT
+	Hold:
+		TNT1 A 0 A_JumpIfInventory("HAMR50CalMode",1,"Hold50")
+		TNT1 A 0 A_JumpIfInventory("HAMRAssaultMode",1,"HoldAssault")
+		TNT1 A 0 A_JumpIfInventory("HAMRAmmo",5,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+        TNT1 A 0 A_PlaySound("mw2/m240/f",5)
+		TNT1 A 0 A_playsound("mw3/m240/f1",4)
+		TNT1 A 0 A_playsound("mw3/m240/f2",3)
+        //TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		OMRF A 1 BRIGHT A_AlertMonsters
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		OMRF B 1 BRIGHT A_FireBullets (8, 9, 10, 13, "HitPuff")
+        XMFF AAAAAAAAAA 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-2.4 + pitch)
+		//TNT1 A 0 ACS_Execute(373, 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_Takeinventory("HAMRAmmo",5)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		OMRF C 1 A_SetPitch(+0.6 + pitch)
+		OMRF AAAAAAAAAA 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+        XMFG A 0 A_SetPitch(+0.6 + pitch)
+		OMRF BD 1 BRIGHT
+		OMRG A 0 A_Refire
+		OMG2 A 1 A_WeaponReady(1)
+		OMG2 ABCDE 1
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		OMRG A 5 A_WeaponReady(1)
+		Goto RealReady
+		
+
+    AltFire:
+        TNT1 A 0 A_JumpIfInventory("HMGPOWER",1,"PowerOff")
+		TNT1 A 0 A_playsound("OMRCHRG", 3)
+		OMG2 EDCBA 1
+		TNT1 A 0 A_giveinventory("HMGPOWER",1)
+        Goto RealReady2
+	PowerOff:
+		TNT1 A 0 A_playsound("OMRCHRG", 3)
+		OMG2 ABCDE 1
+		TNT1 A 0 A_takeinventory("HMGPOWER",1)
+        Goto RealReady
+		
+	Fire2:
+		TNT1 A 0 A_JumpIfInventory("HAMR50CalMode",1,"Fire250")
+		TNT1 A 0 A_JumpIfInventory("HAMRAssaultMode",1,"Fire2Assault")
+        TNT1 A 0 A_JumpIfInventory("HAMRAmmo",5,2)
+        Goto Reload
+        TNT1 AAAA 0
+
+        TNT1 A 0 A_PlaySound("mw2/m240/f",5)
+		TNT1 A 0 A_playsound("mw3/m240/f1",4)
+		TNT1 A 0 A_playsound("mw3/m240/f2",3)
+        //TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		OMRF A 1 BRIGHT A_AlertMonsters
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		OMRF B 1 BRIGHT A_FireBullets (5, 5, 10, 13, "HitPuff")
+        XMFF AAAAAAAAAA 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-2.4 + pitch)
+		//TNT1 A 0 ACS_Execute(373, 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_Takeinventory("HAMRAmmo",5)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		OMRF C 1 A_SetPitch(+0.6 + pitch)
+		OMRF AAAAAAAAAA 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+        XMFG A 0 A_SetPitch(+0.6 + pitch)
+		OMRF D 1 BRIGHT
+		OMRG A 0 A_Refire("Fire2")
+		OMG2 A 1 A_WeaponReady(1)
+		OMG2 A 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		OMG2 A 5 BRIGHT A_WeaponReady(1)
+		Goto RealReady2
+		
+	NoAmmo:
+	OMRG A 1 A_PlaySound("weapons/empty")
+	TNT1 A 0 A_Takeinventory("Zoomed",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	Goto RealReady
+	
+    Reload:
+		OMRG A 1 A_WeaponReady
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 A_Takeinventory("HMGPOWER",1)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_JumpIfInventory("HAMRAmmo", 200, "RealReady")
+        TNT1 A 0 A_JumpIfInventory("APBullets",1,3)
+        Goto NoAmmo
+        TNT1 AAA 0
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0
+        OMRR ABCDE 1  A_JumpIfInventory("Kicking",1,"DoKick")
+		OMR1 A 0 A_JumpIfInventory("HasUnloaded", 1, 2)
+		OMRR F 1 A_Playsound("HAMOUT", 7)
+        OMRR G 1 A_FireCustomMissile("EmptyAmmoBox1Spawn2",-5,0,8,-4)
+        OMRR GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1
+		OMRR HIJKL 1
+		OMRR M 1 A_Playsound("mw3/cin", 7)
+		OMRR AAAAAAAN 1 A_JumpIfInventory("Kicking",1,"DoKick")
+		OMRR N 1 A_playsound("HAMCOCK", 7)
+		OMRR OOPPPPPPPPOONNQRS 1 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		//TNT1 A 0 A_JumpIfInventory("HAMRAmmo",1,"InsertBullets2")//30+1 effect
+		
+	InsertBullets2:
+		TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("HAMRAmmo",200,15)
+		TNT1 A 0 A_JumpIfInventory("APBullets",1,3)
+		Goto RealReady
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("HAMRAmmo",1)
+		TNT1 A 0 A_Takeinventory("APBullets",1)
+		Goto InsertBullets2
+		
+		TNT1 AAAAAAAAAA 0
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        Goto RealReady
+		TNT1 AAAA 0
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        Goto RealReady
+		
+ 	Spawn:
+		OHM1 A -1
+		Stop
+		
+	Fire50:
+		TNT1 A 0 A_JumpIfInventory("HMGPower",1,"Fire250")
+		TNT1 A 0 A_playsound("HMRCHRG", 3)
+		OMG2 EDCBA 1 BRIGHT
+	Hold50:
+		TNT1 A 0 A_JumpIfInventory("HAMRAmmo",2,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+        TNT1 A 0 A_PlaySound("bar50cal/fnb",5)
+		TNT1 A 0 A_playsound("bar50cal/fb",4)
+        //TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		OMRF A 1 BRIGHT A_AlertMonsters
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		OMRF B 1 BRIGHT A_FireBullets (3,3, 3, 30, "HitPuff")
+        XMFF AAA 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-2.4 + pitch)
+		//TNT1 A 0 ACS_Execute(373, 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_Takeinventory("HAMRAmmo",2)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		OMRF C 1 A_SetPitch(+0.6 + pitch)
+		OMRF AAAAAA 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+        XMFG A 0 A_SetPitch(+0.6 + pitch)
+		OMRF BD 1 BRIGHT
+		OMRG A 0 A_Refire("Hold50")
+		OMG2 A 1 A_WeaponReady(1)
+		OMG2 ABCDE 1
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		OMRG A 5 A_WeaponReady(1)
+		Goto RealReady
+	HoldAssault:
+		TNT1 A 0 A_JumpIfInventory("HAMRAmmo",2,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_playsound("Q4TRGUN", 6)
+        TNT1 A 0 A_PlaySound("Q4MGFIRE",5)
+        //TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		OMRF A 1 BRIGHT A_AlertMonsters
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		OMRF B 1 BRIGHT A_FireBullets (3,3, 3, 10, "HitPuff")
+        XMFF AAA 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-2.4 + pitch)
+		//TNT1 A 0 ACS_Execute(373, 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_Takeinventory("HAMRAmmo",1)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		OMRF C 1 A_SetPitch(+0.6 + pitch)
+		OMRF AAA 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+        XMFG A 0 A_SetPitch(+0.6 + pitch)
+		OMRF D 1 BRIGHT
+		OMRG A 0 A_Refire("HoldAssault")
+		OMG2 A 1 A_WeaponReady(1)
+		OMG2 ABCDE 1
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		OMRG A 5 A_WeaponReady(1)
+		Goto RealReady
+		
+	Fire250:
+        TNT1 A 0 A_JumpIfInventory("HAMRAmmo",2,2)
+        Goto Reload
+        TNT1 AAAA 0
+
+        TNT1 A 0 A_PlaySound("bar50cal/fnb",5)
+		TNT1 A 0 A_playsound("bar50cal/fb",4)
+        //TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		OMRF A 1 BRIGHT A_AlertMonsters
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		OMRF B 1 BRIGHT A_FireBullets (2, 2, 3, 30, "HitPuff")
+        XMFF AAA 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-2.4 + pitch)
+		//TNT1 A 0 ACS_Execute(373, 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_Takeinventory("HAMRAmmo",2)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		OMRF C 1 A_SetPitch(+0.6 + pitch)
+		OMRF AAAAAAA 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+        XMFG A 0 A_SetPitch(+0.6 + pitch)
+		OMRF D 1 BRIGHT
+		OMRG A 0 A_Refire("Fire250")
+		OMG2 A 1 A_WeaponReady(1)
+		OMG2 A 1
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		OMG2 A 5 A_WeaponReady(1)
+		Goto RealReady2
+		
+	Fire2Assault:
+        TNT1 A 0 A_JumpIfInventory("HAMRAmmo",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_playsound("Q4TRGUN", 6)
+        TNT1 A 0 A_PlaySound("Q4MGFIRE",5)
+        //TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		OMRF A 1 BRIGHT A_AlertMonsters
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		OMRF B 1 BRIGHT A_FireBullets (2, 2, 3, 10, "HitPuff")
+        XMFF AAA 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2)
+		RIFF A 0 A_FireCustomMissile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0)
+		TNT1 A 0
+        TNT1 A 0 A_SetPitch(-2.4 + pitch)
+		//TNT1 A 0 ACS_Execute(373, 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
+		//TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_Takeinventory("HAMRAmmo",1)
+		TNT1 A 0 A_SetPitch(+0.6 + pitch)
+		OMRF C 1 A_SetPitch(+0.6 + pitch)
+		OMRF AAA 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+        XMFG A 0 A_SetPitch(+0.6 + pitch)
+		//OMRF D 1 BRIGHT
+		OMRG A 0 A_Refire("Fire2Assault")
+		OMG2 A 1 A_WeaponReady(1)
+		OMG2 A 1
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		OMG2 A 5 A_WeaponReady(1)
+		Goto RealReady2
+	
+	}
+}

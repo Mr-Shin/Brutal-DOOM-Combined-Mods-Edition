@@ -12,7 +12,7 @@ Actor LightVest : BasicArmorPickup
 	Height 16
 	Inventory.Pickupmessage "Picked up the Light Vest"
 	Inventory.Icon "ARM1A0"
-	Armor.SavePercent 30
+	Armor.SavePercent 33
 	Armor.SaveAmount 100
     Inventory.PickupSound "D3ARMOR"
 	States

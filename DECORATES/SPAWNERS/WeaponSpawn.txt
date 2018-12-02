@@ -125,3 +125,36 @@ dropitem "FAL"
 dropitem "M110AMR"
 dropitem "MI4"
 }
+Actor MinigunSpawner : RandomSpawner
+{
+dropitem "MiniGun"
+dropitem "Shredder"
+dropitem "StingerMinigun"
+dropitem "HailStorm"
+dropitem "Chain_Gun"
+dropitem "M160"
+dropitem "DN34"
+dropitem "Doom2016Chaingun"
+dropitem "TEMPST50"
+}
+Actor MachineGunSpawner : RandomSpawner
+{
+dropitem "Quake4MachineGun"
+dropitem "AUGA9"
+dropitem "AUGRDM1"
+dropitem "M72RIOT"
+dropitem "HAMR5"
+dropitem "Nail_Gun"
+dropitem "M60"
+dropitem "HAMR1"
+dropitem "Tactical_Nail_Gun"
+dropitem "QBBASW"
+dropitem "APDMLMO"
+dropitem "Anarchy50"
+dropitem "DRACONIAN"
+}
+Actor ChaingunReplacer : RandomSpawner replaces Chaingun
+{
+dropitem "MinigunSpawner"
+dropitem "MachineGunSpawner"
+}

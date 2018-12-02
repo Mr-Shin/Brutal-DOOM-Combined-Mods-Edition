@@ -202,6 +202,20 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 5/Miniguns/2016ChainGunUpgrade.txt"
 #include "decorates/weapons/main/slot 5/Miniguns/2016ChainGunUpgrade2.txt"
 #include "decorates/weapons/main/slot 5/Miniguns/TEMPST-50.txt"
+#include "decorates/weapons/main/slot 5/MGs/Q4MG.txt"
+#include "decorates/weapons/main/slot 5/MGs/AUG-A9.txt"
+#include "decorates/weapons/main/slot 5/MGs/AUGR-DM1.txt"
+#include "decorates/weapons/main/slot 5/MGs/M72-RIOT.txt"
+#include "decorates/weapons/main/slot 5/MGs/HAMR-5.txt"
+#include "decorates/weapons/main/slot 5/MGs/Nailgun.txt"
+#include "decorates/weapons/main/slot 5/MGs/M60.txt"
+#include "decorates/weapons/main/slot 5/MGs/HAMR-1.txt"
+#include "decorates/weapons/main/slot 5/MGs/Tactical-Nailgun.txt"
+#include "decorates/weapons/main/slot 5/MGS/QBB-ASW.txt"
+#include "decorates/weapons/main/slot 5/MGs/APDMLMO.txt"
+#include "decorates/weapons/main/slot 5/MGs/Anarchy-50.txt"
+#include "decorates/weapons/main/slot 5/MGs/AnarchyUpgrade.txt"
+#include "decorates/weapons/main/slot 5/MGs/DRACONIAN.txt"
 
 
 
