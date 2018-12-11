@@ -1,0 +1,82 @@
+Actor StingerUpgradeInventory1 : Inventory {inventory.maxamount 1}
+
+Actor StingerUpgrade1 : CustomInventory
+{
+Scale 1.0
+  SpawnID 152
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "You got the Manual Detonating Seeker Upgrade for the Sting-RAY 9!"
+  ActiveSound "SPIRACT"
+  Renderstyle "Add"
+  Alpha 0.75
+  Inventory.PickupSound "upgrade/pickup"
+  +CountItem
+  +FLOATBOB
+  +FLOAT
+  +INVENTORY.ALWAYSPICKUP
+  states
+  {
+Spawn:
+    TNT1 A 0 A_LoopActiveSound
+    STNP BBBBBBBBBBBB 1 BRIGHT A_SpawnItem("BlueFlareMedium",0,20)
+    Loop
+	DoNothing:
+	TNT1 A 0
+	Stop
+	Pickup:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("hf/pulse", 1)
+		TNT1 A 0 A_SPawnitem("HellfestLuckyPulse",0,0)
+		TNT1 A 0 A_giveinventory("RocketAmmo2", 1)
+		TNT1 A 0 A_giveinventory("Sting RAY-9", 1)
+		TNT1 A 0 A_giveinventory("StingerUpgradeInventory1", 1)
+		Stop
+  }
+}
+
+ACTOR StingerUpgradeSpawner1 : CustomInventory //Weapon Spawn
+{
+	-COUNTITEM
+	-INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 0
+	Inventory.MaxAmount 1
+	Inventory.PickupMessage ""
+	States
+	{
+	Spawn:
+        TNT1 A 0
+		TNT1 A 0 A_JumpIf(CallACS("GameplayPreset_IB")==1, "SpawnNothing")//Arsenal
+		TNT1 A 0 A_JumpIf(CallACS("GameplayPreset_IB")==2, "SpawnNothing")//Doom 2016
+		TNT1 A 0 A_JumpIf((CallACS("GameplayPreset_IB")==3)||(CallACS("GameplayPreset_IB")==7), "Spawn4Reel")//Conjoined (:P)
+		TNT1 A 0 A_JumpIf(CallACS("GameplayPreset_IB")==4, "SpawnNothing")//JRMYXD Arsenal
+		TNT1 A 0 A_JumpIf(CallACS("GameplayPreset_IB")==5, "SpawnNothing")//JRMYXD Classic
+		TNT1 A 0 A_JumpIf(CallACS("GameplayPreset_IB")==6, "SpawnNothing")//JRMYXD Insanity
+		
+		TNT1 A 0 A_JumpIf(CallACS("UpgradePresets_IB")==1, "SpawnNothing")//Default
+		TNT1 A 0 A_JumpIf(CallACS("UpgradePresets_IB")==2, "SpawnNothing")//Doom 2016
+		TNT1 A 0 A_JumpIf(CallACS("UpgradePresets_IB")==3, "Spawn4Reel")//Extra Arsenal
+		TNT1 A 0 A_JumpIf(CallACS("UpgradePresets_IB")==4, "SpawnNothing")//JRMYXD Arsenal
+		TNT1 A 0 A_JumpIf(CallACS("UpgradePresets_IB")==5, "SpawnNothing")//JRMYXD Classic
+		TNT1 A 0 A_JumpIf(CallACS("UpgradePresets_IB")==6, "SpawnNothing")//JRMYXD Insanity
+	Spawn4Reel:
+		TNT1 A 0
+		TNT1 A 1 A_JumpIf(ACS_NamedExecuteWithResult("DisableUpgrade")==1,"SpawnNothing")
+		TNT1 A 1 A_JumpIf(ACS_NamedExecuteWithResult("NoStingerUpgrade")==1,"SpawnNothing")
+		TNT1 A 0 A_JumpIf(ACS_NAmedExecuteWithResult("ExtraArsenalUpgradeToggle")==1, "SpawnNothing")
+		Goto Spawn2
+		
+	SpawnNothing:
+	TNT1 A 0 A_SpawnItem("Sting RAY-9")
+	Goto Derp
+	
+	Spawn2:
+	TNT1 A 0 A_SpawnItem("StingerUpgrade1")
+	Goto Derp
+    
+	Derp:
+	TNT1 A 0
+	//TNT1 A -1
+	Stop
+	}
+}

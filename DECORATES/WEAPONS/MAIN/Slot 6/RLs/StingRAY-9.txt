@@ -1,0 +1,507 @@
+ACTOR StingerRocketRounds : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 9
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 9
+   Inventory.Icon "STNPA0"
+}
+
+#include "decorates/weapons/main/slot 6/RLs/StingerUpgrade1.txt"
+#include "decorates/weapons/main/slot 6/RLs/MIRVUpgrade2.txt"
+
+#include "decorates/weapons/main/slot 6/RLs/AntiPersonalRocket.txt"
+#include "decorates/weapons/main/slot 6/RLs/StingerRocket.txt"
+#include "decorates/weapons/main/slot 6/RLs/MIRVRocket.txt"
+
+Actor StingerActive : Inventory {inventory.maxamount 1}
+Actor MIRVActive : Inventory {inventory.maxamount 1}
+
+Actor ZoomYoAssInTheStingRAY-9 : Inventory {inventory.maxamount 1}
+
+// -----------------------------------------------------------------------------
+//
+// Stinger RAY-9 Explosive Hornet MIRV Hybrid
+//
+// -----------------------------------------------------------------------------
+
+ACTOR StingRAY9 : CMEWeapon
+{
+	Game Doom
+	SpawnID 29
+	Speed 20
+	Damage 20
+	Weapon.SelectionOrder 9500
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.AmmoGive1 9
+	Weapon.AmmoType1 "RocketAmmo2"
+	Weapon.AmmoType2 "StingerRocketRounds"
+	tag "Sting RAY-9 Heavy Rocket Dispenser"
+    Inventory.PickupSound "SR9/Pickup"
+    +WEAPON.NOAUTOAIM
+	+FORCEXYBILLBOARD
+	+WEAPON.AXEBLOOD
+	+WEAPON.NO_AUTO_SWITCH
+	+WEAPON.NOALERT
+	+WEAPON.NOAUTOFIRE
+	Inventory.PickupMessage "You got the Sting RAY-9 Heavy Rocket Dispenser!"
+	States
+	{
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+	    TNT1 A 0
+        TNT1 A 8 A_PlaySound("SR9/Pickup")
+		TNT1 A 0 A_ZoomFactor(1)
+		TNT1 A 0 A_TakeInventory("ZoomYoAssInTheStingRAY-9", 1)
+        STNS ABCDEFG 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 AAAAA 0
+        //TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+	RealReady:
+		TNT1 A 0 A_StopSound(4)
+		TNT1 A 0 A_ZoomFactor(1)
+		TNT1 A 0 A_TakeInventory("ZoomYoAssInTheStingRAY-9", 1)
+       TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		STNG A 1 A_WeaponReady
+        Goto RealReady
+	
+	RealReadyZoomed:
+		TNT1 A 0 A_GiveInventory("ZoomYoAssInTheStingRAY-9", 1)
+		TNT1 A 0 A_PlaySound ("SR9/Beep",4)
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"UnZoom")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_SetBlend("Red",0.4,20)
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		
+		TNT1 A 0 A_JumpIfInventory("Reloading",1,"UnZoom")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_SetBlend("Red",0.4,20)
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		
+		TNT1 A 0 A_JumpIfInventory("Reloading",1,"UnZoom")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_SetBlend("Red",0.4,20)
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+		STNZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+        Goto RealReadyZoomed
+		
+	RealReadyZoomedAndLocked:
+		TNT1 A 0 A_GiveInventory("ZoomYoAssInTheStingRAY-9", 1)
+		TNT1 A 0 A_PlaySound ("SR9/Lock",4)
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"UnZoom")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_SetBlend("Green",0.4,20)
+		STNZ B 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		
+		TNT1 A 0 A_JumpIfInventory("Reloading",1,"UnZoom")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_SetBlend("Green",0.4,20)
+		STNZ C 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfTargetInLOS("RealReadyZoomedAndLocked")
+        Goto RealReadyZoomed
+		
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("weapon/swap", 4)
+		TNT1 A 0 A_StopSound(4)
+        STNS GFEDCBA 1
+		TNT1 A 0 A_ZoomFactor(1)
+		TNT1 A 0 A_TakeInventory("ZoomYoAssInTheStingRAY-9", 1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+
+		MISG A 0 A_Raise
+		Wait
+		
+	//Weapon Special
+	WeaponSpecial:
+	FireModeSwitch:
+		TNT1 A 0 A_ZoomFactor(1)
+		TNT1 A 0 A_TakeInventory("ZoomYoAssInTheStingRAY-9", 1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfInventory("MIRVActive",1, "UseStinger")
+		TNT1 A 0 A_JumpIfInventory("StingerActive",1, "UseAntiP")
+
+		
+	UseMIRV:
+		TNT1 A 0 A_JumpIfInventory("MIRVUpgradeInventory2",1,"ProceedMIRV")
+		TNT1 A 0 A_JumpIfInventory("StingerUpgradeInventory1",1,"ProceedStinger")
+		Goto UseStinger
+	ProceedMIRV:
+		TNT1 A 0 A_Giveinventory("MIRVActive",1)
+		TNT1 A 0 A_Print("MIRV Round")
+		Goto ReloadSequence
+		
+	UseStinger:
+		TNT1 A 0 A_JumpIfInventory("StingerUpgradeInventory1",1,"ProceedStinger")
+		Goto UseAntiP
+	ProceedStinger:
+		TNT1 A 0 A_Takeinventory("MIRVActive",1)
+		TNT1 A 0 A_Giveinventory("StingerActive",1)
+		TNT1 A 0 A_Print("Stinger Rockets")
+		Goto ReloadSequence
+		
+	UseAntiP:
+		TNT1 A 0 A_Takeinventory("StingerActive",1)
+		TNT1 A 0 A_Takeinventory("MIRVActive",1)
+		TNT1 A 0 A_Print("Anti-Personnel Hydrogen Rockets")
+		Goto ReloadSequence
+		
+	Fire:
+		TNT1 A 0 A_StopSound(4)
+        TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ZoomYoAssInTheStingRAY-9",1,"FireZoomed")
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_JumpIfInventory("MIRVActive",1,"FireMIRV")
+		TNT1 A 0 A_JumpIfInventory("StingerActive",1,"FireStinger")
+	FireAntiP:
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("SR9/Fire",7)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		STNF A 1 BRIGHT A_FireCustomMissile("AntiPersonnelRocket", 0, 0, 13, -3, 0, 0)
+		Goto FinishFire
+	FireMIRV:
+		TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",9,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("SR9/Fire",7)
+		TNT1 A 0 A_playsound("Quake4/Rocket",6)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_Takeinventory("StingerRocketRounds",8)
+		TNT1 A 0 A_Recoil(8)
+		STNF A 1 BRIGHT A_FireCustomMissile("MIRVRocket", 0, 0, 13, -3, 0, 0)
+		Goto FinishFire
+	FireStinger:
+		TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",2,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("SR9/Fire",7)
+		TNT1 A 0 A_playsound("Quake4/Rocket",6)
+		TNT1 A 0 A_playsound("D3CONC", 5)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_Takeinventory("StingerRocketRounds",1)
+		TNT1 A 0 A_Recoil(4)
+		STNF A 1 BRIGHT A_FireCustomMissile("StingerRocket", 0, 0, 13, -3, 0, 0)
+		Goto FinishFire
+	FinishFire:
+		STNF BCD 1 BRIGHT
+		TNT1 A 0 A_Takeinventory("StingerRocketRounds",1)
+        STNF E 1 BRIGHT A_SetPitch(-6.0 + pitch)
+		TNT1 A 0 A_playsound("rocket/cycle",4)
+        STNG AAA 2 A_SetPitch(2.0 + pitch)
+		STNG AA 2
+        MISG A 0
+        Goto RealReady
+
+// -----------------------------------------------------------------------------
+// If you really want to, fire it while ZOOMED in.
+// -----------------------------------------------------------------------------
+
+	FireZoomed:
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_SetBlend("Cyan",0.4,70)
+		TNT1 A 0 A_TakeInventory("ZoomYoAssInTheStingRAY-9", 1)
+		TNT1 A 0 A_JumpIfInventory("MIRVActive",1,"FireMIRV2")
+		TNT1 A 0 A_JumpIfInventory("StingerActive",1,"FireStinger2")
+	FireAntiP2:
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("SR9/Fire",7)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		
+		STNZ A 1 BRIGHT A_FireCustomMissile("AntiPersonnelRocket", 0, 0, 0, -1, 0, 0)
+		Goto FinishFire2
+	FireMIRV2:
+		TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",9,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("SR9/Fire",7)
+		TNT1 A 0 A_playsound("Quake4/Rocket",6)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_Recoil(8)
+		TNT1 A 0 A_Takeinventory("StingerRocketRounds",8)
+		STNZ A 1 BRIGHT A_FireCustomMissile("MIRVRocket", 0, 0, 0, -1, 0, 0)
+		Goto FinishFire2
+	FireStinger2:
+		TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",2,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("SR9/Fire",7)
+		TNT1 A 0 A_playsound("Quake4/Rocket",6)
+		TNT1 A 0 A_playsound("D3CONC", 5)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_Recoil(4)
+		TNT1 A 0 A_Takeinventory("StingerRocketRounds",1)
+		STNZ A 1 BRIGHT A_FireCustomMissile("StingerRocket", 0, 0, 0, -1, 0, 0)
+		Goto FinishFire2
+	FinishFire2:
+		STNZ A 1 BRIGHT A_SetPitch(pitch-8)
+		TNT1 A 0 A_Takeinventory("StingerRocketRounds",1)
+        STNZ A 1 BRIGHT A_Recoil(4)
+		TNT1 A 0 A_playsound("rocket/cycle",4)
+        STNZ AAAA 2 BRIGHT A_SetPitch(2.0 + pitch)
+		STNZ AA 2 BRIGHT
+        Goto RealReadyZoomed
+		
+		
+	AltFire:
+        TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("ZoomYoAssInTheStingRAY-9",1,"UnZoom")
+		TNT1 A 0 A_Giveinventory("ZoomYoAssInTheStingRAY-9",1)
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+        TNT1 A 0 A_ZoomFactor(4.0)
+		//TNT1 A 0 A_GiveInventory("ScopeLight", 1)
+		TNT1 A 0 A_Giveinventory("ADSmode",1)
+		TNT1 A 0 A_playsound("SR9/Zoom/In", 4)
+		STNG A 1 A_SetBlend("Black",0.2,3)
+		STNG A 1 A_SetBlend("Black",0.4,3)
+		STNG A 1 A_SetBlend("Black",0.6,3)
+		STNG A 1 A_SetBlend("Black",0.8,3)
+        STNG AA 1 A_SetBlend("Black",1.0,3)
+		STNZ A 1 BRIGHT A_SetBlend("Red",0.8,3)
+		STNZ A 1 BRIGHT A_SetBlend("Red",0.6,3)
+		STNZ A 1 BRIGHT A_SetBlend("Red",0.4,3)
+        Goto RealReadyZoomed
+	UnZoom:
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_playsound("SR9/Zoom/Out", 4)
+		STNZ A 1 BRIGHT A_SetBlend("Red",0.4,3)
+		STNZ A 1 BRIGHT A_SetBlend("Red",0.6,3)
+		STNZ A 1 BRIGHT A_SetBlend("Red",0.8,3)
+		STNZ A 1 BRIGHT A_SetBlend("Red",1.0,3)
+        STNZ A 1 BRIGHT A_SetBlend("Black",1.0,3)
+		STNZ A 1 BRIGHT A_SetBlend("Black",0.8,3)
+		STNZ A 1 BRIGHT A_SetBlend("Black",0.6,3)
+		STNZ A 1 BRIGHT A_SetBlend("Black",0.4,3)
+        STNZ A 1 BRIGHT A_SetBlend("Black",0.2,3)
+		STNZ AAAAAAAAAA 1 BRIGHT A_SetBlend("Black",1.0,3)
+		TNT1 A 0 A_Takeinventory("ZoomYoAssInTheStingRAY-9",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_JumpIfInventory("Reloading", 1, "Reload")
+        Goto RealReady
+
+
+    Reload:
+		STNG A 1 A_WeaponReady
+		TNT1 A 0 A_GiveINventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("ZoomYoAssInTheStingRAY-9",1,"UnZoom")
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",9,"NoNeedToReload")
+        TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,3)
+        Goto RealReady
+        TNT1 AAAA 0
+	ReloadSequence:
+		TNT1 A 0 A_ZoomFactor(1)
+		TNT1 A 0 A_TakeInventory("ZoomYoAssInTheStingRAY-9", 1)
+        TNT1 A 0 A_PlaySound("SR9/Reload")
+		STNR A 1 A_SetAngle(-2 + angle)
+        STNR B 1 A_SetPitch(+2 + pitch)
+        STNR CDDE 1 
+        TNT1 A 0 A_FireCustomMissile("StingRayCaseSpawn",5,0,32,-4)
+        STNR EFFGG 1
+		STNR H 1 A_SetAngle(+2 + angle)
+        STNR H 1 A_SetPitch(-2 + pitch)
+		STNR HHHHKLL 1
+		STNR L 1 A_SetAngle(+1 + angle)
+        STNR LLNOO 1
+		STNG A 1 A_SetAngle(-1 + angle)
+		STNG A 5
+		Goto FinishReload
+		
+		FinishReload:
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("StingerRocketRounds",9,"NoNeedToReload")
+		TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,3)
+		Goto Ready+6
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("StingerRocketRounds",1)
+		TNT1 A 0 A_Takeinventory("RocketAmmo2",1,TIF_NOTAKEINFINITE)
+		Goto FinishReload
+		
+		TNT1 AAAAAAAAAA 0
+		
+		NoNeedToReload:
+        STNG A 1 A_Refire
+        Goto RealReady
+
+
+	Spawn:
+		STNP A -1
+		Stop
+	}
+}

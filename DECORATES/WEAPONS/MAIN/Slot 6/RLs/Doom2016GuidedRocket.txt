@@ -1,0 +1,166 @@
+// IDK, this is a giant mess right now. Been trying to get a lock system for the
+// rocket launcher for 3 hours and still haven't found a solution. Gonna
+// come back to it when I can.
+
+Actor 2016GuidedRocket : 2016Rocket2
+{
+	States
+	{
+	DM:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFLag("THRUSPECIES", 0)
+		TNT1 A 0 A_ChangeFLag("MTHRUSPECIES", 0)
+		Goto Spawn1
+	
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("rocketFollow",0,0,0,0)
+		TNT1 A 0 ACS_ExecuteAlways(719, 0, 0, 0, 0)//Check if Coop		
+	Spawn1:
+		TNT1 A 0
+	    MISL A 1 Bright
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_SpawnItem("RocketBlur",0,0)
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail3")
+		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail3", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 A_SpawnItem("RocketBlur",0,0)
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+		TNT1 A 0 A_CustomMissile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
+		Goto Spawn1
+		
+	SpawnUnderwater:
+	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    Goto Spawn1
+	
+	XDeath:
+	Death:
+		TNT1 A 0
+		MISL B 0 ACS_NamedExecuteAlways("rocketCleanup",0,0,0,0)
+        TNT1 A 0 A_Explode(15,75)
+		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("BigRicoChet")
+		TNT1 A 0 Bright A_SpawnItem("GrayShockWave",0,0,0)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 Bright A_SpawnItem("GrayShockWave",0,0,0)
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_PlaySound("far/explosion", 3)
+		Stop
+	}
+}
+
+
+ACTOR Laser
+{ 
+    Mass 0
+    Radius 1
+    Height 1
+    +NOBLOCKMAP
+    +NOGRAVITY
+    +BLOODLESSIMPACT
+    +ALWAYSPUFF
+    +PUFFONACTORS
+    +DONTSPLASH
+	renderstyle Add
+    Scale 0.05
+	States
+    {
+    Spawn:
+      LASR A 0
+	  LASR A 0 ACS_NamedExecute("getLaserCoords",0,x,y,z)
+      SPKG A 1 BRIGHT
+      Stop
+    }
+}
+
+ACTOR Trail
+{
+	Mass 0
+    Radius 1
+    Height 1
+    +NOBLOCKMAP
+    +NOGRAVITY
+    +BLOODLESSIMPACT
+    +ALWAYSPUFF
+    +PUFFONACTORS
+    +DONTSPLASH
+    States
+    {
+    Spawn:
+	  TNT1 A 0
+      TNT1 A 250
+      stop
+    }
+}
+
+//I don't know what the fuck this actor is anymore, but the stuff above here is just
+//temporary. When I actually find a solution on how to make a lock on system like
+//the Doom IV Rocket Launcher lock burst addon, then the laser stuff will be removed
+//Right now, the actor under this was just my brainstorming of how the fuck
+//to do this.
+
+Actor FindEnemyLaser
+{
+	Mass 0
+    Radius 1
+    Height 1
+    +NOBLOCKMAP
+    +NOGRAVITY
+    +BLOODLESSIMPACT
+	+SHOOTABLE
+    +NOBLOOD
+    +NOICEDEATH
+    +DONTRIP
+    +SEEKERMISSILE
+    +DONTSPLASH
+    +DONTFALL
+    +FORCERADIUSDMG
+	+FRIENDLY
+    Projectile
+	Speed 500
+	Damage 0
+	RenderStyle Add
+	Scale 0.1
+	Health 10
+	States
+	{
+    Spawn:
+      LASR A 0
+	  TNT1 A 0 ACS_NamedExecuteAlways("removebeam",0,0,0,0)
+	Spawn1:
+	  TNT1 A 0
+      TNT1 A 1 BRIGHT
+      Loop
+	  
+	RemoveLaserPuff:
+	Death:
+		TNT1 A 0
+		Stop
+		
+	XDeath:
+	Stick:
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_SeekerMissile(0,0,1,256,0)
+		SPKG A 1 BRIGHT A_Fire(35)
+		LASR A 0 ACS_NamedExecute("getLaserCoords",0,x,y,z)
+		TNT1 A 0 A_SeekerMissile(0,0,1,256,0)
+		SPKG A 1 BRIGHT A_Fire(35)
+		LASR A 0 ACS_NamedExecute("getLaserCoords",0,x,y,z)
+		TNT1 A 0 A_SeekerMissile(0,0,1,256,0)
+    STICKNAU:
+		TNT1 A 0
+		LASR A 0 ACS_NamedExecute("getLaserCoords",0,x,y,z)
+		SPKG A 1 BRIGHT A_Fire(35)
+		Loop
+	}
+}

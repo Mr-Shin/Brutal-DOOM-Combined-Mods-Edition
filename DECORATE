@@ -222,7 +222,11 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 6/RLs/UT2004RL.txt"
 #include "decorates/weapons/main/slot 6/RLs/DSRocket.txt"
 #include "decorates/weapons/main/slot 6/RLs/DS-9000.txt"
-
+#include "decorates/weapons/main/slot 6/RLs/StingRAY-9.txt"
+#include "decorates/weapons/main/slot 6/RLs/Doom2016RL.txt"
+#include "decorates/weapons/main/slot 6/RLs/KRATOS.txt"
+#include "decorates/weapons/main/slot 6/RLs/WAR-Head.txt"
+#include "decorates/weapons/main/slot 6/RLs/RPG-7.txt"
 
 
 
