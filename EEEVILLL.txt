@@ -2,7 +2,7 @@
 
 
 
-ACTOR EvilMarine Replaces WolfensteinSS
+ACTOR EvilMarine
 {
 	Game Doom
 	SpawnID 4

@@ -40,7 +40,6 @@ dropitem "Doom2016SG"
 dropitem "ClassicSG"
 dropitem "MK5VOPS"
 dropitem "NailSG"
-dropitem "Quake4SG"
 dropitem "R870"
 dropitem "UTS15"
 }

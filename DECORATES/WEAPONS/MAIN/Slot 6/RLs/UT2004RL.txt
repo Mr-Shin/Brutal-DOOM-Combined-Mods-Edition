@@ -1,0 +1,320 @@
+
+// --------------------------------------------------------------------------
+//
+// UT2004 Launcher
+//
+// --------------------------------------------------------------------------
+ACTOR UT2004RLActorDummy : Inventory {inventory.maxamount 2}
+
+ACTOR UT2004HomingActor : Inventory {inventory.maxamount 1}
+
+ACTOR UT2004RocketRounds : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 3
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 3
+}
+
+ACTOR UT2004RocketLauncher: CMEWeapon
+{
+	Game Doom
+	SpawnID 29
+	Speed 20
+	Damage 20
+	Weapon.SelectionOrder 9500
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 3
+	Weapon.AmmoGive1 9
+	Weapon.AmmoType1 "RocketAmmo2"
+	Weapon.AmmoType2 "UT2004RocketRounds"
+    Inventory.PickupSound "ROCKPKUP"
+	tag "Unreal Tournament 2004 Triple Barreled Rocket Launcher - Select Fire - Homing Rockets"
+    +WEAPON.NOAUTOAIM
+	+FORCEXYBILLBOARD
+	+WEAPON.AXEBLOOD
+	+WEAPON.NO_AUTO_SWITCH
+	+WEAPON.NOAUTOFIRE
+	+WEAPON.nOALERT
+	scale 0.25
+	Inventory.PickupMessage "You got an Unreal Tournament 2004 Rocket Launcher!"
+	States
+	{
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
+        TNT1 A 8 A_PlaySound("RLANDRAW")
+        UNRS ABCD 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 AAAAA 0
+        //TNT1 A 0 A_JumpIfInventory("RocketRounds",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+		RealReady:
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		UNRG A 1 A_WeaponReady
+        Loop
+	Deselect:
+        UNRS DCBA 1
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select:
+	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+
+		NISG A 0 A_Raise
+		Wait
+	
+	Fire:
+		TNT1 A 0 A_alertmonsters
+		TNT1 A 0 A_JumpIfInventory("UT2004RLActorDummy",2, "Fire3")
+        TNT1 A 0 A_JumpIfInventory("UT2004RLActorDummy",1, "Fire2")
+		TNT1 A 0 A_JumpIfInventory("UT2004RocketRounds",1,3)//DS9000HomingMode
+        Goto Reload
+        TNT1 AAAA 0
+	FireReal:
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound("UT24FIRE",4)
+		TNT1 A 0 A_playsound("UT24DFR",5)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		UNRF A 1 BRIGHT A_GunFlash("RocketFlash1")
+		TNT1 A 0 A_Takeinventory("UT2004RocketRounds",1)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		UNRF B 1 BRIGHT A_SetPitch(-6.0 + pitch)//BRIGHT
+        //UNRF C 1 A_playsound("GRENPREP", 3)
+        UNRF CDE 1 BRIGHT A_SetPitch(1.0 + pitch)
+        UNRG B 1 A_playsound("rocket/cycle",1)
+		UNRG CDEFG 1
+		TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	Fire3:
+        TNT1 A 0 A_JumpIfInventory("UT2004RocketRounds",3,3)//DS9000HomingMode
+		Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound("UT24FIRE",4)
+		TNT1 A 0 A_playsound("UT24DFR",5)
+		TNT1 A 0 A_PlaySound("UT24FIRE",6)
+		TNT1 A 0 A_playsound("UT24DFR",7)
+		TNT1 A 0 A_PlaySound("UT24FIRE",3)
+		TNT1 A 0 A_playsound("UT24DFR",1)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		UNRT A 0 A_GunFlash("RocketFlash1")
+		UNRT A 0 A_GunFlash("RocketFlash2")
+		UNRT A 0 A_GunFlash("RocketFlash3")
+		TNT1 A 0 A_Takeinventory("UT2004RocketRounds",3)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		UNRT A 1 BRIGHT A_SetPitch(-6.0 + pitch)//BRIGHT
+        //UNRF C 1 A_playsound("GRENPREP", 3)
+        UNRT BCD 1 BRIGHT A_SetPitch(1.0 + pitch)
+        UNRF E 1
+		UNRG B 1 A_playsound("rocket/cycle",1)
+		UNRG CDEFG 1
+		TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	Fire2:
+        TNT1 A 0 A_JumpIfInventory("UT2004RocketRounds",2,3)//DS9000HomingMode
+		TNT1 A 0 A_JumpIfInventory("UT2004RocketRounds",1,"FireReal")
+		Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound("UT24FIRE",4)
+		TNT1 A 0 A_playsound("UT24DFR",5)
+		TNT1 A 0 A_PlaySound("UT24FIRE",6)
+		TNT1 A 0 A_playsound("UT24DFR",7)
+		TNT1 A 0 A_Jump (196, "Fire22")
+	Fire21:
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		UNRT A 0 A_GunFlash("RocketFlash1")
+		UNRT A 0 A_GunFlash("RocketFlash3")
+		//UNRT A 0 A_FireCustommissile("Rocket", 0, 1, -5, -5)
+		TNT1 A 0 A_Takeinventory("UT2004RocketRounds",2)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		UNRD A 1 BRIGHT A_SetPitch(-6.0 + pitch)//BRIGHT
+        //UNRF C 1 A_playsound("GRENPREP", 3)
+        UNRD BCD 1 BRIGHT A_SetPitch(1.0 + pitch)
+        UNRF E 1
+		UNRG B 1 A_playsound("rocket/cycle",1)
+		UNRG CDEFG 1
+		TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	Fire22:
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		//UNRT A 0 A_FireCustommissile("Rocket", 0, 1, 0, 0)
+		UNRT A 0 A_GunFlash("RocketFlash2")
+		UNRT A 0 A_GunFlash("RocketFlash3")
+		TNT1 A 0 A_Takeinventory("UT2004RocketRounds",2)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		UNRE A 1 BRIGHT A_SetPitch(-6.0 + pitch)//BRIGHT
+        //UNRF C 1 A_playsound("GRENPREP", 3)
+        UNRE BCD 1 BRIGHT A_SetPitch(1.0 + pitch)
+        UNRF E 1
+		UNRG B 1 A_playsound("rocket/cycle",1)
+		UNRG CDEFG 1
+		TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	RocketFlash1:
+		TNT1 A 0 A_JumpIfInventory("UT2004HomingActor",1, "HomingRocketFlash1")
+		UNRF A 0 A_FireCustommissile("Rocket", 0, 1, 0, 0)
+		Stop
+	HomingRocketFlash1:
+		UNRF A 0 A_FireCustommissile("HomingRocketUT", 0, 1, 0, 0)
+		Stop
+		
+	RocketFlash2:
+		TNT1 A 0 A_JumpIfInventory("UT2004HomingActor",1, "HomingRocketFlash2")
+		UNRT A 0 A_FireCustommissile("Rocket", 0, 1, 5, -5)
+		Stop
+	HomingRocketFlash2:
+		UNRF A 0 A_FireCustommissile("HomingRocketUT", 0, 1, 5, -5)
+		Stop
+	RocketFlash3:
+		TNT1 A 0 A_JumpIfInventory("UT2004HomingActor",1, "HomingRocketFlash3")
+		UNRF A 0 A_FireCustommissile("Rocket", 0, 1, 5, 5)
+		Stop
+	HomingRocketFlash3:
+		UNRF A 0 A_FireCustommissile("HomingRocketUT", 0, 1, 5, 5)
+		Stop
+		
+	AltFire:
+		TNT1 A 0 A_JumpIfInventory("UT2004RLActorDummy",2, "Relegate")
+		TNT1 A 0 A_JumpIfInventory("UT2004RLActorDummy",1, "Upgrade2")
+		
+	Upgrade1:
+		TNT1 A 0 A_Giveinventory("UT2004RLActorDummy",1)
+		TNT1 A 0 A_Print("Fire 2 Rockets")
+		TNT1 A 0 A_playsound("FAL/click", 4)
+		UNRG A 1 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	Upgrade2:
+		TNT1 A 0 A_giveinventory("UT2004RLActorDummy",1)
+		TNT1 A 0 A_Print("Fire All Rockets")
+		TNT1 A 0 A_playsound("FAL/click", 4)
+		UNRG A 1 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	Relegate:
+		TNT1 A 0 A_takeinventory("UT2004RLActorDummy",3)
+		TNT1 A 0 A_Print("Fire Single Rocket")
+		TNT1 A 0 A_playsound("FAL/click", 4)
+		UNRG A 1 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+		
+	WeaponSpecial:
+	FireModeSwitch:
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfInventory("UT2004HomingActor",1, "UseNormal")
+		
+	UseHoming:
+		TNT1 A 0 A_Giveinventory("UT2004HomingActor",1)
+		TNT1 A 0 A_Print("Homing Rockets")
+		TNT1 A 0 A_playsound("FRGBEP", 4)
+		UNRG A 1 BRIGHT A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	UseNormal:
+		TNT1 A 0 A_Takeinventory("UT2004HomingActor",1)
+		TNT1 A 0 A_Print("Normal Rockets")
+		TNT1 A 0 A_playsound("FRGBEP", 4)
+		UNRG A 1 BRIGHT A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	Reload:
+		UNRG A 1 A_WeaponReady
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        TNT1 A 0 A_JumpIfInventory("UT2004RocketRounds",3,"RealReady")
+        TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,3)
+        TNT1 A 0 A_Print("No More Rockets")
+		Goto RealReady
+        TNT1 AAAA 0
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+        UNRR A 1 A_PlaySound("UTBEEP",3)
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+		UNRR B 1 A_Playsound("STEAM",7)
+		UNRR CD 1 A_FireCustomMissile("SmokeSpawner11",0,0,0,0)
+        UNRR E 15
+		UNRR FGHIJ 1
+		UNRR K 1 A_PlaySound("UT24LOAD")
+		UNRR EEE 1 A_FireCustomMissile("ShakeYourAss",0,0,0,0)
+		UNRR EEE 1
+		UNRR E 1 A_playsound("UTSPIN",6)
+		UNRR EMNLEMNLEMNLEMNLEMNLEMNLEMNLEMNLEMN 1
+		UNRR EDCBA 1 //A_PlaySound("MORTCLOS")
+		Goto FinishReload
+		
+		FinishReload:
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("UT2004RocketRounds",3,"NoNeedToReload")
+		TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,3)
+		Goto RealReady
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("UT2004RocketRounds",1)
+		TNT1 A 0 A_Takeinventory("RocketAmmo2",1)
+		Goto FinishReload
+		
+		TNT1 AAAAAAAAAA 0
+		
+		NoNeedToReload:
+        UNRG A 1 A_Refire
+        Goto RealReady
+
+
+	Spawn:
+		UTRP A -1
+		Stop
+	}
+}

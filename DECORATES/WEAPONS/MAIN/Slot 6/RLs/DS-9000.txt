@@ -1,0 +1,223 @@
+
+// --------------------------------------------------------------------------
+//
+// DS-9000 Destroyer
+//
+// --------------------------------------------------------------------------
+
+Actor DS9000HomingMode: Inventory {Inventory.maxamount 1}
+
+ACTOR DS9000Rounds : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 15
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 15
+   Inventory.Icon "NAUNA0"
+}
+
+ACTOR DS9000 : CMEWeapon
+{
+	Game Doom
+	SpawnID 29
+	Speed 20
+	Damage 20
+	Weapon.SelectionOrder 9500
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.AmmoGive1 15
+	Weapon.AmmoType1 "RocketAmmo2"
+	Weapon.AmmoType2 "DS9000Rounds"
+    Inventory.PickupSound "ROCKPKUP"
+	tag "Destroyer - 9000 - Homing Rockets"
+    +WEAPON.NOAUTOAIM
+	+FORCEXYBILLBOARD
+	+WEAPON.AXEBLOOD
+	+WEAPON.NO_AUTO_SWITCH
+	Inventory.PickupMessage "You got the DS-9000 Destroyer!"
+	States
+	{
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
+        TNT1 A 8 A_PlaySound("RLANDRAW")
+        NISS ABCDEFG 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 AAAAA 0
+        //TNT1 A 0 A_JumpIfInventory("RocketRounds",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+		
+		RealReady:
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		NISG A 1 A_WeaponReady
+        Goto Ready+11
+	Deselect:
+        NISS GFEDCBA 1
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select:
+	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+
+		NISG A 0 A_Raise
+		Wait
+	
+	WeaponSpecial:
+	FireModeSwitch:
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfInventory("DS9000HomingMode",1, "UseNormal")
+		
+	UseHoming:
+		TNT1 A 0 A_Giveinventory("DS9000HomingMode",1)
+		TNT1 A 0 A_Print("Homing + Cluster Mode")
+		TNT1 A 0 A_playsound("PLSDRAW", 4)
+		NISG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto Ready+11
+		
+	UseNormal:
+		TNT1 A 0 A_Takeinventory("DS9000HomingMode",1)
+		TNT1 A 0 A_Print("Normal Rockets Mode")
+		TNT1 A 0 A_playsound("PLSDRAW", 4)
+		NISG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto Ready+11
+	
+	Fire:
+        TNT1 A 0 A_JumpIfInventory("DS9000Rounds",1,2)//DS9000HomingMode
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("DS9000HomingMode",1,"FireHoming")//
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("DS9FIRE",4)
+		TNT1 A 0 A_playsound("Quake4/Rocket",3)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		NISF A 1 BRIGHT A_FireCustomMissile("Rocket", 0, 1, 0, -10)//HomingRocket
+		TNT1 A 0 A_Takeinventory("DS9000Rounds",1)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		NISF BCD 1 BRIGHT
+        NISF E 1 A_SetPitch(-6.0 + pitch)
+		TNT1 A 0 A_playsound("rocket/cycle",1)
+        NISG BCD 1 A_SetPitch(2.0 + pitch)
+		NISG EF 1
+        NISG A 0
+        TNT1 A 0 A_Refire
+        Goto Ready+11
+		
+	FireHoming:
+        TNT1 A 0 A_JumpIfInventory("DS9000Rounds",1,2)//DS9000HomingMode
+        Goto Reload
+        TNT1 AAAA 0
+		//TNT1 A 0 A_JumpIfInventory("DS9000HomingMode",1,"FireHoming")//
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("DS9HFIR",4)
+		TNT1 A 0 A_playsound("Quake4/Rocket",3)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		NISF A 1 BRIGHT A_FireCustomMissile("HomingRocket1", 0, 1, 0, -10)//Rocket
+		TNT1 A 0 A_Takeinventory("DS9000Rounds",1)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		NISF BCD 1 BRIGHT
+        NISF E 1 A_SetPitch(-6.0 + pitch)
+		TNT1 A 0 A_playsound("rocket/cycle",1)
+        NISG BCD 1 A_SetPitch(2.0 + pitch)
+		NISG EF 1
+        NISG A 0
+        TNT1 A 0 A_Refire
+        Goto Ready+11
+
+
+    Reload:
+		NISG A 1 A_WeaponReady
+		NISG A 6
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        TNT1 A 0 A_JumpIfInventory("DS9000Rounds",15,"NoNeedToReload")
+        TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,3)
+        Goto Ready+18
+        TNT1 AAAA 0
+        TNT1 A 0 A_PlaySound("DS9RELD")
+		TNT1 A 0 A_SetAngle(-2 + angle)
+        TNT1 A 0 A_SetPitch(+2 + pitch)
+        NISR ABCDDE 1 
+        TNT1 A 0 A_FireCustomMissile("RocketCaseSpawn",-30,0,-4,-4)
+        NISR EFFGG 1
+		TNT1 A 0 A_SetAngle(+2 + angle)
+        TNT1 A 0 A_SetPitch(-2 + pitch)
+		NISR HHIIJJKLM 1
+		TNT1 A 0 A_SetAngle(+1 + angle)
+        NISR MMMNOP 1
+		TNT1 A 0 A_SetAngle(-1 + angle)
+		NISR Q 3
+		NISR PR 1
+		NISG DEF 2
+		NISG A 6
+		Goto FinishReload
+		
+		FinishReload:
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("DS9000Rounds",15,"NoNeedToReload")
+		TNT1 A 0 A_JumpIfInventory("RocketAmmo2",1,3)
+		Goto Ready+6
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("DS9000Rounds",1)
+		TNT1 A 0 A_Takeinventory("RocketAmmo2",1)
+		Goto FinishReload
+		
+		TNT1 AAAAAAAAAA 0
+		
+		NoNeedToReload:
+        NISG A 1 A_Refire
+        Goto Ready+11
+
+
+	Spawn:
+		NAUN A -1
+		Stop
+	}
+}

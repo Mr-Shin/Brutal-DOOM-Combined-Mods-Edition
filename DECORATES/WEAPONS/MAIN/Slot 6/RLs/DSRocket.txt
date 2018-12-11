@@ -1,0 +1,153 @@
+//NEW
+
+ACTOR HomingRocketTimer : Inventory {inventory.maxamount 10}
+
+Actor HomingRocket1
+{
+	Radius 10
+	Height 8
+	Projectile
+	Speed 10
+	FastSpeed 10
+    Damage 35
+	DamageType Explosive
+    MeleeDamage 0
+    Gravity 0.00
+	Scale 0.7
+    Decal "Scorch"
+    -NOGRAVITY
+    +EXTREMEDEATH
+    +BLOODSPLATTER 
+	+SEEKERMISSILE
+	//SeeSound "weapons/RLL"
+	DeathSound "Explosion"
+	Obituary "$OB_MPROCKET"
+States
+	{
+	Spawn:
+	Spawn1:
+		TNT1 A 0 A_JumpIfInventory("HomingRocketTimer", 10, "Death")
+		MISL A 1 A_SeekerMissile(4,8,SMF_PRECISE|SMF_LOOK,50,10)
+		TNT1 A 0 A_SpawnItem("HomingRocketBlur")//TNT1 A 0 A_PlaySound("DSRLAUN")
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+		
+		MISL A 1 A_SeekerMissile(4,8,SMF_PRECISE|SMF_LOOK,50,10)
+		TNT1 A 0 A_SpawnItem("HomingRocketBlur")//TNT1 A 0 A_PlaySound("DSRLAUN")
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+		TNT1 A 0 A_GiveInventory("HomingRocketTimer", 1)
+		Loop
+	SpawnUnderwater:
+	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    Goto Spawn
+	
+	Death:
+        EXPL A 0 Radius_Quake (3, 16, 0, 15, 0)
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+		TNT1 A 0 Bright A_SpawnItem("GrayShockWave",0,0,0)
+		TNT1 A 0 A_playsound("HOMING",1)
+		TNT1 A 0 A_CustomMissile ("HomingRocket2", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 1
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 20
+		//TNT1 AAAAAAAAAAAAA 3 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+Actor HomingRocket2
+{
+	Radius 10
+	Height 8
+	Projectile
+	Speed 35
+	FastSpeed 35
+    Damage 35
+	DamageType Explosive
+    MeleeDamage 0
+    Gravity 0.00
+	Scale 0.7
+    Decal "Scorch"
+    -NOGRAVITY
+    +EXTREMEDEATH
+    +BLOODSPLATTER 
+	+SEEKERMISSILE
+	//SeeSound "weapons/RLL"
+	DeathSound "Explosion"
+	Obituary "$OB_MPROCKET"
+States
+	{
+	Spawn:
+	Spawn1:
+		MISL A 1 A_SeekerMissile(4,8,SMF_PRECISE|SMF_LOOK,50,10)
+		TNT1 A 0 A_SpawnItem("PlasmaBlur")//TNT1 A 0 A_PlaySound("DSRLAUN")
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 2, 0, random (70, 110), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+		
+		MISL A 1 A_SeekerMissile(4,8,SMF_PRECISE|SMF_LOOK,50,10)
+		TNT1 A 0 A_SpawnItem("PlasmaBlur")//TNT1 A 0 A_PlaySound("DSRLAUN")
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 2, 0, random (70, 110), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+		
+		MISL A 1 A_SeekerMissile(4,8,SMF_PRECISE|SMF_LOOK,50,10)
+		TNT1 A 0 A_SpawnItem("PlasmaBlur")//TNT1 A 0 A_PlaySound("DSRLAUN")
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 2, 0, random (70, 110), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2")
+		Loop
+	SpawnUnderwater:
+	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    Goto Spawn
+	
+	Death:
+        EXPL A 0 Radius_Quake (3, 16, 0, 15, 0)
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+		TNT1 A 0 Bright A_SpawnItem("GrayShockWave",0,0,0)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 1
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 20
+		//TNT1 AAAAAAAAAAAAA 3 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}

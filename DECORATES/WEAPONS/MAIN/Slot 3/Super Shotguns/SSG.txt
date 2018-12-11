@@ -13,8 +13,12 @@ ACTOR SSGAmmo : Ammo
 // Super Shotgun
 //
 // --------------------------------------------------------------------------
-ACTOR UAC1881 : CMEWeapon 
+ACTOR UAC1881 : CMEWeapon
 {
+	Weapon.BobRangeX 0.3
+	Weapon.BobRangeY 0.5
+	Weapon.BobStyle InverseSmooth
+	Weapon.BobSpeed 2.0
 	Game Doom
 	SpawnID 33
    Weapon.Kickback 50
@@ -25,12 +29,12 @@ ACTOR UAC1881 : CMEWeapon
 	Weapon.AmmoType2 "SSGAmmo"
 	Weapon.AmmoUse1 0
 	Weapon.AmmoUse2 0
-	Tag "Sawed-Off Shotgun"
     +WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	Inventory.PickupMessage "$GOTSHOTGUN2"
+	tag "Dragon SSG"
 	Obituary "$OB_MPSSHOTGUN"
     Inventory.PickupSound "CLIPINSS"
 	Scale 0.9
@@ -44,7 +48,8 @@ ACTOR UAC1881 : CMEWeapon
 		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
         SHT5 ABCD 0 A_JumpIfInventory("GoFatality", 1, "Steady")
         TNT1 AAA 0
-         TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		RealReady:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -62,9 +67,9 @@ ACTOR UAC1881 : CMEWeapon
 		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
 		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
 		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
-		
         TNT1 AAA 0
 		SHT2 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")		
 		Goto Ready+7
 		
 	Deselect:
@@ -72,7 +77,6 @@ ACTOR UAC1881 : CMEWeapon
         TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		TNT1 A 0 A_TakeInventory("DoPunch",1)
 		SHT5 DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
@@ -83,7 +87,7 @@ ACTOR UAC1881 : CMEWeapon
 		TNT1 A 0 A_Takeinventory("FistsSelected",1)
 		TNT1 A 0 A_Takeinventory("SawSelected",1)
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
-		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Giveinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
@@ -101,6 +105,7 @@ ACTOR UAC1881 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		TNT1 AAAAAAAAAAAA 0 A_Raise
+
 		
 		SHT2 U 1 Offset(20,46)
 		SHT2 V 1 Offset(1,33)
@@ -133,6 +138,7 @@ ACTOR UAC1881 : CMEWeapon
 		TNT1 A 0 A_Recoil(5)
 		SHO9 A 0 A_firebullets (0,0,1,15,"shotpuff",0,180)
         SHO9 A 1 BRIGHT A_playsound("SSHFIRE", 5)
+		TNT1 A 0 A_playsound("weapons/sga",4)
 		TNT1 AAAAAAAAAAA 0 A_FireCustomMissile("Tracer", random(-10,10), 0, -1, -12, 0, random(-5,5))
 		
 		 TNT1 AA 0 A_FireCustomMissile("YellowFlareSpawn",15,0,0,0)
@@ -141,27 +147,25 @@ ACTOR UAC1881 : CMEWeapon
 			SHO9 B 1 BRIGHT
 		TNT1 A 0 A_FireBullets (12, 6, 10, 7, "ShotgunPuff")
 		TNT1 A 0 A_FireBullets (12, 6, 10, 7, "ShotgunPuff")
-		TNT1 A 0 A_SetPitch(-16.0 + pitch)
+		//TNT1 A 0 A_SetPitch(-16.0 + pitch)
         TNT1 A 0 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
         SHO9 B 1 BRIGHT A_SetPitch(+2.0 + pitch)
-      SHO8 C 1 Offset(0,62)
-	  TNT1 A 0 A_SetPitch(+2.0 + pitch)
-      SHO8 D 1 Offset(0,61)
-	  TNT1 A 0 A_SetPitch(+2.0 + pitch)
-      SHO8 E 1 Offset(0,60)
-	  TNT1 A 0 A_SetPitch(+2.0 + pitch)
-		RIFF AA 0 A_FireCustomMissile("GunFireSmokE", 0, 0, 2, 0, 0, 0)
-		RIFF AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0)
+      SHT2 A 1 Offset(0,62)
+	  //TNT1 A 0 A_SetPitch(+2.0 + pitch)
+      SHT2 A 1 Offset(0,61)
+	  //TNT1 A 0 A_SetPitch(+2.0 + pitch)
+      SHT2 A 1 Offset(0,60)
+	  //TNT1 A 0 A_SetPitch(+2.0 + pitch)
       TNT1 A 0 A_TakeInventory("SSGAlt",1)
       TNT1 A 0 A_TakeInventory("Reloading",1)
       //TNT1 A 0 A_JumpIfInventory("Shell2",0,"NoAmmo")
-        SHO8 E 2 Offset(0,56) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-		TNT1 A 0 A_SetPitch(+2.0 + pitch)
-        SHO8 C 2 Offset(0,42) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-		TNT1 A 0 A_SetPitch(+2.0 + pitch)
-        SHT2 A 3 A_SetPitch(+2.0 + pitch)
-		TNT1 A 0 A_SetPitch(+2.0 + pitch)
-		Goto Reload
+        SHT2 A 1 Offset(0,56) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		//TNT1 A 0 A_SetPitch(+2.0 + pitch)
+        SHT2 A 1 Offset(0,42) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		//TNT1 A 0 A_SetPitch(+2.0 + pitch)
+        SHT2 A 1 //A_SetPitch(+2.0 + pitch)
+		//TNT1 A 0 A_SetPitch(+2.0 + pitch)
+		Goto Ready+7
 		
 		
 		
@@ -173,9 +177,9 @@ ACTOR UAC1881 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("Reloading",1)
 		
 		
-		TNT1 A 0 A_JumpIfInventory("SSGAlt", 1, "Reload2")//Check if still has a Shell2 on left barrel
+		TNT1 A 0 A_JumpIfInventory("SSGAlt", 1, "Reload2")//Check if still has a shell on left barrel
 		
-		TNT1 A 0 A_JumpIfInventory("SSGAmmo", 2, "Ready")//Check if still has a Shell2 on left barrel
+		TNT1 A 0 A_JumpIfInventory("SSGAmmo", 2, "Ready")//Check if still has a shell on left barrel
 		
 		
 		TNT1 A 0 A_JumpIfInventory("Shell2", 1, 1)//Check if has any ammo left to reload
@@ -189,14 +193,14 @@ ACTOR UAC1881 : CMEWeapon
 		
 		
 		//Reload 2 barrels
-		SHT2 B 2 Offset(20,48) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
-        SHT2 B 2 Offset(10,36) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		//SHT2 B 2 Offset(20,48) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+        //SHT2 B 2 Offset(10,36) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		SHT2 BCDEF 1
 		SHT2 GH 1
 		SHT2 IJ 1
 		TNT1 A 0 A_GiveInventory ("Pumping", 1)
         
-        TNT1 A 0 A_PlaySound("weapons/sshotc")
+        TNT1 A 0 A_PlaySound("weapons/sshoto")
 		TNT1 A 0 A_JumpIfInventory("HasUnloaded", 1, 3)
 		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10)
         SHT2 K 2
@@ -243,35 +247,50 @@ AltFire:
 		TNT1 A 0 A_GiveInventory("SSGAlt",1)
         TNT1 A 0 A_Recoil(2)
         TNT1 A 0 A_ALertMonsters
-		RIFF AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
-        SHTA A 1 BRIGHT A_PlaySound("weapons/sg")
+        SHTA A 1 BRIGHT A_PlaySound("weapons/sga",3)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
         SHTA A 2 BRIGHT A_FireBullets (9, 6, 10, 7, "ShotgunPuff")
         TNT1 AAAAA 0 A_FireCustomMissile("Tracer", random(-5,5), 0, -1, -12, 0, random(-5,5))
-	TNT1 A 0 A_SetPitch(-4.0 + pitch)
+	//TNT1 A 0 A_SetPitch(-4.0 + pitch)
 		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
-		SHO8 EE 1 A_SetPitch(+1.0 + pitch)
-        SHT2 AA 1 A_SetPitch(+1.0 + pitch)
-        TNT1 A 0
+		
+		SHT2 A 1 Offset(0,50)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,60)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,55)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,50)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,45)
+		SHT2 A 1 Offset(0,35)
+        TNT1 A 0 A_refire
         Goto Ready+6
 
 AltFire2:
 		TNT1 A 0 A_TakeInventory("SSGAmmo", 1)
         TNT1 A 0 A_Recoil(2)
         TNT1 A 0 A_ALertMonsters
-		RIFF AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0)
-        SHTA B 1 BRIGHT A_PlaySound("weapons/sg")
+        SHTA B 1 BRIGHT A_PlaySound("weapons/sga",3)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
         SHTA B 2 BRIGHT A_FireBullets (9, 6, 10, 7, "ShotgunPuff")
         TNT1 AAAAA 0 A_FireCustomMissile("Tracer", random(-5,5), 0, -1, -12, 0, random(-5,5))
-		 TNT1 A 0 A_SetPitch(-4.0 + pitch)
+		 //TNT1 A 0 A_SetPitch(-4.0 + pitch)
 		//TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
-        SHT2 AA 1 BRIGHT A_SetPitch(+1.0 + pitch)
-		SHO8 EE 1 A_SetPitch(+1.0 + pitch)
+        SHT2 A 1 Offset(0,50)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,60)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,55)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,50)
+		//TNT1 A 0 A_SetPitch(+1.0 + pitch)
+		SHT2 A 1 Offset(0,45)
+		SHT2 A 1 Offset(0,35)
 		
 		TNT1 A 0 A_TakeInventory("SSGAlt", 1)
-		TNT1 A 0 A_JumpIfInventory("Shell2",1,1)
-		TNT1 A 0 A_GiveInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Shell2",1,"RealReady")
+		//TNT1 A 0 A_GiveInventory("Reloading", 1)
 		Goto Ready
         
 	Reload2:
@@ -281,10 +300,10 @@ AltFire2:
 		Goto NoAmmo
 		TNT1 A 0 A_TakeInventory("SSGAlt",1)
 		
-		SHT2 B 2 Offset(20,48) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		//SHT2 B 2 Offset(20,48) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		TNT1 A 0 
 	    TNT1 A 0 
-        SHT2 B 2 Offset(10,36) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+        //SHT2 B 2 Offset(10,36) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 		TNT1 A 0 
 	    TNT1 A 0 
 		SHT2 BCDEF 1
@@ -299,7 +318,7 @@ AltFire2:
 		
 		TNT1 A 0 A_GiveInventory ("Pumping", 1)
         
-        TNT1 A 0 A_PlaySound("weapons/sshotc")
+        TNT1 A 0 A_PlaySound("weapons/sshoto")
 		TNT1 A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10)
         SHT2 K 2
 		SHT7 L 10
@@ -335,6 +354,6 @@ AltFire2:
 	Spawn:
 		SGN2 A -1
 		Stop
-	
+
 	}
 }

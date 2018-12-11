@@ -1,2 +1,2 @@
-STARTUPTITLE = "MakelYT's Brutal DOOM: Combined Mods Edition Beta"
+STARTUPTITLE = "MakelYT & Caco345's Brutal DOOM: Combined Mods Edition Beta"
 STARTUPCOLORS = "0000FF", "000000"

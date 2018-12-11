@@ -1,4 +1,4 @@
-ACTOR Nazi: WolfensteinSS
+ACTOR Nazi replaces WolfensteinSS
 {
 	Game Doom
 	Health 90

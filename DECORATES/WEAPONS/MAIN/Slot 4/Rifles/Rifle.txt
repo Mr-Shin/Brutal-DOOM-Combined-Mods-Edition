@@ -152,7 +152,7 @@ ACTOR Rifle: CMEWeapon
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
-		RI2G A 1 A_WeaponReady
+		AR2G A 2 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint2")
 		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
 		Loop
@@ -217,7 +217,7 @@ ACTOR Rifle: CMEWeapon
 		TNT1 A 0 A_AlertMonsters
 		RIFF A 0 A_FireCustomMissile("DistantFireSoundRifle", random(-1,1), 0, 0, -12, 0, random(-1,1))
 		TNT1 A 0 A_Takeinventory("DoubleRifleAmmo",1)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		RIFF A 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
 		
 		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Fire2")
@@ -238,43 +238,48 @@ ACTOR Rifle: CMEWeapon
 		RIFG A 4 A_WeaponReady(1)
 		Goto Ready3
 	
-     Fire2:
-		TNT1 A 0
+    Fire2:
+		TNT1 A 0 A_PlaySound("weapons/rifle2")
+        TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		AR2G A 0 A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,5)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,0,45)
-		RI2F A 1 BRIGHT A_FireBullets (1, 1, 1, 9, "HitPuff")
-        RI2F A 0 BRIGHT A_FireCustomMissile("Tracer", 0, 0, 0, 0)
+		AR2F A 1 BRIGHT A_FireBullets (1, 1, 1, 9, "HitPuff")
+
+		//TNT1 A 0 A_RECOIL(0.02)
+        AR2F A 0 BRIGHT A_FireCustomMissile("Tracer", 0, 0, -1, 0)
+        //TNT1 A 0 ACS_Execute(373, 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
 		TNT1 A 0 A_SetPitch(-0.9 + pitch)
 		TNT1 A 0 A_Takeinventory("RifleAmmo",1)
-		RI2F B 1 A_WeaponReady(1)
+		AR2F B 1 A_WeaponReady(1)
 		TNT1 A 0 A_SetPitch(+0.3 + pitch)
 		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",1,0,8,0)
-        RI2F C 1
-		TNT1 A 0 A_SetPitch(+0.3 + pitch)
-		RI2G A 1 A_WeaponReady(1)
-		TNT1 A 0 A_SetPitch(+0.3 + pitch)
-        RI2F B 0 A_ReFire
-		RI2G A 10 A_WeaponReady(1)
-        RI2G A 0
+        AR2F C 1 A_WeaponReady(1)
+		//TNT1 A 0 A_SetPitch(+0.3 + pitch)
+        AR2F B 0
+		AR2G A 1 A_WeaponReady(1)
+		//TNT1 A 0 A_SetPitch(+0.3 + pitch)
+		TNT1 A 0 A_Refire
+		AR2G A 10 A_WeaponReady(1)
+        AR2G A 0
 		Goto Ready2
 		
-    AltFire:
+AltFire:
         TNT1 A 0
-		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"NoAim")
+		TNT1 A 0 A_JumpIfInventory("Zoomed",1,8)
 		TNT1 A 0 A_Giveinventory("Zoomed",1)
 		TNT1 A 0 A_Giveinventory("GoSpecial",1)
-        TNT1 A 0 A_ZoomFactor(2.0)
-		TNT1 A 0 A_SetCrosshair(41)
+        TNT1 A 0 A_ZoomFactor(2.3)
 		TNT1 A 0 A_Giveinventory("ADSmode",1)
-        RIFZ ABC 1
+        ARFZ ABC 1
         Goto Ready2
-       NoAim:
-        RIFZ CBA 1
-		TNT1 A 0 A_SetCrosshair(0)
+        TNT1 AAAAAA 0
+        ARFZ CBA 1
 		TNT1 A 0 A_Takeinventory("Zoomed",1)
         TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_Takeinventory("ADSmode",1)
-        Goto Ready3
-		
+        Goto Ready+6
 	NoAmmo:
 	RIFG A 1 A_PlaySound("weapons/empty")
 	TNT1 A 0 A_Takeinventory("Zoomed",1)
@@ -295,7 +300,7 @@ ACTOR Rifle: CMEWeapon
         Goto NoAmmo
         TNT1 AAA 0
 		TNT1 A 0 A_Takeinventory("Zoomed",1)
-        TNT1 A 0 A_PlaySound("Reload")
+        TNT1 A 0 A_PlaySound("RELOAD2")
 		TNT1 A 0 A_GiveInventory ("Pumping", 1)
 		TNT1 A 0 A_Takeinventory("Reloading",1)
 		TNT1 A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")

@@ -216,6 +216,12 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 5/MGs/Anarchy-50.txt"
 #include "decorates/weapons/main/slot 5/MGs/AnarchyUpgrade.txt"
 #include "decorates/weapons/main/slot 5/MGs/DRACONIAN.txt"
+#include "decorates/weapons/main/slot 6/Rls/DukeRocket.txt"
+#include "decorates/weapons/main/slot 6/Rls/DukeRPG.txt"
+#include "decorates/weapons/main/slot 6/Rls/UTRocket.txt"
+#include "decorates/weapons/main/slot 6/RLs/UT2004RL.txt"
+#include "decorates/weapons/main/slot 6/RLs/DSRocket.txt"
+#include "decorates/weapons/main/slot 6/RLs/DS-9000.txt"
 
 
 
