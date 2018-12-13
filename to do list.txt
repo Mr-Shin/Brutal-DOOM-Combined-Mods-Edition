@@ -1,0 +1,49 @@
+Things that need to be done.
+
+Before Beta:
+Finish Weapons(Excluding BD v21 & PB 3.0 Weapons)
+Add Project Brutality 2.0.3 Monsters
+Add PB max decal and gibs list options
+Make it so glory kills can be activated by pressing use
+Add IB completely remove blood options
+Fix BD smoke option (cvar name is in reverse)
+add berserk health packs
+add slide to all weapons
+add Sparta kick
+change ground kick sound back to BD (Sparta kick will keep PB sound)
+
+Fix Bugs
+
+After BD v21 releases(If it ever fucking does)
+Add BD Hexen gib queue 
+Add BD weapons
+Finish Map Enhancement Script
+Update MP40 and MG42 Skin
+Add BD Floor Decals(Keep Blood emitted from enemies the same as the Dec 11 2017 build. video for reference  https://www.youtube.com/watch?v=ggxUX5jYgrM)
+Fix test map
+Add footsteps and cvar to disable them
+Add rocket back-blast to all rocket launchers and cvar to disable them (Wont do damage tho)
+make rocket ammo and grenade ammo shootable.
+Fix liquid splash effects and other floor splash and decals
+update tanks
+add other blood improvements if the appear
+Make all ssgs not have to reload after shot and go into reload animation when switching back
+Update evil marines and nazis
+add Wolf3d Nazi guards(Pistol Nazis)
+add Luger
+
+After Project Brutality 3.0 Releases
+Update to PB 3.0 Monsters
+Implement PB's spawner code allowing for the enabling/disabling of weapons and enemies
+Update chainsaw
+add PB's mes(if applicable)
+Add PB weapons
+Add Vanilla DOOM spawn preset
+Add v21 Vanilla Doom class
+Add PB 3.0 Traditional
+Add BD v21 class
+Add PB 3.0 Class
+Add IB 3.8 Class
+Add spawn presets for bd v21 and pb 3.0 class
+
+Add anything else you feel needs to be done(Make sure if it aplies to any mod that has not been released yet make a seperate catagory
