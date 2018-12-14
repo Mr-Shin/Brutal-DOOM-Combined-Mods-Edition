@@ -11,6 +11,7 @@ add berserk health packs
 add slide to all weapons
 add Sparta kick
 change ground kick sound back to BD (Sparta kick will keep PB sound)
+Fix many yellow warnings as much as possible.
 
 Fix Bugs
 
