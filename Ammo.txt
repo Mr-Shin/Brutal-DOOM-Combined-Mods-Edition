@@ -708,7 +708,40 @@ ACTOR RocketBox3 : RocketAmmo2
 		Stop
 	}
 }
+ACTOR PipeBombAmmo : Ammo
+{
+	Game Doom
+	SpawnID 11
+	Scale 0.7
+	Inventory.PickupMessage "Picked up 2 pipebombs that create massive periods."
+	Inventory.Amount 2
+	Inventory.MaxAmount 75
+	Ammo.BackpackAmount 2
+	Ammo.BackpackMaxAmount 150
+	Inventory.Icon "PBAMA0"
+	inventory.pickupsound "PIPEBOUN"
+	States
+	{
+	Spawn:
+		PBAM A -1
+		Stop
+	}
+}
 
+ACTOR PipeBombBox : PipeBombAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a shitload of pipe bombs"
+	Inventory.Amount 20
+	inventory.pickupsound "ROCKBOX1"
+	States
+	{
+	Spawn:
+		PIPB A -1
+		Stop
+	}
+}
 ACTOR NailAmmo : Ammo
 {
 	Game Doom
