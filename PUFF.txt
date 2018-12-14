@@ -192,6 +192,7 @@ ACTOR HitPuff Replaces BulletPuff
   height 0
   +NOBLOCKMAP
   +NOGRAVITY
+  +NOCLIP
   Gravity 0.01
   +NOEXTREMEDEATH
   +FORCEXYBILLBOARD
@@ -243,6 +244,7 @@ ACTOR RicoChet
   +CLIENTSIDEONLY
   +BLOODLESSIMPACT 
   +FORCEXYBILLBOARD
+  +NOCLIP
   +THRUACTORS
   +NOGRAVITY
 	Obituary "%o ate bullet shrapnel."

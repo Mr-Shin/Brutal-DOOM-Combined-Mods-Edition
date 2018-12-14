@@ -607,13 +607,15 @@ Actor TankBlood: Blood
 -ALLOWPARTICLES
 +NOBLOODDECALS
 -BLOODSPLATTER
++PUFFGETSOWNER
 States
 	{
 	Spawn:
 	See:
 	Death:
 	    TNT1 A 1
-		TNT1 A 0 A_SpawnItem("BulletPuff")
+		TNT1 AAAAAAAAAA 0
+		TNT1 A 0 A_SpawnItemEx("BulletPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS,0)
 		TNT1 A 0 A_PlaySound("RICMET")
 		TNT1 A 60
 		Stop}}
