@@ -10,7 +10,7 @@ ACTOR HandGrenades : DoomWeapon
 	Obituary "%o was blewn up by %k's grenade."
     AttackSound "None"
     Inventory.PickupSound "AmmoAPIN"
-	Inventory.Pickupmessage "You got a Frag Grenade!  (Slot 0)"
+	Inventory.Pickupmessage "You picked up a Frag Grenade!"
 	
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT

@@ -88,12 +88,6 @@ addplayerclass BDoomer //nomenu
    addmenukey "Switch Emergency Ammo Type" emgunswitchammo
    alias emgunswitchammo "pukename IB500"
    defaultbind M emgunswitchammo
-   addmenukey "Throw Pipe Bomb" throwpipebomb
-   alias throwpipebomb "puke 601"
-   defaultbind throwpipebomb p
-   addmenukey "Detonate Pipe Bombs" detpipebomb
-   alias detpipebomb "puke 602"
-   defaultbind detpipebomb L
 
 // Key Configuration
 // Aliases

@@ -25,27 +25,37 @@ Actor PBKick : Inventory {}
 
 #include TOKENS.txt
 //Gore N' Blood
-#include GORE.txt
-#include GOREGROUPS.txt
-#include BLOOD.txt
-#include BLOODSPLASH.txt
-#include BURN.txt
 #include DEAD.txt
+#include "decorates/effects/blood stuff/GORE!!!.dec"
+#include "decorates/effects/blood stuff/GORE2.dec"
+#include "decorates/effects/blood stuff/GORE3.dec"
+#include "decorates/effects/blood stuff/GORE4.dec"
+#include "decorates/effects/blood stuff/BLOOD.dec"
+#include "decorates/effects/blood stuff/BLOODSPLASH.dec"
+#include "decorates/effects/blood stuff/BURN.dec"
+
+#include "decorates/effects/blood stuff/JUNK.dec"
+#include "decorates/effects/blood stuff/STICKY.dec"
+#include "decorates/effects/blood stuff/Underwaterblood.dec"
+
+//Hitboxes
+#include "Decorates/Hitboxes/HEAD_SYS.dec"
+#include "Decorates/Hitboxes/LEGBOX.dec"
 
 
 //MISC
 #include "decorates/weapons/main/misc/Flashlight.txt"
-#include HEAD_SYS.txt
 #include PARTICLES.txt
 #include SMOKE.txt
 #include CASING.txt
 #include FIRE.txt
 #include SPARKS.txt
 #include FLARES.txt
+#include DEAD.txt
 #include "decorates/items/powerups/ARTIFACT.txt"
 #include "decorates/items/health and armor/Health2.txt"
 #include "decorates/items/health and armor/Armor.txt"
-#include BOSSBOX.txt
+#include "Decorates/Hitboxes/BOSSBOX.dec"
 #include DROPABLES.txt
 #include PUFF.txt
 #include AMMO.txt
@@ -81,38 +91,108 @@ Actor PBKick : Inventory {}
 
 
 
+#include "Decorates/Monsters/T0-Marines/MARINESPAWNER.dec"
 
 
 //Enemies
-#include "Decorates/MONSTERS/ZOMBIES/ZOMBIEMEN.txt"
-#include "Decorates/MONSTERS/ZOMBIES/SERGEANTS.txt"
-#include "Decorates/MONSTERS/ZOMBIES/COMANDO.txt"
-#include "Decorates/MONSTERS/ZOMBIES/LABGUY.txt"
-#include "Decorates/MONSTERS/IMPS/IMPS.txt"
-#include "Decorates/MONSTERS/DEMONS/DEMONS.txt"
-#include "Decorates/MONSTERS/DEMONS/SPECTRE.txt"
-#include "Decorates/MONSTERS/HELLKNIGHTS/KNIGHT.txt"
-#include "Decorates/MONSTERS/BARONSOFHELL/BARON.txt"
-#include "Decorates/MONSTERS/LOSTSOULS/LOSTSOUL.txt"
-#include "Decorates/MONSTERS/ARACHNOTRON/SPIDERS.txt"
-#include "Decorates/MONSTERS/ARACHNOTRON/SPIDERS2.txt"
-#include "Decorates/MONSTERS/REVENANTS/REVENANT.txt"
-#include "Decorates/MONSTERS/MANCUBI/MANCUBUS.txt"
-#include "Decorates/MONSTERS/CACODEMONS/CACODEMO.txt"
-#include "Decorates/MONSTERS/PAINELEMENTAL/PAINELEMENTAL.txt"
-#include "Decorates/MONSTERS/ARCHVILES/ARCHVILE.txt"
-#include "Decorates/MONSTERS/CYBERDEMONS/CYBERDEMON.txt"
-#include "Decorates/MONSTERS/SPIDERDEMONS/MASTERMIND.txt"
-#include "Decorates/MONSTERS/ICONOFHELL/ABOMINATION.txt"
-//ST Monsters
+#include "Decorates/Monsters/T1-Grunts/ZOMBIEMEN.dec"
+#include "Decorates/Monsters/T1-Grunts/SERGEANTS.dec"
+#include "Decorates/Monsters/T1-Grunts/Commando.dec"
+#include "Decorates/Monsters/T1-Imps/IMPS.dec"
+#include "Decorates/Monsters/T2-Pinkies/DEMONS.dec"
+#include "Decorates/Monsters/T2-Pinkies/VOIDSPECTRE.dec"
+#include "Decorates/Monsters/T2-Pinkies/SPECTRE.dec"
+#include "Decorates/Monsters/T4-Nobles/KNIGHT.dec"
+#include "Decorates/Monsters/T4-Nobles/BARON.dec"
+#include "Decorates/Monsters/T3-Floaters/LOSTSOUL.dec"
+#include "Decorates/Monsters/T3-Arachnos/Arachnotron.dec"
+#include "Decorates/Monsters/T3-Revies/REVENANT.dec"
+#include "Decorates/Monsters/T3-Fats/MANCUBUS.dec"
+#include "Decorates/Monsters/T3-Floaters/CACODEMON.dec"
+#include "Decorates/Monsters/T3-Floaters/PAIN.dec"
+#include "Decorates/Monsters/T4-Viles/ARCHVILE.dec"
+#include "Decorates/Monsters/Tz-Bosses/CYBERDEMON.dec"
+#include "Decorates/Monsters/Tz-Bosses/MASTERMIND.dec"
+#include "Decorates/Monsters/Tz-Bosses/BossBrain.dec"
+#include "Decorates/Monsters/Tz-Bosses/Abomination.dec"
+#include "Decorates/Monsters/Tz-Bosses/Motherdemon.dec"
+//Project Brutality Monsters
+#include "decorates/effects/blood stuff/SwarmFly.dec"
 
-//Bosses
+#include "Decorates/Monsters/T1-Grunts/ZombiemanVariants.dec"
+#include "Decorates/Monsters/T1-Grunts/CarbineZombie.dec"
+#include "Decorates/Monsters/T1-Grunts/MinigunGuy.dec"
+#include "Decorates/Monsters/T1-Grunts/ZombieScientist.dec"
+#include "Decorates/Monsters/T1-Grunts/ChainsawZombie.dec"
+
+#include "Decorates/Monsters/T1-Grunts/SergeantVariant.dec"
+#include "Decorates/Monsters/T1-Grunts/RocketZombie.dec"
+#include "Decorates/Monsters/T1-Grunts/Kamikaze.dec"
+#include "Decorates/Monsters/T1-Grunts/DemonTechTroop.dec"
+#include "Decorates/Monsters/T1-Grunts/QuadSGGuy.dec"
+#include "Decorates/Monsters/T1-Grunts/ZSpecOps.dec"
+#include "Decorates/Monsters/T1-Grunts/AutoShottyGuy.dec"
+
+#include "Decorates/Monsters/T1-Imps/ImpVariants.dec"
+#include "Decorates/Monsters/T1-Imps/ImpVariant1.dec"
+#include "Decorates/Monsters/T1-Imps/ImpVariant2.dec"
+#include "Decorates/Monsters/T1-Imps/SavageImp.dec"
+#include "Decorates/Monsters/T1-Imps/DarkImpNami.dec"
+#include "Decorates/Monsters/T1-Imps/DarkImpNether.dec"
+#include "Decorates/Monsters/T1-Imps/DarkImpST.dec"
+#include "Decorates/Monsters/T1-Imps/DarkImpVoid.dec"
+
+#include "Decorates/Monsters/T1-Grunts/RifleCommando.dec"
+#include "Decorates/Monsters/T1-Grunts/HMGMajor.dec"
+#include "Decorates/Monsters/T1-Grunts/PlasmaZombie.dec"
+#include "Decorates/Monsters/T1-Grunts/ClassicCommando.dec"
+#include "Decorates/Monsters/T1-Grunts/HelmetCommando.dec"
+
+#include "Decorates/Monsters/T3-Floaters/Watcher.dec"
+#include "Decorates/Monsters/T3-Floaters/Afrit.dec"
+#include "Decorates/Monsters/T3-Floaters/InfernalCaco.dec"
+
+#include "Decorates/Monsters/T2-Pinkies/MeanDemon.dec"
+#include "Decorates/Monsters/T2-Pinkies/MechDemon.dec"
+
+#include "Decorates/Monsters/T4-Nobles/CyberKnight.dec"
+#include "Decorates/Monsters/T4-Nobles/CyberPaladin.dec"
+
+#include "Decorates/Monsters/T3-Revies/BeamRev.dec"
+#include "Decorates/Monsters/T3-Revies/Draugr.dec"
+
+#include "Decorates/Monsters/T4-Viles/Hellion.dec"
+#include "Decorates/Monsters/T4-Viles/FleshWizard.dec"
+#include "Decorates/Monsters/T4-Viles/IceVile.dec"
+#include "Decorates/Monsters/T4-Viles/IceImps.dec"
+
+#include "Decorates/Monsters/T3-Arachnos/InfernalArachnotron.dec"
+#include "Decorates/Monsters/T3-Arachnos/Arachnophyte.dec"
+#include "Decorates/Monsters/T3-Arachnos/EliteArachnotron.dec"
+
+#include "Decorates/Monsters/Tz-Bosses/ANNIHILATOR.dec"
+#include "Decorates/Monsters/Tz-Bosses/Demolisher.dec"
+
+#include "Decorates/Monsters/T3-Fats/Daedabus.dec"
+#include "Decorates/Monsters/T3-Fats/Volcabus.dec"
+
+#include "Decorates/Monsters/T3-Floaters/Trite.dec"
+#include "Decorates/Monsters/T3-Floaters/Phantasm.dec"
+#include "Decorates/Monsters/T3-Floaters/SufferingElemental.dec"
+#include "Decorates/Monsters/T3-Floaters/Overlord.dec"
+#include "Decorates/Monsters/T4-Nobles/CyberBaron.dec"
+#include "Decorates/Monsters/T4-Nobles/Infernus.dec"
+
+#include "Decorates/Monsters/T3-Arachnos/Aracnorb.dec"
+#include "Decorates/Monsters/T1-Grunts/ZombieFlyer.dec"
+
 
 #include "Decorates/WEAPONS/MAIN/Slot 2/SMGS/MP40.txt"
 #include "Decorates/MONSTERS/NAZIS/NAZIS.txt"
 
 
 //New Weapons
+#include "decorates/weapons/main/slot 1/AXE.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 2/M&RS/DEagle3.txt"
 #include "decorates/weapons/main/slot 2/Handguns/FN-67.txt"
 #include "decorates/weapons/main/slot 2/Handguns/G18.txt"
@@ -125,6 +205,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 2/M&RS/Skull Cracker.dat"
 #include "decorates/weapons/main/slot 2/M&RS/Skull Cracker Rico.txt"
 #include "decorates/weapons/main/slot 2/MPS/SovietMachinePistol.txt"
+#include "decorates/weapons/main/slot 2/MPS/v21MachinePistol.txt"
 #include "decorates/weapons/main/slot 2/Handguns/TAC-15.txt"
 #include "decorates/weapons/main/slot 2/M&RS/TesticleImploder.dat"
 #include "decorates/weapons/main/slot 2/M&RS/Testicle Imploder Explo.txt"
@@ -137,6 +218,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 2/Handguns/Doom2016BlasterProjectile.txt"
 #include "decorates/weapons/main/slot 2/Handguns/Doom2016BlasterPickup.txt"
 #include "decorates/weapons/main/slot 2/Handguns/Doom2016BlasterUpgrade.txt"
+#include "decorates/weapons/main/slot 2/Handguns/Colt.txt"
 #include "decorates/weapons/main/slot 2/SMGS/UMP-50.txt"
 #include "decorates/weapons/main/slot 2/SMGS/UZI.txt"
 #include "decorates/weapons/main/slot 2/SMGS/TMP9.txt"
@@ -166,6 +248,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 3/Auto Shotguns/M1216.txt"
 #include "decorates/weapons/main/slot 3/Auto Shotguns/AS-Riot-4.txt"
 #include "decorates/weapons/main/slot 3/Auto SHotguns/XM1014.txt"
+#include "decorates/weapons/main/slot 4/Rifles/M20A4.txt"
 #include "decorates/weapons/main/slot 4/Rifles/FG-42.txt"
 #include "decorates/weapons/main/slot 4/Rifles/Repeater.txt"
 #include "decorates/weapons/main/slot 4/Rifles/XM30.txt"
@@ -216,6 +299,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 5/MGs/Anarchy-50.txt"
 #include "decorates/weapons/main/slot 5/MGs/AnarchyUpgrade.txt"
 #include "decorates/weapons/main/slot 5/MGs/DRACONIAN.txt"
+#include "decorates/weapons/main/slot 5/MGs/M144-RIOT.txt"
 #include "decorates/weapons/main/slot 6/Rls/DukeRocket.txt"
 #include "decorates/weapons/main/slot 6/Rls/DukeRPG.txt"
 #include "decorates/weapons/main/slot 6/Rls/UTRocket.txt"
@@ -227,10 +311,64 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 6/RLs/KRATOS.txt"
 #include "decorates/weapons/main/slot 6/RLs/WAR-Head.txt"
 #include "decorates/weapons/main/slot 6/RLs/RPG-7.txt"
+#include "decorates/weapons/main/slot 6/GLs/STGRENADELAUNCH.txt"
+#include "decorates/weapons/main/slot 6/GLs/Insanity Launcher.txt"
+#include "decorates/weapons/main/slot 6/GLs/SUPERGL.txt"
+#include "decorates/weapons/main/slot 6/GLs/Q1GL.txt"
+#include "decorates/weapons/main/slot 6/GLs/Q4GL.txt"
+#include "decorates/weapons/main/slot 6/GLs/M79.txt"
+#include "decorates/weapons/main/slot 6/GLs/EXCAVATOR.txt"
+#include "decorates/weapons/main/slot 7/plasma/Quake4 Hyperblaster.txt"
+#include "decorates/weapons/main/slot 7/plasma/IC-9.txt"
+#include "decorates/weapons/main/slot 7/plasma/PlasmaGun2016.txt"
+#include "decorates/weapons/main/slot 7/plasma/Hyperblaster.txt"
+#include "decorates/weapons/main/slot 7/plasma/Hyperblaster MK2.txt"
+#include "decorates/weapons/main/slot 7/plasma/M2 Plasma.txt"
+#include "decorates/weapons/main/slot 7/plasma/Petrovic M2.txt"
+#include "decorates/weapons/main/slot 7/plasma/Plasma Minigun.txt"
+#include "decorates/weapons/main/slot 7/plasma/CML-6.txt"
+#include "decorates/weapons/main/slot 7/Railguns/Railgun.txt"
+#include "decorates/weapons/main/slot 7/Railguns/GaussCannon2016.txt"
+#include "decorates/weapons/main/slot 7/MISC/Freezer.txt"
+#include "decorates/weapons/main/slot 7/Pulse/ION.txt"
+#include "decorates/weapons/main/slot 7/Pulse/PulseCannon.txt"
+#include "decorates/weapons/main/slot 7/Pulse/VortexRifle.txt"
+#include "decorates/weapons/main/slot 8/BFGs/BFG2016.txt"
+#include "decorates/weapons/main/slot 8/BFGs/BFGMk2.txt"
+#include "decorates/weapons/main/slot 8/BFGs/BFG10k.txt"
+#include "decorates/weapons/main/slot 8/BFGs/BFGMKIV.txt"
+#include "decorates/weapons/main/slot 8/BFGs/BFG11k.txt"
+#include "decorates/weapons/main/slot 8/BFGs/BFG Nuke.txt"
+#include "decorates/weapons/main/slot 8/Misc/Karasawa.txt"
+#include "decorates/weapons/main/slot 8/misc/BFS.txt"
+#include "decorates/weapons/main/slot 8/misc/EX-099.txt"
+#include "decorates/weapons/main/slot 0/snipers/L96A5.txt"
+
+#include "Decorates/Monsters/T0-Marines/CapturedMarine.dec"
+#include "Decorates/Monsters/T0-Marines/Marine-AutoShotgun.dec"
+#include "Decorates/Monsters/T0-Marines/Marine-BFG.dec"
+#include "Decorates/Monsters/T0-Marines/Marine-Chaingun.dec"
+#include "Decorates/Monsters/T0-Marines/Marine-Plasmagun.dec"
+#include "Decorates/Monsters/T0-Marines/Marine-PulseCannon.dec"
+#include "Decorates/Monsters/T0-Marines/Marine-RocketLauncher.dec"
+#include "Decorates/Monsters/T0-Marines/Marine-Shotgun.dec"
 
 
+#include "Decorates/Monsters/T1-Grunts/DyingGuys.dec"
+#include "Decorates/Monsters/T1-Grunts/DyingNewGuys.dec"
 
+#include "Decorates/Monsters/T1-Grunts/LastStandMonsters.dec"
 
+#include "Decorates/Monsters/T1-Grunts/NAZIS.dec"
+
+#include "Decorates/Monsters/T1-Imps/DyingDarkImps.dec"
+
+#include "Decorates/Monsters/Tz-Bosses/SpecialDoom1Bosses.dec"
+
+#include "Decorates/Monsters/Frozen.dec"
+#include "Decorates/Monsters/realm667monsters.dec"
+#include "Decorates/Monsters/StealthMonsters.dec"
+#include "Decorates/Monsters/UnderwaterMonsters.dec"
 
 //Glory Kills
 #include GLORYKILL.txt
@@ -269,6 +407,7 @@ Actor PBKick : Inventory {}
 #include MARINES.txt
 #include Purist.txt
 #include "Decorates/WEAPONS/MAIN/MISC/ClassicWeapons.txt"
+#include "decorates/SPAWNERS/MonsterSpawn.txt"
 
 #include "Decorates/MONSTERS/ICONOFHELL/BossBrain.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 0/Grenades.txt"

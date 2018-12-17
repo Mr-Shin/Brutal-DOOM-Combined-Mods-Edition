@@ -23,11 +23,12 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	PainSound "demon/pain"
 	DeathSound "demon/death"
 	ActiveSound "demon/active"
-    BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
+    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
 	DamageType Eat
 	MaxStepHeight 48
 	MaxDropOffHeight 48
 	DropItem "DemonStrengthRune" 2
+	DropItem "SuperBlurSphere" 12
 	RenderStyle Add
     Alpha 0.45
 	speed 8
@@ -44,7 +45,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0
 		TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
 	Spawned:
-		SPEC A 10 BRIGHT A_Look
+		SPEC AAAAAAAAAAAAAAAAAA 10 BRIGHT A_Look
 		Loop
 	SpawnVisible:
 		

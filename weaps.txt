@@ -56,6 +56,7 @@ XM1014
 
 Pump Shotguns:
 
+Classic SG
 UAC1897 Trench Gun
 UTS-15
 NAIL Shotgun

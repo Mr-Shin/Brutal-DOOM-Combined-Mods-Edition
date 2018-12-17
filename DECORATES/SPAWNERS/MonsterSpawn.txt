@@ -1,0 +1,126 @@
+Actor ZombieSpawner : RandomSpawner replaces ZombieMan
+{
+dropitem "ARZombieMan"
+dropitem "ChainsawLabguy"
+dropitem "PistolZombieman"
+dropitem "RifleCommando"
+dropitem "Zombie_Man"
+dropitem "ZombieMarineDude"
+dropitem "MinigunGuy"
+dropitem "Labguy"
+}
+Actor SergantSpawner : RandomSpawner replaces ShotgunGuy
+{
+dropitem "ASGGuy"
+dropitem "HellTrooper"
+dropitem "QuadShotgunZombie"
+dropitem "RocketZombie"
+dropitem "ShotgunGuy1"
+dropitem "ShotgunGuy2"
+dropitem "RiotShieldGuy"
+dropitem "PyroSergeant"
+dropitem "ZSpecOpsMachinegun"
+}
+Actor CommandoSpawner : RandomSpawner replaces ChaingunGuy
+{
+dropitem "ChaingunGuy1"
+dropitem "ChaingunGuy2"
+dropitem "ChaingunGuy3"
+dropitem "ChaingunMajor"
+dropitem "PlasmaZombie"
+}
+Actor ImpSpawner : RandomSpawner replaces DoomImp
+{
+dropitem "NamiDarkImp"
+dropitem "NetherDarkImp"
+dropitem "STDarkImp"
+dropitem "VoidDarkImp"
+dropitem "Imp"
+dropitem "SavageImp"
+}
+Actor DemonSpawner : RandomSpawner replaces Demon
+{
+dropitem "BullDemon"
+dropitem "DemonX"
+dropitem "MechDemon"
+}
+Actor SpectreSpawner : RandomSpawner replaces Spectre
+{
+dropitem "Spectro"
+dropitem "VoidSpectre"
+}
+Actor  ArachSpawner : RandomSpawner replaces Arachnotron
+{
+dropitem "Arachnophyte"
+dropitem "Arachnotron1"
+dropitem "Arachnotron2"
+dropitem "ArachnotronX"
+}
+Actor FatsoSpawner : RandomSpawner replaces Fatso
+{
+dropitem "Daedabus"
+dropitem "Mancubus"
+dropitem "Volcabus"
+}
+Actor CacoSpawner : RandomSpawner replaces Cacodemon
+{
+dropitem "Afrit"
+dropitem "Cacodemon_"
+dropitem "MagCaco"
+}
+Actor LostSpawner : RandomSpawner replaces LostSoul
+{
+dropitem "TehLostSoul"
+dropitem "Phantasm"
+}
+Actor PainSpawner : RandomSpawner replaces PainElemental
+{
+dropitem "OverLord"
+dropitem "PainElemental1"
+dropitem "SufferingElemental"
+dropitem "TriteElemental"
+}
+Actor RevSpawner : RandomSpawner replaces Revenant
+{
+dropitem "BeamRevenant"
+dropitem "Draugr"
+dropitem "Revenant1"
+}
+Actor BaronSpawner : RandomSpawner replaces BaronofHell
+{
+dropitem "BaronofHell2"
+dropitem "LordBelphegor"
+dropitem "Cyberbaron"
+dropitem "Infernus"
+}
+Actor NobleSpawner : RandomSpawner replaces HellKnight
+{
+dropitem "PhasicKnightX"
+dropitem "CyberPaladin"
+dropitem "HellKnight2"
+}
+Actor VileSpawner : RandomSpawner replaces Archvile
+{
+dropitem "TehArchvile"
+dropitem "FleshWizard"
+dropitem "Hellion"
+dropitem "ICEVILE"
+}
+Actor CyberSpawner : RandomSpawner replaces Cyberdemon
+{
+dropitem "Annihilator"
+dropitem "TheCyberdemon"
+}
+Actor SpiderSpawner : RandomSpawner replaces SpiderMastermind
+{
+dropitem "SpiderMastermindX"
+dropitem "Juggernaut"
+dropitem "TheSpiderMastermind"
+}
+
+
+
+
+
+
+

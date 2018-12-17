@@ -1,0 +1,1153 @@
+Actor StunShotActiveDoom2016PG : Inventory {inventory.maxamount 1}
+Actor HeatBlastActiveDoom2016PG : Inventory {inventory.maxamount 1}
+
+
+Actor 2016StunAlternate : Inventory {inventory.maxamount 1}
+Actor 2016HeatAlternate : Inventory {inventory.maxamount 1}
+
+// --------------------------------------------------------------------------
+//
+// Plasma Gun Doom 2016
+//
+// --------------------------------------------------------------------------
+
+#include "decorates/weapons/main/slot 7/plasma/D4PlasmaBall.txt"
+#include "decorates/weapons/main/slot 7/plasma/D4StaticBall.txt"
+#include "decorates/weapons/main/slot 7/plasma/D4StunBall.txt"
+#include "decorates/weapons/main/slot 7/plasma/2016PlasmaUpgrade.txt"
+#include "decorates/weapons/main/slot 7/plasma/2016PlasmaUpgrade2.txt"
+#include "decorates/weapons/main/slot 7/plasma/HeatBlast.txt"
+
+ACTOR Doom16PlasmaCharge : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 100
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 100
+}
+
+ACTOR D2016PG : CMEWeapon
+{
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 30
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	YScale 0.6
+	XScale 0.8
+	Weapon.SelectionOrder 4500
+	Weapon.AmmoType1 "Cell2"
+	Weapon.AmmoType2 "Doom16PlasmaCharge"
+	tag "Doom 2016 Plasma Gun"
+	Obituary "%o was desinegrated by %k's Doom 2016 Plasma Gun."
+    AttackSound "None"
+    Inventory.PickupSound "PLSDRAW"
+	Inventory.Pickupmessage "You got the Doom 2016 Plasma Gun!"
+	+WEAPON.WIMPY_WEAPON
+    +WEAPON.NOAUTOAIM
+    +WEAPON.NOALERT
+    +WEAPON.NOAUTOFIRE
+	+FORCEXYBILLBOARD
+	+WEAPON.NO_AUTO_SWITCH
+    Scale 1
+	States
+	{
+	PickUp:
+	TNT1 A 0 A_Playsound("PICKUPONELINER")
+	TNT1 A 0
+	Stop
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	
+	Ready:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "Ready3")
+		TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "Ready2")
+        TNT1 A 2 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_PlaySound("PLSDRAW")
+        16PS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0 //A_JumpIfInventory("G36CAmmo",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+	RealReady:
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "RealReady3")
+        TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "RealReady2")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		16PG A 1 A_WeaponReady
+        Goto RealReady
+	
+	SelectAttachmentStun:
+		TNT1 A 0
+		26PT ABCDE 1
+		26PT F 5
+		26PT GHIJKLMNO 1
+		26PT P 1 A_playsound("2016Plasma/Stun/Toggle", 4)
+		26PT Q 5
+		26PT RTUV 1
+		Goto RealReady2
+		
+	Ready2:
+        TNT1 A 2 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_PlaySound("PLSDRAW")
+        26PS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0 //A_JumpIfInventory("G36CAmmo",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+	RealReady2:
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		26PG A 1 A_WeaponReady
+        Goto RealReady2
+	
+	
+	SelectAttachmentHeat:
+		TNT1 A 0
+		34PT ABCDE 1
+		34PT F 5
+		34PT GHIJKLMNO 1
+		34PT P 1 A_playsound("2016Plasma/Stun/Toggle", 4)
+		34PT Q 5
+		34PT RTUV 1
+		Goto RealReady3
+	Ready3:
+        TNT1 A 2 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_PlaySound("PLSDRAW")
+        34PS ABCDE 1
+        TNT1 AAAAAAAA 0
+        TNT1 A 0 //A_JumpIfInventory("G36CAmmo",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+	RealReady3: //0 Charge
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 100, "RealReady3.Charge5")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		//TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn", 0, 0, 5, -3, 0, 0)
+		TNT1 A 0 A_GunFlash("HBF.C20")
+		34PG A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 20, "RealReady3.Charge1")
+        Goto RealReady3
+	RealReady3.Charge1: //20 Charge
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge1")
+		34PG B 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 40, "RealReady3.Charge2")
+		Goto RealReady3
+	RealReady3.Charge2: //40 Charge
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge2")
+		34PG C 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 60, "RealReady3.Charge3")
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge1")
+		34PG B 1 A_WeaponReady
+		Goto RealReady3
+	RealReady3.Charge3: //60 Charge
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge3")
+		34PG D 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 80, "RealReady3.Charge4")
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge2")
+		34PG C 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge1")
+		34PG B 1 A_WeaponReady
+		Goto RealReady3
+	RealReady3.Charge4: //80 Charge
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge4")
+		34PG E 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 100, "RealReady3.Charge5")
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge3")
+		34PG D 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge2")
+		34PG C 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_GunFlash("HeatBlastFlash.Charge1")
+		34PG B 1 A_WeaponReady
+		Goto RealReady3
+	RealReady3.Charge5: //100 Charge
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		//TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn", 0, 0, 5, -3, 0, 0)
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		34PG F 1 BRIGHT A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		//TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn", 0, 0, 5, -3, 0, 0)
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		34PG G 1 BRIGHT A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		//TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn", 0, 0, 5, -3, 0, 0)
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		34PG H 1 BRIGHT A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		//TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn", 0, 0, 5, -3, 0, 0)
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		34PG I 1 BRIGHT A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "SilencerToggle")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		//TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn", 0, 0, 5, -3, 0, 0)
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		34PG E 1 BRIGHT A_WeaponReady
+		Loop
+		
+	
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("weapon/swap", 4)
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		TNT1 A 0 A_Takeinventory("ZoomedG36C",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "Deselect2")
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "Deselect3")
+		16PS EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Deselect2:
+		26PS EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Deselect3:
+		34PS EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	
+	HeatBlastFlash:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 100, "HeatBlastFlash.Charge5")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 80, "HeatBlastFlash.Charge4")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 60, "HeatBlastFlash.Charge3")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 40, "HeatBlastFlash.Charge2")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 20, "HeatBlastFlash.Charge1")
+		Stop
+		
+	HeatBlastFlash.Charge5:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(100, "HeatBlastFlash.Charge51")
+		TNT1 A 0 A_Jump(100, "HeatBlastFlash.Charge52")
+		TNT1 A 0 A_Jump(100, "HeatBlastFlash.Charge53")
+		TNT1 A 0 A_Jump(100, "HeatBlastFlash.Charge54")
+		TNT1 A 0 A_Jump(100, "HeatBlastFlash.Charge55")
+		TNT1 A 0 A_Jump(100, "HeatBlastFlash.Charge56")
+		34PL E 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge51:
+		TNT1 A 0
+		34PL F 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge52:
+		TNT1 A 0
+		34PL G 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge53:
+		TNT1 A 0
+		34PL H 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge54:
+		TNT1 A 0
+		34PL I 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge55:
+		TNT1 A 0
+		34PL J 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge56:
+		TNT1 A 0
+		34PL K 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge4:
+		TNT1 A 0
+		34PL D 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge3:
+		TNT1 A 0
+		34PL C 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge2:
+		TNT1 A 0
+		34PL B 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge1:
+		TNT1 A 0
+		34PL A 1 BRIGHT
+		Stop
+	HeatBlastFlash.Charge0:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 20, "HBF.C20")
+		Stop
+	HBF.C20:
+		TNT1 A 0
+		TNT1 A 1 BRIGHT
+		Stop
+		
+	//Recoil Frame 2
+	HeatBlastFlash2:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 100, "HBF2.Charge5")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 80, "HBF2.Charge4")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 60, "HBF2.Charge3")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 40, "HBF2.Charge2")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 20, "HBF2.Charge1")
+		Stop
+		
+	HBF2.Charge5:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(100, "HBF2.Charge51")
+		TNT1 A 0 A_Jump(100, "HBF2.Charge52")
+		TNT1 A 0 A_Jump(100, "HBF2.Charge53")
+		TNT1 A 0 A_Jump(100, "HBF2.Charge54")
+		TNT1 A 0 A_Jump(100, "HBF2.Charge55")
+		TNT1 A 0 A_Jump(100, "HBF2.Charge56")
+		44PL E 1 BRIGHT
+		Stop
+	HBF2.Charge51:
+		TNT1 A 0
+		44PL F 1 BRIGHT
+		Stop
+	HBF2.Charge52:
+		TNT1 A 0
+		44PL G 1 BRIGHT
+		Stop
+	HBF2.Charge53:
+		TNT1 A 0
+		44PL H 1 BRIGHT
+		Stop
+	HBF2.Charge54:
+		TNT1 A 0
+		44PL I 1 BRIGHT
+		Stop
+	HBF2.Charge55:
+		TNT1 A 0
+		44PL J 1 BRIGHT
+		Stop
+	HBF2.Charge56:
+		TNT1 A 0
+		44PL K 1 BRIGHT
+		Stop
+	HBF2.Charge4:
+		TNT1 A 0
+		44PL D 1 BRIGHT
+		Stop
+	HBF2.Charge3:
+		TNT1 A 0
+		44PL C 1 BRIGHT
+		Stop
+	HBF2.Charge2:
+		TNT1 A 0
+		44PL B 1 BRIGHT
+		Stop
+	HBF2.Charge1:
+		TNT1 A 0
+		44PL A 1 BRIGHT
+		Stop
+		
+	//Recoil Frame 3
+	HeatBlastFlash3:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 100, "HBF3.Charge5")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 80, "HBF3.Charge4")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 60, "HBF3.Charge3")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 40, "HBF3.Charge2")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 20, "HBF3.Charge1")
+		Stop
+		
+	HBF3.Charge5:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(100, "HBF3.Charge51")
+		TNT1 A 0 A_Jump(100, "HBF3.Charge52")
+		TNT1 A 0 A_Jump(100, "HBF3.Charge53")
+		TNT1 A 0 A_Jump(100, "HBF3.Charge54")
+		TNT1 A 0 A_Jump(100, "HBF3.Charge55")
+		TNT1 A 0 A_Jump(100, "HBF3.Charge56")
+		44PL E 1 BRIGHT
+		Stop
+	HBF3.Charge51:
+		TNT1 A 0
+		44PL F 1 BRIGHT
+		Stop
+	HBF3.Charge52:
+		TNT1 A 0
+		44PL G 1 BRIGHT
+		Stop
+	HBF3.Charge53:
+		TNT1 A 0
+		44PL H 1 BRIGHT
+		Stop
+	HBF3.Charge54:
+		TNT1 A 0
+		44PL I 1 BRIGHT
+		Stop
+	HBF3.Charge55:
+		TNT1 A 0
+		44PL J 1 BRIGHT
+		Stop
+	HBF3.Charge56:
+		TNT1 A 0
+		44PL K 1 BRIGHT
+		Stop
+	HBF3.Charge4:
+		TNT1 A 0
+		44PL D 1 BRIGHT
+		Stop
+	HBF3.Charge3:
+		TNT1 A 0
+		44PL C 1 BRIGHT
+		Stop
+	HBF3.Charge2:
+		TNT1 A 0
+		44PL B 1 BRIGHT
+		Stop
+	HBF3.Charge1:
+		TNT1 A 0
+		44PL A 1 BRIGHT
+		Stop
+		
+	//Recoil Frame 4
+	HeatBlastFlash4:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 100, "HBF4.Charge5")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 80, "HBF4.Charge4")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 60, "HBF4.Charge3")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 40, "HBF4.Charge2")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 20, "HBF4.Charge1")
+		Stop
+		
+	HBF4.Charge5:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(100, "HBF4.Charge51")
+		TNT1 A 0 A_Jump(100, "HBF4.Charge52")
+		TNT1 A 0 A_Jump(100, "HBF4.Charge53")
+		TNT1 A 0 A_Jump(100, "HBF4.Charge54")
+		TNT1 A 0 A_Jump(100, "HBF4.Charge55")
+		TNT1 A 0 A_Jump(100, "HBF4.Charge56")
+		44PL E 1 BRIGHT
+		Stop
+	HBF4.Charge51:
+		TNT1 A 0
+		44PL F 1 BRIGHT
+		Stop
+	HBF4.Charge52:
+		TNT1 A 0
+		44PL G 1 BRIGHT
+		Stop
+	HBF4.Charge53:
+		TNT1 A 0
+		44PL H 1 BRIGHT
+		Stop
+	HBF4.Charge54:
+		TNT1 A 0
+		44PL I 1 BRIGHT
+		Stop
+	HBF4.Charge55:
+		TNT1 A 0
+		44PL J 1 BRIGHT
+		Stop
+	HBF4.Charge56:
+		TNT1 A 0
+		44PL K 1 BRIGHT
+		Stop
+	HBF4.Charge4:
+		TNT1 A 0
+		44PL D 1 BRIGHT
+		Stop
+	HBF4.Charge3:
+		TNT1 A 0
+		44PL C 1 BRIGHT
+		Stop
+	HBF4.Charge2:
+		TNT1 A 0
+		44PL B 1 BRIGHT
+		Stop
+	HBF4.Charge1:
+		TNT1 A 0
+		44PL A 1 BRIGHT
+		Stop
+		
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+
+		Goto Ready
+	
+	WeaponSpecial:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfINventory("2016PlasmaUpgradeInventory", 1, "SwitchStunShot")
+		TNT1 A 0 A_JumpIfINventory("2016PlasmaUpgradeInventory2", 1, "SwitchHeatBlast")
+		TNT1 A 0 A_Print("Upgrade Deficiency")
+		Goto RealReady
+	SwitchStunShot:
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "RemoveAttachment")
+		TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "SwitchHeatBlast")
+		TNT1 A 0 A_takeINventory("HeatBlastActiveDoom2016PG", 1)
+		TNT1 A 0 A_GIveINventory("StunShotActiveDoom2016PG", 1)
+		TNT1 A 0 A_Print("Static - Stun")
+		16PS EDCBA 1
+		TNT1 A 10
+		Goto SelectAttachmentStun
+	SwitchHeatBlast:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfINventory("2016PlasmaUpgradeInventory2", 1, "ContinueHeatBlast")
+		Goto RemoveAttachment
+	ContinueHeatBlast:
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "RemoveAttachment")
+		TNT1 A 0 A_GIveINventory("HeatBlastActiveDoom2016PG", 1)
+		TNT1 A 0 A_Print("Heat Impulse")
+		TNT1 A 0 A_JumpIfINventory("2016PlasmaUpgradeInventory", 1, "FromStunShot")
+		16PS EDCBA 1
+		TNT1 A 10
+		Goto SelectAttachmentHeat
+	FromStunShot:
+		TNT1 A 0 A_takeINventory("StunShotActiveDoom2016PG", 1)
+		26PS EDCBA 1
+		TNT1 A 10
+		Goto SelectAttachmentHeat
+	RemoveAttachment:
+		TNT1 A 0
+		TNT1 A 0 A_Print("Normal")
+		TNT1 A 0 A_JumpIfINventory("StunShotActiveDoom2016PG", 1, "FromStunShot2")
+		TNT1 A 0 A_takeINventory("HeatBlastActiveDoom2016PG", 1)
+		TNT1 A 0 A_takeINventory("StunShotActiveDoom2016PG", 1)
+		34PS EDCBA 1
+		TNT1 A 10
+		Goto Ready
+	FromStunShot2:
+		TNT1 A 0 A_takeINventory("StunShotActiveDoom2016PG", 1)
+		TNT1 A 0 A_takeINventory("HeatBlastActiveDoom2016PG", 1)
+		26PS EDCBA 1
+		TNT1 A 10
+		Goto Ready
+		
+		
+	SilencerToggle:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "ToggleHeat")
+		TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "ToggleStun")
+		//TNT1 A 0 A_JumpIfINventory("2016PlasmaUpgradeInventory", 1, "ToggleStun")
+		//TNT1 A 0 A_JumpIfINventory("2016PlasmaUpgradeInventory2", 1, "ToggleHeat")
+		TNT1 A 0 A_Print("Need Weapon Attachment To Proceed")
+		Goto RealReady
+	ToggleStun:
+		TNT1 A 0
+		26PG G 1 BRIGHT A_PlaySound("BEP")
+		TNT1 A 0 A_JumpIfINventory("2016StunAlternate", 1, "ToggleStatic")
+		TNT1 A 0 A_Print("Stun")
+		TNT1 A 0 A_GiveInventory("2016StunAlternate", 1)
+		Goto RealReady
+	ToggleStatic:
+		TNT1 A 0
+		TNT1 A 0 A_Print("Static Field")
+		TNT1 A 0 A_TakeInventory("2016StunAlternate", 1)
+		Goto RealReady
+		
+	ToggleHeat:
+		TNT1 A 0
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		34PG A 1 BRIGHT A_PlaySound("BEP")
+		TNT1 A 0 A_JumpIfINventory("2016HeatAlternate", 1, "ToggleBlast")
+		TNT1 A 0 A_Print("Flamethrower")
+		TNT1 A 0 A_GiveInventory("2016HeatAlternate", 1)
+		Goto RealReady
+	ToggleBlast:
+		TNT1 A 0
+		TNT1 A 0 A_Print("Heat Blast")
+		TNT1 A 0 A_TakeInventory("2016HeatAlternate", 1)
+		Goto RealReady
+		
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "FireCharge")
+		TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "FireMulti")
+        TNT1 A 0 A_JumpIfInventory("Cell2",1,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		
+		PLSM A 0 A_PlaySoundEx("2016Plasma/Loop1", "soundslot6", 6)
+		PLSM A 0 A_PlaySoundEx("2016Plasma/Loop2", "soundslot7", 7)
+		TNT1 A 0 A_playsound("2016Plasma/Fire", 5)
+		TNT1 A 0 A_Jump(96, "FireSprite1")
+		TNT1 A 0 A_Jump(96, "FireSprite2")
+		16PF A 1 BRIGHT A_AlertMonsters
+		Goto FinishNormalFire
+	FireSprite2:
+		16PF B 1 BRIGHT A_AlertMonsters
+		Goto FinishNormalFire
+	FireSprite1:
+		16PF C 1 BRIGHT A_AlertMonsters
+		Goto FinishNormalFire
+	FinishNormalFire:
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",0,0,3,0)
+		16PF D 1 BRIGHT
+        RIFF A 0 A_FireCustomMissile("D4PlasmaBall", 0, 0, 4, -4, 0, 0)
+		TNT1 A 0
+		TNT1 A 0 A_Takeinventory("Cell2",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_Giveinventory("Doom16PlasmaCharge",1)
+		16PF E 1
+		Goto RefireState
+	RefireState:
+		RIFG A 0 A_Refire("Fire")
+		TNT1 A 0 A_PlaySound("2016Plasma/StopMain", 6) 
+		TNT1 A 0 A_PlaySound("2016Plasma/Stop5", 7)
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		16PF F 1 A_WeaponReady
+		Goto DoneFiring
+		
+	DoneFiring:
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		Goto RealReady
+		
+	//Stun Shot Firing
+		
+	FireWithoutCharge2:
+		TNT1 A 0 A_Print("You need to get your charge to at least 50%")
+	FireMulti:
+        TNT1 A 0 A_JumpIfInventory("Cell2",1,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		PLSM A 0 A_PlaySoundEx("2016Plasma/Loop1", "soundslot6", 6)
+		PLSM A 0 A_PlaySoundEx("2016Plasma/Loop2", "soundslot7", 7)
+		TNT1 A 0 A_playsound("2016Plasma/Fire", 5)
+		TNT1 A 0 A_Jump(96, "FireMulti3")
+		TNT1 A 0 A_Jump(128, "FireMulti2")
+		TNT1 A 0 A_Jump(196, "FireMulti1")
+		Goto FireMulti3
+		
+	FireMulti3:
+		26PF A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",0,0,3,0)
+        RIFF A 0 A_FireCustomMissile("D4PlasmaBall", 0, 0, 4, -4, 0, 0)
+		26PF BC 1 BRIGHT
+		TNT1 A 0 A_Takeinventory("Cell2",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_Giveinventory("Doom16PlasmaCharge",1)
+		Goto RefireState2
+	FireMulti2:
+		26PF E 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",0,0,0,0)
+        RIFF A 0 A_FireCustomMissile("D4PlasmaBall", 0, 0, 4, -4, 0, 0)
+		26PF BC 1 BRIGHT
+		TNT1 A 0 A_Takeinventory("Cell2",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_Giveinventory("Doom16PlasmaCharge",1)
+		Goto RefireState2
+	FireMulti1:
+		26PF F 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",0,0,0,0)
+        RIFF A 0 A_FireCustomMissile("D4PlasmaBall", 0, 0, 4, -4, 0, 0)
+		26PF BC 1 BRIGHT
+		TNT1 A 0 A_Takeinventory("Cell2",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_Giveinventory("Doom16PlasmaCharge",1)
+		Goto RefireState2
+		
+	RefireState2:
+		RIFG A 0 A_Refire("FireMulti")
+		TNT1 A 0 A_PlaySound("2016Plasma/StopMain", 6) 
+		TNT1 A 0 A_PlaySound("2016Plasma/Stop5", 7)
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		Goto DoneFiring
+	
+	//Heat Blast
+	
+	FireCharge:
+		TNT1 A 0 A_JumpIfInventory("Cell2",1,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		PLSM A 0 A_PlaySoundEx("2016Plasma/Loop1", "soundslot6", 6)
+		PLSM A 0 A_PlaySoundEx("2016Plasma/Loop2", "soundslot7", 7)
+		TNT1 A 0 A_playsound("2016Plasma/Heat/Charge", 5)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_Jump(96, "FireSprite1Charge")
+		TNT1 A 0 A_Jump(96, "FireSprite2Charge")
+		34PF A 1 BRIGHT A_GunFlash("HeatBlastFlash")
+		Goto FinishNormalFireCharge
+	FireSprite2Charge:
+		34PF B 1 BRIGHT A_GunFlash("HeatBlastFlash")
+		Goto FinishNormalFireCharge
+	FireSprite1Charge:
+		34PF C 1 BRIGHT A_GunFlash("HeatBlastFlash")
+		Goto FinishNormalFireCharge
+	FinishNormalFireCharge:
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",0,0,3,0)
+		34PF D 1 BRIGHT A_GunFlash("HeatBlastFlash2")
+        RIFF A 0 A_FireCustomMissile("D4PlasmaBall", 0, 0, 4, -4, 0, 0)
+		TNT1 A 0
+		TNT1 A 0 A_Takeinventory("Cell2",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_Giveinventory("Doom16PlasmaCharge",1)
+		34PF E 1 BRIGHT A_GunFlash("HeatBlastFlash3")
+		Goto RefireStateCharge
+	RefireStateCharge:
+		RIFG A 0 A_Refire("FireCharge")
+		TNT1 A 0 A_PlaySound("2016Plasma/StopMain", 6) 
+		TNT1 A 0 A_PlaySound("2016Plasma/Stop5", 7)
+		TNT1 A 0 A_StopSoundEx("soundslot6")
+		TNT1 A 0 A_StopSoundEx("soundslot7")
+		34PF F 1 BRIGHT A_GunFlash("HeatBlastFlash4")
+		Goto DoneFiring
+		
+		
+	AltFire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "AltFireStun")
+		TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "AltFireHeat")
+		TNT1 A 0 A_Print("Attachment Required to Use")
+		Goto RealReady
+	AltFireHeat:
+		TNT1 A 0 A_JumpIfINventory("2016HeatAlternate", 1, "FireFire")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge",10,"AltFireRealheat")
+        TNT1 A 0 A_Print("Need At least 10% charge")
+		Goto RealReady
+	AltFireRealheat:
+        TNT1 AAAA 0
+		
+		PLSM A 0 A_PlaySound("2016Plasma/Heat/Fire", 4)
+		34PC A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 16, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 32, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 64, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 80, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 96, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 112, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 128, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 144, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 160, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 176, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 192, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 208, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 224, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 240, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 256, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 272, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 288, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 304, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 320, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 336, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_FireCustomMissile("HotPlasmaGas2", 352, 0, 0, 0)//, FPF_NOAUTOAIM)
+		TNT1 A 0 A_GunFlash("HeatBlastFireFlash")
+		TNT1 A 0 A_Takeinventory("Doom16PlasmaCharge",100,TIF_NOTAKEINFINITE)
+		34PC BCD 1 BRIGHT 
+		34PF DDEEFF 1 A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+		Goto RefireStateCharge
+	HeatBlastFireFlash:
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 100, "HBFF.Damage100")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 90, "HBFF.Damage90")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 80, "HBFF.Damage80")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 70, "HBFF.Damage70")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 60, "HBFF.Damage60")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 50, "HBFF.Damage50")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 40, "HBFF.Damage40")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 30, "HBFF.Damage30")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 20, "HBFF.Damage20")
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge", 10, "HBFF.Damage10")
+		Stop
+	HBFF.Damage100:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage100", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage90:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage90", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage80:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage80", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage70:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage70", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage60:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage60", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage50:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage50", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage40:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage40", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage30:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage30", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage20:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage20", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+	HBFF.Damage10:
+		TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("HeatBlastDamage10", 0, 0, 0, 0)//, FPF_NOAUTOAIM)
+		Stop
+		
+	FireFire:
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge",1,"CheckAmmo2")
+		TNT1 A 0 A_Print("Need To have at least 1% charge")
+		Goto RealReady
+	FirePlasmaFire:
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge",1,"CheckAmmo")
+		TNT1 A 0 A_Print("Need To have at least 1% charge")
+		Goto Stahp
+	CheckAmmo2:
+		BFMF B 0 A_PlaySound("BFG/fire/start", CHAN_WEAPON)
+	CheckAmmo:
+		TNT1 A 0 A_JumpIfInventory("Cell2",1,2)
+        Goto Stahp
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_GunFlash("HeatBlastFlash")
+		TNT1 A 0 A_PlaySound("BFG/fire/loop", CHAN_WEAPON, 1, 1)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_Jump(96, "FireSprite1Charge666")
+		TNT1 A 0 A_Jump(96, "FireSprite2Charge666")
+		TNT1 A 0 A_FIreCustomMissile("ShakeYourAssMinor",0,0,0,0)
+		34PF A 1 BRIGHT Offset(0,32) A_GunFlash("HeatBlastFlash")
+		Goto FinishNormalFireCharge666
+	FireSprite2Charge666:
+		34PF B 1 BRIGHT Offset(1,33) A_GunFlash("HeatBlastFlash")
+		Goto FinishNormalFireCharge666
+	FireSprite1Charge666:
+		34PF C 1 BRIGHT Offset(-1,33) A_GunFlash("HeatBlastFlash")
+		Goto FinishNormalFireCharge666
+	FinishNormalFireCharge666:
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",0,0,3,0)
+        RIFF A 0 A_FireCustomMissile("HotPlasmaGas", 0, 0, 2, -2, 0, 0)
+		TNT1 A 0 A_Takeinventory("Cell2",1,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_TakeInventory("Doom16PlasmaCharge",1)
+		RIFG A 0 A_Refire("FirePlasmaFire")
+	Stahp:
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
+		TNT1 A 0 A_PlaySound("BFG/fire/end", 7)
+		34PF DD 1 BRIGHT Offset(0,32) A_GunFlash("HeatBlastFlash2")
+		34PF EE 1 BRIGHT Offset(0,32) A_GunFlash("HeatBlastFlash3")
+		34PF FF 1 BRIGHT Offset(0,32) A_GunFlash("HeatBlastFlash4")
+		Goto DoneFiring
+		
+		
+		
+		
+		
+		
+		
+		
+	AltFireStun:
+		TNT1 A 0 A_JumpIfInventory("Doom16PlasmaCharge",50,"AltfireStunReal")
+        TNT1 A 0 A_Print("Need At least 50% Charge")
+		Goto RealReady
+   AltfireStunReal:
+		TNT1 A 0 A_JumpIfInventory("Cell2",10,2)
+		Goto NoAmmo
+		TNT1 AAAA 0
+		
+		PLSM A 0 A_PlaySound("2016Plasma/Stun/Fire", 6)
+		TNT1 A 0 A_JumpIfINventory("2016StunAlternate", 1, "FireStatic")
+		26PC A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",0,0,0,0)
+        RIFF A 0 A_FireCustomMissile("HeatBall", 0, 0, 4, -4, 0, 2)
+		TNT1 A 0
+		TNT1 A 0 A_Takeinventory("Cell2",10,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_Takeinventory("Doom16PlasmaCharge",50)
+		26PC BCDDDDDEEFF 1 BRIGHT A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+		26PG GGGGGGGGGG 1 BRIGHT A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+		Goto RefireState2
+	FireStatic:
+		26PF A 1 BRIGHT A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",0,0,0,0)
+        RIFF A 0 A_FireCustomMissile("StunBall", 0, 0, 4, -4, 0, 2)
+		26PF EF 1 BRIGHT
+		TNT1 A 0 A_Takeinventory("Cell2",10,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_Takeinventory("Doom16PlasmaCharge",50)
+		26PC DDDDDEEFF 1 BRIGHT A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+		26PG GGGGGGGGGG 1 BRIGHT A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+		Goto RefireState2
+		
+		
+	NoAmmo:
+	TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "NoAmmoALternate2")
+	TNT1 A 0 A_JumpIfInventory("StunShotActiveDoom2016PG", 1, "NoAmmoALternate")
+	16PG A 1 A_PlaySound("BEP")
+	TNT1 A 0 A_Takeinventory("ZoomedG36C",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	Goto RealReady
+NoAmmoALternate:
+	26PG H 1 A_PlaySound("BEP")
+	TNT1 A 0 A_Takeinventory("ZoomedG36C",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	Goto RealReady
+NoAmmoALternate2:
+	34PG A 1 A_PlaySound("BEP")
+	TNT1 A 0 A_Takeinventory("ZoomedG36C",1)
+    TNT1 A 0 A_ZoomFactor(1.0)
+	TNT1 A 0 A_Takeinventory("ADSmode",1)
+	TNT1 A 0 A_JumpIfInventory("HeatBlastActiveDoom2016PG", 1, "RealReady")
+	Goto RealReady
+		
+		
+		
+ 	Spawn:
+		16PP A -1
+		Stop
+	}
+}

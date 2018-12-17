@@ -1,4 +1,4 @@
-ACTOR UAC1897 : CMEWeapon
+ACTOR Shot_Gun : CMEWeapon
 {
 	Game Doom
 	SpawnID 27

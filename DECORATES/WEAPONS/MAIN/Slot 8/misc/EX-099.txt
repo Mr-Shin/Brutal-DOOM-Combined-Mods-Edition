@@ -1,0 +1,353 @@
+// --------------------------------------------------------------------------
+//
+// Gauss Cannon Doom 2016
+//
+// Lots and lots of credits to IAmInnocent (ZDoom) for sprites
+// and Xaser (ZDoom) for ripping out sounds.
+// More credits to the authors of the ZION mod.
+//
+// --------------------------------------------------------------------------
+
+#include "decorates/weapons/main/slot 8/misc/ExplosiveRail.txt"
+
+ACTOR EX-099HeatMeter : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 150
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 150
+   inventory.ICON EXSPA0
+}
+
+Actor EX099Zoomed : Inventory {inventory.maxamount 1}
+
+Actor EX099SecondMode : Inventory {inventory.maxamount 1}
+
+Actor IsCoolingDownEX099 : Inventory {inventory.maxamount 1}
+
+ACTOR EX099 : CMEWeapon
+{
+	Game Doom
+	SpawnID 29
+	Speed 20
+	Damage 20
+	Weapon.SelectionOrder 9500
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.AmmoGive1 30
+	Weapon.AmmoType1 "Cell2"
+	Weapon.AmmoType2 "EX-099HeatMeter"
+	tag "Karasawa MK2 : \"EX-099 Imploder Cannon\""
+    Inventory.PickupSound "GaussCannon/Select"
+    +WEAPON.NOAUTOAIM
+	+FORCEXYBILLBOARD
+	+WEAPON.AXEBLOOD
+	+WEAPON.NO_AUTO_SWITCH
+	+WEAPON.NOAUTOFIRE
+	+WEAPON.NOALERT
+	Inventory.PickupMessage "You got the EX-099 Imploder Cannon!"
+	Damagetype Disintegrate
+	States
+	{
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+	    TNT1 A 0
+        TNT1 A 8 
+        EXSS ABCD 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+		EXSS E 1 A_PlaySound("EX-099/Draw")
+		TNT1 AAAAA 0
+        Goto RealReady
+	RealReady:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("EX-099/Idle", 5, 1, TRUE)
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
+		EXSG A 1 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("EX-099HeatMeter", 1)
+        Goto RealReady
+		
+	Ready2:
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "UnSIEEEEEEEEEEGE")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		EXRZ A 0 BRIGHT A_SetBlend("Green",0.2,3)
+		EXRZ A 1 BRIGHT A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_TakeInventory("EX-099HeatMeter", 1)
+		Loop
+		
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_StopSound(5)
+		TNT1 A 0 A_TakeInventory("IsCoolingDownEX099", 1)
+		TNT1 A 0 A_playsound("weapon/swap", 3)
+		TNT1 A 0 A_Takeinventory("EX099Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		EXSS EDCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select:
+	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+
+		MISG A 0 A_Raise
+		Wait
+		
+	//Weapon Special
+	WeaponSpecial:
+	FireModeSwitch:
+		TNT1 A 0 A_Takeinventory("EX099Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfInventory("EX099SecondMode", 1, "SwitchToDevestator")
+		TNT1 A 0 A_GiveInventory("EX099SecondMode", 1)
+		TNT1 A 0 A_playsound("BEPBEP")
+		TNT1 A 0 A_Print("Light Rail Active")
+		Goto WeirdAnimation
+	SwitchToDevestator:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("EX099SecondMode", 1)
+		TNT1 A 0 A_playsound("BEPBEP")
+		TNT1 A 0 A_Print("Devestator Rail Active")
+		Goto WeirdAnimation
+	WeirdAnimation:
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		EXSG B 1 A_TakeInventory("EX-099HeatMeter", 1)
+		TNT1 A 0 A_playsound("EX-099/Charge", 6)
+		Goto RealReady
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("EX-099HeatMeter", 150, "Desist")
+        TNT1 A 0 A_JumpIfInventory("EX099SecondMode", 1, "Fire2")
+		TNT1 A 0 A_JumpIfInventory("Cell2",30,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		
+        TNT1 A 0 A_JumpIfInventory("EX099Zoomed", 1, "FireZoomed")
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_AlertMonsters
+		EXSF AB 1 BRIGHT A_FireCustomMissile("BlueFlareSpawn",-5,0,3,0)
+		TNT1 A 0 A_TakeInventory("Cell2", 30,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_PlaySound ("EX-099/Fire",7)
+		TNT1 A 0 A_GiveInventory("EX-099HeatMeter", 30)
+		EXSF C 1 BRIGHT A_FireCustomMissile("ExplosiveKarasawaProjectile", 0, 0, 6, -3, 0, 0)//A_RailAttack(Random(110,100), -5, 0, "0F 0 D3", "53 53 53", RGF_NOPIERCING|RGF_SILENT, 0, "None",0,0,8192,0,16,0,"EX099PlosionParticle",-3)
+        EXRC A 1 BRIGHT A_GunFlash("RecoilFlash2")
+		EXRC BBBBBBCC 1
+		EXRC CDEFGHIJ 2
+		EXSG A 10 A_playsound("EX-099/Charge", 6)
+        TNT1 A 0 A_Refire("Fire")
+        Goto RealReady //38 frames
+		
+	Fire2:
+        TNT1 A 0 A_JumpIfInventory("Cell2",2,2)
+        Goto NoAmmo
+        TNT1 AAAA 0
+		
+        TNT1 A 0 A_JumpIfInventory("EX099Zoomed", 1, "FireZoomed2")
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_AlertMonsters
+		EX2F C 1 BRIGHT A_FireCustomMissile("BlueFlareSpawn",-5,0,3,0)
+		TNT1 A 0 A_TakeInventory("Cell2", 2,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_PlaySound ("EX-099/Alt/Fire",7)
+		TNT1 A 0 A_GiveInventory("EX-099HeatMeter", 1)
+		EX2F B 1 BRIGHT A_FireCustomMissile("PlasmaTracer", 0, 0, 6, -3, 0, 0)//A_RailAttack(Random(110,100), -5, 0, "0F 0 D3", "53 53 53", RGF_NOPIERCING|RGF_SILENT, 0, "None",0,0,8192,0,16,0,"EX099PlosionParticle",-3)
+        EXRC H 1 BRIGHT A_GunFlash("RecoilFlash2")
+		EXRC IJ 1
+		TNT1 A 0 A_Refire("Fire") //4 frames
+		EXSG B 10
+        TNT1 A 0 A_playsound("EX-099/Charge", 6)
+        Goto RealReady //14 frames
+		
+	RecoilFlash2:
+		TNT1 A 0 A_JumpIfInventory("EX099SecondMode", 1, "RecoilFlash3")
+		TNT1 A 0 A_FireCUstomMissile("ShakeYourAssQuad")
+		TNT1 A 1 A_SetPitch(Pitch-3)
+		TNT1 AAA 1 A_SetPitch(Pitch+1)
+		Stop
+	RecoilFlash3:
+		TNT1 A 0 A_FireCUstomMissile("ShakeYourAss")
+		TNT1 A 1 A_SetPitch(Pitch-1.5)
+		TNT1 AAA 1 A_SetPitch(Pitch+0.5)
+		Stop
+	RecoilFlash:
+		TNT1 A 0 A_JumpIfInventory("EX099SecondMode", 1, "RecoilFlash4")
+		TNT1 A 1 A_SetPitch(Pitch-3)
+		TNT1 AA 1 A_SetPitch(Pitch-3.5)
+		TNT1 A 0 A_FireCUstomMissile("ShakeYourAssQuad")
+		TNT1 AAAAAAAAAA 1 A_SetPitch(Pitch+1)
+		Stop
+	RecoilFlash4:
+		TNT1 A 1 A_SetPitch(Pitch-2)
+		TNT1 AA 1 A_SetPitch(Pitch+1)
+		Stop
+	FireZoomed:
+		TNT1 A 0 A_JumpIfInventory("EX-099HeatMeter", 150, "Desist")
+		TNT1 A 0 
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("ExplosiveKarasawaProjectile", 0, 0, 0, -1, 0, 0)//A_RailAttack(115, -15, 0, "0F 0 D3", "53 53 53", RGF_NOPIERCING|RGF_SILENT, 0, "None",0,0,8192,0,12,0,"EX099PlosionParticle")
+		TNT1 A 0 A_PlaySound ("EX-099/Fire",7)
+		EXRZ A 1 BRIGHT A_SetBlend("White",0.2,3)
+		EXRZ A 1 BRIGHT A_GunFlash("RecoilFlash")
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.2,3)
+		TNT1 A 0 A_TakeInventory("Cell2", 30,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_GiveInventory("EX-099HeatMeter", 30)
+		EXRZ AAAAA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		EXRZ AAAAA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		EXRZ AAAAA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		EXRZ AAAAA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		EXRZ AAAAA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		TNT1 A 0 A_playsound("EX-099/Charge", 6)
+		Goto Ready2
+		
+	FireZoomed2:
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_AlertMonsters
+		EXRZ A 1 BRIGHT A_SetBlend("White",0.2,3)
+		TNT1 A 0 A_FireCustomMissile("BlueFlareSpawn",-5,0,0,0)
+		TNT1 A 0 A_TakeInventory("Cell2", 2,TIF_NOTAKEINFINITE)
+		TNT1 A 0 A_PlaySound ("EX-099/Alt/Fire",7)
+		TNT1 A 0 A_FireCustomMissile("PlasmaTracer", 0, 0, 6, -3, 0, 0)//A_RailAttack(Random(110,100), -5, 0, "0F 0 D3", "53 53 53", RGF_NOPIERCING|RGF_SILENT, 0, "None",0,0,8192,0,16,0,"EX099PlosionParticle",-3)
+		TNT1 A 0 A_GiveInventory("EX-099HeatMeter", 1)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.2,3)
+        EXRZ A 1 BRIGHT A_SetBlend("Green",0.2,3)
+		TNT1 A 0 A_GunFlash("RecoilFlash")
+		EXRZ AA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		TNT1 A 0 A_Refire("Fire") //5 frames
+		EXRZ AAAAA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		EXRZ AAAAA 1 BRIGHT A_SetBlend("Green",0.2,3)
+		TNT1 A 0 A_playsound("EX-099/Charge", 6)
+        Goto Ready2 //14 frames
+		
+	NoAmmo:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("EX099Zoomed",1,"UnSIEEEEEEEEEEGE")
+		TNT1 A 0 A_Takeinventory("EX099Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_playsound("BEPBEP")
+		Goto RealReady
+	Desist:
+		TNT1 A 0 A_PlaySound("Ex-099/Wait", 5)
+		TNT1 A 0 A_JumpIfInventory("IsCoolingDownEX099", 1, "DesistLoop")
+		TNT1 A 0 A_GiveInventory("IsCoolingDownEX099", 1)
+		TNT1 A 0 A_PlaySound("STEAM", 4)
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner11", -4, 0, 3, 0, 0, 0)
+	DesistLoop:
+		TNT1 A 0 A_JumpIfInventory("EX-099HeatMeter",1,3)
+        TNT1 A 0 A_TakeInventory("IsCoolingDownEX099", 1)
+		Goto RealReady
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_JumpIfInventory("EX099Zoomed",1,"DesistZoomed")
+		EXSG B 1 A_Weaponready(WRF_NOPRIMARY|WRF_NOSECONDARY)
+		TNT1 A 0 A_TakeInventory("EX-099HeatMeter", 1)
+		Loop
+	DesistZoomed:
+		EXRZ A 1 A_Weaponready(WRF_NOPRIMARY)
+		TNT1 A 0 A_TakeInventory("EX-099HeatMeter", 1)
+		Goto DesistLoop
+	AltFire:
+        TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("EX099Zoomed",1,"UnSIEEEEEEEEEEGE")
+		TNT1 A 0 A_Giveinventory("EX099Zoomed",1)
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_ZoomFactor(4.0)
+		TNT1 A 0 A_playsound("EX-099/Zoom/In", 4)
+		EXSG A 1 A_SetBlend("Black",0.2,3)
+		EXSG A 1 A_SetBlend("Black",0.4,3)
+		EXSG A 1 A_SetBlend("Black",0.6,3)
+		EXSG A 1 A_SetBlend("Black",0.8,3)
+        EXSG AA 1 A_SetBlend("Black",1.0,3)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.8,3)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.6,3)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.4,3)
+        Goto Ready2
+	UnSIEEEEEEEEEEGE:
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Takeinventory("EX099Zoomed",1)
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_playsound("EX-099/Zoom/Out", 4)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.4,3)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.6,3)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",0.8,3)
+		EXRZ A 1 BRIGHT A_SetBlend("Green",1.0,3)
+        EXSG AAAAA 1 BRIGHT A_SetBlend("Black",1.0,3)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		EXSG A 1 BRIGHT A_SetBlend("Black",0.8,3)
+		EXSG A 1 BRIGHT A_SetBlend("Black",0.6,3)
+		EXSG A 1 BRIGHT A_SetBlend("Black",0.4,3)
+        EXSG A 1 BRIGHT A_SetBlend("Black",0.2,3)
+		TNT1 A 0 A_ZoomFactor(1.0)
+        Goto RealReady
+
+	Spawn:
+		EXSP A -1
+		Stop
+	}
+}

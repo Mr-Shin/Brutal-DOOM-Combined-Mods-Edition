@@ -1,0 +1,218 @@
+ACTOR 2016BFGBall : BFGBall
+{
+	Damage 110
+	Obituary "%o was disintegrated by %k's BFG."
+	+EXTREMEDEATH +FORCEXYBILLBOARD
+	RenderStyle Add //NEW FROM DOOMERO
+//	Alpha 0.65 // NEW FROM DOOMERO
+//	Scale 0.525 // NEW FROM DOOMERO
+	Alpha 1
+	Scale 0.8
+	DeathSound "2016BFG/Explode"
+	Decal BFGLightning
+	Translation "0:255=%[0,0,0]:[1,2,0.5]"
+	DamageType Disintegrate //for BD compatibility.
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		D3BP A 1 BRIGHT A_SpawnItemEx("2016BFGBallTrailSpawner",0,0,0,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEANGLE|SXF_CLIENTSIDE)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 30, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 90, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,150, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,210, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,270, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,330, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		D3BP B 1 BRIGHT A_SpawnItemEx("2016BFGBallTrailSpawner",0,0,0,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEANGLE|SXF_CLIENTSIDE)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 30, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 90, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,150, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,210, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,270, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,330, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		D3BP C 1 BRIGHT A_SpawnItemEx("2016BFGBallTrailSpawner",0,0,0,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEANGLE|SXF_CLIENTSIDE)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 30, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 90, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,150, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,210, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,270, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,330, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		D3BP D 1 BRIGHT A_SpawnItemEx("2016BFGBallTrailSpawner",0,0,0,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEANGLE|SXF_CLIENTSIDE)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 30, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 90, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,150, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,210, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,270, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,330, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		D3BP E 1 BRIGHT A_SpawnItemEx("2016BFGBallTrailSpawner",0,0,0,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEANGLE|SXF_CLIENTSIDE)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 30, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 90, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,150, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,210, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,270, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,330, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		D3BP F 1 BRIGHT A_SpawnItemEx("2016BFGBallTrailSpawner",0,0,0,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEANGLE|SXF_CLIENTSIDE)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 30, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 90, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,150, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,210, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,270, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,330, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		D3BP G 1 BRIGHT A_SpawnItemEx("2016BFGBallTrailSpawner",0,0,0,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEANGLE|SXF_CLIENTSIDE)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 30, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0, 90, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,150, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,210, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,270, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TNT1 A 0 A_CustomMissile("BFGLightingFTW2016", -8, 0,330, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		Loop
+	Death:
+	XDeath:
+		TNT1 AAAA 0 A_SpawnItem("2016BFGExplosionShockWave")
+		TNT1 AA 0 A_SpawnItem("2016BFGBallExpBoltSpawner")
+		TNT1 A 0 A_BFGSpray("SuperBFGExtra", 50, 10)
+		TNT1 A 4 A_SpawnItem("GaussExplosionBack")
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("2016BFGExplosionSpark",5,0,Random(1,360),2,Random(-45,90))
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("2016BFGExplosionSprite",0,0,0,FRandom(0,8),0,FRandom(-8,8),Random(1,360))
+//		TNT1 A 0 A_QuakeEx(5,5,5,10,0,1024,none,QF_SCALEDOWN,0,0,0,528)
+		EXPL A 0 Radius_Quake (5, 10, 0, 16, 0)
+		TNT1 A 0 A_SetScale(1.66)
+//		BPLO A 0 A_PlaySound("Weapons/BFGExplosion1",1)
+		D3BX AB 2 Bright
+		TNT1 A 0 A_Explode(192,192,0,0,160)
+		D3BX C 2 Bright A_SpawnItem("2016BFGExplosionShockWave")
+		D3BX DEFG 2 Bright
+		Stop
+	}
+}
+
+Actor 2016BFGBallTrailSpawner : EffectBase
+{
+	Translation "0:255=%[0,0,0]:[0.5,1,0.2]"
+	Scale 1.5
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("2016BFGBallGlow",0,0,0,-VelX,-VelY,-VelZ,0,SXF_ABSOLUTEMOMENTUM)
+		TNT1 AA 0 A_SpawnItemEx("GenericBolt",-VelX,-VelY,-VelZ,VelX,VelY,VelZ,Angle,SXF_ABSOLUTEPOSITION|SXF_ABSOLUTEMOMENTUM|1|SXF_ABSOLUTEANGLE|SXF_TRANSFERSCALE,128)
+		TNT1 A 0 A_SpawnItemEx("2016BFGBallTrail",0,0,0,FRandom(0,1),0,FRandom(-1,1),Random(1,360),128)
+		Stop
+	}
+}
+Actor 2016BFGBallGlow : EffectBase
+{
+	Translation "0:255=%[0,0,0]:[1.5,2,1.24]"
+	Alpha 0.23
+	States
+	{
+	Spawn:
+		TNT1 AA 0 A_SetScale(ScaleX*FRandom(0.3,1.125))
+		P001 M 1 Bright
+		Stop
+	}
+}
+Actor 2016BFGBallTrail : EffectBase
+{
+	Alpha 0.5
+	Scale 0.66
+	Translation "0:255=%[0,0,0]:[0.75,1,0.33]"
+	States
+	{
+	Spawn:
+		TNT1 A 3
+	Fading:
+		TNT1 A 0 A_SetScale(ScaleX*0.95)
+		P001 K 1 Bright A_FadeOut(0.033)
+		Loop
+	}
+}
+Actor 2016BFGExplosionShockWave : GaussCannonExplosionShockWave { Translation "0:255=%[0,0,0]:[0.33,1,0.33]" Scale 0.35}
+Actor 2016BFGExplosionSpark : GaussCannonExplosionSpark { Translation "0:255=%[0,0,0]:[0.33,1,0.33]" }
+Actor 2016BFGExplosionSprite : GaussExplosionSprite { Translation "0:255=%[0,0,0]:[0.66,1,0.33]" }
+
+Actor 2016BFGBallExpBoltSpawner : EffectBase
+{
+	Translation "0:255=%[0,0,0]:[0.00,1.01,0.50]"
+	Scale 7
+	States
+	{
+	Spawn:
+		TNT1 AAAAAAAAA 1 A_SpawnItemEx("GenericBolt",0,0,0,0,0,0,0,SXF_TRANSFERSCALE|1)
+	Fading:
+		TNT1 A 1 A_SpawnItemEx("GenericBolt",0,0,0,0,0,0,0,SXF_TRANSFERSCALE|1)
+		TNT1 A 0 A_SetScale(ScaleX-0.8)
+		TNT1 A 0 A_JumpIf(ScaleX<=0,"Null")
+		Loop
+	}
+}
+
+//BFG Lighting lol
+
+ACTOR BFGLightingFTW2016
+{
+	Radius 2
+	Height 2
+	Speed 0
+	MinMissileChance 0
+	Projectile
+	+NOINTERACTION
+	+ISMONSTER
+	+FRIENDLY
+	RenderStyle Add
+	MissileHeight 0
+	States
+	{
+	Spawn:
+		TNT1 A 1 NoDelay A_LookEx(LOF_NOSOUNDCHECK, 0, 1024, 0, 60, "See")
+		Stop
+	See:
+		TNT1 A 0
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 1 A_CustomRailgun(5, 0, None, None, RGF_SILENT | RGF_NOPIERCING, 1, 32, "BFGLightingPuff", 0, 0, 0, 0, 4, 0, "BFGLightingRail")
+		Goto Death
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+actor BFGLightingRail
+{
+Scale 0.03
++NOGRAVITY
++NOCLIP
++NOINTERACTION
++DontSplash
+RenderStyle Add
+States
+{
+Spawn:
+TNT1 A 0
+LEYS G 1 BRIGHT
+STop
+}}
+
+Actor BFGLightingPuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+BLOODSPLATTER
+	+EXTREMEDEATH
+	RenderStyle Add
+	damagetype Desinegrate
+	Alpha 0.75
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 B 0 A_Explode(8,96,1)
+		TNT1 AA 0 A_CustomMissile ("GreenRainbowFire", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile ("SuperRainbowFireGreen", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAAAA 0 A_CustomMissile ("GreenRainbowParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		FRPG A 0  A_SpawnItem("GreenFlare",0,0)
+		Stop
+}}

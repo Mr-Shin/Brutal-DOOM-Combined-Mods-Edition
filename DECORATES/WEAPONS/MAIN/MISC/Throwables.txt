@@ -736,9 +736,9 @@ ACTOR ThrownGrenade30 : HandGrenadeAnother
 ACTOR HandGrenadeAmmo : Ammo
 {
    Inventory.Amount 1
-   Inventory.MaxAmount 6
+   Inventory.MaxAmount 20
    Ammo.BackPackAmount 1
-   Ammo.BackPackMaxAmount 12
+   Ammo.BackPackMaxAmount 40
    Inventory.PickUpMessage ""
    Inventory.Icon PGRND0
    Scale 0.3

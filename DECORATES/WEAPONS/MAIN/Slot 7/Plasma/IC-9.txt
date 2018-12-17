@@ -1,0 +1,400 @@
+
+
+ACTOR IC-9Ammo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 60
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 60
+   Inventory.Icon "J7SPA0"
+}
+
+Actor IC-9SoundDummy : Inventory {inventory.maxamount 1}
+
+// --------------------------------------------------------------------------
+//
+// IC-9
+//
+// --------------------------------------------------------------------------
+
+ACTOR IC9 : CMEWeapon
+{
+	Weapon.SelectionOrder 100
+	Weapon.AmmoUse1 0
+	Weapon.AmmoGive1 50
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+    Inventory.PickupSound "PLSDRAW"
+	Weapon.AmmoType1 "Cell2"
+	Weapon.AmmoType2 "IC-9Ammo"
+    +WEAPON.NOAUTOAIM
+	+FORCEXYBILLBOARD
+	+WEAPON.NO_AUTO_SWITCH
+	tag "IC-9 Plasma Repeater"
+	Inventory.PickupMessage "You got the IC-9 Plasma Repeater!"
+	States
+	{
+	
+	Flash:
+	TNT1 A 0
+	TNT1 A 0 A_JumpIfInventory("FlashlightAction", 1, "CheckFlashlight")
+	TNT1 A 1
+	TNT1 A 0 A_JumpIfInventory("IsFlashlightOn", 1, "FlashOn")
+	Goto Flash
+	FlashOn:
+	TNT1 A 0 A_FireCustomMissile("FlashlightProjectile", 0, 0, 0, 0, 0, 0)
+	TNT1 A 0 A_FireCustomMissile("FlashlightSource", 0, 0, 0, 0, 0, 0)
+	Goto Flash 
+	CheckFlashLight:
+	TNT1 A 1
+	TNT1 A 0 A_TakeInventory("FlashlightAction")
+	TNT1 A 0 A_JumpIfInventory("IsFlashlightOn", 1, "TurnOffFlashlight")
+	TNT1 A 0 A_GiveInventory("IsFlashlightOn", 1)
+	Goto Flash
+	TurnOffFlashlight:
+	TNT1 A 0 A_TakeInventory("IsFlashlightOn", 1)
+	Goto Flash
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+	    TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
+		TNT1 A 0 A_GunFlash
+        TNT1 A 0 A_PlaySound("IC-9/On", 4)
+		J7GS ABC 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("PLSDRAW", 5)
+        TNT1 AA 0
+		RealReady:
+        TNT1 A 0 A_PlaySound("IC-9/Loop", 4,1,TRUE)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		J7SG A 1 A_WeaponReady
+		Goto RealReady
+		
+	DontNeedToReload:
+	Goto RealReady
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("IC-9/Off", 4)
+		TNT1 A 0 A_playsound("weapon/swap", 3)
+		TNT1 A 0 A_Takeinventory("HasPlasmaWeapon",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("ThrowPipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("DetonatePipeBomb", 1)
+		TNT1 A 0 A_TakeInventory("Kicking", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+        J7SS CBA 1
+		TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select2:
+		//TNT1 A 0 ACS_NamedExecuteAlways("DualWieldJRMYXDDammit")
+		TNT1 A 0 A_SelectWeapon("DualJRMYXDPlasmaGuns")
+	Select:
+	    TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
+	   TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+		Wait
+		
+	SilencerToggle:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("GoSilencerAbility",1)
+	WeaponSpecial:
+	ATRifleSwitch:
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 A 0 A_JumpIfInventory("JRMYXDPlasmaInventory", 2, "SwitchDualWield")
+		TNT1 A 0 A_Print("Extra IC-9 Required to Dual Wield")
+		Goto RealReady
+		
+	SwitchDualWield:
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("DualJRMYXDPlasmaGuns", 1)
+		//TNT1 A 0 ACS_NamedExecuteAlways("DualWieldJRMYXDDammit")
+		TNT1 A 0 A_SelectWeapon("DualJRMYXDPlasmaGuns")
+		Goto Select2
+		
+	Fire:
+		TNT1 A 0 A_CheckReload
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+        TNT1 A 0 A_JumpIfInventory("IC-9Ammo",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		
+		TNT1 A 0 A_Takeinventory("IC-9Ammo",1)
+		TNT1 A 0 A_JumpIfInventory("IC-9SoundDummy", 1, "PlaySound1")
+		TNT1 A 0 A_GiveInventory("IC-9SoundDummy", 1)
+		TNT1 A 0 A_playsound("IC-9/Fire",7)
+		Goto FinishFire
+	PlaySound1:
+		TNT1 A 0 A_TakeInventory("IC-9SoundDummy", 1)
+		TNT1 A 0 A_playsound("IC-9/Fire",6)
+		Goto FinishFire
+	FinishFire:
+		TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
+		J7SF A 1 BRIGHT A_FireCustomMissile("Plasma_Ball_NoFancy", 0, 1, 0, 0)
+		TNT1 A 0 A_Jump(128, "Done1")
+		J7SA A 1 BRIGHT A_FireCustomMissile("Shakeyourassminor", 0, 0, 0, 0)
+		J7SA D 1 BRIGHT
+		TNT1 A 0 A_ReFire("Fire")
+		Goto CoolDown
+		
+	Done1:
+		J7SA B 1 BRIGHT A_FireCustomMissile("Shakeyourassminor", 0, 0, 0, 0)
+		J7SA C 1 BRIGHT
+		TNT1 A 0 A_ReFire("Fire")
+		Goto CoolDown
+	CoolDown:
+		J7SG BCD 1
+		J7SG EEEEEE 3
+		J7SG DCB 1
+        TNT1 A 0 A_PlaySound("BEPBEP")
+		Goto RealReady
+
+		
+		
+
+// Charging up secondary ------------------------------------------------------------
+
+	AltFire:
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+        TNT1 A 0 A_JumpIfInventory("IC-9Ammo",10,2)
+        Goto Reload
+        TNT1 AAA 0
+		
+		TNT1 A 0 A_PlaySound("PLSCHARG")
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT 
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT 
+		J7FA B 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA B 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA B 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA B 1 BRIGHT 
+		J7FA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA C 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA C 1 BRIGHT 
+		J7FA D 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA D 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA D 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA D 1 BRIGHT 
+		J7FA E 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA E 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA E 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA E 1 BRIGHT 
+		J7FA F 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA F 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA F 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA F 1 BRIGHT 
+		J7FA G 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA G 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA G 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA G 1 BRIGHT 
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT 
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT 
+	TNT1 A 0 A_PlaySound("PLSFULL", 6, 0.8, 1)
+	TNT1 A 0 A_ReFire("AltHold")
+
+// Holding Charge ------------------------------------------------------------
+
+AltHold:
+	
+	TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+	TNT1 A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+	J7SA A 1 BRIGHT// offset (0, 32)
+	
+	TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+	TNT1 A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+	J7SA B 1 BRIGHT// offset (0, 33)
+	
+	TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+	TNT1 A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+	J7SA C 1 BRIGHT //offset (1, 32)
+	
+	TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+	TNT1 A 0 A_JumpIfInventory("Reloading",1,"Cancel")
+	J7SA D 1 BRIGHT //offset// (-1, 32)
+    
+	TNT1 A 0 A_ReFire("AltHold")
+
+// Let Fly --------------------------------------------------------------------------
+		
+		TNT1 A 0 A_StopSound(6)
+		J7SF E 1 BRIGHT A_PlaySound("PLSALTFR",7)
+		TNT1 A 0 A_PlaySound("PLSALTFR",5)
+		J7SF E 1 BRIGHT A_Recoil(3)
+		TNT1 AAAAAAAAAAAAA 0 A_FireCustomMissile("Plasma_Ball_NoFancy", random(-6,6), 0, -1, 0, 0, random(-4,4))
+		TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn",-5,0,0,0)
+        J7SF B 1 A_FireCustomMissile("ShakeYourAssQuad", 0, 0, 0, 0)
+        J7SF C 1
+		TNT1 A 0 A_SetPitch(pitch - 4.0)
+		TNT1 A 0 A_JumpIfInventory("IC-9Ammo",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+        
+		J7SU BCD 1
+		J7SU EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5)
+		J7SG DCB 1
+        TNT1 A 0 A_PlaySound("BEPBEP")
+		Goto RealReady
+
+// Cancel Charge --------------------------------------------------------------------------------------------
+
+	Cancel:
+
+			TNT1 A 0 A_TakeInventory("Reloading",1)
+			TNT1 A 0 A_StopSound(6)
+			TNT1 A 0 A_PlaySound("decharg", 5)
+
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT 
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA H 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA H 1 BRIGHT 
+		J7FA G 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA G 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA G 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA G 1 BRIGHT 
+		J7FA F 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA F 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA F 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA F 1 BRIGHT 
+		J7FA E 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA E 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA E 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA E 1 BRIGHT 
+		J7FA D 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA D 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA D 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA D 1 BRIGHT 
+		J7FA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA C 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA C 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA C 1 BRIGHT 
+		J7FA B 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA B 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA B 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA B 1 BRIGHT 
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT 
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT A_Takeinventory("IC-9Ammo",1)
+		J7FA A 1 BRIGHT A_FireCustomMissile("PlasmaFlareSpawn",0,0,0,0)
+		J7FA A 1 BRIGHT 
+
+			TNT1 A 0 A_TakeInventory("Reloading",1)
+			TNT1 A 0 A_PlaySound("BEPBEP", 5, 1.2)
+			TNT1 A 0 A_ClearReFire
+
+		Goto RealReady
+
+//  ------------------------------------------------------------------------------
+
+	Flash:
+		TNT1 A 4
+        Goto LightDone
+	Spawn:
+		J7SP A -1
+		Stop
+
+    Reload:
+
+	TNT1 A 0 A_Takeinventory("Reloading",1)
+	TNT1 A 0 A_ClearReFire
+	TNT1 A 0 A_JumpIfInventory("IC-9Ammo",60,"DontNeedToReload")
+	TNT1 A 0 A_JumpIfInventory("Cell2",1,"CommenceReaload")
+
+	TNT1 A 0 A_PlaySound("BEP")
+	J7SR A 2 A_WeaponReady(WRF_NOFIRE)
+	TNT1 A 0 A_PlaySound("BEP")
+	J7SR A 2 A_WeaponReady(WRF_NOFIRE)
+	TNT1 A 0 A_CheckReload
+        Goto RealReady
+        TNT1 AAAA 0
+	CommenceReaload:
+        TNT1 A 0 A_PlaySound("IC-9/Clip/Out",5)
+		J7SR AB 1
+		TNT1 A 0 A_FireCustomMissile("PlasmaCaseSpawn",-210,0,20,-20)
+		J7SR CDEFFFFFFFFFFFFFFF 1
+        J7SR GHHIII 1
+		J7SR J 1 A_playsound("IC-9/Clip/In",5)
+		J7SR JJJJJJJIKLO 1
+		J7SU B 1
+		J7SR A 3
+		
+		ReloadingSequence:
+		TNT1 AAAAAAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("IC-9Ammo",60,"RealReady")
+		TNT1 A 0 A_JumpIfInventory("Cell2",1,3)
+		Goto Ready+6
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("IC-9Ammo",1)
+		TNT1 A 0 A_Takeinventory("Cell2",1,TIF_NOTAKEINFINITE)
+		Goto ReloadingSequence
+		TNT1 AAAAAAAA 0
+		
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        Goto Ready+6
+	}
+}

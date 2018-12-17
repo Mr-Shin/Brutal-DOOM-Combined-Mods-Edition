@@ -1,3 +1,5 @@
+
+
 //Explosion
 pulselight EXPLOSIONFLASH
 {
@@ -13,18 +15,6 @@ pulselight EXPLOSIONFLASH
 
 
 object SuperBFGBall
-{
-    frame BFS1A { light BFGBALL }
-    frame BFS1B { light BFGBALL }
-
-    frame BFE1A { light BFGEXPLO }
-    frame BFE1B { light BFGEXPLO }
-	frame BFE1C { light BFGEXPLO }
-	frame BFE1D { light BFGEXPLO }
-	frame BFE1E { light BFGEXPLO }
-}
-
-object FriendlyBFGBAll
 {
     frame BFS1A { light BFGBALL }
     frame BFS1B { light BFGBALL }
@@ -1971,13 +1961,6 @@ pointlight QuadSphereGlow
 {
     color 0.0 1.0 1.0
     size 64
-}
-
-object QuadSphere
-{
-    frame QDMGA { light QuadSphereGlow }
-    frame QDMGB { light QuadSphereGlow }
-    frame QDMGC { light QuadSphereGlow }
 }
 
 // Greater Soul Sphere

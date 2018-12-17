@@ -69,7 +69,6 @@ Ready:
       TNT1 A 10
 Ready2:
 	  TNT1 A 0
-      TNT1 A 0 A_JumpIfInventory("TurretModeActiveAnarchy50",1,"ReadyTurret")
 	  TNT1 A 0 A_PlaySound("Anarchy50/Pickup",5)
 	  ANGS ABCDE 1 A_JumpIfInventory("GoFatality", 1, "Steady")
   RealReady:
@@ -93,8 +92,6 @@ Ready2:
 		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
 	  TNT1 A 0 A_JumpIfInventory("GoSilencerAbility", 1, "WeaponSpecial")
       ANGG A 1 A_WeaponReady
-	  MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Normal", 0, 0, 0, 0)
-      TNT1 A 0 A_JumpIfInventory("TurretModeActiveAnarchy50",1,"RealReadyTurret")
 	  TNT1 A 0 A_JumpIfInventory("50CalAmmo",1,"RealReady")
       Goto IdleNoAmmo
 	  
@@ -139,8 +136,6 @@ Ready2:
 	Deselect:
 		TNT1 A 0
 		TNT1 A 0 A_playsound("weapon/swap", 4)
-		MARN A 0 ACS_NamedExecuteAlways("TurretModeAnarchy50Normal", 0, 0, 0, 0)
-		TNT1 A 0 A_JumpIfInventory("TurretModeActiveAnarchy50",1,"DeselectTurret")
 		ANGS EDCBA 1
 		TNT1 A 0 A_TakeInventory ("TurretModeActiveAnarchy50",1)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)

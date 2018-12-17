@@ -708,6 +708,42 @@ ACTOR RocketBox3 : RocketAmmo2
 		Stop
 	}
 }
+
+ACTOR 40mmGrenadeAmmo : Ammo
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up 2 40mm Grenades"
+	Inventory.Amount 2
+	Inventory.MaxAmount 125
+	Ammo.BackpackAmount 2
+	Ammo.BackpackMaxAmount 250
+	scale 1.2
+	Inventory.Icon "GR12A0"
+	inventory.pickupsound "40MMGR"
+	States
+	{
+	Spawn:
+		GR12 A -1
+		Stop
+	}
+}
+
+ACTOR 40mmGrenadeBox : 40mmGrenadeAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of 40mm Grenades"
+	Inventory.Amount 20
+	inventory.pickupsound "40MMGBOX"
+	States
+	{
+	Spawn:
+		GR11 A -1
+		Stop
+	}
+}
+
 ACTOR PipeBombAmmo : Ammo
 {
 	Game Doom
@@ -728,17 +764,16 @@ ACTOR PipeBombAmmo : Ammo
 	}
 }
 
+ACTOR 40mmGrenadeAmmo : Ammo
+{
+	Game Doom
+@ -764,6 +784,8 @@ ACTOR PipeBombAmmo : Ammo
+	}
+}
 ACTOR PipeBombBox : PipeBombAmmo
 {
 	Game Doom
-	SpawnID 139
-	Inventory.PickupMessage "Picked up a shitload of pipe bombs"
-	Inventory.Amount 20
-	inventory.pickupsound "ROCKBOX1"
-	States
-	{
-	Spawn:
-		PIPB A -1
+@ -778,7 +800,10 @@ ACTOR PipeBombBox : PipeBombAmmo
 		Stop
 	}
 }
@@ -824,12 +859,8 @@ dropitem "ShellBox22"
 Actor RocketAmmoSpawn : RandomSpawner replaces RocketAmmo
 {
 dropitem "RocketAmmo2"
-dropitem "RocketAmmo2"
-dropitem "RocketAmmo2"
-dropitem "RocketAmmo2"
-dropitem "RocketAmmo2"
-dropitem "RocketAmmo2"
-
+dropitem "40mmGrenadeAmmo"
+dropitem "PipeBombAmmo"
 }
 
 Actor RocketBoxSpawn : RandomSpawner Replaces RocketBox
@@ -837,7 +868,8 @@ Actor RocketBoxSpawn : RandomSpawner Replaces RocketBox
 dropitem "RocketBox1"
 dropitem "RocketBox2"
 dropitem "RocketBox3"
-
+dropitem "40mmGrenadeBox"
+dropitem "PipeBombBox"
 }
 
 //Cell

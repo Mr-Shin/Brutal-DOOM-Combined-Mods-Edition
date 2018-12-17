@@ -23,7 +23,7 @@ ACTOR G17C : CMEWeapon
     AttackSound "None"
 	tag "G17C Machine Pistol - Select Fire"
     Inventory.PickupSound "G17SLDE"
-	Inventory.Pickupmessage "You got A G17!"
+	Inventory.Pickupmessage "You got the G17C!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOAUTOFIRE
@@ -99,7 +99,7 @@ ACTOR G17C : CMEWeapon
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		TNT1 A 1 A_Lower
+		TNT1 A 1
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -124,6 +124,7 @@ ACTOR G17C : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
 		TNT1 A 0 A_Raise
 		Wait
     Fire:

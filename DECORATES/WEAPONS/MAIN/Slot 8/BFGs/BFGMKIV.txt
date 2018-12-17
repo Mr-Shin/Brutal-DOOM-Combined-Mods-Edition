@@ -1,0 +1,1794 @@
+// --------------------------------------------------------------------------
+
+// BFG9000 Mark IV (see what I did there)
+
+// --------------------------------------------------------------------------
+
+//BFGGuardMode
+ACTOR BFGClassicMode : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR BFGGuardMode : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR BFGLaserMode : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR BFGArcMode : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR BIG_FUCKING_GUN_MKIV: CMEWeapon
+{
+	Game Doom
+	Height 20
+	SpawnID 9800
+	Weapon.SelectionOrder 2800
+	Weapon.AmmoUse 0
+	Weapon.AmmoGive 50
+	Weapon.AmmoType "cell2"
+    Inventory.PickupSound "BFGPICK"
+	DamageType Desintegrate
+    +WEAPON.NOAUTOAIM
+	+FLOORCLIP
+	+DONTGIB
+	Tag "BFG9000 MK IV"
+//	+WEAPON.BFG
+	Inventory.PickupMessage "You got the BFG 9000 Mark IV! (Slot 8)"
+	States
+	{
+	Spawn:
+		RDAB X -1
+		Stop
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+
+	Ready:
+	ClassicReady:
+	    TNT1 A 0
+		RDAG DCBA 1
+	    TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("GENREADY")
+        TNT1 AA 0
+		TNT1 A 0 A_PlaySound("BFGHUM", 6,1,1)
+		TNT1 A 0 A_GunFlash("FlashReadyGreen")
+       TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("BFGGuardMode",1, "GuardReady")
+		TNT1 A 0 A_JumpIfInventory("BFGLaserMode",1, "LaserReady")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAX A 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+	TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("BFGGuardMode",1, "GuardReady")
+		TNT1 A 0 A_JumpIfInventory("BFGLaserMode",1, "LaserReady")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAX B 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("BFGGuardMode",1, "GuardReady")
+		TNT1 A 0 A_JumpIfInventory("BFGLaserMode",1, "LaserReady")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAX C 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_JumpIfInventory("BFGGuardMode",1, "GuardReady")
+		TNT1 A 0 A_JumpIfInventory("BFGLaserMode",1, "LaserReady")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAX D 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		Goto Ready+9
+		
+	GuardReady:
+	    TNT1 A 0
+		RDAG EDCBA 0
+	    TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("GENREADY")
+        TNT1 AA 0
+		TNT1 A 0 A_PlaySound("BFGHUM", 6,1,1)
+		TNT1 A 0 A_GunFlash("FlashReadyOrange")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAF A 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAF B 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAF C 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAF D 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		Goto GuardReady+9
+		
+	///////////////////////////////////////////////////////////////////////
+		
+	LaserReady:
+	    TNT1 A 0
+		RDAG EDCBA 0
+	    TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("GENREADY")
+        TNT1 AA 0
+		TNT1 A 0 A_PlaySound("BFGHUM", 6,1,1)
+		TNT1 A 0 A_GunFlash("FlashReadyRed")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAN A 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAN B 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAN C 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAN D 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+		Goto LaserReady+9
+		
+	ArcReady:
+	    TNT1 A 0
+		RDAS EDCBA 0
+	    TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("GENREADY")
+        TNT1 AA 0
+		TNT1 A 0 A_PlaySound("LGHUM", 6,1,1)
+		TNT1 A 0 A_GunFlash("FlashReadyBlue")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAS A 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAS B 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAS C 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		RDAS D 1 A_WeaponReady
+		Goto ArcReady+9
+		
+	///////////////////////////////////////////////////////////////////////
+		
+		
+	WeaponSpecial:
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 A 0 A_JumpIfInventory("BFGClassicMode",1, "SwitchToGuardMode")
+		TNT1 A 0 A_JumpIfInventory("BFGGuardMode",1, "SwitchToLaserMode")
+		TNT1 A 0 A_JumpIfInventory("BFGLaserMode",1, "SwitchToClassicMode")
+	//	TNT1 A 0 A_JumpIfInventory("BFGArcMode",1, "SwitchToClassicMode")
+		
+	////////////////////////////////////////////////////////////////////////
+		
+	SwitchToGuardMode:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_Takeinventory("BFGClassicMode" , 1)
+		TNT1 A 0 A_Takeinventory("BFGLaserMode" , 1)
+		TNT1 A 0 A_TakeInventory("BFGArcMode",1)
+		TNT1 A 0 A_GiveInventory("BFGGuardMode" , 1)
+	//	TNT1 A 0 A_Takeinventory("BFGClassicMode",1)
+	//	TNT1 A 0 A_Takeinventory("BFGSomethingMode",1)
+		//TNT1 A 0 A_Takeinventory("BFGOver9000Mode",1)
+		TNT1 A 0 A_Print("Weapon Mode: Guard")
+		TNT1 A 0 A_GunFlash("FlashNothing")
+		RDAG A 1 
+		RDAG B 1 
+		RDAG C 1 
+		RDAG D 1
+		TNT1 A 0 A_PlaySound("GENREADY")
+		RDAG D 1 
+		RDAG C 1 
+		RDAG B 1 
+		RDAG A 1
+		Goto GuardReady+9
+		
+	SwitchToClassicMode:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_Takeinventory("BFGGuardMode" , 1)
+		TNT1 A 0 A_Takeinventory("BFGLaserMode" , 1)
+		TNT1 A 0 A_TakeInventory("BFGArcMode",1)
+		TNT1 A 0 A_GiveInventory("BFGClassicMode",1)
+	//	TNT1 A 0 A_Takeinventory("BFGSomethingMode",1)
+		//TNT1 A 0 A_Takeinventory("BFGOver9000Mode",1)
+		TNT1 A 0 A_Print("Weapon Mode: Classic")
+		TNT1 A 0 A_GunFlash("FlashNothing")
+		RDAG A 1 
+		RDAG B 1 
+		RDAG C 1 
+		RDAG D 1
+		TNT1 A 0 A_PlaySound("GENREADY")
+		RDAG D 1 
+		RDAG C 1 
+		RDAG B 1 
+		RDAG A 1
+		Goto Ready+9
+		
+	SwitchToLaserMode:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_Takeinventory("BFGGuardMode" , 1)
+		TNT1 A 0 A_TakeInventory("BFGClassicMode",1)
+		TNT1 A 0 A_TakeInventory("BFGArcMode",1)
+		TNT1 A 0 A_GiveInventory("BFGLaserMode",1)
+	//	TNT1 A 0 A_Takeinventory("BFGSomethingMode",1)
+		//TNT1 A 0 A_Takeinventory("BFGOver9000Mode",1)
+		TNT1 A 0 A_Print("Weapon Mode: Contact Laser")
+		TNT1 A 0 A_GunFlash("FlashNothing")
+		RDAG A 1 
+		RDAG B 1 
+		RDAG C 1 
+		RDAG D 1
+		TNT1 A 0 A_PlaySound("GENREADY")
+		RDAG D 1 
+		RDAG C 1 
+		RDAG B 1 
+		RDAG A 1
+		Goto LaserReady+9
+		
+	SwitchToArcMode:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_Takeinventory("BFGGuardMode" , 1)
+		TNT1 A 0 A_TakeInventory("BFGClassicMode",1)
+		TNT1 A 0 A_TakeInventory("BFGLaserMode",1)
+		TNT1 A 0 A_GiveInventory("BFGArcMode",1)
+	//	TNT1 A 0 A_Takeinventory("BFGSomethingMode",1)
+		//TNT1 A 0 A_Takeinventory("BFGOver9000Mode",1)
+		TNT1 A 0 A_Print("Weapon Mode: Lightening Arc")
+		TNT1 A 0 A_GunFlash("FlashNothing")
+		RDAG A 1 
+		RDAG B 1 
+		RDAG C 1 
+		RDAG D 1
+		TNT1 A 0 A_PlaySound("GENREADY")
+		RDAG D 1 
+		RDAG C 1 
+		RDAG B 1 
+		RDAG A 1
+		Goto ArcReady+9
+		
+	//////////////////////////////////////////////////////////////
+	
+	FlashOff:
+		TNT1 A 4
+		Stop
+	
+	Deselect:
+		TNT1 A 0 A_Gunflash("FlashOff")
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_JumpIfInventory("GotMeatShield", 1, "GrabEnemy")
+				TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+
+		RDAG ABCD 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		Wait
+
+		
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_GiveInventory("BFGSelected",1)
+		TNT1 A 0 A_Gunflash("FlashOff")
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 AAAAAAAA 1 A_Raise
+		wait
+		GoToPurist:
+		TNT1 AAA 0
+		TNT1 A 0 //A_Print("Classic v20 Weapons Only!")
+		TNT1 A 0 A_SelectWeapon("HellishMissileLauncher")
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 AAAAAAAA 1 A_Raise
+		Wait
+		
+	/////////////////////////////////////////////////////////////////////////////
+		
+	Fire:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		TNT1 A 0 A_JumpIfInventory("BFGGuardMode", 1, "FireGuard")
+		TNT1 A 0 A_JumpIfInventory("BFGClassicMode", 1, "FireClassic")
+		TNT1 A 0 A_JumpIfInventory("BFGLaserMode", 1, "FireLaser")
+	//	TNT1 A 0 A_JumpIfInventory("BFGArcMode", 1, "FireArc")
+	FireClassic:
+		TNT1 A 0 A_StopSound(6)
+        TNT1 A 0 A_JumpIfInventory("cell2",40,2)
+		BFGG A 0 A_PlaySound("Seeker", 1)
+		Goto Ready+9
+		TNT1 A 0 A_GunFlash("FlashFireGreen")
+        TNT1 A 0 A_PlaySound("BFGCHARGE", 7)
+		RDAX A 1 BRIGHT A_FireCustomMissile("GreenFlareSpawnEvenSmaller",0,0,0,0)//2
+		RDAX B 1 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//A_FireCustomMissile("BFGLightningTrial_Small",0,0)
+		
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+		TNT1 A 0 A_ZoomFactor(.975)
+		RDAX C 1 BRIGHT A_FireCustomMissile("GreenFlareSpawnJustSmaller",0,0,0,0)//2
+		RDAX D 1 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+		TNT1 A 0 A_ZoomFactor(.950)
+		RDAX E 1 BRIGHT A_FireCustomMissile("GreenFlareSpawnSmallClose",0,0,0,0)//2
+		RDAX F 1 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//2
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+		TNT1 A 0 A_ZoomFactor(.925)
+		RDAX G 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)//13
+		RDAX H 2 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//13
+		RDAX I 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)//13
+		RDAX J 2 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//13
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+        TNT1 A 0 A_PlaySound("BFGCHAFF", 8)
+		RDAX G 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)//13
+		RDAX H 2 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//13
+		RDAX I 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)//13
+		RDAX J 2 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//13
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+		RDAX G 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)//13
+		RDAX H 2 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//13
+		RDAX I 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)//13
+		RDAX J 2 BRIGHT A_FireCustomMissile("BFGLightningTrial_Small",0,0)//13
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+		
+		TNT1 A 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+        RDAX B 1 BRIGHT Offset(1,36)//
+		RDAX B 1 BRIGHT Offset(1,37)//
+		RDAX C 1 BRIGHT Offset(1,38)
+		RDAX C 1 BRIGHT Offset(1,39)
+		TNT1 A 0 A_ZoomFactor(.9)
+        TNT1 A 0 A_PlaySound("BFG_FIRE", 1)
+		TNT1 A 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		TNT1 AAA 0 A_FireCustomMissile("BFGLightningTrial_Small",0,0,0,0)
+        TNT1 A 0 A_Recoil(6)
+        TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBall")
+		TNT1 A 0 A_Takeinventory("cell2",40)
+		RDAX A 1  BRIGHT Offset(1,38)
+		TNT1 A 0 ACS_NamedExecute("Recoil375", 0, 0, 0, 0)
+		RDAX D 1  BRIGHT Offset(1,37)
+		RDAX E 1  BRIGHT Offset(1,36)
+		
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_ZoomFactor(.925)
+        RDAB A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_ZoomFactor(.95)
+        RDAB A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_ZoomFactor(.975)
+        RDAB A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		TNT1 A 0 A_ZoomFactor(1.0)
+        RDAB A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		
+        RDAB A 1 BRIGHT
+        TNT1 A 0 A_ReFire
+		Goto Ready+9
+		
+	FireGuard:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_JUMPIFINVENTORY("cell2",1, 2)
+		BFGG A 0 A_PlaySound("Seeker", 1)
+		Goto GuardReady+9
+        TNT1 A 0 A_PlaySound("SHLDSTT",2)
+	FireGuardHold:
+		TNT1 A 0 A_PlaySound("SHLDLP", 3,1,1)
+		TNT1 A 0 A_GunFlash("FlashFireOrange")
+		TNT1 A 0 A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_Takeinventory("cell2",1)
+		RDAF F 1 BRIGHT A_SpawnItemEx ("ShieldSpawner", 0,68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		RDAF G 1 BRIGHT A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		RDAF H 1 BRIGHT A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		RDAF I 1 BRIGHT A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		RDAF J 1 BRIGHT A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		RDAF K 1 BRIGHT A_SpawnItemEx ("ShieldSpawner", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_SpawnItemEx ("ShieldSpawner5up", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_Takeinventory("cell2",1)
+		TNT1 A 0 A_JUMPIFINVENTORY("cell2",1,2)
+		TNT1 A 0 A_StopSound(3)
+		Goto GuardReady+9
+        TNT1 A 0 A_ReFire("FireGuardHold")
+		TNT1 A 0 A_StopSound(3)
+		Goto GuardReady+9
+		
+		
+	FireLaser:
+	  TNT1 A 0 A_StopSound(6)
+	  TNT1 A 0 A_JumpIfInventory("cell2", 5, 2)
+	  BFGG A 0 A_PlaySound("Seeker", 1)
+	  Goto LaserReady+9
+	  TNT1 A 0 A_GunFlash("FlashFireRed")
+      RDAN A 1 Offset(-2, 34)
+	  RDAN B 1 Offset(0, 32)
+	  RDAN F 1 Offset(2, 34)
+	  RDAN H 1 Offset(1, 33)
+	  RDAN I 1 Offset(0, 34)
+      TNT1 A 0 A_ReFire("Charge1A")
+      TNT1 A 0 A_FireCustomMissile("ObeliskProjectile",0,0,0,-1,0,0)
+	  TNT1 A 0 A_Takeinventory("cell2",5)
+	  TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",0,0,0,0)
+	  TNT1 AAAAAA 0
+      TNT1 A 0 A_SetBlend("Red",0.25,15)
+      TNT1 A 0 A_StopSound(5)
+      TNT1 A 0 //A_GunFlash
+      TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_PlaySound("Weapons/StachanovFire",1)
+      TNT1 A 0 A_PlaySound("Weapons/StachanovAddFire",0)
+      RDAN I 1 BRIGHT Offset(4, 44) A_ZoomFactor(0.95)
+      RDAN J 1 BRIGHT Offset(3, 42) A_ZoomFactor(0.96)
+
+      RDAN K 1 Offset(2, 40) A_ZoomFactor(0.97)
+      RDAN C 1 Offset(1, 38) A_ZoomFactor(0.98)
+      RDAN A 1 Offset(0, 36) A_ZoomFactor(0.99)
+      RDAN E 1 Offset(-1, 34) A_ZoomFactor(0.995)
+
+      RDAN E 1 Offset(0, 32) A_ZoomFactor(1)
+      TNT1 A 0 A_ClearReFire
+      goto LaserReady+9
+	  
+   Charge1A: //Stage 1, aka "looks like he's gonna rack up some more power."
+	  TNT1 A 0 A_JumpIfInventory("cell2", 15, 2)
+	  BFGG A 0 A_PlaySound("Seeker", 1)
+	  Goto FireLaser+10
+      OBLG A 0 A_PlaySound("Weapons/StachanovCharge",5,1.0,1)
+	  TNT1 A 0 A_PlaySound("BEPBEP", 9)
+      OBLG D 0 A_Quake (1, 9, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge1")
+	  RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.1,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.1,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.1,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.1,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.1,6)
+      TNT1 A 0 A_ReFire("Charge1B")
+      Goto FireLaser+3
+   Charge1B:
+      OBLG D 0 A_Quake (1, 9, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge1")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.1,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.1,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.1,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.1,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.1,6)
+      TNT1 A 0 A_ReFire("Charge1C")
+      Goto ChargedFire1
+   Charge1C:
+      OBLG D 0 A_Quake (1, 9, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge1")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.1,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.1,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.1,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.1,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.1,6)
+      TNT1 A 0 A_ReFire("Charge2A")
+      Goto ChargedFire1
+
+   Charge2A: //Stage 2, aka "Should we stay in his line of fire? I don't think so."FlashFireRedCharge2
+	  TNT1 A 0 A_JumpIfInventory("cell2", 25, 2)
+	  BFGG A 0 A_PlaySound("Seeker", 1)
+	  Goto ChargedFire1
+      OBLG D 0 A_Quake (2, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge2")
+	  TNT1 A 0 A_PlaySound("BEPBEP", 8)
+	  RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+      TNT1 A 0 A_ReFire("Charge2B")
+      Goto ChargedFire2
+   Charge2B:
+      OBLG D 0 A_Quake (2, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge2")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+      TNT1 A 0 A_ReFire("Charge2C")
+      Goto ChargedFire2
+   Charge2C:
+      OBLG D 0 A_Quake (1, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge2")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+      TNT1 A 0 A_ReFire("Charge2D")
+      Goto ChargedFire2
+   Charge2D:
+      OBLG D 0 A_Quake (1, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge2")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(0, 32) A_SetBlend("Red",0.15,6)
+	  RDAN I 1 Offset(2, 34) A_SetBlend("Red",0.15,6)
+	  RDAN H 1 Offset(1, 33) A_SetBlend("Red",0.15,6)
+	  RDAN F 1 Offset(0, 34) A_SetBlend("Red",0.15,6)
+      TNT1 A 0 A_ReFire("Charge3A")
+      Goto ChargedFire2
+
+   Charge3A:	//Stage 3, aka "HOLYSHITHESGONNABLOWMYASSOFF!!"
+	  TNT1 A 0 A_JumpIfInventory("cell2", 40, 2)
+	  BFGG A 0 A_PlaySound("Seeker", 1)
+	  Goto ChargedFire2
+      OBLG D 0 A_Quake (1, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge1")
+	  TNT1 A 0 A_PlaySound("BEPBEP", 7)
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.2,1)
+	  RDAN G 1 Offset(0, 32) A_SetBlend("Red",0.2,1)
+      RDAN H 1 Offset(2, 34) A_SetBlend("Red",0.18,1)
+      RDAN I 1 Offset(1, 33) A_SetBlend("Red",0.2,1)
+      RDAN I 1 Offset(0, 34) A_SetBlend("Red",0.18,1)
+      TNT1 A 0 A_ReFire("Charge3B")
+      Goto ChargedFire3
+   Charge3B:
+      OBLG D 0 A_Quake (1, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge1")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.2,1)
+	  RDAN G 1 Offset(0, 32) A_SetBlend("Red",0.2,1)
+      RDAN H 1 Offset(2, 34) A_SetBlend("Red",0.18,1)
+      RDAN I 1 Offset(1, 33) A_SetBlend("Red",0.2,1)
+      RDAN I 1 Offset(0, 34) A_SetBlend("Red",0.18,1)
+      TNT1 A 0 A_ReFire("Charge3C")
+      Goto ChargedFire3
+   Charge3C:
+      OBLG D 0 A_Quake (1, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge1")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.2,1)
+	  RDAN G 1 Offset(0, 32) A_SetBlend("Red",0.2,1)
+      RDAN H 1 Offset(2, 34) A_SetBlend("Red",0.18,1)
+      RDAN I 1 Offset(1, 33) A_SetBlend("Red",0.2,1)
+      RDAN I 1 Offset(0, 34) A_SetBlend("Red",0.18,1)
+      TNT1 A 0 A_ReFire("Charge3D")
+      Goto ChargedFire3
+   Charge3D:
+      OBLG D 0 A_Quake (1, 6, 0, 3, none)
+	  TNT1 A 0 A_GunFlash("FlashFireRedCharge1")
+      RDAN F 1 Offset(-2, 34) A_SetBlend("Red",0.2,1)
+	  RDAN G 1 Offset(0, 32) A_SetBlend("Red",0.2,1)
+      RDAN H 1 Offset(2, 34) A_SetBlend("Red",0.18,1)
+      RDAN I 1 Offset(1, 33) A_SetBlend("Red",0.2,1)
+      RDAN I 1 Offset(0, 34) A_SetBlend("Red",0.18,1)
+      Goto ChargedFire3
+
+   ChargedFire1:
+      TNT1 A 0 A_PlaySound("Weapons/StachanovCharged1",6)
+      TNT1 A 0 A_SetBlend("Red",0.3,20)
+      TNT1 A 0 A_FireCustomMissile("ObeliskProjectile1",0,0,0,-1,0,0.0)
+	  TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+	  TNT1 A 0 A_Takeinventory("cell2", 15)
+	  TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",0,0,0,0)
+      Goto FireLaser+12
+   ChargedFire2:
+      TNT1 A 0 A_PlaySound("Weapons/StachanovCharged2",6)
+      TNT1 A 0 A_SetBlend("Red",0.35,25)
+      TNT1 A 0 A_FireCustomMissile("ObeliskProjectile2",0,0,0,-1,0,0.0)
+	  TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+	  TNT1 A 0 A_Takeinventory("cell2",25)
+	  TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",0,0,0,0)
+      Goto FireLaser+12
+   ChargedFire3:
+      TNT1 A 0 A_PlaySound("Weapons/StachanovCharged3",6)
+      TNT1 A 0 A_SetBlend("Red",0.4,30)
+      TNT1 A 0 A_FireCustomMissile("ObeliskProjectile3",0,0,0,-1,0,0.0)
+	  TNT1 A 0 ACS_NamedExecute("Recoil375", 0, 0, 0, 0)
+	  TNT1 A 0 A_Takeinventory("cell2",40)
+	  TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",0,0,0,0)
+      Goto FireLaser+12
+		
+		
+	////////////////////////////////////////////////////////////////////////////
+
+	AltFire:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		TNT1 A 0 A_JumpIfInventory("BFGGuardMode", 1, "AltFireGuard")
+		TNT1 A 0 A_JumpIfInventory("BFGClassicMode", 1, "AltFireClassic")
+		TNT1 A 0 A_JumpIfInventory("BFGLaserMode", 1, "AltFireLaser")
+	AltFireClassic:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_JumpIfInventory("cell2", 5, 3)
+	    BFGG A 0 A_PlaySound("Seeker", 1)
+		Goto Ready+9
+		TNT1 AAAA 0
+		TNT1 A 0 A_GunFlash("FlashAltFireGreen")
+	    RDAX A 1 
+		TNT1 A 0 A_PlaySound("mbfgsh", 3, 1.0)
+	    RDAX F 1 BRIGHT A_PlaySound("BFGFIRE", CHAN_WEAPON, 1.2)
+		TNT1 A 0 A_Takeinventory("cell2",5)
+		TNT1 A 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+	    RDAX I 1 BRIGHT A_FireCustomMissile("BFGSmallSphere", 0, 1, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_Recoil(1)
+	    RDAX K 1 BRIGHT
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+	    RDAX C 1 BRIGHT
+	    RDAX B 1 Offset(0,38)
+	    RDAX A 1 Offset(0,44)
+	    RDAX D 1 Offset(0,38)
+		RDAX E 1 Offset(0,34)
+		TNT1 A 0 A_ReFire
+		Goto Ready+9
+		
+	AltFireGuard:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_JumpIfInventory("cell2", 40, 3)
+	    BFGG A 0 A_PlaySound("Seeker", 1)
+		Goto GuardReady+9
+		TNT1 AAAAA 0 
+        TNT1 A 0 A_PlaySound("SHLDSTT", 2)
+	AltFireGuardHold:
+		TNT1 A 0 A_PlaySound("SHLDLP", 3,1,1)
+		TNT1 A 0 A_GunFlash("FlashFireOrange")
+		TNT1 A 0 
+		RDAF F 1 BRIGHT 
+		TNT1 A 0 
+		RDAF G 1 BRIGHT 
+		TNT1 A 0 
+		RDAF H 1 BRIGHT 
+		TNT1 A 0 
+		TNT1 A 0 A_Takeinventory("cell2",1)
+		RDAF I 1 BRIGHT 
+		RDAF J 1 BRIGHT 
+		TNT1 A 0 
+		RDAF K 1 BRIGHT A_SpawnItemEx ("ShieldSpawnerPlacedCover", 0, 68, 0, 0, 0, 0, -270, 32)
+		TNT1 A 0 A_Takeinventory("cell2", 40)
+		RDAF ABCD 1
+        TNT1 A 0 
+		TNT1 A 0 A_StopSound(3)
+		Goto GuardReady+9
+		
+	AltFireLaser:
+		TNT1 A 0 A_StopSound(6)
+		TNT1 A 0 A_JumpIfInventory("cell2", 20, 3)
+	    BFGG A 0 A_PlaySound("Seeker", 1)
+		Goto LaserReady+9
+		TNT1 A 0 A_GunFlash("FlashFireRed")
+		  RDAN A 1 Offset(-2, 34)
+		  RDAN B 1 Offset(0, 32)
+		  RDAN F 1 Offset(2, 34)
+		  RDAN H 1 Offset(1, 33)
+		  RDAN I 1 Offset(0, 34)
+		  TNT1 A 0 A_FireCustomMissile("ObeliskSeeker",0,0,0,-1,0,0)
+		  TNT1 A 0 A_Takeinventory("cell2",20)
+		  TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",0,0,0,0)
+		  TNT1 AAAAAA 0
+		  TNT1 A 0 A_SetBlend("Red",0.25,15)
+		  TNT1 A 0 A_StopSound(5)
+		  TNT1 A 0 //A_GunFlash
+		  TNT1 A 0 A_AlertMonsters
+		  TNT1 A 0 A_PlaySound("Weapons/StachanovFire",1)
+		  TNT1 A 0 A_PlaySound("Weapons/StachanovAddFire",0)
+		  RDAN I 1 BRIGHT Offset(4, 44) A_ZoomFactor(0.95)
+		  RDAN J 1 BRIGHT Offset(3, 42) A_ZoomFactor(0.96)
+
+		  RDAN K 1 Offset(2, 40) A_ZoomFactor(0.97)
+		  RDAN C 1 Offset(1, 38) A_ZoomFactor(0.98)
+		  RDAN A 1 Offset(0, 36) A_ZoomFactor(0.99)
+		  RDAN E 1 Offset(-1, 34) A_ZoomFactor(0.995)
+
+		  RDAN E 1 Offset(0, 32) A_ZoomFactor(1)
+		  TNT1 A 0 A_ClearReFire
+		  goto LaserReady+9
+		
+	
+	//////////////////////////////	
+	FlashNothing:
+		TNT1 A 2
+		Stop
+	
+	FlashFireGreen:
+		RDAX P 2 BRIGHT //AB
+		RDAX Q 2 BRIGHT //CD
+		RDAX R 2 BRIGHT //EF
+		
+		RDAX S 2 BRIGHT //G
+		RDAX T 2 BRIGHT //H
+		RDAX U 2 BRIGHT //I
+		RDAX P 2 BRIGHT //J
+		
+		RDAX S 2 BRIGHT //G
+		RDAX T 2 BRIGHT //H
+		RDAX U 2 BRIGHT //I
+		RDAX P 2 BRIGHT //J
+		
+		RDAX S 1 BRIGHT //G
+		RDAX T 1 BRIGHT //H
+		RDAX U 1 BRIGHT //I
+		RDAX P 1 BRIGHT //J
+		
+		RDAX S 1 BRIGHT //G
+		RDAX T 1 BRIGHT //H
+		RDAX U 1 BRIGHT //I
+		RDAX P 1 BRIGHT //J
+		
+		RDAX S 1 BRIGHT //I
+		RDAX T 1 BRIGHT //A
+		RDAX U 1 BRIGHT //A
+		Stop
+		
+	FlashAltFireGreen:
+		RDAX Q 1 BRIGHT
+		RDAX R 1 BRIGHT
+		RDAX S 1 BRIGHT
+		RDAX T 1 BRIGHT
+		RDAX U 1 BRIGHT
+		Stop
+		
+	FlashReadyGreen:
+		RDAX L 1 BRIGHT
+		RDAX M 1 BRIGHT
+		RDAX N 1 BRIGHT
+		RDAX O 1 BRIGHT
+		Stop
+		
+		
+	////////////////////////////
+	FlashFireOrange:
+		RDAF P 1 BRIGHT //AB
+		RDAF Q 1 BRIGHT //CD
+		RDAF R 1 BRIGHT //EF
+		RDAF S 1 BRIGHT //EF
+		RDAF T 1 BRIGHT //EF
+		RDAF U 1 BRIGHT //EF
+		Stop
+		
+	FlashAltFireOrange:
+		RDAF Q 1 BRIGHT
+		RDAF R 1 BRIGHT
+		RDAF S 1 BRIGHT
+		RDAF T 1 BRIGHT
+		RDAF U 1 BRIGHT
+		Stop
+		
+	FlashReadyOrange:
+		RDAF L 1 BRIGHT
+		RDAF M 1 BRIGHT
+		RDAF N 1 BRIGHT
+		RDAF O 1 BRIGHT
+		Stop
+		
+	///////////////////////////
+	
+	FlashReadyRed:
+		RDAN L 1 BRIGHT
+		RDAN M 1 BRIGHT
+		RDAN N 1 BRIGHT
+		RDAN O 1 BRIGHT
+		Stop
+		
+	FlashFireRed:
+		RDAN P 1 BRIGHT //AB
+		RDAN Q 1 BRIGHT //CD
+		RDAN R 1 BRIGHT //EF
+		RDAN S 1 BRIGHT //EF
+		RDAN T 1 BRIGHT //EF
+		RDAN U 1 BRIGHT //EF
+		Stop
+		
+	FlashFireRedCharge1:
+		RDAN Q 1 BRIGHT //CD
+		RDAN R 1 BRIGHT //EF
+		RDAN S 1 BRIGHT //EF
+		RDAN T 1 BRIGHT //EF
+		RDAN U 1 BRIGHT //EF
+		Stop
+		
+	FlashFireRedCharge2:
+		RDAN Q 1 BRIGHT //CD
+		RDAN R 1 BRIGHT //EF
+		RDAN S 1 BRIGHT //EF
+		RDAN T 1 BRIGHT //EF
+		RDAN U 1 BRIGHT //EF
+		RDAN Q 1 BRIGHT //CD
+		RDAN R 1 BRIGHT //EF
+		RDAN S 1 BRIGHT //EF
+		RDAN T 1 BRIGHT //EF
+		RDAN U 1 BRIGHT //EF
+		Stop
+	
+		
+	///////////////////////////
+	
+	///////////////////////////
+	
+	FlashReadyBlue:
+		RDAS P 1 BRIGHT
+		RDAS O 1 BRIGHT
+		RDAS P 1 BRIGHT
+		RDAS N 1 BRIGHT
+		Stop
+		
+	FlashFireBlue:
+		RDAS L 1 BRIGHT //AB
+		RDAS M 1 BRIGHT //CD
+		RDAS N 1 BRIGHT //EF
+		RDAS O 1 BRIGHT //EF
+		Stop
+	}
+}
+
+
+
+//SHIELD. SHIELD!. SHIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELD?!!!?!?!
+//Libra Shield, courtesy of Capt'n Toenail's Shield! And russian overkill
+
+actor ShieldPart
+{
+  Radius 24
+  Height 24
+  Scale 0.5
+  RenderStyle None
+  Alpha 0.25
+  BloodType "ShieldHit"
+  +SHOOTABLE
+  +NOGRAVITY
+  +NOTELEPORT
+  +NODAMAGE
+  +DONTRIP
+  +NOBLOODDECALS
+  +FLOORCLIP
+  +FRIENDLY
+  +REFLECTIVE
+  Damagetype "BFGShield"
+//  +GHOST
+ // THRUREFLECT
+  States
+  {
+  Spawn:
+    SHIE A 2 bright
+    stop
+  Death:
+    TNT1 A 2
+    stop
+  }
+}
+
+actor ShieldPartVisual
+{
+  Radius 24
+  Height 24
+  Scale 0.5
+  RenderStyle Add
+  Obituary "%o was evaporated by %k's shield, mwahahaha!"
+  Alpha 0.25
+  +NOINTERACTION
+  +CLIENTSIDEONLY
+  +FLOORCLIP
+  +FRIENDLY
+  States
+  {
+  Spawn:
+    SHIE A 2 bright
+    stop
+  Death:
+    TNT1 A 2
+    stop
+  }
+}
+
+actor ShieldSpawner
+{
+  Radius 60
+  Height 60
+  +NOGRAVITY
+  +NOINTERACTION
+  +SHOOTABLE
+  +NOGRAVITY
+  +NOTELEPORT
+  +NODAMAGE
+  +DONTRIP
+  +NOBLOODDECALS
+  +FLOORCLIP
+  +FRIENDLY
+  BloodType "ShieldHit"
+  Damagetype "BFGShield"
+  +REFLECTIVE
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner5up", 24, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner5up", -24, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", 48, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", -48, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner3up", 72, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner3up", -72, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner2up", 96, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner2up", -96, 0, 0, 0, 0, 0, 0, 32)
+    stop
+  }
+}
+
+ACTOR ShieldDeathTimer1 : Inventory
+{
+Inventory.MaxAmount 1001
+}
+
+actor ShieldSpawnerPlacedCover
+{
+  Radius 60
+  Height 60
+  +NOGRAVITY
+  +NOINTERACTION
+  +SHOOTABLE
+  +NOGRAVITY
+  +NOTELEPORT
+  +NODAMAGE
+  +DONTRIP
+  +NOBLOODDECALS
+  +FLOORCLIP
+  +Solid
+  +FRIENDLY
+  Damagetype "BFGShield"
+  BloodType "ShieldHit"
+  SeeSound "SHLDLP"
+  DeathSound "SHLDSTT"
+  +REFLECTIVE
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+	TNT1 A 0 A_PlaySound("SHLDLP", 6,1,1)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner5up", 24, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner5up", -24, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", 48, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", -48, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner3up", 72, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner3up", -72, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner2up", 96, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner2up", -96, 0, 0, 0, 0, 0, 0, 32)
+	TNT1 A 0 A_GiveInventory("ShieldDeathTimer1", 1)
+	TNT1 A 0 A_JumpIfInventory("ShieldDeathTimer1", 1000, "Death")
+	Loop
+    Death:
+	TNT1 AAAAAAAAA 1 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 2 
+	TNT1 AAAAAAA 1 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+	TNT1 A 4
+	TNT1 AAAAA 1 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+	TNT1 A 6
+	TNT1 AAA 1 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+	TNT1 A 8
+	TNT1 A 1 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+	TNT1 A 0 A_StopSound(6)
+	TNT1 A 0 A_PlaySound("SHLDSTT")
+	TNT1 AAA 0
+	Stop
+  }
+}
+
+actor ShieldSpawner2
+{
+  Radius 70
+  Height 70
+  +NOGRAVITY
+  +NOINTERACTION
+  +SHOOTABLE
+  +NOGRAVITY
+  +NOTELEPORT
+  +NODAMAGE
+  +DONTRIP
+  +NOBLOODDECALS
+  +FLOORCLIP
+  +REFLECTIVE
+  +FRIENDLY
+  BloodType "ShieldHit"
+  Damagetype "BFGShield"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", 0, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner5up", 24, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner5up", -24, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", 48, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner4up", -48, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner3up", 72, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner3up", -72, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner2up", 96, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldSpawner2up", -96, 0, 0, 0, 0, 0, 0, 32)
+    stop
+  }
+}
+
+actor ShieldSpawner5up
+{
+  Radius 24
+  Height 24
+  +NOGRAVITY
+  +NOINTERACTION
+  +FRIENDLY
+  Damagetype "BFGShield"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 16, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 32, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 48, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 64, 0, 0, 0, 0, 32)
+    //TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 0, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 16, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 32, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 48, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 64, 0, 0, 0, 0, 32)
+    stop
+  }
+}
+
+actor ShieldSpawner4up
+{
+  Radius 24
+  Height 24
+  +NOGRAVITY
+  +NOINTERACTION
+  +FRIENDLY
+  Damagetype "BFGShield"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 8, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 24, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 40, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 56, 0, 0, 0, 0, 32)
+    //TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 8, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 24, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 40, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 56, 0, 0, 0, 0, 32)
+    stop
+  }
+}
+
+actor ShieldSpawner3up
+{
+  Radius 24
+  Height 24
+  +NOGRAVITY
+  +NOINTERACTION
+  +FRIENDLY
+  Damagetype "BFGShield"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 16, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 32, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 48, 0, 0, 0, 0, 32)
+    //TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 16, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 32, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 48, 0, 0, 0, 0, 32)
+    stop
+  }
+}
+
+
+actor ShieldSpawner2up
+{
+  Radius 24
+  Height 24
+  +NOGRAVITY
+  +NOINTERACTION
+  +FRIENDLY
+  Damagetype "BFGShield"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 24, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPart", 0, 0, 40, 0, 0, 0, 0, 32)
+    //TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 24, 0, 0, 0, 0, 32)
+    TNT1 A 0 A_SpawnItemEx ("ShieldPartVisual", 0, 0, 40, 0, 0, 0, 0, 32)
+    stop
+  }
+}
+
+ACTOR ShieldHit
+{
+  Scale 0.15
+  Alpha 1
+  RenderStyle Add
+  +NOINTERACTION
+  +NOGRAVITY
+  +FRIENDLY
+  Damagetype "BFGShield"
+  States
+  {
+  Spawn:
+    VINR A 0
+    VINR A 0 bright A_PlaySound("Weapons/ShieldImpact",0,1)
+  Looplet:
+    VINR A 0 A_FadeOut(0.1)
+    VINR A 1 A_SetScale(ScaleX+0.15, ScaleY+0.15)
+    Loop
+  }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//Laser Beamz (Originally from Russian Overkill)
+//Projectile
+
+ACTOR ObeliskProjectile : FastProjectile
+{
+  Speed 200
+  Radius 12
+  Height 8
+  Damage 40
+  Renderstyle Add
+ // +RIPPER
+  -CANNOTPUSH
+  +NODAMAGETHRUST
+  +EXTREMEDEATH
+  +FORCERADIUSDMG
+  DamageType ExplosiveImpact
+  DeathSound "weapons/StachanovHit"
+  MissileType "ObeliskTrail"
+  MissileHeight 10
+  Decal "BFGLightning"
+  Decal "BigScorch"
+  states
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1 A_PlaySound("Weapons/StachanovFly",5,1.0,1)
+    Loop
+  Death:
+    TNT1 A 0 A_PlaySound("Weapons/YamatoExp",5)
+    TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ObeliskTrailSpark", random(19,-19), random(19,-19), random(19,-19), 0, 0, 0, 0, 128, 0)
+    TNT1 A 0 A_SpawnItemEx("ObeliskExplode",0,0,0,0,0,0,0,128,0)
+    TNT1 A 0 A_Explode(60,80,0,1)
+    TNT1 BCD 4
+    stop
+  }
+}
+
+ACTOR ObeliskSeeker : FastProjectile
+{
+  Speed 100
+  Radius 12
+  Height 8
+  Damage 45
+  Renderstyle Add
+ // +RIPPER
+  -CANNOTPUSH
+  +NODAMAGETHRUST
+  +EXTREMEDEATH
+  +Friendly
+  +FORCERADIUSDMG
+  +SeekerMissile
+  DamageType ExplosiveImpact
+  DeathSound "weapons/StachanovHit"
+  MissileType "ObeliskTrail"
+  MissileHeight 10
+  Decal "BFGLightning"
+  Decal "BigScorch"
+  Scale 0.55
+  states
+  {
+  Spawn:
+    TNT1 A 0 A_SeekerMissile(0, 90, SMF_LOOK || SMF_PRECISE)
+    TNT1 A 1 A_PlaySound("Weapons/StachanovFly",5,1.0,1)
+    Loop
+  Death:
+    TNT1 A 0 A_PlaySound("Weapons/YamatoExp",5)
+    TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ObeliskTrailSpark", random(19,-19), random(19,-19), random(19,-19), 0, 0, 0, 0, 128, 0)
+    TNT1 A 0 A_SpawnItemEx("ObeliskExplode",0,0,0,0,0,0,0,128,0)
+    TNT1 A 0 A_Explode(50,40,0,1)
+    TNT1 BCD 4
+    stop
+  }
+}
+
+ACTOR ObeliskExplode
+{
+  Radius 12
+  Height 8
+  Renderstyle Add
+  Scale 0.5
+  +NOINTERACTION
+  +NOGRAVITY
+    +CLIENTSIDEONLY
+  states
+  {
+  Spawn:
+    YAE3 ABCDEFGHIJKLMNOPQRS 1 bright A_FadeOut(0.05)
+    stop
+  }
+}
+
+ACTOR ObeliskTrail
+{
+  RenderStyle Add
+  Scale 0.175
+  Alpha 1
+  +NOINTERACTION
+  +NOGRAVITY
+    +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SetScale(ScaleX, ScaleY -0.0875)
+    YAE4 A 2 bright A_SpawnItemEx("ObeliskTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, 128, 0)
+    YAE4 A 2 bright
+  Trolololo:
+    YAE4 A 0 A_JumpIf(ScaleY <= 0, "NULL")
+    YAE4 A 0 A_SetScale(ScaleX -0.01, ScaleY -0.01)
+    YAE4 A 1 bright A_FadeOut(0.295)
+    Loop
+  }
+}
+
+ACTOR NewBFGTrailGreen: ObeliskTrail
+{
+  Scale 0.45
+  Translation "0:255=%[0,0,0]:[0,1,0]"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 
+    YAE4 A 2 bright A_SpawnItemEx("GreenTrailSparks", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, 128, 0)
+    YAE4 A 2 bright
+  Trolololo:
+    YAE4 A 0 A_JumpIf(ScaleY <= 0, "NULL")
+    YAE4 A 0 
+    YAE4 A 1 bright A_FadeOut(0.295)
+    Loop
+  }
+}
+
+ACTOR NewBFGBeamTrailGreen: ObeliskTrail
+{
+  Scale 0.085
+  Alpha 0.65
+  Translation "0:255=%[0,0,0]:[0,1,0]"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 
+    YAE4 A 2 bright //A_SpawnItemEx("GreenTrailSparks", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, 128, 0)
+    YAE4 A 2 bright
+  Trolololo:
+    YAE4 A 0 A_JumpIf(ScaleY <= 0, "NULL")
+    YAE4 A 0 
+    YAE4 A 1 bright A_FadeOut(0.295)
+    Loop
+  }
+}
+
+ACTOR ObeliskTrailSpark
+{ 
+    RenderStyle Add
+    Scale 0.0125
+    Alpha 0.95
+    +NOINTERACTION
+    +NOGRAVITY
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+	YAE4 A 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
+	YAE4 A 0 A_SetScale(ScaleX-0.00075)
+    YAE4 A 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
+    YAE4 A 1 bright A_FadeOut(0.05)
+    Loop
+    }
+}
+
+ACTOR GreenTrailSparks
+{ 
+    RenderStyle Add
+    Scale 0.0125
+    Alpha 0.95
+    +NOINTERACTION
+    +NOGRAVITY
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+	YAE6 A 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
+	YAE6 A 0 A_SetScale(ScaleX-0.00075)
+    YAE6 A 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
+    YAE6 A 1 bright A_FadeOut(0.05)
+    Loop
+    }
+}
+
+ACTOR PurpleTrailSparks
+{ 
+    RenderStyle Add
+    Scale 0.022
+    Alpha 0.95
+    +NOINTERACTION
+    +NOGRAVITY
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+	YA36 A 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
+	YA36 A 0 A_SetScale(ScaleX-0.00075)
+    YA36 A 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
+    YA36 A 1 bright A_FadeOut(0.05)
+    Loop
+    }
+}
+
+ACTOR PurpleTrailSparksSmall
+{ 
+    RenderStyle Add
+    Scale 0.01
+    Alpha 0.95
+    +NOINTERACTION
+    +NOGRAVITY
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+	YA36 A 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
+	YA36 A 0 A_SetScale(ScaleX-0.00075)
+    YA36 A 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
+    YA36 A 1 bright A_FadeOut(0.05)
+    Loop
+    }
+}
+
+ACTOR FreezerTrailSparksSmall
+{ 
+    RenderStyle Add
+    Scale 0.008
+    Alpha 0.95
+    +NOINTERACTION
+    +NOGRAVITY
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+	YA36 B 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
+	YA36 B 0 A_SetScale(ScaleX-0.00075)
+    YA36 B 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
+    YA36 B 1 bright A_FadeOut(0.05)
+    Loop
+    }
+}
+
+//Charge-up stuff
+ACTOR ObeliskProjectile1 : ObeliskProjectile
+{
+  Damage 85
+  DamageType Blast
+  -RIPPER
+  MissileType "ObeliskTrail"
+}
+
+ACTOR ObeliskProjectile2 : ObeliskProjectile
+{
+  Damage 135
+  DamageType Saw
+  -RIPPER
+  MissileType "ObeliskTrail2"
+}
+
+ACTOR ObeliskProjectile3 : ObeliskProjectile
+{
+  Damage 225
+  DamageType QuadBlast
+  +RIPPER
+  +NOBOSSRIP
+  MissileType "ObeliskTrail3"
+}
+
+ACTOR ObeliskTrail2 : ObeliskTrail
+{
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SetScale(ScaleX, ScaleY -0.0875)
+    YAE4 AA 2 bright A_SpawnItemEx("ObeliskTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+  Trolololo:
+    YAE4 A 0 A_JumpIf(ScaleY <= 0, "NULL")
+    YAE4 A 0 A_SetScale(ScaleX -0.01, ScaleY -0.01)
+    YAE4 A 1 bright A_FadeOut(0.095)
+    Loop
+  }
+}
+
+ACTOR ObeliskTrail3 : ObeliskTrail
+{
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0 A_SetScale(ScaleX, ScaleY -0.0875)
+	YAE4 A 1
+    YAE4 AAA 1 bright A_SpawnItemEx("ObeliskTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+  Trolololo:
+    YAE4 A 0 A_JumpIf(ScaleY <= 0, "NULL")
+    YAE4 A 0 A_SetScale(ScaleX -0.01, ScaleY -0.01)
+    YAE4 A 1 bright A_FadeOut(0.04)
+    Loop
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+ACTOR LightningTrailSpark
+{ 
+    RenderStyle Add
+    Scale 0.0135
+    Alpha 0.95
+    +NOINTERACTION
+    +NOGRAVITY
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+	YAE5 A 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
+	YAE5 A 0 A_SetScale(ScaleX-0.00075)
+    YAE5 A 3 bright A_ChangeVelocity (frandom(-0.8, 0.8), frandom(-0.8, 0.8), frandom(-0.8, 0.8), 0)
+    YAE5 A 1 bright A_FadeOut(0.05)
+    Loop
+    }
+}
+
+ACTOR LightningBall : FastProjectile
+{
+   Speed 80
+   Height 8
+   Radius 8
+   Damage (random(0,1))
+   Scale 0.55
+   RenderStyle Add
+   Alpha 0.95
+   DeathSound "LightningHit"
+   PROJECTILE
+   Decal "Scorch"
+   +NOBLOCKMAP
+   +DROPOFF
+   +NOGRAVITY
+   +NOEXTREMEDEATH
+   +MTHRUSPECIES
+   +FRIENDLY
+   +SeekerMissile
+   DamageType "Plasma"
+   States
+   {
+   Spawn:
+	  TNT1 A 0 A_SpawnItem("PlasmaFlare",0,0)
+      DPLS A 1 BRIGHT A_SpawnItemEx("LightningTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+	  TNT1 A 0 BRIGHT A_SpawnItem("PlasmaFlare",0,0)
+	  DPLS B 1 BRIGHT A_SpawnItemEx("LightningTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+	  TNT1 A 0 A_SpawnItem("PlasmaFlare",0,0)
+	  DPLS C 1 BRIGHT A_SpawnItemEx("LightningTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+	  TNT1 A 0 BRIGHT A_SpawnItem("PlasmaFlare",0,0)
+	  DPLS D 1 BRIGHT A_SpawnItemEx("LightningTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+	  TNT1 A 0 BRIGHT A_SpawnItem("PlasmaFlare",0,0)
+	  DPLS E 1 BRIGHT A_SpawnItemEx("LightningTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+	  TNT1 A 0 BRIGHT A_SpawnItem("PlasmaFlare",0,0)
+	  DPLS F 1 BRIGHT A_SpawnItemEx("LightningTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+	  TNT1 A 0 A_SpawnItem("PlasmaFlare",0,0)
+	  TNT1 A 0 BRIGHT A_SpawnItem("PlasmaFlare",0,0)
+	  DPLS G 1 BRIGHT A_SpawnItemEx("LightningTrailSpark", random(4,-4), random(4,-4), random(4,-4), 0, 0, 0, 0, SXF_CLIENTSIDE, 0)
+      Goto Death
+	  
+   Death:
+	  TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT2 AAA 0 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+      Stop
+	  
+   }
+}
+
+
+
+

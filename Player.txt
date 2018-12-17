@@ -58,8 +58,8 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	DamageFactor "KillMeBot", 0.0
 	
 	Player.ColorRange 112, 127
-	Player.StartItem "Rifle"
-	Player.StartItem "M9Beretta"
+	Player.StartItem "M20A4"
+	Player.StartItem "M1911"
 	Player.StartItem "Quake4SG"
 	Player.StartItem "Melee_Attacks"
 	Player.StartItem "Clip1", 45
@@ -67,11 +67,14 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "Shell2", 10
 	Player.StartItem "APBullets", 50
 	Player.StartItem "50CalAmmo", 60
+	Player.StartItem "MP12Ammo2", 15
+	Player.StartItem "M1911Ammo", 8
 	Player.StartItem "Cell2", 50
 	Player.StartItem "RocketAmmo", 6
 	Player.StartItem "BDPistolAmmo", 16
 	Player.StartItem "RifleAmmo", 31
 	Player.StartItem "DoubleRifleAmmo", 31
+	Player.StartItem "M20A4Ammo", 30
 	Player.StartItem "ShotgunAmmo", 8
 	Player.StartItem "AssaultShotgunAmmo", 20
 	Player.StartItem "PlasmaAmmo", 50
@@ -82,7 +85,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "RailgunAmmo", 50
 	Player.StartItem "IsPlayer", 1
 	Player.StartItem "HandGrenades", 1
-	Player.StartItem "GrenadeAmmo", 3
+	Player.StartItem "GrenadeAmmo", 4
 	Player.StartItem "LeftRifleAmmo", 31
 	Player.StartItem "G18Ammo", 33
 	Player.StartItem "G17Ammo", 21
@@ -160,6 +163,27 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "TacticalNailgunAmmo", 60
 	Player.StartItem "DN34Ammo", 300
 	Player.StartItem "TEMPSTChainBeltAmmo", 200
+	Player.StartItem "DS9000Rounds", 15
+	Player.StartItem "DukeRPGRound", 1
+	Player.StartItem "KRATOSRound", 1
+	Player.StartItem "RPG7Round", 1
+	Player.StartItem "StingerRocketRounds", 9
+	Player.StartItem "UT2004RocketRounds", 3
+	Player.StartItem "WARHeadRounds", 3
+	Player.StartItem "2016RLRound", 1
+	Player.StartItem "InsaneRounds", 10
+	Player.StartItem "M79Ammo", 1
+	Player.StartItem "QuakeGrenadeRound", 1
+	Player.StartItem "Quake4GrenadeRound", 1
+	Player.StartItem "ExcavatorRounds", 5
+	Player.StartItem "HyperBlasterMK2Ammo", 100
+	Player.StartItem "HyperBlasterAmmo", 70
+	Player.StartItem "IC-9Ammo", 60
+	Player.StartItem "M2Ammo", 50
+	Player.StartItem "PetrovecM2Ammo", 100
+	Player.StartItem "FreezerAmmo", 60
+	Player.StartItem "BDSMGAmmo", 41
+	Player.StartItem "GrenadeRounds", 6
 	Player.StartItem "JustStartedGame", 1
 	Player.StartItem "NeverSelectedShotgun", 1
 	Player.StartItem "IsPlayingAsV20", 1
@@ -176,6 +200,16 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.StartItem "SlotOWN8", 1
 	Player.StartItem "SlotOWN9", 1
 	Player.StartItem "SlotOWN0", 1
+<<<<<<< HEAD
+	Player.WeaponSlot 1, Sledge, BrutalAxe, Chain_Saw, Melee_Attacks
+	Player.WeaponSlot 2, G18, G17C, TAC15, Doom2016Blaster, USP45, FN67, M9Beretta, MP12, M1911, TesticleImploder, SkullCracker, DesertEagle3, DesertEagle, v21MP, SovietMP, UZI, UMP50, MP40, TMP9, PPSH91, PDW91, POW90, G7, MP27, MP7, MP5
+	Player.WeaponSlot 3, MK5OVPS, UTS15, Doom2016SG, Doom4SGPT, Quake4SG, R870, NailSG, ClassicSG, Beaker, Shot_Gun, AA48, ASRIOT4, MK23, M1216, XM1014, QuadShotgun, Quake3SG, Doom2016SSG, CoachGunMK2, CoachGun, COBRA, Stryker, SawedOff, UAC1881
+	Player.WeaponSlot 4, MI4, M110AMR, FAL, PHALANX, CM666, CZ805, G41K, G36C, M4A6, HeavyAR, Repeater, FG42, SCORH, LEGION1, ACR, M4A4, M16, M41A9, XM30,S94, AK47, AKRSYD47T, Rifle, M20A4
+	Player.WeaponSlot 5, HitlersBuzzsaw, Quake4MachineGun, AUGA9, AUGRDM1, M144Riot, M72RIOT, HAMR5, Nail_Gun, M60, HAMR1, Tactical_Nail_Gun, QBBASW, APDMLMO, Anarchy50, DRACONIAN, Shredder, StingerMinigun, HailStorm, Chain_Gun, M160, DN34, Doom2016Chaingun, TEMPST50, MiniGun
+	Player.WeaponSlot 6, Rocket_Launcher, DukeRPG, UT2004RocketLauncher, DS9000, StingRAY9, D2016RL, KRATOS, WarMachine, RPG7, Excavator, SuperGrenadeLauncher, Grenade_Launcher, InsanityLauncher, Quake1GrenadeLauncher, Quake4GrenadeLauncher, M79
+	Player.WeaponSlot 7, Plasma_Gun, Quake4HyperBlaster, IC9, D2016PG, HyperBlaster, HyperBlasterMK2, M2, PetrovecM2, PlasmaMinigun, CML6, RailGun, Gauss_Cannon, FreezerRifle, IonBlaster, D4VortexRifle
+	Player.WeaponSlot 8, BIG_FUCKING_GUN, BFG2016, BIG_FUCKING_GUN_MK2, BFG10k, BIG_FUCKING_GUN_MKIV, BIG_FUCKING_Minigun, BIG_FUCKING_NUCLEAR_Minigun, Karasawa, BIG_FUCKING_SHOTGUN, EX099
+=======
 	Player.WeaponSlot 1, Sledge, Chain_Saw, Melee_Attacks
 	Player.WeaponSlot 2, G18, G17C, TAC15, Doom2016Blaster, USP45, FN67, M9Beretta, TesticleImploder, SkullCracker, DesertEagle3, DesertEagle, SovietMP, UZI, UMP50, MP40, TMP9, PPSH91, PDW91, POW90, G7, MP27, MP7, MP5
 	Player.WeaponSlot 3, MK5OVPS, UTS15, Doom2016SG, Doom4SGPT, Quake4SG, R870, NailSG, ClassicSG, Beaker, UAC1897, AA48, ASRIOT4, MK23, M1216, XM1014, QuadShotgun, Quake3SG, Doom2016SSG, CoachGunMK2, CoachGun, COBRA, Stryker, SawedOff, UAC1881
@@ -184,8 +218,8 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Player.WeaponSlot 6, Rocket_Launcher, DukeRPG, UT2004RocketLauncher, DS9000, StingRAY9, D2016RL, KRATOS, WarMachine, RPG7, PipeBombThingy
 	Player.WeaponSlot 7, Plasma_Gun
 	Player.WeaponSlot 8, BIG_FUCKING_GUN
+>>>>>>> 7b317ff690c06703bf1fa10d831ad0a902df58a5
 	Player.WeaponSlot 9, HellishMissileLauncher, FlameCannon
-	Player.WeaponSlot 0, HandGrenades
 	States
 	{
 	

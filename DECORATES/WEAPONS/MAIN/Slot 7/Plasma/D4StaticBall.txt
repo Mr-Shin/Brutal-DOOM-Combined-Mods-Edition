@@ -1,0 +1,146 @@
+ACTOR HeatBall : FatShot
+{
+	Damage 30
+	Damagetype Fire
+	Speed 25
+	-NOGRAVITY
+	Gravity 0.33
+	//SeeSound "Misc/insideaboxwithoutspeakers"
+	DeathSound "2016Plasma/Stun/Impact"
+	Obituary "%k turned %o into roast meat."
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SpawnItemEx(HeatBallTrail,0,0,0,FRandom(0,0.5),0,FRandom(-0.5,0.5),Random(1,360))
+		TNT1 A 0 A_SpawnItemEx(HeatBallTrail,-MomX*0.5,-MomY*0.5,-MomZ*0.5,FRandom(-0.5,0.5),Random(-0.5,0.5),FRandom(-0.5,0.5),0,SXF_ABSOLUTEPOSITION)
+		TNT1 AA 0 A_SpawnItemEx(HeatBallTrail2,Random(0,10),0,Random(-10,10),FRandom(0,0.1),0,FRandom(-0.1,0.1),Random(1,360))
+		TNT1 A 1 A_SpawnItemEx(RocketFlare)
+		Loop
+	Death:
+		TNT1 AAA 0 A_SpawnItemEx(HeatBallWave,0,0,0,Random(0,3),0,FRandom(-3,3),Random(1,360))
+		TNT1 AAAAAAAAAAAAAA 0 A_SpawnItemEx(HeatBallSplash,0,0,0,FRandom(0,4),0,FRandom(4,6),Random(1,360))
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx(HeatBallSparkSpawner,Random(2,96),0,0,0,0,-5,Random(1,360))
+		TNT1 A 0 A_SetScale(0.09)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx(ShockSpark,0,0,0,FRandom(5,10),0,Random(5,10),Random(1,360),SXF_TRANSFERSCALE)
+		TNT1 A 0 A_PlaySound("2016Plasma/Stun/Burn",0)
+		TNT1 A 0 A_ChangeFlag(NODAMAGETHRUST,1)
+		TNT1 A 0 A_ChangeFlag(BLOODLESSIMPACT,1)
+	Burn:
+		TNT1 A 0 A_Explode(10,96,XF_HURTSOURCE,0,64)
+		TNT1 AA 0 A_Explode(10,96,0,0,64)
+		TNT1 A 16 A_JumpIfInventory(Clip,15,"Null")
+		TNT1 A 0 A_GiveInventory(Clip,1)
+		Loop
+	}
+}
+Actor HeatBallWave : EffectBase
+{
+	States
+	{
+	Spawn:
+		PHBL D 1 Bright A_FadeOut(0.1)
+		TNT1 A 0 A_SetScale(ScaleX*1.25)
+		Loop
+	}
+}
+Actor HeatBallSparkSpawner : EffectBase
+{
+	-NOINTERACTION +INVISIBLE
+	Gravity 0.33
+	Translation "0:255=%[0,0,0]:[1,0.66,0]"
+	States
+	{
+	Spawn:
+		TNT1 AA 0 A_GiveInventory(Clip,Random(70,80))
+	Death:
+		TNT1 A 0 A_SpawnItemEx(ShockSpark,0,0,0,FRandom(2,5),0,Random(2,5),Random(1,360))
+		TNT1 A 0 A_SetScale(0.5)
+		TNT1 A 0 A_SpawnItemEx(GenericBolt,Random(0,20),0,0,0,0,0,Random(1,360),SXF_TRANSFERSCALE|1)
+		TNT1 A 0 A_SetScale(0.166)
+		BAL1 A 3 Bright A_SpawnItemEx(HeatBallSplash,Random(0,20),0,0,FRandom(0,2),0,FRandom(0,2),Random(1,360),SXF_TRANSFERSCALE)
+		TNT1 A 0 A_TakeInventory(Clip,1)
+		TNT1 A 0 A_JumpIfInventory(Clip,1,"Death")
+		Stop
+	}
+}
+Actor HeatBallSplash : EffectBase
+{
+	Translation "168:191=[255,255,0]:[255,0,0]", "16:47=[255,255,0]:[255,0,0]"
+	Scale 0.75
+	-NOINTERACTION
+	Gravity 0.33
+	Alpha 0.99
+	States
+	{
+	Spawn:
+		TNT1 AA 0 A_SetScale(ScaleX*FRandom(0.75,1.2))
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-ScaleX,ScaleY)
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(ScaleX,-ScaleY)
+		TNT1 A 0 A_Jump(256,"Anim1","Anim2","Anim3")
+	Anim1:
+		X057 ABBCDDEFFGHHIJJKKLMMNOOPQQRSS 1 Bright A_FadeOut(0.03)
+		Stop
+	Anim2:
+		X058 ABBCDDEFFGHHIJJKKLMMN 1 Bright A_FadeOut(0.045)
+		Stop
+	Anim3:
+		X059 ABBCDDEFFGHHIJJKKLMM 1 Bright A_FadeOut(0.045)
+		Stop
+	}
+}
+Actor HeatBallTrail : EffectBase
+{
+	Scale 0.18
+	ReactionTime 8
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(-ScaleX,ScaleY)
+		TNT1 A 0 A_Jump(128,2)
+		TNT1 A 0 A_SetScale(ScaleX,-ScaleY)
+	Anim:
+		PHBL A 1 Bright A_SetScale(ScaleX*0.75)
+		TNT1 A 0 A_Countdown
+		Loop
+	}
+}
+Actor HeatBallTrail2 : EffectBase
+{
+	Alpha 0.75
+	Translation "0:254=%[0,0,0]:[0.75,0.33,0]"
+	Scale 0.05
+	States
+	{
+	Spawn:
+		PHBL BC 0 A_Jump(96,"Anim")
+		Loop
+	Anim:
+		"----" A 1 Bright A_SetScale(ScaleX+0.005)
+		"----" A 0 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+Actor ShockSpark : EffectBase
+{
+	Projectile
+//	Alpha 0.75
+	Speed 5
+	-NOINTERACTION
+	-NOGRAVITY
+	+DOOMBOUNCE
+	Scale 0.05
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		SPK1 A 3 Bright A_SetScale(ScaleX*FRandom(1,1.25))
+		SPK1 A 1 Bright A_SetScale(ScaleX-0.005)
+		TNT1 A 0 A_JumpIf(ScaleX<=0,"null")
+		Goto Spawn+2
+	}
+}

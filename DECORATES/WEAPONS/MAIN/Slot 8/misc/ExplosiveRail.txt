@@ -1,0 +1,277 @@
+Actor EX099PlosionParticle
+{
+	RenderStyle Add
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+FORCEXYBILLBOARD
+	+NOBLOCKMAP
+	+DONTSPLASH
+	+THRUACTORS
+	+NOTRIGGER
+	+NOBLOCKMONST
+//	+NOTONAUTOMAP
+	+CANNOTPUSH
+	Radius 0.5
+	Height 1
+	Gravity 0.66
+	Species "VFX"
+	
+	Scale 0.4
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_FadeOut(0.1)
+		MUZZ Q 1 Bright A_SetScale(ScaleX*0.95)
+		Loop
+	}
+}
+Actor ExplosiveRailExplosion
+{
+	+PUFFONACTORS +ALWAYSPUFF +NOINTERACTION +PUFFGETSOWNER +FORCERADIUSDMG
+	DamageType Disintegrate
+	seesound "Gauss/Impact"
+	Decal BigScorch
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_playsound("Gauss/Impact", 3)
+		BFE1 A 0 A_SpawnItemEx("BFGBlueSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_SpawnItem(GaussCannonExplosionShockWave)
+		TNT1 A 0 A_Explode(192,192)//,TRUE,FALSE,160) //damage of explosion, explosion radius, hurt shooter, alert monsters, radius where the damage of explosion really kicks in
+		TNT1 A 10 Radius_Quake (5, 10, 0, 10, 0)
+		Stop
+		
+	}
+}
+
+ACTOR BFGBlueBIGFOG : BFGFOG
+{
+	Scale 0.8
+    States
+    {
+    Spawn:
+        PFOG ABCDEF 6 BRIGHT A_SpawnItem("BlueFlareMedium",0,0)
+        Stop
+    }
+}
+
+Actor BFGBlueSuperParticleSpawner
+{
+  +NoClip
+  +NoBlockMap
+  +NoGravity
+  +Missile
+  +FORCEXYBILLBOARD
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 AAAAAAAAAAA 0 A_SpawnItemEx("BFGBlueSuperParticle", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
+    TNT1 AAAAAAAAAAA 0 A_SpawnItemEx("BFGBlueSuperParticle", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
+    TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("BFGBlueSuperParticle", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
+    TNT1 A 1
+    Stop
+  }
+}
+
+
+Actor BFGBlueSuperParticle
+{
+  Height 0
+  Radius 0
+  Mass 0
+  +Missile
+  +NoBlockMap
+  +NOGRAVITY
+  +DontSplash
+  +FORCEXYBILLBOARD
+  RenderStyle Add
+  Scale 0.04
+  Speed 24
+  States
+  {
+  Spawn:
+  Death:
+    SPKB A 2 Bright A_FadeOut(0.02)
+    Loop
+  }
+}
+
+ACTOR ExplosiveKarasawaProjectile
+{
+	Radius 10
+	Height 8
+	Projectile
+	Speed 50
+    Damage 40
+	DamageType Cut
+    MeleeDamage 0
+    Gravity 0.00
+    Decal "Scorch"
+    -NOGRAVITY
+    +EXTREMEDEATH
+    +BLOODSPLATTER 
+	+THRUSPECIES
+	+MTHRUSPECIES
+	RenderStyle Stencil
+	StencilColor "Blue"
+	Scale 0.7
+	+RIPPER
+	SeeSound "none"
+	DeathSound "BFGEXPLO"//"Gauss/Impact"
+	Obituary "%o went \"BANZAI\" to an explosive Karasawa Projectile"
+	Species "Marines"
+	MissileType "PlasmaTracerTrail"
+	MissileHeight 7
+	States
+	{
+	DM:
+		TNT1 A 0
+		TNT1 A 0 A_ChangeFLag("THRUSPECIES", 0)
+		TNT1 A 0 A_ChangeFLag("MTHRUSPECIES", 0)
+		Goto Spawn1
+	
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_ExecuteAlways(719, 0, 0, 0, 0)//Check if Coop
+
+	Spawn1:
+		TNT1 A 0
+	    KWBB A 1 Bright A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 A_SpawnItem("PlasmaBlur",0,0)
+		
+		KWBB B 1 Bright A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 A_SpawnItem("PlasmaBlur",0,0)
+		
+		KWBB C 1 Bright A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 A_SpawnItem("PlasmaBlur",0,0)
+		
+		KWBB D 1 Bright A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+		TNT1 A 0 A_SpawnItem ("BluePlasmaFireMove3")
+		TNT1 A 0 A_CustomMissile ("BluePlasmaFireMove3", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 A_SpawnItem("PlasmaBlur",0,0)
+		Loop
+	
+	SpawnUnderwater:
+	    TNT1 A 0 A_ChangeFlag("NOGRAVITY", 0)
+		TNT1 A 0 A_SpawnItem("PlasmaFlare",-20,0)
+	    TNT1 A 0 A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+	    Goto Spawn1
+	
+	Death:
+        TNT1 A 0
+		BFE1 A 0 A_SpawnItemEx("BFGBlueSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBlueSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAA 0 A_SpawnItem(GaussCannonExplosionShockWave)
+		TNT1 A 0 A_Explode(192,192,0,0,160)
+		TNT1 A 10 Radius_Quake (5, 10, 0, 10, 0)
+		Stop
+	}
+}
+
+//Not so Explosive Rail
+
+ACTOR PlasmaTracer : FastProjectile
+{
+	Radius 4
+	Height 8
+	Speed 125
+	Damage 8
+	Damagetype Desintegrate
+	Projectile
+	RenderStyle Add
+	Alpha 0.9
+	+FORCERADIUSDMG
+	+NODAMAGETHRUST
+	+NoExtremeDeath
+	seesound "ovp/tail"
+	DeathSound "lazarexp"
+	MissileType "PlasmaTracerTrail"
+	MissileHeight 2
+	Decal "PlasmaScorch"
+	States
+	{
+	Spawn:
+		BSHT A 0 Bright
+		BSHT A 1 Bright A_SpawnItem("PlasmaFlare",0,0)
+		TNT1 A 0 A_Custommissile("PlasmaTrail", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 A_CustomMissile("BlueFlareSpawn",0,0,0,0)
+		Loop
+	Xdeath:
+	TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT1 B 0 A_Explode(6,50,0)
+	TNT1 B 0
+	TNT2 AAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		
+		Stop
+
+	Death:
+	TNT1 A 0
+	TNT1 B 0 A_Explode(6,50,1)
+	TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT2 AAAAAAAAA 9 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		Stop
+	}
+}
+
+ACTOR PlasmaTracerTrail
+{
+	+NOINTERACTION
+	Radius 4
+	Height 8
+	Renderstyle Add
+	Alpha 0.5
+	States
+	{
+	Spawn:
+		BSHT AABBCDEFG 1 Bright
+		Stop
+	}
+}
+
+ACTOR PlasmaTrail
+{
+	+NOINTERACTION
+	Radius 4
+	Height 8
+	//Renderstyle Add
+	Alpha 0.5
+	States
+	{
+	Spawn:
+		LEYB AAAAAAAAAAAA 1 Bright
+		Stop
+	}
+}

@@ -18,7 +18,7 @@ ACTOR FN67 : CMEWeapon
     AttackSound "None"
 	tag "FN-Six Seven"
     Inventory.PickupSound "G17SLDE"
-	Inventory.Pickupmessage "You got A Six Seven?! How many more weapon prototypes?"
+	Inventory.Pickupmessage "You got a Six Seven!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOAUTOFIRE
@@ -93,7 +93,7 @@ TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		TNT1 A 1 A_Lower
+		TNT1 A 1
 		Wait
 	Select:
 	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -118,6 +118,7 @@ TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
 		TNT1 A 0 A_Raise
 		Wait
     Fire:

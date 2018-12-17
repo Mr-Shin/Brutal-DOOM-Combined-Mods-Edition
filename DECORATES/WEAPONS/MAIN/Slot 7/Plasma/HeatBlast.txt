@@ -1,0 +1,128 @@
+//------------------------------------------------------------------------------
+//
+//						Heat Blast
+//
+//------------------------------------------------------------------------------
+
+Actor HeatBlastDamage100 //Base
+{
+	+PUFFONACTORS
+	+ALWAYSPUFF
+	+NOINTERACTION
+	+PUFFGETSOWNER
+	+FORCERADIUSDMG
+	+INVULNERABLE
+	+NOINTERACTION
+	+NOTONAUTOMAP
+	+FORCERADIUSDMG
+	+FRIENDLY
+	RenderStyle None
+	DamageType Plasma
+	Species "Marines"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(400, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage90 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(360, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage80 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(320, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage70 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(280, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage60 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(240, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage50 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(200, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage40 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(160, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage30 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(120, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage20 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(80, 150,0,0,140)
+		Stop
+	}
+}
+
+Actor HeatBlastDamage10 : HeatBlastDamage100
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(10, 150,0,0,140)
+		Stop
+	}
+}

@@ -1,8 +1,3 @@
-//===========================================================================
-//
-// Chaingunner
-//
-//===========================================================================
 ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 {
 	Health 90
@@ -14,12 +9,12 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	PainChance "HelperMarineFatality", 255
 	PainChance "Kick", 255
 	PainChance "Melee", 255
-	damagefactor "Cut", 0.3
 	damagefactor "Avoid", 0.0
 	damagefactor "GibRemoving", 0.0
-	damagefactor "Crush", 5.0
+	damagefactor "Crush", 5.0 DamageFactor "Fatality", 5.0
 	damagefactor "TeleportRemover", 0.0
 	PainChance "MonsterKnocked", 255
+	damagefactor "explosiveimpact", 2.0
 	damagetype "Melee"
 	Monster
 	Translation "192:207=176:191"
@@ -29,20 +24,20 @@ ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
 	+FLOORCLIP
     +MISSILEMORE
     +MISSILEEVENMORE
+	+RANDOMIZE
 	
 damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-    BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
-	SeeSound "commando/sight"
-	PainSound "commando/pain"
-	DeathSound "commando/death"
+    BloodType "Brutal_Blood", "SawBlood", "SawBlood"
+	SeeSound "grunt/sight"
+	PainSound "grunt/pain"
+	DeathSound "grunt/death"
 	ActiveSound "grunt/active"
-	AttackSound "weapons/minigunfire"
-    damagefactor "Kick", 0.4
+	AttackSound "weapons/MiniGunfire"
     damagefactor "Shrapnel", 0.4
 	damagefactor "explosiveimpact", 2.0
 	DropItem "None" 3
 	Obituary "%o has been mowed down by a Zombie Commando."
-	DamageFactor "CauseObjectsToSplash", 0.0
+	DamageFactor "CauseSplash", 0.0 DamageFactor "CauseObjectsToSplashSlime", 0.0 DamageFactor "CauseSplashNukage", 0.0 DamageFactor "CauseSplashBlood", 0.0 DamageFactor "CauseSplashLava", 0.0
 	States
 	{
 	ReplaceVanilla:
@@ -53,15 +48,21 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
     Spawn:
 		TNT1 A 0
 		TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
-	TNT1 A 0 A_GiveInventory("SKChaingunGuy", 1)
-	TNT1 A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")
-		MPOS A 0 A_CheckSight("Spawn2")
-        TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 42,0)
-		MPOS B 10 A_Look
+		TNT1 A 0 A_GiveInventory("SKChaingunGuy", 1)
+		TNT1 A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue")
+		Goto Stand
+		
+	STAND:
+		TNT1 A 0
+		TNT1 A 0 A_CheckSight("Stand2")
+        TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 8, 42,0)
+		MPOS BB 9 A_Look
 		Loop
-	Spawn2:
-		MPOS B 1 A_Look
-		Goto Spawn
+		
+	Stand2:
+		MPOS B 15 A_Look
+		TNT1 A 0 A_CheckSight("Stand2")
+		Goto Stand
 		
 	Idle:	
 	SearchForPlayer:
@@ -69,61 +70,61 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	    TNT1 A 0 A_TakeInventory("EnemyMemory", 30)
 		TNT1 A 0 A_GiveInventory("SKChaingunguy", 1)
 		
-		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS A 10 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS A 10 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS A 10 A_Look
 		
 		TNT1 A 0 A_SetAngle(angle - 40)
-		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS A 10 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		TNT1 A 0 A_SetAngle(angle + 40)
 		MPOS A 10 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS A 10 A_Look
 		
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS A 4 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS B 4 A_Look
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS C 4 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS D 4 A_Look
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
+		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		
 		TNT1 A 0 A_jump(128, "SearchForPlayer")
 		
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS A 4 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS B 4 A_Look
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS C 4 A_Look
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		MPOS A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_Wander
-		TNT1 A 0 A_Recoil(-1)
+		
 		MPOS D 4 A_Look
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
+		//TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		Goto SearchForPlayer
 		
 	See:
@@ -134,71 +135,75 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Goto SeeContinue
 	
 	SeeContinue:
-	    //TNT1 A 0 A_CheckSight("SeeNeverSeen")
-        TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
+	    TNT1 A 0 A_CheckSight("SeeNeverSeen")
+		
+	SeeContinuePart2:	
+		TNT1 A 0 A_GiveInventory("EverSeenTheplayer", 1)
+        //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 12, "SearchForPlayer")
+		
+	SeeContinuePart36:
 		TNT1 A 0 A_GiveInventory("EnemyMemory", 1)
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS AA 2 A_Chase
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS AA 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS BB 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS BB 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS CC 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS CC 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS DD 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS DD 2 A_Chase
+		
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS AAA 2 A_Chase
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS BBB 2 A_Chase
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS CCC 2 A_Chase
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS DDD 2 A_Chase
+		
+		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Idle")
 		Loop
 		
 	SeeNeverSeen:
-        TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
-		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS AA 2 A_Chase
-		TNT1 A 0 A_TakeInventory("IsFiring", 1)
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS AA 2 A_Chase
-
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS BB 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS BB 2 A_Chase
-
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS CC 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS CC 2 A_Chase
-
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS DD 2 A_Chase
-		MPOS A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-		MPOS DD 2 A_Chase
+		
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("EverSeenThePlayer", 1, "SeeContinuePart2")
+        //TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
+		
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS AAA 2 A_Chase
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS BBB 2 A_Chase
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS CCC 2 A_Chase
+		MPOS A 0 A_SpawnItem("HeadshotTarget6", 8, 42,0)
+		MPOS DDD 2 A_Chase
+		
         TNT1 A 0 A_CheckSight("SeeNeverSeen")
 		Goto SeeContinue
 
 	Missile:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 15)
+		
+		//TNT1 A 0 A_TakeInventory("CantFire", 1)
+		//TNT1 A 0 A_CustomMissile("MonsterTargetCheck", 34, 0, 0, 0) 
+		//TNT1 A 0 A_CustomMissile("MonsterTargetCheckFaster", 34, 0, 0, 0) 
+		MPOS E 6 A_FaceTarget
+		//TNT1 A 0 A_JumpIfInventory("CantFire",1, "SeeContinuePart36")
+		
 		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 		TNT1 A 0 A_PlaySound("CHAINSTA")
-		MPOS E 12 A_FaceTarget
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		MPOS E 4 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS E 12 A_FaceTarget
 		TNT1 A 0 A_GiveInventory("IsFiring", 1)
 		TNT1 A 0
+		MPOS E 1 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
+        TNT1 A 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
+		
 
     MissileContinue:
- MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-9, 9), 1, random(-2, 2))
+		
+        MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-9, 9), 1, random(-2, 2))
         //TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		MPOS E 1 A_FaceTarget 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 5, 44,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		TNT1 A 0 A_PlaySound("FARMGN", 6)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
@@ -206,7 +211,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
         MPOS F 1 BRIGHT A_CustomMissile("Tracer", 38, 0, random(-9, 9), 1, random(-2, 2))
         //TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		MPOS E 1 A_FaceTarget 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 5, 44,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		TNT1 A 0 A_PlaySound("FARMGN", 6)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
@@ -214,7 +219,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		MPOS F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-9, 9), 1, random(-2, 2))
         //TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		MPOS E 1 A_FaceTarget 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 5, 44,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		TNT1 A 0 A_PlaySound("FARMGN", 6)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
@@ -222,7 +227,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
         MPOS F 1 BRIGHT A_CustomMissile("Tracer", 38, 0, random(-9, 9), 1, random(-2, 2))
         //TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		MPOS E 1 A_FaceTarget 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 5, 44,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		TNT1 A 0 A_PlaySound("FARMGN", 6)
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 5)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
@@ -232,13 +237,13 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		Goto MissileContinue
 
      SpecialAttack:
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS E 10 A_FaceTarget 
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
         TNT1 A 0 A_CustomMissile("FireFightFlare", 34, 10, 15, 25)
 		MPOS F 10 //A_CustomMissile("CommandoGrenade",10,0,0,0)
         TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
-		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 8, 42,0)
 		MPOS E 10
         Goto SeeContinue
 		
@@ -249,31 +254,35 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		Goto See	
 		
 	   Pain.Melee:
-		MPOS G 3
+		MPOS G 4
 		TNT1 A 0 A_JumpIfInventory ("SKChaingunGuy", 1, "GotoStealthKill")
- 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-        MPOS G 3 A_Pain
+ 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
+        MPOS G 4 A_Pain
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
         Goto See
      Pain:
+	 Pain.Cut:
+	 Pain.Saw:
+		TNT1 A 0
+		TNT1 A 0 A_Stop
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("IsFiring", 1, "Pain.IsFiring")
-		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
 		TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
-		MPOS G 3
- 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 42,0)
-        MPOS G 3 A_Pain
+		MPOS G 2
+ 		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 8, 42,0)
+        MPOS G 2 A_Pain
 		TNT1 A 0 A_TakeInventory("IsFiring", 1)
         Goto SeeContinue
 		
 	Pain.IsFiring:	
-	CPDR A 3 A_SpawnItem("HeadshotTarget6", 0, 42,0)
+	CPDR A 3 A_SpawnItem("HeadshotTarget6", 8, 42,0)
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 32, 15, 0, 2, -20)
 	CPDR B 3 BRIGHT A_NoBlocking
 	Goto MissileContinue
 
-    Pain.Kick:
 	Pain.HeavyImpact:
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 ThrustThingZ(0,20,0,1)
@@ -281,6 +290,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		Goto Pain
 		
 	Pain.LowKick:
+	Pain.Kick:
          TNT1 A 0 A_Pain
 		 TNT1 A 0 A_TakeInventory("IsFiring", 1)
 		 TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
@@ -290,35 +300,32 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
         TNT1 A 0 A_Recoil (3)
          MPOS G 2
 		 CPBK ABC 2
-		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 0, 42,0)
+		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 8, 42,0)
 		 CPBK C 8 A_Pain
-		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 0, 42,0)
-		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 0, 42,0)
-		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 0, 42,0)
+		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 8, 42,0)
+		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 8, 42,0)
+		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 8, 42,0)
 		 CPBK C 8 A_Pain
-		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 0, 42,0)
-		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 0, 42,0)
+		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 8, 42,0)
+		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 8, 42,0)
 		 CPBK C 8 A_Pain
-		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 0, 42,0)
-		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 0, 42,0)
+		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 8, 42,0)
+		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 8, 42,0)
 		 CPBK C 8 A_Pain
-		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 0, 42,0)
-		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 0, 42,0)
+		 CPBK D 8 A_SpawnItem("HeadshotTarget8", 8, 42,0)
+		 MPOS A 0 A_SpawnItem("HeadshotTarget8", 8, 42,0)
 		 CPBK BA 4
 		 MPOS G 4
          Goto See
 		
 		
-	Death.Cutless:
-	TNT1 A 0
-	TNT1 A 0 A_Jump(32,"Death.Arm")
-	TNT1 A 0 A_JumpIfInventory("IsFiring", 1, "Death.Rare")
-	Goto Death.ARm
 	
+	Death.MonsterShotgunBullet:
 	Death.Shotgun:
 	Death.HKFT:
 		TNT1 A 0
 		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 42, 0, random (170, 190), 2, random (0, 20))
 		TNT1 A 0 A_JumpIfCloser(70, "Death.SSG")
 		TNT1 A 0 A_Jump(24,"Death.Arm")
 		TNT1 A 0 A_Jump(24,"Death.SSG")
@@ -328,10 +335,12 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		CPHM AB 4
+		TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
 		CPHM CD 4 A_JumpIf((MomY == 0), "TakeASit")
 		CPHM EF 4
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("DeadChaingunGuy_KilledByMinorHead", 3)
+		
 		Stop
 		
 	Death:
@@ -354,32 +363,38 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	TNT1 A 0 A_Recoil(2)
 	CPDR A 3 A_Scream
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 32, 15, 0, 2, -20)
 	CPDR B 3 BRIGHT A_NoBlocking
 	
 	CPDR A 3
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 32, 15, 0, 2, -20)
 	CPDR B 3 BRIGHT A_NoBlocking
 	
 
 	CPDR C 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, -20)
 	CPDR D 2 BRIGHT
 	
 	CPDR C 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, -20)
 	CPDR D 2 BRIGHT
 	
 	CPDR E 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -20, 2, 20)
 	CPDR F 2 BRIGHT
 	
 	CPDR G 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -10, 2, 40)
 	CPDR H 2 BRIGHT
 	
@@ -387,27 +402,32 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	CPDR I 2
 	TNT1 A 0 A_JumpIf((MomY == 0), "TakeASit")
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 24, 15, -10, 2, 40)
 	CPDR J 2 BRIGHT
 	TNT1 A 0 A_JumpIf((MomY == 0), "TakeASit")
 	
 	CPDR K 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 12, 15, -20, 2, 40)
 	CPDR L 2 BRIGHT
 	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 	CPDR M 2
 	TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 12, 15, -20, 2, 20)
 	CPDR N 2 BRIGHT
 	
 	CPDR M 2
+	
 	TNT1 A 0 A_CustomMissile ("MonsterMinigunTracer", 12, 15, -20, 2, 20)
 	CPDR N 2 BRIGHT
 	
 	
 	TNT1 A 0 A_SpawnItemEx ("MiniGun", 0, 30)
-	CPDR O -1
+	TNT1 A 0 A_SpawnItem("DeadChaingunguyCPDRO")
+	TNT1 A -1
 	Stop
 	
 	TakeASit:
@@ -435,10 +455,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
          TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_Half", 3)
 		Stop
 	
-	Death.Cutless:
-	TNT1 A 0
-		TNT1 A 0 A_Jump(180,"Death.Arm")
-		Goto Death
+	Death.MiniGun:
 	Death.Arm:
 	     TNT1 A 0
 	     TNT1 A 0 A_CustomMissile ("MuchBlood", 1, 0, random (0, 360), 2, random (0, 160))
@@ -578,7 +595,8 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		CPDE A 2 A_CheckFloor ("Dead.Landmine")
 		CPDE BCDEFGH 2 A_CheckFloor ("Dead.Landmine")
 		CPDE A 0 A_SpawnItem ("GrowingBloodPool")
-		CPDE I -1
+		TNT1 A 0 A_Spawnitem("DeadChaingunguyCPDEI")
+		TNT1 A -1
 		Stop
 	
 	Dead.Landmine:
@@ -586,20 +604,30 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_SpawnItem ("Ploft")
 		TNT1 AAAA 0 A_SpawnItem ("Blood")
 		CPDE I 1
-		CPDE I -1
+		TNT1 A 0 A_SpawnItem("DeadChaingunguyCPDEI")
+		TNT1 A -1
 		Stop
 	
     Death.Plasma: Death.Plasma2:
-	PBR1 A 6 A_Scream
-	TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Ashes1", 32, 0, random (0, 360), 2, random (0, 180))
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Ashes2", 32, 0, random (0, 360), 2, random (0, 180))
-	TNT1 AAAA 0 A_CustomMissile ("BluePlasmaFireNonStatic", 32, 0, random (0, 360), 2, random (0, 180))
-	PBR1 B 6 A_NoBlocking
-	PBR1 CDEFGH 6 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (0, 160))
-	PBR1 HHHHHHHHHHHHHHHHHHHHHH 8 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-	PBR1 H -1
-	Stop
+	Death.Plasma: Death.Plasma2:
+		TNT1 A 0
+		TNT1 A 0 A_Stop
+		PBR1 A 6 A_XScream
+		TNT1 AAAA 0 A_CustomMissile ("BluePlasmaFireNonStatic", 42, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAA 0 A_CustomMissile ("Blood", 32, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAA 0 A_CustomMissile ("BloodMistSmall", 32, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 32, 0, random (0, 360), 2, random (0, 180))
+		PBR1 B 6 A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
+		TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
+		PBR1 CCDD 3 A_CustomMissile ("BluePlasmaFireNonStatic", 32, 0, random (0, 360), 2, random (0, 180))
+		PBR1 EEFF 3 A_CustomMissile ("BluePlasmaFireNonStatic", 24, 0, random (0, 360), 2, random (0, 180))
+		PBR1 GG 3 A_CustomMissile ("BluePlasmaFireNonStatic", 22, 0, random (0, 360), 2, random (0, 180))
+		PBR1 H -1
+		Stop
 	
 	Death.SuperPlasma:
         TNT1 A 0
@@ -655,9 +683,12 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		Goto Death
 		
 	Death.Desintegrate:
-        TNT1 A 0 A_Scream
+        TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnItem("DesintegratedHuman")
+		TNT1 A 0 A_Stop
+		TGIB ABCDEFGHIJKLMNOPQ 4
+		TGIB Q -1
       Stop
 		
     Death.Fatality:
@@ -698,19 +729,28 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		CPOS N 5
 		CPOS MLKJIH 5
 		Goto See
-     Crush:
+		
 	 Death.Stomp:
-	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail8", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AAAAAA 0 bright A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AA 0 bright A_CustomMissile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AA 0 bright A_CustomMissile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
+	    TNT1 A 0 A_Scream
+		TNT1 A 0 A_NoBlocking
+		CPHM CDE 2 
+	    TNT1 AA 0 A_SpawnItem("MeatDeathSmall")
+		TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AAAA 0 bright A_CustomMissile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AA 0 bright A_CustomMissile ("XDeath2b", 55, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AA 0 bright A_CustomMissile ("XDeath3b", 55, 0, random (0, 360), 2, random (30, 180))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		TNT1 A 0 A_SpawnItem ("CrushedRemains")
 		TNT1 A 1
 		TNT1 A 1 A_XScream
-		TNT1 A 1 A_NoBlocking
 		Stop
+		
+	Crush:
+		TNT1 A 0
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItem("BodyRemovalThing")
+		TNT1 A 1 A_XScream
+		Stop	
 
     Pain.KillMe:
     Pain.Taunt:
@@ -727,6 +767,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Death.SSG:
 	    MPSD A 1 A_Pain
 		MPSD A 1 A_FaceTarget
+		TNT1 A 0 A_SpawnItem("Muchblood2", 0, 30)
 		TNT1 A 0 A_SpawnItem("BloodSplasher2")
 	    TNT1 AAA 0 bright A_CustomMissile ("SuperGoreSpawner", 35, 0, random (170, 190), 2, random (0, 40))
         //TNT1 A 0 A_CustomMissile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
@@ -749,7 +790,8 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		MPSD BBBBCCCC 2 A_CustomMissile ("Brutal_LiquidBlood2", 34, 0, random (0, 60), 2, random (30, 60))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		MPSD DDDDDDDDDDDDDDDDDDDDD 6 A_CustomMissile ("Brutal_LiquidBlood2", 16, 0, random (0, 60), 2, random (30, 60))
-        MPSD D -1
+        TNT1 A 0 A_SpawnItem("DeadChaingunguyMPSDD")
+		TNT1 A -1
         Stop
 		
 	StealthKill:
@@ -786,7 +828,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 
 Actor DeadChaingunGuy1: CurbstompedMarine
 {
-    Radius 0
+    Radius 12
     Height 12
     +SHOOTABLE
     +NOTELEPORT
@@ -806,89 +848,48 @@ States
         CPOD G -1
         Stop
 	Raise:
-		CPOD GFEDCBA 5
-        TNT1 A 0 A_SpawnItem ("ChainGunGuy1", 3)
+		TNT1 A 2 A_CustomMissile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60)
+		TNT1 A 2 A_CustomMissile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60)
+		TNT1 A 0 A_SpawnItem("TeleportFog")
+		TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_SpawnItem ("Zombie_Man")
 		Stop
-    Death:
-         TNT1 A 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
-        Stop
-    Death.CutLess:
-    Death.Cut:
-        TNT1 AA 0 A_CustomMissile ("MuchBlood", 1, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeathChainArm", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("XDeathChainLeg", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_XScream
-		TNT1 O 0 A_NoBlocking
-		TNT1 A 0 A_CustomMissile ("RipGuts", 0, 0, random (0, 360), 2, random (0, 160))
-         TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_Half", 5)
-     Stop
-    Death.Plasma: Death.Plasma2:
-        TNT1 A 0
-        TNT1 A 0 A_XScream
-        TNT1 A 0 A_NoBlocking
-        TNT1 AAA 0 A_CustomMissile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
-		EXPL AAA 0 A_CustomMissile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0
-        Stop}}
+   }}
 
 Actor DeadChaingunGuy_NoHead: DeadChaingunGuy1
 {Health 200 States{Spawn:
 		CPHS F -1
-        Stop    
-       Death.Cut:
-  	     TNT1 A 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
-		Stop}}
+        Stop}}
 
 Actor DeadChaingunGuy_Half: DeadChaingunGuy1
 {Health 200 States{Spawn:
         CPSC H -1
-        Stop
-       Death.Cut:        Death.Cutless:	        Death:
-  	     TNT1 A 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
-		Stop}}
+        Stop}}
+		
+Actor DeadChaingunGuyCPDRO: DeadChaingunGuy1
+{Health 200 States{Spawn:
+        CPDR O -1
+        Stop}}		
 
 
 Actor BrutalizedDeadChaingunGuy: DeadChaingunGuy1
 {Health 200 States{Spawn:
         CFTB C -1
-        Stop
-       Death.Cut:        Death.Cutless:	        Death:
-  	     TNT1 A 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
-		Stop}}
+        Stop}}
 
 Actor SuperBrutalizedDeadChaingunGuy: DeadChaingunGuy1
 {Health 200 States{Spawn:
         CFTB D -1
-        Stop
-       Death.Cut:        Death.Cutless:	        Death:
-  	     TNT1 A 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
-		Stop}}
+        Stop}}
 
 Actor DeadChaingunGuy_KilledByMinorHead: DeadChaingunGuy1
 {Health 200 States{Spawn:
         CPHM F -1
-        Stop
-       Death.Cut:        Death.Cutless:	        Death:
-  	    
-		TNT1 A 0 A_CustomMissile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_CustomMissile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_CustomMissile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160))
-		Stop}}
+        Stop}}
 
-actor BrutalizedDeadCommando1: CurbstompedMarine
+actor BrutalizedDeadCommando1: DeadChaingunguy1
 {
     States
     {
@@ -897,7 +898,7 @@ CPOD L -1
        Stop    }}
 	   
 	   
-actor BrutalizedCommandoLegs: CurbstompedMarine
+actor BrutalizedCommandoLegs: DeadChaingunguy1
 {
     States
     {
@@ -921,6 +922,7 @@ Actor DeadChaingunguy_Slumped: ZombiemanTorso
 +NOPAIN
 Health 200
 DamageFactor "Head", 15.0
++NOBLOCKMONST
 Height 22
 Radius 6
 Scale 0.9
@@ -967,6 +969,26 @@ States{Spawn:
 		Stop
 		}}
 		
+		
+		
+actor DeadChaingunguyMPSDD: DeadChaingunguy1
+{
+    States
+    {
+    Spawn:
+MPSD D -1
+       Stop    }}
+
+actor DeadChaingunguyCPDEI: DeadChaingunguy1
+{
+    States
+    {
+    Spawn:
+CPDE I -1
+       Stop    }}
+
+
+
 		
 Actor DeadChaingunguy_Slumped_NoHead: ZombiemanTorso
 {

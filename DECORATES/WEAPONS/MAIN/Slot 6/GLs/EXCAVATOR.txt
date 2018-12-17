@@ -1,0 +1,531 @@
+// --------------------------------------------------------------------------
+//
+// Grenade Launcher
+//
+// --------------------------------------------------------------------------
+Actor DropShotMode : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR ExcavatorRounds : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 5
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 5
+}
+
+ACTOR Excavator : CMEWeapon
+{
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive 5
+	Weapon.AmmoType1 "40mmGrenadeAmmo"
+	Weapon.AmmoType2 "ExcavatorRounds"
+	+FLOORCLIP
+	+DONTGIB
+    Inventory.PickupSound "misc/ROCKBOXA"
+    +WEAPON.NOAUTOAIM
+	+WEAPON.EXPLOSIVE
+	+WEAPON.NOAUTOFIRE
+	Tag "Excavator Launcher"
+	Inventory.PickupMessage "You got the Excavator! (Slot 5)"
+	States
+	{
+	
+	Ready:
+		TNT1 A 0 A_PlaySound("RLANDRAW")
+        5DKS DCBA 1
+       TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		5DKG A 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+        Goto Ready+7
+	
+	Ready2:
+        TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeClimb")
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		6DKG A 1 
+			{
+				A_WeaponReady;
+				A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"),WOF_KEEPY);
+			}
+        Loop
+		
+	WeaponSpecial:
+		TNT1 A 0 A_JumpIfInventory("DropShotMode", 1, "SwitchToDigger")
+		TNT1 A 0 A_Print("Drop Charge Mode Activated")
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_GiveInventory("DropShotMode")		
+		5DKF D 2		
+		5DKS ABC 2
+		TNT1 A 0 A_PlaySound("excavator/switch")		
+		5DKS CBA 2
+		6DKF D 2
+		6DKG A 2
+		Goto Ready2
+		
+	SwitchToDigger:
+		TNT1 A 0 A_Print("Drill Charge Mode Activated")
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_Takeinventory("DropShotMode")		
+		6DKF D 2		
+		5DKS ABC 2
+		TNT1 A 0 A_PlaySound("excavator/switch")			
+		5DKS CBA 2
+		5DKF D 2
+		5DKG A 2
+		Goto Ready+7	
+	
+	Deselect:
+	    TNT1 A 0 A_PlaySound("weapons/changing", 1)
+				TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+	
+        5DKS ABCD 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		Wait
+		
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+		Wait
+		
+	GoToPurist:
+		TNT1 AAA 0
+		TNT1 A 0 A_Print("Classic v20 Weapons Only!")
+		TNT1 A 0 A_SelectWeapon("Rocket_Launcher")
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		Wait
+
+	Steady:
+	TNT1 A 1
+	Goto Ready
+
+	Fire:
+		TNT1 A 0 A_WeaponOffset(0,32)
+        TNT1 A 0 A_JumpIfInventory("ExcavatorRounds",1,1)
+        Goto Reload
+		TNT1 A 0 A_JumpIfInventory("DropShotMode", 1, "FireDropShot")
+		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
+        TNT1 A 0 A_FireBullets(0, 0, 1, 50, "shotpuff", 0, 130)
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("excavator/firedigger", 18)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_ZoomFactor(0.96)
+		TNT1 A 0 A_FireCustomMissile("ExcavatorDrill", 0, False, 0, 0, True, -3)
+		5DKF A 2 BRIGHT 
+		TNT1 A 0 A_TakeInventory("ExcavatorRounds",1)
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		5DKF B 2 BRIGHT A_ZoomFactor(0.97)
+		5DKF C 2 BRIGHT A_ZoomFactor(0.98)
+		5DKF D 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(1.0)
+        5DKG AAAAAAAA 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_PlaySound("RLCYCLE2", 5)
+		5DKG A 5
+        5DKG A 1 A_ReFire
+        Goto Ready+7
+		
+	FireDropShot:
+		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
+        TNT1 A 0 A_FireBullets(0, 0, 1, 50, "shotpuff", 0, 130)
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("excavator/firedropshot", 18)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		TNT1 A 0 A_ZoomFactor(0.96)
+		TNT1 A 0 A_FireCustomMissile("ExcavatorDropShot", 0, False, 0, 0, True, 0)
+		6DKF A 2 BRIGHT 
+		TNT1 A 0 A_TakeInventory("ExcavatorRounds",1)
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		6DKF B 2 BRIGHT A_ZoomFactor(0.97)
+		6DKF C 2 BRIGHT A_ZoomFactor(0.98)
+		6DKF D 1 BRIGHT A_ZoomFactor(0.99)
+		TNT1 A 0 A_ZoomFactor(1.0)
+        6DKG AAAAAAAA 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_PlaySound("RLCYCLE2", 5)
+        6DKG A 5 
+        6DKG A 1 A_ReFire
+        Goto Ready+7
+
+AltFire:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		TNT1 A 0 A_JumpIfInventory("DropShotMode", 1, "DetonateDropShot")
+		7DKG A 1 Thing_Projectile(1743,205,0,0,0)
+		DETO B 0 A_PlayWeaponSound("excavator/detonate")
+		TNT1 A 0 Thing_ReMove(1743)
+		7DKG BC 1
+		7DKG C 1
+		Goto Ready+7
+		
+	DetonateDropShot:
+		7DKG A 1
+		MGLG B 0
+		MGLG B 0 Thing_Projectile(1744,208,0,0,0)
+		DETO B 0 A_PlayWeaponSound("excavator/detonate")
+		TNT1 A 0 Thing_ReMove(1744)
+		7DKG BC 1
+		7DKG C 1
+		Goto Ready+7
+		
+	Spawn:
+		5DUN A -1
+		Stop
+		
+		
+	Reload:
+		5DKR A 1 A_WeaponReady
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        TNT1 A 0 A_JumpIfInventory("ExcavatorRounds",5,61)
+        TNT1 A 0 A_JumpIfInventory("40mmGrenadeAmmo",1,3)
+        Goto Ready+12
+        TNT1 AAAA 0
+        TNT1 A 0 A_PlaySound("5OCKLOAD", 3)
+        5DKR ABCDE 2
+        TNT1 A 0 A_FireCustomMissile("RocketCaseSpawn",-30,0,-4,-4)
+        5DKR EFJKLMNOP 2 
+        TNT1 AAAA 0
+		TNT1 A 0 A_PlaySound("5OCKSLAP", 4)
+        5DKR QRST 2
+		TNT1 A 0 A_PlaySound("RLCYCLE2", 2)
+		5DKR A 10
+        TNT1 A 0
+		TNT1 AAA 0
+		
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("ExcavatorRounds",5,15)
+		TNT1 A 0 A_JumpIfInventory("40mmGrenadeAmmo",1,3)
+		Goto Ready+6
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("ExcavatorRounds",1)
+		TNT1 A 0 A_Takeinventory("40mmGrenadeAmmo",1)
+		Goto Reload+45
+
+		TNT1 AAAAAAAAA 0
+		TNT1 A 0 
+        MGLG A 0 A_Refire
+        Goto Ready+7
+	}
+}
+
+ACTOR DiggerTrail
+{
+	Scale 1.1
+	+noteleport
+	+NOINTERACTION
+	+DOOMBOUNCE
+	+RANDOMIZE
+	height 1
+	radius 1
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SetScale(ScaleX*frandom(0.85,1.35), ScaleY*frandom(0.9,1.25))
+		SPIK ABBCCBBA 2
+		SPIK A 60
+		SPIK AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.02)
+		Stop
+	}
+}
+
+ACTOR DrillBombExplode
+{
+    SeeSound "superbaron/spike"
+    Radius 2
+    Height 1
+    Speed 0
+	Scale 1.15
+	DamageType ExplosiveImpact
+    SpawnID 205
+	+NOCLIP
+	+Thruactors
+    States
+    {
+	Spawn:
+	TNT1 AAAAA 0 A_CustomMissile ("MudDust", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAAAA 0 A_CustomMissile ("DirtChunk1", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAAAA 0 A_CustomMissile ("DirtChunk2", 10, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAAAA 0 A_CustomMissile ("BrownCloud", 0, 0, random (0, 90), 2, random (30, 150))
+	XXXX A 0 A_CustomMissile ("ExplosionQuake", 1, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_Explode(15, 32, 0, 12)
+	5DKP EFGHIJIKLMNOONNML 1 BRIGHT 
+	EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+	TNT1 A 0 A_CustomMissile("BigRicoChet")
+	TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+	TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    TNT1 A 0 A_SpawnItemEx ("NewGroundExplosionSmoke",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 AAAA 0 A_CustomMissile ("FireworkSFXType2", 0, 0, random (0, 360), 2, random (30, 60))
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 12, 0, random (0, 360), 2, random (0, 180))
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 12, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 12, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 12, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItemEx ("ExcavatorExplosion",0,0,12,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    TNT1 A 0 A_CustomMissile ("ExcavatorExploFX", random(1,5), random(-10,10), random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_Playsound("excavator/explode", 1)
+	TNT1 A 0 A_PlaySound("FAREXPL", 3)
+	Stop
+    }
+}
+
+
+Actor ExcavatorDrillBomb
+{
+  Radius 8
+  Height 4
+  Speed 12
+  Damage 1
+  DamageType "ExplosiveImpact"
+  +Ripper
+  +FloorHugger
+  +BloodlessImpact
+  Projectile
+  Missileheight 0
+  States
+  {
+  Spawn:
+	TNT1 AA 0
+	TNT1 A 1 A_PlaysoundEx("excavator/digloop", 5, 1)
+	TNT1 A 0 Thing_ChangeTid(0,1743)
+	Travel:
+	TNT1 A 3 
+    TNT1 A 0 A_SpawnItemEx ("DiggerTrail",random (-2, 2),random (-1, 1),0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_CustomMissile ("MudDust", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AA 0 A_CustomMissile ("DirtChunk1", 0, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AA 0 A_CustomMissile ("DirtChunk2", 0, 0, random (0, 360), 2, random (30, 150))
+	EXPL A 0 Radius_Quake (2, 8, 0, 8, 0)
+    Loop
+	
+  Death:
+	TNT1 A 0 A_StopSound(5)
+    TNT1 A 0 A_SpawnItemEx ("DrillBombExplode",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	Stop
+  }
+}
+
+
+ACTOR ExcavatorDrill
+{
+	
+	+MISSILE
+	//+Ripper
+	+SOLID
+	+BOUNCEONWALLS
+	+BOUNCEONFLOORS
+	+BOUNCEONCEILINGS
+	+MOVEWITHSECTOR
+	+USEBOUNCESTATE
+	+DONTSPLASH
+	Scale 1.15
+    Speed 25
+	Radius 6
+	Height 6
+    Gravity 1.25
+	Damage 50
+	DamageType ExplosiveImpact
+    Decal "Scorch"
+    States
+    {
+	Spawn:
+		TNT1 A 0 A_CheckFloor("Dig")
+		5DKP A 2 BRIGHT A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem("RocketFlare",-2,0)
+		TNT1 A 0 A_CheckFloor("Dig")
+		5DKP A 2 BRIGHT A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_CheckFloor("Dig")
+		Loop
+		
+	Dig:
+	Bounce.Floor:
+	Death:
+		TNT1 A 0 
+		TNT1 A 0 A_Playsound("excavator/digging")
+		TNT1 A 0 A_CustomMissile("ExcavatorDrillBomb", 1, 0, 180)
+		Stop
+		
+	Crash:
+	Bounce.Ceiling:
+	Bounce.Walls:
+		TNT1 A 0 A_StopSound(6)
+        EXPL A 0 Radius_Quake (3, 24, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("BigRicoChet")
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("NewGroundExplosionSmoke",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0 A_CustomMissile ("ExcavatorExploFX", random(1,5), random(-10,10), random (0, 360), 2, random (0, 360))
+        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx ("ExcavatorExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_Playsound("excavator/explode", 1)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		Stop
+    }
+}
+
+ACTOR DropShotExplode
+{
+    Radius 10
+    Height 10
+    Speed 25
+    SpawnID 208
+	Projectile
+	Scale 1.15
+	Damagetype Head
+	+MISSILE
+	+Ripper
+    States
+    {
+	
+	Spawn:
+		TNT1 A 0 A_SpawnItem("YellowFlareSmall",-2,0)
+		5DKP AA 1
+		TNT1 A 0 A_Playsound("Weapons/StickyBombTick", 3)
+		5DKP BB 2
+		TNT1 A 0 A_SpawnItem("YellowFlareSmall",-2,0)
+		5DKP CC 1
+		5DKP DD 2
+		TNT1 A 0 A_SpawnItem("YellowFlareSmall",-2,0)
+		Fall:
+		5DKP D 1 A_CheckFloor("Boom")
+		TNT1 A 0 A_Explode(120, 24, 0, 12)
+		TNT1 A 0 ThrustThingZ(0, 30, 1, 1)
+		Loop
+		
+	Boom:
+	Death:
+		TNT1 A 0 A_Playsound("superbaron/spike")
+		TNT1 AAAAA 0 A_CustomMissile ("MudDust", 0, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAAAA 0 A_CustomMissile ("DirtChunk1", 0, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAAAA 0 A_CustomMissile ("DirtChunk2", 10, 0, random (0, 360), 2, random (30, 150))
+		TNT1 AAAAA 0 A_CustomMissile ("BrownCloud", 0, 0, random (0, 90), 2, random (30, 150))
+		XXXX A 0 A_CustomMissile ("ExplosionQuake", 1, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItemEx ("DiggerTrail",random (-3, 0),random (-3, -1),0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("DiggerTrail",random (0, 3),random (1, 3),0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		5DKP DDDDDDDDDDDDDD 1 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		
+		EXPL A 0 Radius_Quake (3, 24, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_CustomMissile("BigRicoChet")
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("NewGroundExplosionSmoke",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAA 0 A_CustomMissile ("FireworkSFXType2", 0, 0, random (0, 360), 2, random (30, 60))
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_CustomMissile ("ExcavatorExploFX", random(1,5), random(-10,10), random (0, 360), 2, random (0, 360))
+		
+		TNT1 A 0 A_SpawnItemEx ("ExcavatorExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_Playsound("excavator/explode", 1)
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		Stop
+    }
+}
+
+ACTOR ExcavatorDropShot
+{
+	Projectile
+	+MISSILE
+	//+Ripper
+	+NOGRAVITY
+	+MOVEWITHSECTOR
+	+USEBOUNCESTATE
+	+DONTSPLASH
+    Speed 35
+	Radius 6
+	Height 6
+	Damage 50
+	Scale 1.15
+	DamageType ExplosiveImpact
+    Decal "Scorch"
+    States
+    {
+	Spawn:
+		TNT1 A 0 A_PlaysoundEx("excavator/digloop", 5, 1)
+		TNT1 A 0 Thing_ChangeTid(0,1744)
+		Travel:
+		5DKP A 2 BRIGHT A_SpawnItem ("RocketSmokeTrail52")
+		TNT1 A 0 A_SpawnItem("GreenFlareSmall",-2,0)
+		TNT1 A 0 A_CustomMissile ("ShotgunParticles", 0, 0, random (0, 360), 2, random (30, 150))
+		5DKP A 2 BRIGHT A_SpawnItem ("RocketSmokeTrail52")
+		Loop
+		
+
+	Death:
+	Crash:
+	Bounce.Ceiling:
+	Bounce.Walls:
+	Bounce.Floor:
+		TNT1 A 0 A_SpawnItemEx ("DropShotExplode",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		Stop
+		
+    }
+}

@@ -38,7 +38,7 @@ dropitem "Beaker"
 dropitem "Doom4SGPT"
 dropitem "Doom2016SG"
 dropitem "ClassicSG"
-dropitem "MK5VOPS"
+dropitem "MK5OVPS"
 dropitem "NailSG"
 dropitem "R870"
 dropitem "UTS15"
@@ -156,4 +156,60 @@ Actor ChaingunReplacer : RandomSpawner replaces Chaingun
 {
 dropitem "MinigunSpawner"
 dropitem "MachineGunSpawner"
+}
+Actor RocketLauncherSpawner : RandomSpawner
+{
+dropitem "Rocket_Launcher"
+dropitem "DS9000"
+dropitem "DukeRPG"
+dropitem "KRATOS"
+dropitem "D2016RL"
+dropitem "StingRAY9"
+dropitem "UT2004RocketLauncher"
+dropitem "WarMachine"
+dropitem "RPG7"
+}
+Actor GrenadeLauncherSpawner : RandomSpawner
+{
+dropitem "Grenade_Launcher"
+dropitem "InsanityLauncher"
+dropitem "Quake1GrenadeLauncher"
+dropitem "Quake4GrenadeLauncher"
+dropitem "M79"
+}
+Actor RocketLauncherReplacer: RandomSpawner Replaces RocketLauncher
+{
+dropitem "GrenadeLauncherSpawner"
+dropitem "RocketLauncherSpawner"
+}
+Actor PlasmaGunReplacer: RandomSpawner replaces PlasmaRifle
+{
+dropitem "Plasma_Gun"
+dropitem "Quake4HyperBlaster"
+dropitem "IC9"
+dropitem "D2016PG"
+dropitem "HyperBlaster"
+dropitem "HyperBlasterMK2"
+dropitem "M2"
+dropitem "PetrovecM2"
+dropitem "PlasmaMinigun"
+dropitem "CML6"
+dropitem "RailGun"
+dropitem "Gauss_Cannon"
+dropitem "FreezerRifle"
+dropitem "IonBlaster"
+dropitem "D4VortexRifle"
+}
+Actor BFGSpawn : RandomSpawner replaces BFG9000
+{
+dropitem "BIG_FUCKING_GUN"
+dropitem "BFG2016"
+dropitem "BIG_FUCKING_GUN_MK2"
+dropitem "BFG10k"
+dropitem "BIG_FUCKING_GUN_MKIV"
+dropitem "BIG_FUCKING_Minigun"
+dropitem "BIG_FUCKING_NUCLEAR_Minigun"
+dropitem "Karasawa"
+dropitem "BIG_FUCKING_SHOTGUN"
+dropitem "EX099"
 }

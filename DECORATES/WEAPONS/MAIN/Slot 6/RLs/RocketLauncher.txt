@@ -5,7 +5,7 @@
 //
 // --------------------------------------------------------------------------
 
-ACTOR Rocket_Launcher : CMEWeapon Replaces RocketLauncher
+ACTOR Rocket_Launcher : CMEWeapon 
 {
 	Game Doom
 	SpawnID 29

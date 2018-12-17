@@ -1,0 +1,306 @@
+
+// --------------------------------------------------------------------------
+//
+// Insanity Launcher
+//
+// --------------------------------------------------------------------------
+
+Actor InsaneMode1 : Inventory {Inventory.maxamount 1}
+Actor InsaneMode2 : Inventory {Inventory.maxamount 1}
+
+ACTOR InsaneRounds : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 10
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 10
+   Inventory.Icon "ILLPA0"
+}
+
+#include "decorates/weapons/main/slot 6/GLs/Insane Grenade.txt"
+#include "decorates/weapons/main/slot 6/GLs/Insane Incen.txt"
+#include "decorates/weapons/main/slot 6/GLs/Insane Tiberium.txt"
+
+ACTOR InsanityLauncher : CMEWeapon
+{
+	Game Doom
+	SpawnID 29
+	Speed 20
+	Damage 20
+	Weapon.SelectionOrder 9500
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive2 0
+	Weapon.AmmoGive1 15
+	Weapon.AmmoType1 "40mmGrenadeAmmo"
+	Weapon.AmmoType2 "InsaneRounds"
+    Inventory.PickupSound "ROCKPKUP"
+	tag "Insanity Grenade Launcher - Round Switch"
+    +WEAPON.NOAUTOAIM
+	+FORCEXYBILLBOARD
+	+WEAPON.AXEBLOOD
+	+WEAPON.NO_AUTO_SWITCH
+	Inventory.PickupMessage "You scavenged the Insanity Grenade Launcher"
+	States
+	{
+	
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
+        TNT1 A 8 A_PlaySound("RLANDRAW")
+        ILLS ABCD 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 AAAAA 0
+        //TNT1 A 0 A_JumpIfInventory("RocketRounds",1,2)
+        //Goto Reload
+        TNT1 AAAA 0
+	RealReady:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		ILLG A 1 A_WeaponReady
+        Goto RealReady
+	Deselect:
+        ILLS DCBA 1
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Giveinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+
+		NISG A 0 A_Raise
+		Wait
+	
+	WeaponSpecial:
+	FireModeSwitch:
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfInventory("InsaneMode1",1, "UseTiberium")
+		TNT1 A 0 A_JumpIfInventory("InsaneMode2",1, "UseNormal")
+		
+	UseFire:
+		TNT1 A 0 A_Giveinventory("InsaneMode1",1)
+		TNT1 A 0 A_Print("High Explosive + Incendiary Bomb Mode")
+		TNT1 A 0 A_playsound("PLSDRAW", 4)
+		ILLG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	UseTiberium:
+		TNT1 A 0 A_Takeinventory("InsaneMode1",1)
+		TNT1 A 0 A_Giveinventory("InsaneMode2",1)
+		TNT1 A 0 A_Print("Tiberium Mode")
+		TNT1 A 0 A_playsound("PLSDRAW", 4)
+		ILLG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+		
+	UseNormal:
+		TNT1 A 0 A_Takeinventory("InsaneMode1",1)
+		TNT1 A 0 A_Takeinventory("InsaneMode2",1)
+		TNT1 A 0 A_Print("Fragmentation Grenade Mode")
+		TNT1 A 0 A_playsound("PLSDRAW", 4)
+		ILLG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
+		Goto RealReady
+	
+	AltFire:
+        TNT1 A 0 A_JumpIfInventory("InsaneRounds",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("InsaneMode2",1,"AltFireTiberium")
+		TNT1 A 0 A_JumpIfInventory("InsaneMode1",1,"AltFireIncendiary")
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("m203/fire",4)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		ILLF A 1 BRIGHT A_FireCustomMissile("InsanityGrenadeMissile", 0, 1, 0, -10)//HomingRocket
+		TNT1 A 0 A_Takeinventory("InsaneRounds",1)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		ILLF BCD 1 BRIGHT
+        ILLF E 1 A_SetPitch(-6.0 + pitch)
+        ILLG BCD 1 A_SetPitch(2.0 + pitch)
+		ILLG EF 1
+        ILLG A 0
+        TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	AltFireTiberium:
+        TNT1 A 0 A_JumpIfInventory("InsaneRounds",5,2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("IGFIRE",4)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		ILLF A 1 BRIGHT A_FireCustomMissile("InsanityGrenadeMissileTiberium", 0, 1, 0, -10)//HomingRocket
+		TNT1 A 0 A_Takeinventory("InsaneRounds",5)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		ILLF BCD 1 BRIGHT
+        ILLF E 1 A_SetPitch(-6.0 + pitch)
+        ILLG BCD 1 A_SetPitch(2.0 + pitch)
+		ILLG EF 1
+        ILLG A 0
+        TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	AltFireIncendiary:
+        TNT1 A 0 A_JumpIfInventory("DS9000Rounds",2,2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("IGFIRE2",4)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		ILLF A 1 BRIGHT A_FireCustomMissile("InsanityGrenadeMissileFire", 0, 1, 0, -10)//HomingRocket
+		TNT1 A 0 A_Takeinventory("InsaneRounds",2)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		ILLF BCD 1 BRIGHT
+        ILLF E 1 A_SetPitch(-6.0 + pitch)
+        ILLG BCD 1 A_SetPitch(2.0 + pitch)
+		ILLG EF 1
+        ILLG A 0
+        TNT1 A 0 A_Refire
+        Goto RealReady
+
+	Fire:
+        TNT1 A 0 A_JumpIfInventory("InsaneRounds",1,2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("InsaneMode2",1,"FireTiberium")
+		TNT1 A 0 A_JumpIfInventory("InsaneMode1",1,"FireIncendiary")
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("m203/fire",4)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		ILLF A 1 BRIGHT A_FireCustomMissile("InsanityShortGrenade", 0, 1, 0, -10)//HomingRocket
+		TNT1 A 0 A_Takeinventory("InsaneRounds",1)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		ILLF BCD 1 BRIGHT
+        ILLF E 1 A_SetPitch(-6.0 + pitch)
+        ILLG BCD 1 A_SetPitch(2.0 + pitch)
+		ILLG EF 1
+        ILLG A 0
+        TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	FireTiberium:
+        TNT1 A 0 A_JumpIfInventory("InsaneRounds",5,2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("IGFIRE",4)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		ILLF A 1 BRIGHT A_FireCustomMissile("InsanityShortGrenadeTiberium", 0, 1, 0, -10)//HomingRocket
+		TNT1 A 0 A_Takeinventory("InsaneRounds",5)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		ILLF BCD 1 BRIGHT
+        ILLF E 1 A_SetPitch(-6.0 + pitch)
+        ILLG BCD 1 A_SetPitch(2.0 + pitch)
+		ILLG EF 1
+        ILLG A 0
+        TNT1 A 0 A_Refire
+        Goto RealReady
+		
+	FireIncendiary:
+        TNT1 A 0 A_JumpIfInventory("DS9000Rounds",2,2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+        TNT1 A 0 A_PlaySound ("IGFIRE2",4)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter")
+		ILLF A 1 BRIGHT A_FireCustomMissile("InsanityShortGrenadeFire", 0, 1, 0, -10)//HomingRocket
+		TNT1 A 0 A_Takeinventory("InsaneRounds",2)
+        //TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
+		ILLF BCD 1 BRIGHT
+        ILLF E 1 A_SetPitch(-6.0 + pitch)
+        ILLG BCD 1 A_SetPitch(2.0 + pitch)
+		ILLG EF 1
+        ILLG A 0
+        TNT1 A 0 A_Refire
+        Goto RealReady
+
+
+    Reload:
+		ILLG A 1 A_WeaponReady
+		ILLG A 6
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+        TNT1 A 0 A_JumpIfInventory("InsaneRounds",10,"RealReady")
+        TNT1 A 0 A_JumpIfInventory("40mmGrenadeAmmo",1,3)
+        Goto Ready+18
+        TNT1 AAAA 0
+        TNT1 A 0 A_PlaySound("IGRELOAD",3)
+		TNT1 A 0 A_SetAngle(-2 + angle)
+        TNT1 A 0 A_SetPitch(+2 + pitch)
+        ILLR ABCDDE 1 
+        TNT1 A 0 A_FireCustomMissile("RocketCaseSpawn",-30,0,-4,-4)
+        ILLR EFFGG 1
+		TNT1 A 0 A_SetAngle(+2 + angle)
+        TNT1 A 0 A_SetPitch(-2 + pitch)
+		ILLR HHIIJJKLM 1
+		TNT1 A 0 A_SetAngle(+1 + angle)
+        ILLR MMMNOP 1
+		TNT1 A 0 A_SetAngle(-1 + angle)
+		ILLR Q 3
+		ILLR RS 1
+		ILLR TUV 2
+		Goto FinishReload
+		
+		FinishReload:
+		TNT1 AAAAAA 0
+		TNT1 A 0 A_JumpIfInventory("InsaneRounds",10,"NoNeedToReload")
+		TNT1 A 0 A_JumpIfInventory("40mmGrenadeAmmo",1,3)
+		Goto Ready+6
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Giveinventory("InsaneRounds",1)
+		TNT1 A 0 A_Takeinventory("40mmGrenadeAmmo",1)
+		Goto FinishReload
+		
+		TNT1 AAAAAAAAAA 0
+		
+		NoNeedToReload:
+        ILLG A 1 A_Refire
+        Goto RealReady
+
+
+	Spawn:
+		ILLP A -1
+		Stop
+	}
+}

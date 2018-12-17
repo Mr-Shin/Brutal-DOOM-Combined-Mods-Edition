@@ -1,0 +1,104 @@
+actor Quake4Grenade : Grenade
+{
+seesound "QBOUNCE"
+deathsound "GRNXPLO"
+BounceSound "QBOUNCE"//"Q3Grenade/Bounce"
+//-USESTBOUNCESOUND
+speed 40
+scale 0.01
+  states
+  {
+  Spawn:
+    Q4GR ABCDEFGHIJ 3 bright
+    goto Spawn+1
+		
+	XDeath:
+	Death:
+	Explode:
+	Death.Slime:
+	Death.Fire:
+	Death.Bullet:
+	Death.Shotgun:
+	Death.SSG:
+	Death.Cutless:
+	Death.Shrapnel:
+	    TNT1 A 0 Bright A_SpawnItem("GrayShockWave",0,0,0)
+		TNT1 a 0 A_playsound("GRNXPLO")
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+        EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("GrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("GRNXPLO", 1)
+		TNT1 A 1
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 20
+		//TNT1 AAAAAAAAAAAAA 3 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+  Stop
+  }
+}
+
+ACTOR ShortGrenadeQuake4 : GrenadeMissile
+{
+-DOOMBOUNCE
++SLIDESONWALLS
+seesound "QBOUNCE"
+scale 0.01
+deathsound "GRNXPLO"
+BounceSound "QBOUNCE"//"Q3Grenade/Bounce"
+	States
+	{
+	Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
+		Q4GR ABCDEFGHIJ 3 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		Loop
+	
+	SpawnUnderwater:
+		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
+		Q4GR ABCDE 3
+		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode")
+		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
+		Q4GR FGHIJ 3	
+		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode")
+	    Goto Spawn
+	Death:
+	XDeath:
+	Explode:
+	Death.Slime:
+	Death.Fire:
+	Death.Bullet:
+	Death.Shotgun:
+	Death.SSG:
+	Death.Cutless:
+	Death.Shrapnel:
+	    TNT1 A 0 Bright A_SpawnItem("GrayShockWave",0,0,0)
+		TNT1 a 0 A_playsound("GRNXPLO")
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+        EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("GrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        EXPL AAAAA 0 A_CustomMissile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("GRNXPLO", 1)
+		TNT1 A 1
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 20
+		//TNT1 AAAAAAAAAAAAA 3 A_CustomMissile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop
+  }
+}

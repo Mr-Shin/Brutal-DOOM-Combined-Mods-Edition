@@ -9,7 +9,7 @@ ACTOR M9Beretta : CMEWeapon
 	Obituary "%o was popped by %k"
     AttackSound "None"
     Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "You got the M9 Beretta!"
+	Inventory.Pickupmessage "You got the M9 Beretta!!! (Slot 2)"
     +WEAPON.NOAUTOAIM
     +WEAPON.NOAUTOFIRE
     +FORCEXYBILLBOARD

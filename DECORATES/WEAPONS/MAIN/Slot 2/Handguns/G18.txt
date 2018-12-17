@@ -31,7 +31,7 @@ ACTOR G18 : CMEWeapon
 	Obituary "%o ate %k's G18"
     AttackSound "None"
     Inventory.PickupSound "G18CIN"
-	Inventory.Pickupmessage "You got the G18!"
+	Inventory.Pickupmessage "You got the G18!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -160,8 +160,8 @@ ACTOR G18 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 		
 	RecoilFlash:
