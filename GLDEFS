@@ -7136,19 +7136,6 @@ object PurplePlasmaFire
 // -- Weapon Upgrades--
 // ----------------------
 
-pointlight PulseC
-{
-    color 0.2 0.0 0.4
-    size 25
-    offset 0 15 0
-	dontlightself 1
-}
-
-object PulseCannon
-{
-	frame PLCU { light PulseC }
-}
-
 
 
 
