@@ -566,24 +566,7 @@ Actor GiveArmor : BasicArmorBonus
 }
 
 
-ACTOR CrueltyBonus5health : Health
-{
-	Game Doom
-	SpawnID 152
-	-COUNTITEM
-	Radius 220
-	+INVENTORY.ALWAYSPICKUP
-	//inventory.pickupsound "FATALITY"
-	Inventory.Amount 5
-	Inventory.MaxAmount 9999
-	Inventory.PickupMessage "*** Cruelty Bonus awarded! +5 health ***"
-	States
-	{
-	Spawn:
-        TNT1 A 50
-		Stop
-	}
-}
+
 ACTOR CrueltyBonus5armor : BasicArmorBonus
 {
 	Game Doom
@@ -620,12 +603,6 @@ ACTOR CrueltyBonus10armor : CrueltyBonus5armor
 }
 
 
-ACTOR CrueltyBonus1health : CrueltyBonus5health
-{
-	Inventory.Amount 1
-	//inventory.pickupsound "FATALITY"
-	Inventory.PickupMessage "*** Cruelty Bonus awarded! +1 Health ***"
-}
 Actor LightArmorSpawn : RandomSpawner Replaces GreenArmor
 {
 dropitem "LightVest"

@@ -22,7 +22,7 @@ ACTOR Underblood1
    +NODAMAGETHRUST
    +MOVEWITHSECTOR
    +CORPSE
-   -DONTSPLASH
+   +DONTSPLASH
    +THRUACTORS
    Mass 1
     States
@@ -67,3 +67,9 @@ ACTOR Underblood3: Underblood1
  speed 2
  Alpha 0.3
 }
+
+ACTOR UnderbloodGreen: Underblood1
+{translation "168:191=112:127", "16:47=123:127"}
+
+ACTOR UnderbloodBlue: Underblood1
+{translation "168:191=192:207","16:47=240:247"}

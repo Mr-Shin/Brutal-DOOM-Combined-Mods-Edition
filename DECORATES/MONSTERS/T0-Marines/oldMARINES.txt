@@ -1765,38 +1765,6 @@ actor Ally: DeadMarine
 
 
 
-Actor TargetIsAMarine : Inventory
-{
-inventory.maxamount 1
-}
-
-
-Actor BotIsChasingYou : Inventory
-{
-inventory.maxamount 1
-}
-
-
-Actor NumberOfAllies : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor MarinesDispenser : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor MarinesChaingunDispenser : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor CheckMarines : Inventory
-{
-inventory.maxamount 5
-}
-
 
 
 ACTOR Marine1Pathfinder

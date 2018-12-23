@@ -45,7 +45,7 @@ ACTOR USP45 : CMEWeapon
 	Obituary "%k blew more holes into %o with a HK-USP.45."
     AttackSound "None"
     Inventory.PickupSound "USP/Bolt"
-	Inventory.Pickupmessage "You got the HK USP.45!"
+	Inventory.Pickupmessage "You got the HK USP.45!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -65,30 +65,33 @@ ACTOR USP45 : CMEWeapon
 	Goto Ready
 	
 	Ready:
-        TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
-		TNT1 A 0
-		TNT1 A 0 A_PlaySound("USP/Bolt")
-		TNT1 A 0 A_GiveInventory("HasMP7A1InHand", 1)
-        USPS ABCDE 1
-        TNT1 AAAAAAAA 0
-        TNT1 A 0
-        TNT1 AAAA 0
-	RealReady:
-		TNT1 A 0
-		TNT1 a 0 A_JUmpIfInventory("FN67TauntDummy", 1, "RealReadyImDoingSomeKindOfShit")
-        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
-		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
-		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
-		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		TNT1 A 0 A_PlaySound("USP/Bolt")
+		TNT1 A 0 A_GiveInventory("HasMP7A1InHand", 1)
+        USPS ABCDE 1
+		TNT1 A 0 A_TakeInventory("UsedStamina", 1)
+	RealReady:
+		TNT1 A 0
+       TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
 		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
 		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
@@ -122,6 +125,7 @@ ACTOR USP45 : CMEWeapon
 		USPS EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -148,8 +152,8 @@ ACTOR USP45 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 	
 	WeaponSpecial:

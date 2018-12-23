@@ -24,7 +24,7 @@ ACTOR TesticleImploder : CMEWeapon
     AttackSound "None"
 	tag "Testicle Imploder Revolver - Caliber Switch"
     Inventory.PickupSound "CYLNSPIN"
-	Inventory.Pickupmessage "You got a Testicle Imploder Revolver!"
+	Inventory.Pickupmessage "You got a Testicle Imploder Revolver!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOAUTOFIRE
@@ -83,41 +83,41 @@ ACTOR TesticleImploder : CMEWeapon
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
-		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
-		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
-		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
-		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
 		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
 		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
 		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
 		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
 		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
 		REVG A 1 A_WeaponReady
 		Goto RealReady
 		
 	RealReady2:
         TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
         TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
-		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")//DetonatePipeBomb
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
 		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
 		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
 		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
-		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
 		REVF I 1 A_WeaponReady
 		Goto RealReady
 	
 	Deselect:
-        REVS DCBA 1
-		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 0
 		TNT1 A 0 A_takeinventory("RevolverAlt2", 1)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		REVS DCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
 		TNT1 A 1 A_Lower
 		Wait
 	Select:

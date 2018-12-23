@@ -5,7 +5,6 @@ ACTOR ClassicWeapon : Weapon
  Weapon.BobSpeed 3.0
  Weapon.BobStyle InverseSmooth
  VisibleToPlayerClass Purist
- Inventory.ForbiddenTo BDoomer, Doomer2
 	States
 	{
 	GoingToReady:

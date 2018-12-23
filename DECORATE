@@ -17,7 +17,33 @@ height 1
 mass 1
 damage 0
 }
+//Monster Ability Toggles
+Actor NoZombieGrenade : Inventory
+{inventory.maxamount 1}
 
+Actor NoCeilingClimb : Inventory
+{inventory.maxamount 1}
+
+Actor NoFoodHealth : Inventory
+{inventory.maxamount 1}
+
+Actor NoJetpack : Inventory
+{inventory.maxamount 1}
+
+Actor NoHellknightCharge : Inventory
+{inventory.maxamount 1}
+
+Actor NoBaronBarrels : Inventory
+{inventory.maxamount 1}
+
+Actor NoBigHeal : Inventory
+{inventory.maxamount 1}
+
+Actor NoArchvileSummon : Inventory
+{inventory.maxamount 1}
+
+Actor NoMancubusTorch : Inventory
+{inventory.maxamount 1}
 
 Actor PBKick : Inventory {}
 
@@ -25,18 +51,15 @@ Actor PBKick : Inventory {}
 
 #include TOKENS.txt
 //Gore N' Blood
-#include DEAD.txt
-#include "decorates/effects/blood stuff/GORE!!!.dec"
-#include "decorates/effects/blood stuff/GORE2.dec"
-#include "decorates/effects/blood stuff/GORE3.dec"
-#include "decorates/effects/blood stuff/GORE4.dec"
-#include "decorates/effects/blood stuff/BLOOD.dec"
-#include "decorates/effects/blood stuff/BLOODSPLASH.dec"
-#include "decorates/effects/blood stuff/BURN.dec"
+#include "decorates/effects/decorations/DEAD.txt"
+#include "decorates/effects/blood stuff/gorestuff.txt"
+#include "decorates/effects/blood stuff/blood.txt"
+#include "decorates/effects/blood stuff/bloodsplash.txt"
+#include "decorates/effects/blood stuff/burn.txt"
 
-#include "decorates/effects/blood stuff/JUNK.dec"
-#include "decorates/effects/blood stuff/STICKY.dec"
-#include "decorates/effects/blood stuff/Underwaterblood.dec"
+#include "decorates/effects/blood stuff/junk.txt"
+#include "decorates/effects/blood stuff/sticky.txt"
+#include "decorates/effects/blood stuff/underwaterblood.txt"
 
 //Hitboxes
 #include "Decorates/Hitboxes/HEAD_SYS.dec"
@@ -45,23 +68,20 @@ Actor PBKick : Inventory {}
 
 //MISC
 #include "decorates/weapons/main/misc/Flashlight.txt"
-#include PARTICLES.txt
-#include SMOKE.txt
-#include CASING.txt
-#include FIRE.txt
-#include SPARKS.txt
-#include FLARES.txt
-#include DEAD.txt
+#include "decorates/effects/decorations/PARTICLES.txt"
+#include "decorates/effects/decorations/SMOKE.txt"
+#include "decorates/effects/decorations/CASING.txt"
+#include "decorates/effects/decorations/FIRE.txt"
+#include "decorates/effects/decorations/SPARKS.txt"
+#include "decorates/effects/decorations/FLARES.txt"
 #include "decorates/items/powerups/ARTIFACT.txt"
 #include "decorates/items/health and armor/Health2.txt"
 #include "decorates/items/health and armor/Armor.txt"
 #include "Decorates/Hitboxes/BOSSBOX.dec"
-#include DROPABLES.txt
-#include PUFF.txt
-#include AMMO.txt
-#include EEEVILLL.txt
-#include EXECUTIONS.txt
-#include POWERUPS.txt
+#include "Decorates/WEAPONS/MAIN/MISC/DROPABLES.txt"
+#include "decorates/effects/decorations/PUFF.txt"
+#include "Decorates/WEAPONS/MAIN/MISC/AMMO.txt"
+#include "decorates/effects/blood stuff/EXECUTIONS.txt"
 //#include ARACHBOX
 #include "decorates/IBStuff/IBStuff.txt"
 #include "decorates/SPAWNERS/WeaponSpawn.txt"
@@ -71,21 +91,23 @@ Actor PBKick : Inventory {}
 #include "Decorates/WEAPONS/MAIN/Slot 1/MELEE.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/SAW.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 4/Rifles/RIFLE.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 4/Rifles/DualRifle.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Pump Shotguns/SHOTGUN.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Super Shotguns/SSG.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 5/Miniguns/MINIGUN.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 6/RLs/ROCKETLAUNCHER.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/EXPLOSIVES.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 7/Plasma/PLASMA.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 7/Plasma/DUALPLASMA.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 8/BFGs/BFG.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/Throwables.txt"
 
 
 
-
+//New Blood
+#include "decorates/effects/blood stuff/greenblood.txt"
+#include "decorates/effects/blood stuff/greensticky.txt"
+#include "decorates/effects/blood stuff/blueblood.txt"
+#include "decorates/effects/blood stuff/bluesticky.txt"
 
 
 
@@ -117,7 +139,7 @@ Actor PBKick : Inventory {}
 #include "Decorates/Monsters/Tz-Bosses/Abomination.dec"
 #include "Decorates/Monsters/Tz-Bosses/Motherdemon.dec"
 //Project Brutality Monsters
-#include "decorates/effects/blood stuff/SwarmFly.dec"
+#include "decorates/effects/blood stuff/swarmfly.txt"
 
 #include "Decorates/Monsters/T1-Grunts/ZombiemanVariants.dec"
 #include "Decorates/Monsters/T1-Grunts/CarbineZombie.dec"
@@ -182,13 +204,13 @@ Actor PBKick : Inventory {}
 #include "Decorates/Monsters/T3-Floaters/Overlord.dec"
 #include "Decorates/Monsters/T4-Nobles/CyberBaron.dec"
 #include "Decorates/Monsters/T4-Nobles/Infernus.dec"
+#include "Decorates/Monsters/T4-Nobles/BELPHEGOR.dec"
 
 #include "Decorates/Monsters/T3-Arachnos/Aracnorb.dec"
 #include "Decorates/Monsters/T1-Grunts/ZombieFlyer.dec"
 
 
 #include "Decorates/WEAPONS/MAIN/Slot 2/SMGS/MP40.txt"
-#include "Decorates/MONSTERS/NAZIS/NAZIS.txt"
 
 
 //New Weapons
@@ -331,7 +353,6 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 7/Railguns/GaussCannon2016.txt"
 #include "decorates/weapons/main/slot 7/MISC/Freezer.txt"
 #include "decorates/weapons/main/slot 7/Pulse/ION.txt"
-#include "decorates/weapons/main/slot 7/Pulse/PulseCannon.txt"
 #include "decorates/weapons/main/slot 7/Pulse/VortexRifle.txt"
 #include "decorates/weapons/main/slot 8/BFGs/BFG2016.txt"
 #include "decorates/weapons/main/slot 8/BFGs/BFGMk2.txt"
@@ -370,21 +391,22 @@ Actor PBKick : Inventory {}
 #include "Decorates/Monsters/StealthMonsters.dec"
 #include "Decorates/Monsters/UnderwaterMonsters.dec"
 
-//Glory Kills
-#include GLORYKILL.txt
-
 //DECORATIONS
-#include FURNITURE.txt
-#include LAMPS.txt
-#include NATURAL.txt
-#include FIREWORKS.txt
-#include TORCHES.txt
+#include "decorates/effects/decorations/FURNITURE.txt"
+#include "decorates/effects/decorations/LAMPS.txt"
+#include "decorates/effects/decorations/NATURAL.txt"
+#include "decorates/effects/decorations/FIREWORKS.txt"
+#include "decorates/effects/decorations/TORCHES.txt"
 
-#include SPLASHES.txt
+#include "decorates/effects/decorations/SPLASHES.txt"
 
-#include MapDetection.txt
-#include MapSpecificDec.txt
-#include OthermapsRemap.txt
+#include "decorates/effects/MES/Doom1Remap.txt"
+#include "decorates/effects/MES/Doom2Remap.txt"
+#include "decorates/effects/MES/TNTRemap.txt"
+#include "decorates/effects/MES/PlutoniaRemap.txt"
+#include "decorates/effects/MES/MapDetection.txt"
+#include "decorates/effects/MES/MapSpecificDec.txt"
+#include "decorates/effects/MES/OthermapsRemap.txt"
 #include Tank.txt
 #include ArtilleryTank.txt
 #include Mech.txt
@@ -393,92 +415,20 @@ Actor PBKick : Inventory {}
 #include VehicleCrashes.txt
 #include Repairs.txt
 #include EnemyTanks.txt
-#include Critters.txt
-//MeatShields
-#include IMPSHIELD.txt
-#include ZMANSHIELD.txt
-#include SGUYSHIELD.txt
+#include "decorates/effects/MES/Critters.txt"
 
 #include "Decorates/WEAPONS/MAIN/Slot 9/FlameCannon.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 9/HellishMissile.txt"
 
 //Player Classes
 #include PLAYER.txt
-#include MARINES.txt
-#include Purist.txt
+#include "decorates/player classes/Purist.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/ClassicWeapons.txt"
 #include "decorates/SPAWNERS/MonsterSpawn.txt"
 
-#include "Decorates/MONSTERS/ICONOFHELL/BossBrain.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 0/Grenades.txt"
-#include "Decorates/MONSTERS/MISC/VanillaMonsters.txt"
-#include "Decorates/MONSTERS/MISC/DyingGuys.txt"
-#include "Decorates/MONSTERS/MISC/LastStandMonsters.txt"
-#include "Decorates/MONSTERS/MISC/SpecialDoom1Bosses.txt"
-#include CapturedMarine.txt
-#include ChaingunMarine.txt
-#include ShotgunMarine.txt
-#include PlasmagunMarine.txt
-#include RocketLauncherMarine.txt
-#include BFGMarine.txt
-#include "Decorates/MONSTERS/MISC/UnderwaterMonsters.txt"
-#include "Decorates/MONSTERS/MISC/StealthMonsters.txt"
+
 #include Epic2Stuff.txt
-#include STICKY.txt
-#include BlueBlood.txt
-#include GreenBlood.txt
-#include UnderwaterBlood.txt
-#include Junk.txt
-#include Leg.txt
-#include Teleports.txt
-#include Water.txt
+#include "decorates/effects/decorations/Teleports.txt"
+#include "decorates/effects/decorations/Water.txt"
 #include FlatDecals.txt
 #include BrutalChexQuest.txt
-#include Frozen.txt
-#include "Decorates/MONSTERS/MISC/Juggernaut.txt"
-
-actor ExplosionSplashSpawner : BigRicochet {}
-
-ACTOR UnderbloodGreen: Underblood1
-{translation "168:191=112:127", "16:47=123:127"}
-ACTOR UnderbloodGreen2: Underblood2
-{
-translation "168:191=112:127", "16:47=123:127"
-Decal GreenBloodSplat
-}
-ACTOR UnderbloodGreen3: Underblood3
-{
-translation "168:191=112:127", "16:47=123:127"
-Decal GreenBloodSplat
-}
-ACTOR UnderbloodBlue: Underblood1
-{translation "168:191=192:207","16:47=240:247"}
-ACTOR UnderbloodBlue2: Underblood2
-{
-translation "168:191=192:207","16:47=240:247"
-Decal BlueBloodSplat
-}
-ACTOR UnderbloodBlue3: Underblood3
-{
-translation "168:191=192:207","16:47=240:247"
-Decal BlueBloodSplat
-}
-
-ACTOR HitSparkPlasma: HitSpark
-{
- speed 8
-  Scale 0.06
-  Gravity 1.0
-  BounceType "None"
-  States
-    {
-     Spawn:
-	   SPKO S 40 BRIGHT
-       SPKO SSSSSSSSSS 1 Bright 
-	   {
-		A_FadeOut(0.1);
-		return A_CheckFloor("Death");
-	   }
-	   stop
-		}
-}

@@ -1,5 +1,5 @@
 clearplayerclasses
-addplayerclass BDoomer //nomenu
+addplayerclass Doomer //nomenu
 //addplayerclass BDBOT //nomenu
 
 

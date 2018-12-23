@@ -1,12 +1,4 @@
-Actor Spin: Inventory
-{
-inventory.maxamount 1
-}
 
-Actor RandomHeadExploder: Inventory
-{
-inventory.maxamount 1
-}
 
 // --------------------------------------------------------------------------
 //

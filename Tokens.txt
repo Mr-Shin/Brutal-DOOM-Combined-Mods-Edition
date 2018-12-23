@@ -92,10 +92,7 @@ Actor MoveBack : Inventory
 inventory.maxamount 1
 }
 
-Actor EnemyIsArchvile : Inventory
-{
-inventory.maxamount 1
-}
+
 
 Actor IsARevenant : Inventory
 {
@@ -969,10 +966,6 @@ Actor HasInfrared : Inventory
 inventory.maxamount 1
 }
 
-Actor GrenadeTime : Inventory
-{
-inventory.maxamount 6
-}
 
 Actor TossGrenade : Inventory
 {
@@ -989,35 +982,11 @@ Actor FiredMGGrenade : Inventory
 inventory.maxamount 1
 }
 
-Actor ZombiemanAmmo : Inventory
-{
-inventory.maxamount 20
-}
-
-Actor TypeZombieman : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor EverSeenThePlayer : Inventory
-{
-inventory.maxamount 1
-}
-
 Actor IsCrawling : Inventory
 {
 inventory.maxamount 1
 }
 
-Actor SergeantAmmo : Inventory
-{
-inventory.maxamount 6
-}
-
-Actor TypeSergeant : Inventory
-{
-inventory.maxamount 1
-}
 
 Actor EatMe : Inventory
 {
@@ -1126,20 +1095,6 @@ Actor GrabbedANazi : Inventory
 inventory.maxamount 1
 }
 
-Actor BloodSplasherz : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor AnimuGore : Inventory//bloodammount_666 easter egg
-{
-inventory.maxamount 1
-}
-
-Actor PoorGuyBurningLife : Inventory
-{
-inventory.maxamount 20
-}
 
 Actor lowgraphicsmode : Inventory
 {
@@ -1233,45 +1188,7 @@ inventory.maxamount 1
 
 
 
-Actor NumberOfAlliesMinigun : Inventory
-{
-inventory.maxamount 5
-}
 
-Actor MarinesMinigunDispenser : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor NumberOfAlliesShotgun : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor MarinesShotgunDispenser : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor NumberOfAlliesPlasmaGun : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor MarinesPlasmaGunDispenser : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor NumberOfAlliesRocket : Inventory
-{
-inventory.maxamount 5
-}
-
-Actor MarinesRocketDispenser : Inventory
-{
-inventory.maxamount 5
-}
 
 Actor IsAnEvilMarine : Inventory
 {

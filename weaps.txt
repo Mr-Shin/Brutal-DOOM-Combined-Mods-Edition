@@ -1,7 +1,8 @@
 Slot 1:
 
 Fists
-Chainsaw
+PB 3.0 Chainsaw
+Dual Bladed Chainsaw
 Axe
 Sledgehammer
 
@@ -26,6 +27,7 @@ Testicle Imploder IB
 
 Sub-Machine Guns:
 
+TMP-62
 PPSh-91 IB
 MP27 IB
 UMP-50 IB
@@ -52,11 +54,15 @@ AA48
 M1216
 AS-RIOT-4
 MK23
+HK70
+Strucker
 XM1014
+CQW-9
 
 Pump Shotguns:
 
 Classic SG
+Winchester Suppressed
 UAC1897 Trench Gun
 UTS-15
 NAIL Shotgun
@@ -70,6 +76,8 @@ Remington 870 MCS
 
 Super Shotguns:
 
+BD v21 SSG
+LOS Cannonos 
 UAC1881 SSG
 Sawed-Off
 Coach Gun
@@ -84,8 +92,12 @@ Slot 4:
 
 Assault Rifles:
 
+AM-1
+M4
 FG-42
 Repeater
+SIG-COW
+SCAR-H
 XM10
 XM30
 M41A9
@@ -108,6 +120,8 @@ MI-4-EBR
 Carbines:
 
 G41K
+MV-21
+QK-54E61
 G36C
 CM666
 PHALANTAX
@@ -118,7 +132,8 @@ Slot 5:
 
 Miniguns:
 
-M401 Vulcan
+v21 Minigun
+v20 Minigun
 Shredder
 Stinger
 HailStorm
@@ -130,6 +145,7 @@ TEMPEST-50
 
 Machine Guns:
 
+MK61
 MG42
 Quake 4 MG
 M144-RIOT
@@ -163,6 +179,7 @@ RPG-7
 
 Grenade Launchers:
 
+War Machine
 Skulltag Grenade Launcher
 Insanity Launcher
 Quake 1 Launcher
@@ -175,6 +192,10 @@ Slot 7:
 
 Plasma Guns:
 
+Quake Blaster Pistol
+BD v19 Plasma Gun
+BD v21 Plasma Rifle
+PM-9
 IRC-1
 Quake 4 Hyperblaster
 DOOM 2016 Plasma Gun
@@ -196,7 +217,6 @@ PB 3.0 Cryo Rifle
 
 Dark Matter:
 ION Blaster
-Pulse Rifle
 Vortex Rifle
 
 Slot 8:

@@ -1,33 +1,3 @@
-Actor Timer : Inventory
-{
-inventory.maxamount 4
-}
-
-Actor IsOverWater : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor IsOverSlime : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor IsOverSludge : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor IsOverBlood : Inventory
-{
-inventory.maxamount 1
-}
-
-Actor IsOverGrass : Inventory
-{
-inventory.maxamount 1
-}
-
 
 ACTOR MeleePuff: BulletPuff
 {

@@ -1,9 +1,5 @@
 //Everything that can explode and hurt people goes here.
 
-Actor STGrenadeTimer : Inventory
-{
-inventory.maxamount 20
-}
 Actor ExcavatorExploFX
 {
 	Radius 0

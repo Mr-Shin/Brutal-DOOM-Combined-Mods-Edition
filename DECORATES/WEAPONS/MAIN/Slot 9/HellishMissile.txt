@@ -287,15 +287,3 @@ ACTOR RevenantMissileFriendAttackSummon
 }
 
 
-ACTOR MiniHellRocketAmmo : Ammo
-{
-   Inventory.Amount 0
-   Inventory.MaxAmount 50
-   Ammo.BackpackAmount 0
-   Ammo.BackpackMaxAmount 100
-}
-
-Actor RevenantRocketFire1823 : Inventory
-{
-inventory.maxamount 1
-}

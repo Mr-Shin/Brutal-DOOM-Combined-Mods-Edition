@@ -1070,7 +1070,972 @@ brightmap sprite ZL3EJ0
 {
 	map "brightmaps/doom/monsters/Imp/ZL3EJ0.png"
 }
-
+brightmap sprite 1M41A0
+{
+	map "brightmaps/doom/monsters/ImpV/1M41A0.png"
+}
+brightmap sprite 1M41B0
+{
+	map "brightmaps/doom/monsters/ImpV/1M41B0.png"
+}
+brightmap sprite 1M41C0
+{
+	map "brightmaps/doom/monsters/ImpV/1M41C0.png"
+}
+brightmap sprite 1M41D0
+{
+	map "brightmaps/doom/monsters/ImpV/1M41D0.png"
+}
+brightmap sprite 1M41E0
+{
+	map "brightmaps/doom/monsters/ImpV/1M41E0.png"
+}
+brightmap sprite 1M42A0
+{
+	map "brightmaps/doom/monsters/ImpV/1M42A0.png"
+}
+brightmap sprite 1M42B0
+{
+	map "brightmaps/doom/monsters/ImpV/1M42B0.png"
+}
+brightmap sprite 1M42C0
+{
+	map "brightmaps/doom/monsters/ImpV/1M42C0.png"
+}
+brightmap sprite 1M42D0
+{
+	map "brightmaps/doom/monsters/ImpV/1M42D0.png"
+}
+brightmap sprite 1M42E0
+{
+	map "brightmaps/doom/monsters/ImpV/1M42E0.png"
+}
+brightmap sprite 1M43A0
+{
+	map "brightmaps/doom/monsters/ImpV/1M43A0.png"
+}
+brightmap sprite 1M43B0
+{
+	map "brightmaps/doom/monsters/ImpV/1M43B0.png"
+}
+brightmap sprite 1M43C0
+{
+	map "brightmaps/doom/monsters/ImpV/1M43C0.png"
+}
+brightmap sprite 1M43D0
+{
+	map "brightmaps/doom/monsters/ImpV/1M43D0.png"
+}
+brightmap sprite 1M43E0
+{
+	map "brightmaps/doom/monsters/ImpV/1M43E0.png"
+}
+brightmap sprite 3M40A0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40A0.png"
+}
+brightmap sprite 3M40B0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40B0.png"
+}
+brightmap sprite 3M40C0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40C0.png"
+}
+brightmap sprite 3M40D0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40D0.png"
+}
+brightmap sprite 3M40E0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40E0.png"
+}
+brightmap sprite 3M40F0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40F0.png"
+}
+brightmap sprite 3M40G0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40G0.png"
+}
+brightmap sprite 3M40H0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40H0.png"
+}
+brightmap sprite 3M40I0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40I0.png"
+}
+brightmap sprite 3M40J0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40J0.png"
+}
+brightmap sprite 3M40K0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40K0.png"
+}
+brightmap sprite 3M40L0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40L0.png"
+}
+brightmap sprite 3M40M0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40M0.png"
+}
+brightmap sprite 3M40N0
+{
+	map "brightmaps/doom/monsters/ImpV/3M40N0.png"
+}
+brightmap sprite 4M40A0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40A0.png"
+}
+brightmap sprite 4M40B0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40B0.png"
+}
+brightmap sprite 4M40C0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40C0.png"
+}
+brightmap sprite 4M40D0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40D0.png"
+}
+brightmap sprite 4M40E0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40E0.png"
+}
+brightmap sprite 4M40F0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40F0.png"
+}
+brightmap sprite 4M40G0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40G0.png"
+}
+brightmap sprite 4M40H0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40H0.png"
+}
+brightmap sprite 4M40I0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40I0.png"
+}
+brightmap sprite 4M40J0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40J0.png"
+}
+brightmap sprite 4M40K0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40K0.png"
+}
+brightmap sprite 4M40L0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40L0.png"
+}
+brightmap sprite 4M40M0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40M0.png"
+}
+brightmap sprite 4M40N0
+{
+	map "brightmaps/doom/monsters/ImpV/4M40N0.png"
+}
+brightmap sprite 5M40A0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40A0.png"
+}
+brightmap sprite 5M40B0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40B0.png"
+}
+brightmap sprite 5M40C0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40C0.png"
+}
+brightmap sprite 5M40D0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40D0.png"
+}
+brightmap sprite 5M40E0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40E0.png"
+}
+brightmap sprite 5M40F0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40F0.png"
+}
+brightmap sprite 5M40G0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40G0.png"
+}
+brightmap sprite 5M40H0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40H0.png"
+}
+brightmap sprite 5M40I0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40I0.png"
+}
+brightmap sprite 5M40J0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40J0.png"
+}
+brightmap sprite 5M40K0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40K0.png"
+}
+brightmap sprite 5M40L0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40L0.png"
+}
+brightmap sprite 5M40M0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40M0.png"
+}
+brightmap sprite 5M40N0
+{
+	map "brightmaps/doom/monsters/ImpV/5M40N0.png"
+}
+brightmap sprite FTDIA0
+{
+	map "brightmaps/doom/monsters/ImpV/FTDIA0.png"
+}
+brightmap sprite FTDIC0
+{
+	map "brightmaps/doom/monsters/ImpV/FTDIC0.png"
+}
+brightmap sprite SFI3A0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI3A0.png"
+}
+brightmap sprite SFI3B0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI3B0.png"
+}
+brightmap sprite SFI3C0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI3C0.png"
+}
+brightmap sprite SFI3D0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI3D0.png"
+}
+brightmap sprite SFI4A0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI4A0.png"
+}
+brightmap sprite SFI4B0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI4B0.png"
+}
+brightmap sprite SFI4C0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI4C0.png"
+}
+brightmap sprite SFI4D0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI4D0.png"
+}
+brightmap sprite SFI5A0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI5A0.png"
+}
+brightmap sprite SFI5B0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI5B0.png"
+}
+brightmap sprite SFI5C0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI5C0.png"
+}
+brightmap sprite SFI5D0
+{
+	map "brightmaps/doom/monsters/ImpV/SFI5D0.png"
+}
+brightmap sprite SFIMA0
+{
+	map "brightmaps/doom/monsters/ImpV/SFIMA0.png"
+}
+brightmap sprite SFIMB0
+{
+	map "brightmaps/doom/monsters/ImpV/SFIMB0.png"
+}
+/*
+brightmap sprite SFIMC0
+{
+	map "brightmaps/doom/monsters/ImpV/SFIMC0.png"
+}
+brightmap sprite SFIMD0
+{
+	map "brightmaps/doom/monsters/ImpV/SFIMD0.png"
+}
+*/
+brightmap sprite TRO3A1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3A1.png"
+}
+brightmap sprite TRO3A2A8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3A2A8.png"
+}
+brightmap sprite TRO3A3A7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3A3A7.png"
+}
+brightmap sprite TRO3A4A6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3A4A6.png"
+}
+brightmap sprite TRO3A5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3A5.png"
+}
+brightmap sprite TRO3B1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3B1.png"
+}
+brightmap sprite TRO3B2B8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3B2B8.png"
+}
+brightmap sprite TRO3B3B7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3B3B7.png"
+}
+brightmap sprite TRO3B4B6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3B4B6.png"
+}
+brightmap sprite TRO3B5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3B5.png"
+}
+brightmap sprite TRO3C1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3C1.png"
+}
+brightmap sprite TRO3C2C8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3C2C8.png"
+}
+brightmap sprite TRO3C3C7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3C3C7.png"
+}
+brightmap sprite TRO3C4C6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3C4C6.png"
+}
+brightmap sprite TRO3C5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3C5.png"
+}
+brightmap sprite TRO3D1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3D1.png"
+}
+brightmap sprite TRO3D2D8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3D2D8.png"
+}
+brightmap sprite TRO3D3D7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3D3D7.png"
+}
+brightmap sprite TRO3D4D6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3D4D6.png"
+}
+brightmap sprite TRO3D5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3D5.png"
+}
+brightmap sprite TRO3E1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3E1.png"
+}
+brightmap sprite TRO3E2E8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3E2E8.png"
+}
+brightmap sprite TRO3E3E7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3E3E7.png"
+}
+brightmap sprite TRO3E4E6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3E4E6.png"
+}
+brightmap sprite TRO3E5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3E5.png"
+}
+brightmap sprite TRO3F1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3F1.png"
+}
+brightmap sprite TRO3F2F8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3F2F8.png"
+}
+brightmap sprite TRO3F3F7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3F3F7.png"
+}
+brightmap sprite TRO3F4F6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3F4F6.png"
+}
+brightmap sprite TRO3F5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3F5.png"
+}
+brightmap sprite TRO3G1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3G1.png"
+}
+brightmap sprite TRO3G2G8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3G2G8.png"
+}
+brightmap sprite TRO3G3G7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3G3G7.png"
+}
+brightmap sprite TRO3G4G6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3G4G6.png"
+}
+brightmap sprite TRO3G5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3G5.png"
+}
+brightmap sprite TRO3H1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3H1.png"
+}
+brightmap sprite TRO3H2H8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3H2H8.png"
+}
+brightmap sprite TRO3H3H7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3H3H7.png"
+}
+brightmap sprite TRO3H4H6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3H4H6.png"
+}
+brightmap sprite TRO3H5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3H5.png"
+}
+brightmap sprite TRO3I0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3I0.png"
+}
+brightmap sprite TRO3J0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3J0.png"
+}
+brightmap sprite TRO3K0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3K0.png"
+}
+brightmap sprite TRO3L0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3L0.png"
+}
+brightmap sprite TRO3M0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO3M0.png"
+}
+brightmap sprite TRO4A1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4A1.png"
+}
+brightmap sprite TRO4A2A8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4A2A8.png"
+}
+brightmap sprite TRO4A3A7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4A3A7.png"
+}
+brightmap sprite TRO4A4A6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4A4A6.png"
+}
+brightmap sprite TRO4A5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4A5.png"
+}
+brightmap sprite TRO4B1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4B1.png"
+}
+brightmap sprite TRO4B2B8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4B2B8.png"
+}
+brightmap sprite TRO4B3B7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4B3B7.png"
+}
+brightmap sprite TRO4B4B6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4B4B6.png"
+}
+brightmap sprite TRO4B5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4B5.png"
+}
+brightmap sprite TRO4C1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4C1.png"
+}
+brightmap sprite TRO4C2C8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4C2C8.png"
+}
+brightmap sprite TRO4C3C7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4C3C7.png"
+}
+brightmap sprite TRO4C4C6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4C4C6.png"
+}
+brightmap sprite TRO4C5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4C5.png"
+}
+brightmap sprite TRO4D1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4D1.png"
+}
+brightmap sprite TRO4D2D8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4D2D8.png"
+}
+brightmap sprite TRO4D3D7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4D3D7.png"
+}
+brightmap sprite TRO4D4D6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4D4D6.png"
+}
+brightmap sprite TRO4D5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4D5.png"
+}
+brightmap sprite TRO4E1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4E1.png"
+}
+brightmap sprite TRO4E2E8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4E2E8.png"
+}
+brightmap sprite TRO4E3E7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4E3E7.png"
+}
+brightmap sprite TRO4E4E6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4E4E6.png"
+}
+brightmap sprite TRO4E5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4E5.png"
+}
+brightmap sprite TRO4F1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4F1.png"
+}
+brightmap sprite TRO4F2F8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4F2F8.png"
+}
+brightmap sprite TRO4F3F7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4F3F7.png"
+}
+brightmap sprite TRO4F4F6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4F4F6.png"
+}
+brightmap sprite TRO4F5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4F5.png"
+}
+brightmap sprite TRO4G1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4G1.png"
+}
+brightmap sprite TRO4G2G8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4G2G8.png"
+}
+brightmap sprite TRO4G3G7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4G3G7.png"
+}
+brightmap sprite TRO4G4G6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4G4G6.png"
+}
+brightmap sprite TRO4G5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4G5.png"
+}
+brightmap sprite TRO4H1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4H1.png"
+}
+brightmap sprite TRO4H2H8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4H2H8.png"
+}
+brightmap sprite TRO4H3H7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4H3H7.png"
+}
+brightmap sprite TRO4H4H6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4H4H6.png"
+}
+brightmap sprite TRO4H5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4H5.png"
+}
+brightmap sprite TRO4I0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4I0.png"
+}
+brightmap sprite TRO4J0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4J0.png"
+}
+brightmap sprite TRO4K0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4K0.png"
+}
+brightmap sprite TRO4L0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4L0.png"
+}
+brightmap sprite TRO4M0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO4M0.png"
+}
+brightmap sprite TRO5A1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5A1.png"
+}
+brightmap sprite TRO5A2A8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5A2A8.png"
+}
+brightmap sprite TRO5A3A7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5A3A7.png"
+}
+brightmap sprite TRO5A4A6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5A4A6.png"
+}
+brightmap sprite TRO5A5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5A5.png"
+}
+brightmap sprite TRO5B1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5B1.png"
+}
+brightmap sprite TRO5B2B8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5B2B8.png"
+}
+brightmap sprite TRO5B3B7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5B3B7.png"
+}
+brightmap sprite TRO5B4B6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5B4B6.png"
+}
+brightmap sprite TRO5B5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5B5.png"
+}
+brightmap sprite TRO5C1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5C1.png"
+}
+brightmap sprite TRO5C2C8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5C2C8.png"
+}
+brightmap sprite TRO5C3C7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5C3C7.png"
+}
+brightmap sprite TRO5C4C6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5C4C6.png"
+}
+brightmap sprite TRO5C5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5C5.png"
+}
+brightmap sprite TRO5D1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5D1.png"
+}
+brightmap sprite TRO5D2D8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5D2D8.png"
+}
+brightmap sprite TRO5D3D7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5D3D7.png"
+}
+brightmap sprite TRO5D4D6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5D4D6.png"
+}
+brightmap sprite TRO5D5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5D5.png"
+}
+brightmap sprite TRO5E1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5E1.png"
+}
+brightmap sprite TRO5E2E8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5E2E8.png"
+}
+brightmap sprite TRO5E3E7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5E3E7.png"
+}
+brightmap sprite TRO5E4E6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5E4E6.png"
+}
+brightmap sprite TRO5E5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5E5.png"
+}
+brightmap sprite TRO5F1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5F1.png"
+}
+brightmap sprite TRO5F2F8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5F2F8.png"
+}
+brightmap sprite TRO5F3F7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5F3F7.png"
+}
+brightmap sprite TRO5F4F6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5F4F6.png"
+}
+brightmap sprite TRO5F5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5F5.png"
+}
+brightmap sprite TRO5G1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5G1.png"
+}
+brightmap sprite TRO5G2G8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5G2G8.png"
+}
+brightmap sprite TRO5G3G7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5G3G7.png"
+}
+brightmap sprite TRO5G4G6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5G4G6.png"
+}
+brightmap sprite TRO5G5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5G5.png"
+}
+brightmap sprite TRO5H1
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5H1.png"
+}
+brightmap sprite TRO5H2H8
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5H2H8.png"
+}
+brightmap sprite TRO5H3H7
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5H3H7.png"
+}
+brightmap sprite TRO5H4H6
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5H4H6.png"
+}
+brightmap sprite TRO5H5
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5H5.png"
+}
+brightmap sprite TRO5I0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5I0.png"
+}
+brightmap sprite TRO5J0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5J0.png"
+}
+brightmap sprite TRO5K0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5K0.png"
+}
+brightmap sprite TRO5L0
+{
+	map "brightmaps/doom/monsters/ImpV/TRO5L0.png"
+}
+brightmap sprite HT11T0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HT11T0.png"
+}
+brightmap sprite HTD1A0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD1A0.png"
+}
+brightmap sprite HTD2A0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD2A0.png"
+}
+brightmap sprite HTD2B0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD2B0.png"
+}
+brightmap sprite HTD2C0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD2C0.png"
+}
+brightmap sprite HTD2E0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD2E0.png"
+}
+brightmap sprite HTD5A0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD5A0.png"
+}
+brightmap sprite HTD5B0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD5B0.png"
+}
+brightmap sprite HTD5C0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD5C0.png"
+}
+brightmap sprite HTD5D0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD5D0.png"
+}
+brightmap sprite HTD6A0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD6A0.png"
+}
+brightmap sprite HTD6B0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTD6B0.png"
+}
+brightmap sprite HTF1A1
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTF1A1.png"
+}
+brightmap sprite HTF1B1
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTF1B1.png"
+}
+brightmap sprite HTPAA1
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTPAA1.png"
+}
+brightmap sprite HTPAA2A8
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTPAA2A8.png"
+}
+brightmap sprite HTS7A0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTS7A0.png"
+}
+brightmap sprite HTS7B0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTS7B0.png"
+}
+brightmap sprite HTS7C0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTS7C0.png"
+}
+brightmap sprite HTS7D0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTS7D0.png"
+}
+brightmap sprite HTS7E0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTS7E0.png"
+}
+brightmap sprite HTWAA1
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAA1.png"
+}
+brightmap sprite HTWAA2A8
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAA2A8.png"
+}
+brightmap sprite HTWAB1
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAB1.png"
+}
+brightmap sprite HTWAB2B8
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAB2B8.png"
+}
+brightmap sprite HTWAC1
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAC1.png"
+}
+brightmap sprite HTWAC2C8
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAC2C8.png"
+}
+brightmap sprite HTWAD1
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAD1.png"
+}
+brightmap sprite HTWAD2D8
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTWAD2D8.png"
+}
+brightmap sprite HTZAH0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTZAH0.png"
+}
+brightmap sprite HTZAI0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTZAI0.png"
+}
+brightmap sprite HTZAJ0
+{
+	map "brightmaps/doom/monsters/DemonTrooper/HTZAJ0.png"
+}
 brightmap sprite DEMPA1
 {
 	map "brightmaps/doom/monsters/Demon/DEMPA1.png"
@@ -1715,7 +2680,962 @@ brightmap sprite XDP5B0J0
 {
 	map "brightmaps/doom/monsters/Demon/XDP5B0J0.png"
 }
-
+brightmap sprite P8N1A0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N1A0.png"
+}
+brightmap sprite P8N1B0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N1B0.png"
+}
+brightmap sprite P8N1C0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N1C0.png"
+}
+brightmap sprite P8N1D0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N1D0.png"
+}
+brightmap sprite P8N1E0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N1E0.png"
+}
+brightmap sprite P8N1F0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N1F0.png"
+}
+brightmap sprite P8N2A0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N2A0.png"
+}
+brightmap sprite P8N2B0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N2B0.png"
+}
+brightmap sprite P8N2C0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N2C0.png"
+}
+brightmap sprite P8N2D0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N2D0.png"
+}
+brightmap sprite P8N2E0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N2E0.png"
+}
+brightmap sprite P8N3A0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N3A0.png"
+}
+brightmap sprite P8N3C0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N3C0.png"
+}
+brightmap sprite P8N3D0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N3D0.png"
+}
+brightmap sprite P8N3E0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N3E0.png"
+}
+brightmap sprite P8N4A0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N4A0.png"
+}
+brightmap sprite P8N4B0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N4B0.png"
+}
+brightmap sprite P8N4C0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N4C0.png"
+}
+brightmap sprite P8N4D0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N4D0.png"
+}
+brightmap sprite P8N5A0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N5A0.png"
+}
+brightmap sprite P8N5B0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N5B0.png"
+}
+brightmap sprite P8N5C0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N5C0.png"
+}
+brightmap sprite P8N5D0
+{
+	map "brightmaps/doom/monsters/MDemon/P8N5D0.png"
+}
+brightmap sprite S4ARA0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARA0.png"
+}
+brightmap sprite S4ARB0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARB0.png"
+}
+brightmap sprite S4ARC0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARC0.png"
+}
+brightmap sprite S4ARD0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARD0.png"
+}
+brightmap sprite S4ARE0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARE0.png"
+}
+brightmap sprite S4ARF0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARF0.png"
+}
+brightmap sprite S4ARG0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARG0.png"
+}
+brightmap sprite S4ARH0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARH0.png"
+}
+brightmap sprite S4ARI0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARI0.png"
+}
+brightmap sprite S4ARJ0
+{
+	map "brightmaps/doom/monsters/MDemon/S4ARJ0.png"
+}
+brightmap sprite S4RKD0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKD0.png"
+}
+brightmap sprite S4RKE0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKE0.png"
+}
+brightmap sprite S4RKF0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKF0.png"
+}
+brightmap sprite S4RKG0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKG0.png"
+}
+brightmap sprite S4RKH0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKH0.png"
+}
+brightmap sprite S4RKI0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKI0.png"
+}
+brightmap sprite S4RKJ0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKJ0.png"
+}
+brightmap sprite S4RKK0
+{
+	map "brightmaps/doom/monsters/MDemon/S4RKK0.png"
+}
+brightmap sprite S4S2A0
+{
+	map "brightmaps/doom/monsters/MDemon/S4S2A0.png"
+}
+brightmap sprite S4S2B0
+{
+	map "brightmaps/doom/monsters/MDemon/S4S2B0.png"
+}
+brightmap sprite S4S2C0
+{
+	map "brightmaps/doom/monsters/MDemon/S4S2C0.png"
+}
+brightmap sprite S4S2D0
+{
+	map "brightmaps/doom/monsters/MDemon/S4S2D0.png"
+}
+brightmap sprite S4S2E0
+{
+	map "brightmaps/doom/monsters/MDemon/S4S2E0.png"
+}
+brightmap sprite S4S2F0
+{
+	map "brightmaps/doom/monsters/MDemon/S4S2F0.png"
+}
+brightmap sprite S5RKD0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKD0.png"
+}
+brightmap sprite S5RKE0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKE0.png"
+}
+brightmap sprite S5RKF0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKF0.png"
+}
+brightmap sprite S5RKG0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKG0.png"
+}
+brightmap sprite S5RKH0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKH0.png"
+}
+brightmap sprite S5RKI0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKI0.png"
+}
+brightmap sprite S5RKJ0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKJ0.png"
+}
+brightmap sprite S5RKK0
+{
+	map "brightmaps/doom/monsters/MDemon/S5RKK0.png"
+}
+brightmap sprite SAR2A1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2A1.png"
+}
+brightmap sprite SAR2A2A8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2A2A8.png"
+}
+brightmap sprite SAR2A3A7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2A3A7.png"
+}
+brightmap sprite SAR2A4A6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2A4A6.png"
+}
+brightmap sprite SAR2A5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2A5.png"
+}
+brightmap sprite SAR2B1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2B1.png"
+}
+brightmap sprite SAR2B2B8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2B2B8.png"
+}
+brightmap sprite SAR2B3B7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2B3B7.png"
+}
+brightmap sprite SAR2B4B6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2B4B6.png"
+}
+brightmap sprite SAR2B5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2B5.png"
+}
+brightmap sprite SAR2C1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2C1.png"
+}
+brightmap sprite SAR2C2C8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2C2C8.png"
+}
+brightmap sprite SAR2C3C7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2C3C7.png"
+}
+brightmap sprite SAR2C4C6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2C4C6.png"
+}
+brightmap sprite SAR2C5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2C5.png"
+}
+brightmap sprite SAR2D1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2D1.png"
+}
+brightmap sprite SAR2D2D8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2D2D8.png"
+}
+brightmap sprite SAR2D3D7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2D3D7.png"
+}
+brightmap sprite SAR2D4D6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2D4D6.png"
+}
+brightmap sprite SAR2D5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2D5.png"
+}
+brightmap sprite SAR2E1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E1.png"
+}
+brightmap sprite SAR2E2
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E2.png"
+}
+brightmap sprite SAR2E3
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E3.png"
+}
+brightmap sprite SAR2E4
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E4.png"
+}
+brightmap sprite SAR2E5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E5.png"
+}
+brightmap sprite SAR2E6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E6.png"
+}
+brightmap sprite SAR2E7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E7.png"
+}
+brightmap sprite SAR2E8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2E8.png"
+}
+brightmap sprite SAR2F1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F1.png"
+}
+brightmap sprite SAR2F2
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F2.png"
+}
+brightmap sprite SAR2F3
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F3.png"
+}
+brightmap sprite SAR2F4
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F4.png"
+}
+brightmap sprite SAR2F5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F5.png"
+}
+brightmap sprite SAR2F6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F6.png"
+}
+brightmap sprite SAR2F7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F7.png"
+}
+brightmap sprite SAR2F8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2F8.png"
+}
+brightmap sprite SAR2G1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G1.png"
+}
+brightmap sprite SAR2G2
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G2.png"
+}
+brightmap sprite SAR2G3
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G3.png"
+}
+brightmap sprite SAR2G4
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G4.png"
+}
+brightmap sprite SAR2G5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G5.png"
+}
+brightmap sprite SAR2G6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G6.png"
+}
+brightmap sprite SAR2G7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G7.png"
+}
+brightmap sprite SAR2G8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2G8.png"
+}
+brightmap sprite SAR2H1
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H1.png"
+}
+brightmap sprite SAR2H2
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H2.png"
+}
+brightmap sprite SAR2H3
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H3.png"
+}
+brightmap sprite SAR2H4
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H4.png"
+}
+brightmap sprite SAR2H5
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H5.png"
+}
+brightmap sprite SAR2H6
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H6.png"
+}
+brightmap sprite SAR2H7
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H7.png"
+}
+brightmap sprite SAR2H8
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2H8.png"
+}
+brightmap sprite SAR2I0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2I0.png"
+}
+brightmap sprite SAR2J0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2J0.png"
+}
+brightmap sprite SAR2K0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2K0.png"
+}
+brightmap sprite SAR2L0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2L0.png"
+}
+brightmap sprite SAR2M0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2M0.png"
+}
+brightmap sprite SAR2N0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2N0.png"
+}
+brightmap sprite SAR2O0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2O0.png"
+}
+brightmap sprite SAR2P0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2P0.png"
+}
+brightmap sprite SAR2Q0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2Q0.png"
+}
+brightmap sprite SAR2R0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2R0.png"
+}
+brightmap sprite SAR2S0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2S0.png"
+}
+brightmap sprite SAR2T0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2T0.png"
+}
+brightmap sprite SAR2U0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2U0.png"
+}
+brightmap sprite SAR2V0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2V0.png"
+}
+brightmap sprite SAR2W0
+{
+	map "brightmaps/doom/monsters/MDemon/SAR2W0.png"
+}
+brightmap sprite SAS2A0
+{
+	map "brightmaps/doom/monsters/MDemon/SAS2A0.png"
+}
+brightmap sprite SAS2B0
+{
+	map "brightmaps/doom/monsters/MDemon/SAS2B0.png"
+}
+brightmap sprite SAS2C0
+{
+	map "brightmaps/doom/monsters/MDemon/SAS2C0.png"
+}
+brightmap sprite SAS2D0
+{
+	map "brightmaps/doom/monsters/MDemon/SAS2D0.png"
+}
+brightmap sprite SAS2E0
+{
+	map "brightmaps/doom/monsters/MDemon/SAS2E0.png"
+}
+brightmap sprite SAS2F0
+{
+	map "brightmaps/doom/monsters/MDemon/SAS2F0.png"
+}
+brightmap sprite SRG2A1C1
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2A1C1.png"
+}
+brightmap sprite SRG2A2C8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2A2C8.png"
+}
+brightmap sprite SRG2A3C7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2A3C7.png"
+}
+brightmap sprite SRG2A4C6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2A4C6.png"
+}
+brightmap sprite SRG2A5C5
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2A5C5.png"
+}
+brightmap sprite SRG2B1D1
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2B1D1.png"
+}
+brightmap sprite SRG2B2D8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2B2D8.png"
+}
+brightmap sprite SRG2B3D7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2B3D7.png"
+}
+brightmap sprite SRG2B4D6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2B4D6.png"
+}
+brightmap sprite SRG2B5D5
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2B5D5.png"
+}
+brightmap sprite SRG2C2A8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2C2A8.png"
+}
+brightmap sprite SRG2C3A7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2C3A7.png"
+}
+brightmap sprite SRG2C4A6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2C4A6.png"
+}
+brightmap sprite SRG2D2B8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2D2B8.png"
+}
+brightmap sprite SRG2D3B7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2D3B7.png"
+}
+brightmap sprite SRG2D4B6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2D4B6.png"
+}
+brightmap sprite SRG2E1
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E1.png"
+}
+brightmap sprite SRG2E2
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E2.png"
+}
+brightmap sprite SRG2E3
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E3.png"
+}
+brightmap sprite SRG2E4
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E4.png"
+}
+brightmap sprite SRG2E5
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E5.png"
+}
+brightmap sprite SRG2E6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E6.png"
+}
+brightmap sprite SRG2E7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E7.png"
+}
+brightmap sprite SRG2E8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2E8.png"
+}
+brightmap sprite SRG2F1
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F1.png"
+}
+brightmap sprite SRG2F2
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F2.png"
+}
+brightmap sprite SRG2F3
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F3.png"
+}
+brightmap sprite SRG2F4
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F4.png"
+}
+brightmap sprite SRG2F5
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F5.png"
+}
+brightmap sprite SRG2F6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F6.png"
+}
+brightmap sprite SRG2F7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F7.png"
+}
+brightmap sprite SRG2F8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2F8.png"
+}
+brightmap sprite SRG2G1
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G1.png"
+}
+brightmap sprite SRG2G2
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G2.png"
+}
+brightmap sprite SRG2G3
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G3.png"
+}
+brightmap sprite SRG2G4
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G4.png"
+}
+brightmap sprite SRG2G5
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G5.png"
+}
+brightmap sprite SRG2G6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G6.png"
+}
+brightmap sprite SRG2G7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G7.png"
+}
+brightmap sprite SRG2G8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2G8.png"
+}
+brightmap sprite SRG2H1
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H1.png"
+}
+brightmap sprite SRG2H2
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H2.png"
+}
+brightmap sprite SRG2H3
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H3.png"
+}
+brightmap sprite SRG2H4
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H4.png"
+}
+brightmap sprite SRG2H5
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H5.png"
+}
+brightmap sprite SRG2H6
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H6.png"
+}
+brightmap sprite SRG2H7
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H7.png"
+}
+brightmap sprite SRG2H8
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2H8.png"
+}
+brightmap sprite SRG2I0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2I0.png"
+}
+brightmap sprite SRG2J0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2J0.png"
+}
+brightmap sprite SRG2K0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2K0.png"
+}
+brightmap sprite SRG2L0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2L0.png"
+}
+brightmap sprite SRG2M0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2M0.png"
+}
+brightmap sprite SRG2N0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG2N0.png"
+}
+brightmap sprite SRG3A0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG3A0.png"
+}
+brightmap sprite SRG3B0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG3B0.png"
+}
+brightmap sprite SRG3C0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG3C0.png"
+}
+brightmap sprite SRG3D0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG3D0.png"
+}
+brightmap sprite SRG3E0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG3E0.png"
+}
+brightmap sprite SRG3F0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG3F0.png"
+}
+brightmap sprite SRG4A0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG4A0.png"
+}
+brightmap sprite SRG4B0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG4B0.png"
+}
+brightmap sprite SRG4C0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG4C0.png"
+}
+brightmap sprite SRG4D0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG4D0.png"
+}
+brightmap sprite SRG4E0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG4E0.png"
+}
+brightmap sprite SRG4F0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG4F0.png"
+}
+brightmap sprite SRG4G0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG4G0.png"
+}
+brightmap sprite SRG5A0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG5A0.png"
+}
+brightmap sprite SRG5B0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG5B0.png"
+}
+brightmap sprite SRG5C0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG5C0.png"
+}
+brightmap sprite SRG5D0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG5D0.png"
+}
+brightmap sprite SRG6A0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG6A0.png"
+}
+brightmap sprite SRG6B0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG6B0.png"
+}
+brightmap sprite SRG6C0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG6C0.png"
+}
+brightmap sprite SRG7A0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG7A0.png"
+}
+brightmap sprite SRG7B0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG7B0.png"
+}
+brightmap sprite SRG7C0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG7C0.png"
+}
+brightmap sprite SRG7D0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG7D0.png"
+}
+brightmap sprite SRG8A0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG8A0.png"
+}
+brightmap sprite SRG8B0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG8B0.png"
+}
+brightmap sprite SRG8C0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG8C0.png"
+}
+brightmap sprite SRG8D0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG8D0.png"
+}
+brightmap sprite SRG8E0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG8E0.png"
+}
+brightmap sprite SRG8F0
+{
+	map "brightmaps/doom/monsters/MDemon/SRG8F0.png"
+}
+brightmap sprite CPS2A1
+{
+	map "brightmaps/doom/monsters/Major/CPS2A1.png"
+}
+brightmap sprite CPS2A2A8
+{
+	map "brightmaps/doom/monsters/Major/CPS2A2A8.png"
+}
+brightmap sprite CPS2A3A7
+{
+	map "brightmaps/doom/monsters/Major/CPS2A3A7.png"
+}
+brightmap sprite CPS2B1
+{
+	map "brightmaps/doom/monsters/Major/CPS2B1.png"
+}
+brightmap sprite CPS2B2B8
+{
+	map "brightmaps/doom/monsters/Major/CPS2B2B8.png"
+}
+brightmap sprite CPS2B3B7
+{
+	map "brightmaps/doom/monsters/Major/CPS2B3B7.png"
+}
+brightmap sprite CPS2B4B6
+{
+	map "brightmaps/doom/monsters/Major/CPS2B4B6.png"
+}
+brightmap sprite CPS2B5
+{
+	map "brightmaps/doom/monsters/Major/CPS2B5.png"
+}
+brightmap sprite CPS2C1
+{
+	map "brightmaps/doom/monsters/Major/CPS2C1.png"
+}
+brightmap sprite CPS2C2C8
+{
+	map "brightmaps/doom/monsters/Major/CPS2C2C8.png"
+}
+brightmap sprite CPS2C3C7
+{
+	map "brightmaps/doom/monsters/Major/CPS2C3C7.png"
+}
+brightmap sprite CPS2C4C6
+{
+	map "brightmaps/doom/monsters/Major/CPS2C4C6.png"
+}
+brightmap sprite CPS2C5
+{
+	map "brightmaps/doom/monsters/Major/CPS2C5.png"
+}
+brightmap sprite CPS2D1
+{
+	map "brightmaps/doom/monsters/Major/CPS2D1.png"
+}
+brightmap sprite CPS2D2D8
+{
+	map "brightmaps/doom/monsters/Major/CPS2D2D8.png"
+}
+brightmap sprite CPS2D3D7
+{
+	map "brightmaps/doom/monsters/Major/CPS2D3D7.png"
+}
+brightmap sprite CPS2E1
+{
+	map "brightmaps/doom/monsters/Major/CPS2E1.png"
+}
+brightmap sprite CPS2E2E8
+{
+	map "brightmaps/doom/monsters/Major/CPS2E2E8.png"
+}
+brightmap sprite CPS2E3E7
+{
+	map "brightmaps/doom/monsters/Major/CPS2E3E7.png"
+}
+brightmap sprite CPS2E4E6
+{
+	map "brightmaps/doom/monsters/Major/CPS2E4E6.png"
+}
+brightmap sprite CPS2F1
+{
+	map "brightmaps/doom/monsters/Major/CPS2F1.png"
+}
+brightmap sprite CPS2F2F8
+{
+	map "brightmaps/doom/monsters/Major/CPS2F2F8.png"
+}
+brightmap sprite CPS2F3F7
+{
+	map "brightmaps/doom/monsters/Major/CPS2F3F7.png"
+}
+brightmap sprite CPS2F4F6
+{
+	map "brightmaps/doom/monsters/Major/CPS2F4F6.png"
+}
+brightmap sprite CPS2G1
+{
+	map "brightmaps/doom/monsters/Major/CPS2G1.png"
+}
+brightmap sprite CPS2G2G8
+{
+	map "brightmaps/doom/monsters/Major/CPS2G2G8.png"
+}
+brightmap sprite CPS2G3G7
+{
+	map "brightmaps/doom/monsters/Major/CPS2G3G7.png"
+}
 brightmap sprite ACB0A0
 {
 	map "brightmaps/doom/monsters/Chaingun1/ACB0A0.png"
@@ -2244,7 +4164,430 @@ brightmap sprite MPOSG8
 {
 	map "brightmaps/doom/monsters/Chaingun1/MPOSG8.png"
 }
-
+brightmap sprite CPODE0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODE0.png"
+}
+brightmap sprite CPODF0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODF0.png"
+}
+brightmap sprite CPODH0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODH0.png"
+}
+brightmap sprite CPODI0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODI0.png"
+}
+brightmap sprite CPODJ0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODJ0.png"
+}
+brightmap sprite CPODK0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODK0.png"
+}
+brightmap sprite CPODM0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODM0.png"
+}
+brightmap sprite CPODN0
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPODN0.png"
+}
+brightmap sprite CPOPA1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPA1.png"
+}
+brightmap sprite CPOPA2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPA2.png"
+}
+brightmap sprite CPOPA3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPA3.png"
+}
+brightmap sprite CPOPA7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPA7.png"
+}
+brightmap sprite CPOPA8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPA8.png"
+}
+brightmap sprite CPOPB1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPB1.png"
+}
+brightmap sprite CPOPB2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPB2.png"
+}
+brightmap sprite CPOPB3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPB3.png"
+}
+brightmap sprite CPOPB7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPB7.png"
+}
+brightmap sprite CPOPB8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPB8.png"
+}
+brightmap sprite CPOPC1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPC1.png"
+}
+brightmap sprite CPOPC2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPC2.png"
+}
+brightmap sprite CPOPC3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPC3.png"
+}
+brightmap sprite CPOPC7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPC7.png"
+}
+brightmap sprite CPOPC8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOPC8.png"
+}
+brightmap sprite CPOSA1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSA1.png"
+}
+brightmap sprite CPOSA2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSA2.png"
+}
+brightmap sprite CPOSA3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSA3.png"
+}
+brightmap sprite CPOSA7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSA7.png"
+}
+brightmap sprite CPOSA8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSA8.png"
+}
+brightmap sprite CPOSB1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB1.png"
+}
+brightmap sprite CPOSB2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB2.png"
+}
+brightmap sprite CPOSB3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB3.png"
+}
+brightmap sprite CPOSB4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB4.png"
+}
+brightmap sprite CPOSB5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB5.png"
+}
+brightmap sprite CPOSB6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB6.png"
+}
+brightmap sprite CPOSB7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB7.png"
+}
+brightmap sprite CPOSB8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSB8.png"
+}
+brightmap sprite CPOSC1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC1.png"
+}
+brightmap sprite CPOSC2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC2.png"
+}
+brightmap sprite CPOSC3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC3.png"
+}
+brightmap sprite CPOSC4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC4.png"
+}
+brightmap sprite CPOSC5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC5.png"
+}
+brightmap sprite CPOSC6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC6.png"
+}
+brightmap sprite CPOSC7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC7.png"
+}
+brightmap sprite CPOSC8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSC8.png"
+}
+brightmap sprite CPOSD1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD1.png"
+}
+brightmap sprite CPOSD2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD2.png"
+}
+brightmap sprite CPOSD3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD3.png"
+}
+brightmap sprite CPOSD4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD4.png"
+}
+brightmap sprite CPOSD5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD5.png"
+}
+brightmap sprite CPOSD6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD6.png"
+}
+brightmap sprite CPOSD7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD7.png"
+}
+brightmap sprite CPOSD8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSD8.png"
+}
+brightmap sprite CPOSE1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE1.png"
+}
+brightmap sprite CPOSE2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE2.png"
+}
+brightmap sprite CPOSE3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE3.png"
+}
+brightmap sprite CPOSE4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE4.png"
+}
+brightmap sprite CPOSE5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE5.png"
+}
+brightmap sprite CPOSE6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE6.png"
+}
+brightmap sprite CPOSE7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE7.png"
+}
+brightmap sprite CPOSE8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSE8.png"
+}
+brightmap sprite CPOSF1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF1.png"
+}
+brightmap sprite CPOSF2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF2.png"
+}
+brightmap sprite CPOSF3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF3.png"
+}
+brightmap sprite CPOSF4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF4.png"
+}
+brightmap sprite CPOSF5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF5.png"
+}
+brightmap sprite CPOSF6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF6.png"
+}
+brightmap sprite CPOSF7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF7.png"
+}
+brightmap sprite CPOSF8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSF8.png"
+}
+brightmap sprite CPOSG1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG1.png"
+}
+brightmap sprite CPOSG2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG2.png"
+}
+brightmap sprite CPOSG3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG3.png"
+}
+brightmap sprite CPOSG4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG4.png"
+}
+brightmap sprite CPOSG5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG5.png"
+}
+brightmap sprite CPOSG6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG6.png"
+}
+brightmap sprite CPOSG7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG7.png"
+}
+brightmap sprite CPOSG8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOSG8.png"
+}
+brightmap sprite CPOWA1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA1.png"
+}
+brightmap sprite CPOWA2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA2.png"
+}
+brightmap sprite CPOWA3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA3.png"
+}
+brightmap sprite CPOWA4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA4.png"
+}
+brightmap sprite CPOWA5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA5.png"
+}
+brightmap sprite CPOWA6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA6.png"
+}
+brightmap sprite CPOWA7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA7.png"
+}
+brightmap sprite CPOWA8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWA8.png"
+}
+brightmap sprite CPOWB1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB1.png"
+}
+brightmap sprite CPOWB2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB2.png"
+}
+brightmap sprite CPOWB3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB3.png"
+}
+brightmap sprite CPOWB4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB4.png"
+}
+brightmap sprite CPOWB5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB5.png"
+}
+brightmap sprite CPOWB6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB6.png"
+}
+brightmap sprite CPOWB7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB7.png"
+}
+brightmap sprite CPOWB8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWB8.png"
+}
+brightmap sprite CPOWC1
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC1.png"
+}
+brightmap sprite CPOWC2
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC2.png"
+}
+brightmap sprite CPOWC3
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC3.png"
+}
+brightmap sprite CPOWC4
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC4.png"
+}
+brightmap sprite CPOWC5
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC5.png"
+}
+brightmap sprite CPOWC6
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC6.png"
+}
+brightmap sprite CPOWC7
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC7.png"
+}
+brightmap sprite CPOWC8
+{
+	map "brightmaps/doom/monsters/Chaingun2/CPOWC8.png"
+}
+brightmap sprite FID4A0
+{
+	map "brightmaps/doom/monsters/Chaingun2/FID4A0.png"
+}
+brightmap sprite FID4B0
+{
+	map "brightmaps/doom/monsters/Chaingun2/FID4B0.png"
+}
+brightmap sprite FID4C0
+{
+	map "brightmaps/doom/monsters/Chaingun2/FID4C0.png"
+}
+brightmap sprite FID4D0
+{
+	map "brightmaps/doom/monsters/Chaingun2/FID4D0.png"
+}
+brightmap sprite FID4E0
+{
+	map "brightmaps/doom/monsters/Chaingun2/FID4E0.png"
+}
+brightmap sprite FID4F0
+{
+	map "brightmaps/doom/monsters/Chaingun2/FID4F0.png"
+}
 brightmap sprite CA2FA0
 {
 	map "brightmaps/doom/monsters/Caco/CA2FA0.png"
@@ -2913,7 +5256,182 @@ brightmap sprite FATTZ5
 {
 	map "brightmaps/doom/monsters/Mancubus/FATTZ5.png"
 }
-
+brightmap sprite FAT2A1D1
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A1D1.png"
+}
+brightmap sprite FAT2A2D8
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A2D8.png"
+}
+brightmap sprite FAT2A3D7
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A3D7.png"
+}
+brightmap sprite FAT2A4D6
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A4D6.png"
+}
+brightmap sprite FAT2A5D5
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A5D5.png"
+}
+brightmap sprite FAT2A6D4
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A6D4.png"
+}
+brightmap sprite FAT2A7D3
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A7D3.png"
+}
+brightmap sprite FAT2A8D2
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2A8D2.png"
+}
+brightmap sprite FAT2B1E1
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B1E1.png"
+}
+brightmap sprite FAT2B2E8
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B2E8.png"
+}
+brightmap sprite FAT2B3E7
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B3E7.png"
+}
+brightmap sprite FAT2B4E6
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B4E6.png"
+}
+brightmap sprite FAT2B5E5
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B5E5.png"
+}
+brightmap sprite FAT2B6E4
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B6E4.png"
+}
+brightmap sprite FAT2B7E3
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B7E3.png"
+}
+brightmap sprite FAT2B8E2
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2B8E2.png"
+}
+brightmap sprite FAT2C1F1
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C1F1.png"
+}
+brightmap sprite FAT2C2F8
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C2F8.png"
+}
+brightmap sprite FAT2C3F7
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C3F7.png"
+}
+brightmap sprite FAT2C4F6
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C4F6.png"
+}
+brightmap sprite FAT2C5F5
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C5F5.png"
+}
+brightmap sprite FAT2C6F4
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C6F4.png"
+}
+brightmap sprite FAT2C7F3
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C7F3.png"
+}
+brightmap sprite FAT2C8F2
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2C8F2.png"
+}
+brightmap sprite FAT2G1
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2G1.png"
+}
+brightmap sprite FAT2G2G8
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2G2G8.png"
+}
+brightmap sprite FAT2G3G7
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2G3G7.png"
+}
+brightmap sprite FAT2G4G6
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2G4G6.png"
+}
+brightmap sprite FAT2G5
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2G5.png"
+}
+brightmap sprite FAT2H1
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2H1.png"
+}
+brightmap sprite FAT2H2H8
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2H2H8.png"
+}
+brightmap sprite FAT2H3H7
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2H3H7.png"
+}
+brightmap sprite FAT2H4H6
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2H4H6.png"
+}
+brightmap sprite FAT2H5
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2H5.png"
+}
+brightmap sprite FAT2I1
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2I1.png"
+}
+brightmap sprite FAT2I2I8
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2I2I8.png"
+}
+brightmap sprite FAT2I3I7
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2I3I7.png"
+}
+brightmap sprite FAT2I4I6
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2I4I6.png"
+}
+brightmap sprite FAT2I5
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2I5.png"
+}
+brightmap sprite FAT2J1
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2J1.png"
+}
+brightmap sprite FAT2J2J8
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2J2J8.png"
+}
+brightmap sprite FAT2J3J7
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2J3J7.png"
+}
+brightmap sprite FAT2J4J6
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2J4J6.png"
+}
+brightmap sprite FAT2J5
+{
+	map "brightmaps/doom/monsters/Volcabus/FAT2J5.png"
+}
 brightmap sprite BADDA0
 {
 	map "brightmaps/doom/monsters/HellKnight/BADDA0.png"
@@ -4286,7 +6804,808 @@ brightmap sprite KSA8G0
 {
 	map "brightmaps/doom/monsters/HellKnight/KSA8G0.png"
 }
-
+brightmap sprite BRURA1
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA1.png"
+}
+brightmap sprite BRURA2
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA2.png"
+}
+brightmap sprite BRURA3
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA3.png"
+}
+brightmap sprite BRURA4
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA4.png"
+}
+brightmap sprite BRURA5
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA5.png"
+}
+brightmap sprite BRURA6
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA6.png"
+}
+brightmap sprite BRURA7
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA7.png"
+}
+brightmap sprite BRURA8
+{
+	map "brightmaps/doom/monsters/CyberKnight/BRURA8.png"
+}
+brightmap sprite C91DA0
+{
+	map "brightmaps/doom/monsters/CyberKnight/C91DA0.png"
+}
+brightmap sprite C91DB0
+{
+	map "brightmaps/doom/monsters/CyberKnight/C91DB0.png"
+}
+brightmap sprite CNRJA0
+{
+	map "brightmaps/doom/monsters/CyberKnight/CNRJA0.png"
+}
+brightmap sprite CNRJB0
+{
+	map "brightmaps/doom/monsters/CyberKnight/CNRJB0.png"
+}
+brightmap sprite CNRJC0
+{
+	map "brightmaps/doom/monsters/CyberKnight/CNRJC0.png"
+}
+brightmap sprite CNRJD0
+{
+	map "brightmaps/doom/monsters/CyberKnight/CNRJD0.png"
+}
+brightmap sprite CYUSA1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA1.png"
+}
+brightmap sprite CYUSA2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA2.png"
+}
+brightmap sprite CYUSA3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA3.png"
+}
+brightmap sprite CYUSA4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA4.png"
+}
+brightmap sprite CYUSA5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA5.png"
+}
+brightmap sprite CYUSA6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA6.png"
+}
+brightmap sprite CYUSA7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA7.png"
+}
+brightmap sprite CYUSA8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSA8.png"
+}
+brightmap sprite CYUSB1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB1.png"
+}
+brightmap sprite CYUSB2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB2.png"
+}
+brightmap sprite CYUSB3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB3.png"
+}
+brightmap sprite CYUSB4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB4.png"
+}
+brightmap sprite CYUSB5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB5.png"
+}
+brightmap sprite CYUSB6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB6.png"
+}
+brightmap sprite CYUSB7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB7.png"
+}
+brightmap sprite CYUSB8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSB8.png"
+}
+brightmap sprite CYUSC1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC1.png"
+}
+brightmap sprite CYUSC2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC2.png"
+}
+brightmap sprite CYUSC3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC3.png"
+}
+brightmap sprite CYUSC4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC4.png"
+}
+brightmap sprite CYUSC5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC5.png"
+}
+brightmap sprite CYUSC6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC6.png"
+}
+brightmap sprite CYUSC7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC7.png"
+}
+brightmap sprite CYUSC8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSC8.png"
+}
+brightmap sprite CYUSD1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD1.png"
+}
+brightmap sprite CYUSD2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD2.png"
+}
+brightmap sprite CYUSD3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD3.png"
+}
+brightmap sprite CYUSD4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD4.png"
+}
+brightmap sprite CYUSD5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD5.png"
+}
+brightmap sprite CYUSD6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD6.png"
+}
+brightmap sprite CYUSD7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD7.png"
+}
+brightmap sprite CYUSD8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSD8.png"
+}
+brightmap sprite CYUSE1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE1.png"
+}
+brightmap sprite CYUSE2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE2.png"
+}
+brightmap sprite CYUSE3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE3.png"
+}
+brightmap sprite CYUSE4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE4.png"
+}
+brightmap sprite CYUSE5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE5.png"
+}
+brightmap sprite CYUSE6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE6.png"
+}
+brightmap sprite CYUSE7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE7.png"
+}
+brightmap sprite CYUSE8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSE8.png"
+}
+brightmap sprite CYUSF1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF1.png"
+}
+brightmap sprite CYUSF2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF2.png"
+}
+brightmap sprite CYUSF3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF3.png"
+}
+brightmap sprite CYUSF4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF4.png"
+}
+brightmap sprite CYUSF5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF5.png"
+}
+brightmap sprite CYUSF6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF6.png"
+}
+brightmap sprite CYUSF7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF7.png"
+}
+brightmap sprite CYUSF8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSF8.png"
+}
+brightmap sprite CYUSG1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG1.png"
+}
+brightmap sprite CYUSG2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG2.png"
+}
+brightmap sprite CYUSG3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG3.png"
+}
+brightmap sprite CYUSG4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG4.png"
+}
+brightmap sprite CYUSG5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG5.png"
+}
+brightmap sprite CYUSG6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG6.png"
+}
+brightmap sprite CYUSG7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG7.png"
+}
+brightmap sprite CYUSG8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSG8.png"
+}
+brightmap sprite CYUSH1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH1.png"
+}
+brightmap sprite CYUSH2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH2.png"
+}
+brightmap sprite CYUSH3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH3.png"
+}
+brightmap sprite CYUSH4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH4.png"
+}
+brightmap sprite CYUSH5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH5.png"
+}
+brightmap sprite CYUSH6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH6.png"
+}
+brightmap sprite CYUSH7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH7.png"
+}
+brightmap sprite CYUSH8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSH8.png"
+}
+brightmap sprite CYUSI1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI1.png"
+}
+brightmap sprite CYUSI2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI2.png"
+}
+brightmap sprite CYUSI3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI3.png"
+}
+brightmap sprite CYUSI4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI4.png"
+}
+brightmap sprite CYUSI5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI5.png"
+}
+brightmap sprite CYUSI6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI6.png"
+}
+brightmap sprite CYUSI7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI7.png"
+}
+brightmap sprite CYUSI8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSI8.png"
+}
+brightmap sprite CYUSJ1
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ1.png"
+}
+brightmap sprite CYUSJ2
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ2.png"
+}
+brightmap sprite CYUSJ3
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ3.png"
+}
+brightmap sprite CYUSJ4
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ4.png"
+}
+brightmap sprite CYUSJ5
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ5.png"
+}
+brightmap sprite CYUSJ6
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ6.png"
+}
+brightmap sprite CYUSJ7
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ7.png"
+}
+brightmap sprite CYUSJ8
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSJ8.png"
+}
+brightmap sprite CYUSK0
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSK0.png"
+}
+brightmap sprite CYUSL0
+{
+	map "brightmaps/doom/monsters/CyberKnight/CYUSL0.png"
+}
+brightmap sprite CB4RA0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RA0.png"
+}
+brightmap sprite CB4RB0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RB0.png"
+}
+brightmap sprite CB4RC0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RC0.png"
+}
+brightmap sprite CB4RD0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RD0.png"
+}
+brightmap sprite CB4RE0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RE0.png"
+}
+brightmap sprite CB4RF0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RF0.png"
+}
+brightmap sprite CB4RG0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RG0.png"
+}
+brightmap sprite CB4RH0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RH0.png"
+}
+brightmap sprite CB4RI0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RI0.png"
+}
+brightmap sprite CB4RJ0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RJ0.png"
+}
+brightmap sprite CB4RK0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RK0.png"
+}
+brightmap sprite CB4RL0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RL0.png"
+}
+brightmap sprite CB4RM0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RM0.png"
+}
+brightmap sprite CB4RN0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RN0.png"
+}
+brightmap sprite CB4RO0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RO0.png"
+}
+brightmap sprite CB4RP0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RP0.png"
+}
+brightmap sprite CB4RQ0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CB4RQ0.png"
+}
+brightmap sprite CBOSA1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA1.png"
+}
+brightmap sprite CBOSA2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA2.png"
+}
+brightmap sprite CBOSA3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA3.png"
+}
+brightmap sprite CBOSA4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA4.png"
+}
+brightmap sprite CBOSA5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA5.png"
+}
+brightmap sprite CBOSA6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA6.png"
+}
+brightmap sprite CBOSA7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA7.png"
+}
+brightmap sprite CBOSA8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSA8.png"
+}
+brightmap sprite CBOSB1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB1.png"
+}
+brightmap sprite CBOSB2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB2.png"
+}
+brightmap sprite CBOSB3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB3.png"
+}
+brightmap sprite CBOSB4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB4.png"
+}
+brightmap sprite CBOSB5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB5.png"
+}
+brightmap sprite CBOSB6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB6.png"
+}
+brightmap sprite CBOSB7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB7.png"
+}
+brightmap sprite CBOSB8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSB8.png"
+}
+brightmap sprite CBOSC1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC1.png"
+}
+brightmap sprite CBOSC2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC2.png"
+}
+brightmap sprite CBOSC3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC3.png"
+}
+brightmap sprite CBOSC4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC4.png"
+}
+brightmap sprite CBOSC5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC5.png"
+}
+brightmap sprite CBOSC6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC6.png"
+}
+brightmap sprite CBOSC7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC7.png"
+}
+brightmap sprite CBOSC8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSC8.png"
+}
+brightmap sprite CBOSD1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD1.png"
+}
+brightmap sprite CBOSD2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD2.png"
+}
+brightmap sprite CBOSD3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD3.png"
+}
+brightmap sprite CBOSD4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD4.png"
+}
+brightmap sprite CBOSD5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD5.png"
+}
+brightmap sprite CBOSD6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD6.png"
+}
+brightmap sprite CBOSD7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD7.png"
+}
+brightmap sprite CBOSD8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSD8.png"
+}
+brightmap sprite CBOSE1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE1.png"
+}
+brightmap sprite CBOSE2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE2.png"
+}
+brightmap sprite CBOSE3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE3.png"
+}
+brightmap sprite CBOSE4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE4.png"
+}
+brightmap sprite CBOSE5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE5.png"
+}
+brightmap sprite CBOSE6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE6.png"
+}
+brightmap sprite CBOSE7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE7.png"
+}
+brightmap sprite CBOSE8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSE8.png"
+}
+brightmap sprite CBOSF1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF1.png"
+}
+brightmap sprite CBOSF2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF2.png"
+}
+brightmap sprite CBOSF3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF3.png"
+}
+brightmap sprite CBOSF4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF4.png"
+}
+brightmap sprite CBOSF5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF5.png"
+}
+brightmap sprite CBOSF6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF6.png"
+}
+brightmap sprite CBOSF7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF7.png"
+}
+brightmap sprite CBOSF8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSF8.png"
+}
+brightmap sprite CBOSH1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH1.png"
+}
+brightmap sprite CBOSH2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH2.png"
+}
+brightmap sprite CBOSH3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH3.png"
+}
+brightmap sprite CBOSH4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH4.png"
+}
+brightmap sprite CBOSH5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH5.png"
+}
+brightmap sprite CBOSH6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH6.png"
+}
+brightmap sprite CBOSH7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH7.png"
+}
+brightmap sprite CBOSH8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSH8.png"
+}
+brightmap sprite CBOSI0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSI0.png"
+}
+brightmap sprite CBOSJ0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSJ0.png"
+}
+/*
+brightmap sprite CBOSK0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSK0.png"
+}
+brightmap sprite CBOSL0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSL0.png"
+}
+brightmap sprite CBOSM0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSM0.png"
+}
+brightmap sprite CBOSN0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSN0.png"
+}
+brightmap sprite CBOSO0
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSO0.png"
+}
+*/
+brightmap sprite CBOSP1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP1.png"
+}
+brightmap sprite CBOSP2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP2.png"
+}
+brightmap sprite CBOSP3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP3.png"
+}
+brightmap sprite CBOSP4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP4.png"
+}
+brightmap sprite CBOSP5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP5.png"
+}
+brightmap sprite CBOSP6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP6.png"
+}
+brightmap sprite CBOSP7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP7.png"
+}
+brightmap sprite CBOSP8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSP8.png"
+}
+brightmap sprite CBOSQ1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ1.png"
+}
+brightmap sprite CBOSQ2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ2.png"
+}
+brightmap sprite CBOSQ3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ3.png"
+}
+brightmap sprite CBOSQ4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ4.png"
+}
+brightmap sprite CBOSQ5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ5.png"
+}
+brightmap sprite CBOSQ6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ6.png"
+}
+brightmap sprite CBOSQ7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ7.png"
+}
+brightmap sprite CBOSQ8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSQ8.png"
+}
+brightmap sprite CBOSR1
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR1.png"
+}
+brightmap sprite CBOSR2
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR2.png"
+}
+brightmap sprite CBOSR3
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR3.png"
+}
+brightmap sprite CBOSR4
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR4.png"
+}
+brightmap sprite CBOSR5
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR5.png"
+}
+brightmap sprite CBOSR6
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR6.png"
+}
+brightmap sprite CBOSR7
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR7.png"
+}
+brightmap sprite CBOSR8
+{
+	map "brightmaps/doom/monsters/CyberBaron/CBOSR8.png"
+}
 brightmap sprite BOS3A1
 {
 	map "brightmaps/doom/monsters/Belphegor/BOS3A1.png"
@@ -5451,7 +8770,174 @@ brightmap sprite RSPIY0
 {
 	map "brightmaps/doom/monsters/ArachnotronX/RSPIY0.png"
 }
-
+brightmap sprite AR4CJ0
+{
+	map "brightmaps/doom/monsters/Arachnotron2/AR4CJ0.png"
+}
+brightmap sprite ARACA1D1
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA1D1.png"
+}
+brightmap sprite ARACA2D8
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA2D8.png"
+}
+brightmap sprite ARACA3D7
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA3D7.png"
+}
+brightmap sprite ARACA4D6
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA4D6.png"
+}
+brightmap sprite ARACA5D5
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA5D5.png"
+}
+brightmap sprite ARACA6D4
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA6D4.png"
+}
+brightmap sprite ARACA7D3
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA7D3.png"
+}
+brightmap sprite ARACA8D2
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACA8D2.png"
+}
+brightmap sprite ARACB1E1
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB1E1.png"
+}
+brightmap sprite ARACB2E8
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB2E8.png"
+}
+brightmap sprite ARACB3E7
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB3E7.png"
+}
+brightmap sprite ARACB4E6
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB4E6.png"
+}
+brightmap sprite ARACB5E5
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB5E5.png"
+}
+brightmap sprite ARACB6E4
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB6E4.png"
+}
+brightmap sprite ARACB7E3
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB7E3.png"
+}
+brightmap sprite ARACB8E2
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACB8E2.png"
+}
+brightmap sprite ARACC1F1
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC1F1.png"
+}
+brightmap sprite ARACC2F8
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC2F8.png"
+}
+brightmap sprite ARACC3F7
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC3F7.png"
+}
+brightmap sprite ARACC4F6
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC4F6.png"
+}
+brightmap sprite ARACC5F5
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC5F5.png"
+}
+brightmap sprite ARACC6F4
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC6F4.png"
+}
+brightmap sprite ARACC7F3
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC7F3.png"
+}
+brightmap sprite ARACC8F2
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACC8F2.png"
+}
+brightmap sprite ARACG1
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACG1.png"
+}
+brightmap sprite ARACG2G8
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACG2G8.png"
+}
+brightmap sprite ARACG3G7
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACG3G7.png"
+}
+brightmap sprite ARACG4G6
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACG4G6.png"
+}
+brightmap sprite ARACG5
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACG5.png"
+}
+brightmap sprite ARACH4H6
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACH4H6.png"
+}
+brightmap sprite ARACH5
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACH5.png"
+}
+brightmap sprite ARACI1
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI1.png"
+}
+brightmap sprite ARACI2
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI2.png"
+}
+brightmap sprite ARACI3
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI3.png"
+}
+brightmap sprite ARACI4
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI4.png"
+}
+brightmap sprite ARACI5
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI5.png"
+}
+brightmap sprite ARACI6
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI6.png"
+}
+brightmap sprite ARACI7
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI7.png"
+}
+brightmap sprite ARACI8
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACI8.png"
+}
+brightmap sprite ARACJ0
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACJ0.png"
+}
+brightmap sprite ARACK0
+{
+	map "brightmaps/doom/monsters/Arachnotron2/ARACK0.png"
+}
 brightmap sprite ACNBA1
 {
 	map "brightmaps/doom/monsters/Aracnorb/ACNBA1.png"
@@ -5649,7 +9135,246 @@ brightmap sprite ARNQX0
 	map "brightmaps/doom/monsters/AracnorbQueen/ARNQX0.png"
 }
 
+BrightMap Sprite HELNG1
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG1"
+DisableFullBright
+}
 
+BrightMap Sprite HELNG2
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG2"
+DisableFullBright
+}
+
+BrightMap Sprite HELNG3
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG3"
+DisableFullBright
+}
+
+BrightMap Sprite HELNG4
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG4"
+DisableFullBright
+}
+
+BrightMap Sprite HELNG5
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG5"
+DisableFullBright
+}
+
+BrightMap Sprite HELNG6
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG6"
+DisableFullBright
+}
+
+BrightMap Sprite HELNG7
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG7"
+DisableFullBright
+}
+
+BrightMap Sprite HELNG8
+{
+Map "brightmaps/doom/monsters/Hellion/HELNG8"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH1
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH1"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH2
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH2"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH3
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH3"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH4
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH4"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH5
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH5"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH6
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH6"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH7
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH7"
+DisableFullBright
+}
+
+BrightMap Sprite HELNH8
+{
+Map "brightmaps/doom/monsters/Hellion/HELNH8"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI1
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI1"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI2
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI2"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI3
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI3"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI4
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI4"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI5
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI5"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI6
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI6"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI7
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI7"
+DisableFullBright
+}
+
+BrightMap Sprite HELNI8
+{
+Map "brightmaps/doom/monsters/Hellion/HELNI8"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ1
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ1"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ2
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ2"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ3
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ3"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ4
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ4"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ5
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ5"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ6
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ6"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ7
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ7"
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ8
+{
+Map "brightmaps/doom/monsters/Hellion/HELNJ8"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK1
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK1"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK2
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK2"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK3
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK3"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK4
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK4"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK5
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK5"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK6
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK6"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK7
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK7"
+DisableFullBright
+}
+
+BrightMap Sprite HELNK8
+{
+Map "brightmaps/doom/monsters/Hellion/HELNK8"
+DisableFullBright
+}
+/*
 //Zombie1
 
 brightmap sprite POSSA1
@@ -5851,24 +9576,60 @@ brightmap sprite SPOSF5
 }
 
 
-
-
-
-
-
-brightmap sprite KEPTA0
+//Rapid Fire Trooper
+brightmap sprite RFTRE1
 {
-	map "brightmaps/doom/monsters/GATEKE1.png"
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRE1.png"
+	disablefullbright
 }
 
-
-brightmap sprite KEPTB0
+brightmap sprite RFTRE2
 {
-	map "brightmaps/doom/monsters/GATEKE2.png"
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRE2.png"
+	disablefullbright
 }
 
-brightmap sprite KEPTC0
+brightmap sprite RFTRE3
 {
-	map "brightmaps/doom/monsters/GATEKE3.png"
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRE3.png"
+	disablefullbright
 }
 
+brightmap sprite RFTRF1
+{
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRF1.png"
+	disablefullbright
+}
+
+brightmap sprite RFTRF2
+{
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRF2.png"
+	disablefullbright
+}
+
+brightmap sprite RFTRF3
+{
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRF3.png"
+	disablefullbright
+}
+
+brightmap sprite RFTRF4
+{
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRF4.png"
+	disablefullbright
+}
+
+brightmap sprite RFTRF5
+{
+	//iwad
+	map "brightmaps/doom/Monsters/RapidFireTrooper/BMRFTRF5.png"
+	disablefullbright
+}
+*/

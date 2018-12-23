@@ -13,11 +13,6 @@ ACTOR Purist : Doomer
 }
 
 
-ACTOR BDoomer : Doomer
-{
-	Speed 1.0
-	Player.DisplayName "Brutal DOOM V20"
-}
 
 ACTOR BDBOT : Doomer
 {

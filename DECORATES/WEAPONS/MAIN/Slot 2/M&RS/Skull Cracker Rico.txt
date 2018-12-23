@@ -113,49 +113,7 @@ Death:
     Stop
 }
 }
-Actor OldschoolRocketSmokeTrail1: AltSmoke
-{
-	Alpha 0.6
-Speed 1
-+CLIENTSIDEONLY
-Scale 1.5
-States
-    {
-    SmokeChoke:
-		TNT1 A 1
-		Stop
-    Spawn:
-		TNT1 A 1 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)     
-	    TNT1 A 3
-		TNT1 A 0 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)
-        PUFY CCCCCCCCCCCCCCCCCCCCCCCC 2 A_FadeOut(0.050)
-		//PUFF AAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.030)
-Stop
-}
-}
 
-
-Actor OldschoolRocketSmokeTrail2: AltSmoke
-{
-	Alpha 0.7
-Speed 1
-+CLIENTSIDEONLY
-Scale 0.2
-States
-    {
-    SmokeChoke:
-		TNT1 A 1
-		Stop
-    Spawn:
-		TNT1 A 1 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0) 
-	    TNT1 A 2
-		TNT1 A 0 ACS_NamedExecuteAlways("SmokeChoke", 0, 0, 0, 0)
-        SMK3 BCDEFGHIJKKLLMMN 2
-		Stop
-		
-Stop
-}
-}
 
 Actor OldschoolRocketSmokeTrail3: AltSmoke
 {

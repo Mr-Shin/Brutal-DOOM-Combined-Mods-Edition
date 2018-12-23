@@ -1,6 +1,6 @@
-map TITLEMAP "BDCME"
+map TITLEMAP "BrutalDoom:CME_Introduction"
 {
-	music = "D_DM2INT"
+	music = "IBTITLE"
 }
 
 episode EDAY01

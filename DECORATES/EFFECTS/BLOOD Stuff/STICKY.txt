@@ -190,7 +190,6 @@ ACTOR XDeath2NoStick: XDeath1
     Death:
         TNT1 AAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), 2, random (0, 180))
          XME1 E 1
-		 TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0)//Check Effects
 		XME1 E 3
 		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
@@ -302,10 +301,8 @@ ACTOR SmearingXDeath3
         Stop
 	Rest:
 	 XME1 E 1
-	 TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0)//Check Effects
 		XME2 E 3
-		
 		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
     Living:
 	    XME2 E 600
@@ -411,7 +408,6 @@ ACTOR XDeath3NoStick: XDeath1
     Death:
         TNT1 AAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), 2, random (0, 180))
         XME2 E 1
-		TNT1 A 0 A_QueueCorpse
 		TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0)//Check Effects
 		XME2 E 3
 		TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1)
@@ -564,8 +560,7 @@ ACTOR XDeath4NoStick: XDeath1
         Loop
     Death:
         TNT1 AAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail5", 0, 0, random (0, 180), 2, random (0, 180))
-        TNT1 A 0 A_QueueCorpse
-		XME3 E 2002
+        XME3 E 2002
 		
         Stop
     Splash:
@@ -616,7 +611,6 @@ ACTOR SmallBrainPieceFast
 	
 	Rest:
 	TNT1 A 0
-	TNT1 A 0 A_QueueCorpse
 	TNT1 A 0 A_Jump(255, "Rest1", "Rest2")
 	Rest1:
         XDT5 B 800
@@ -720,7 +714,6 @@ ACTOR SmearingBrain
 		Loop
 	Sleep:	
 	    XDT5 BBBBBBBBBBBBBBBBBB 2 ThrustThingZ(0,-2,0,1)
-		TNT1 A 0 A_QueueCorpse
         XDT5 B 2002
         Stop
 	DoNothing:
