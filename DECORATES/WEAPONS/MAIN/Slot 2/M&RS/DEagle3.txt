@@ -64,20 +64,6 @@ ACTOR DesertEagle3 : CMEWeapon
 	TNT1 A 0 A_TakeInventory("IsFlashlightOn", 1)
 	Goto Flash
 	
-AltFire:
-		TNT1 a 0 A_jumpifinventory("SilencerInventory", 1, "SilencerOn")
-		Goto NoSilencer
-	SilencerOn:
-		TNT1 A 0 A_jumpifinventory("DESilencerIsOn", 1, "SilencerOff")
-		TNT1 A 0 A_GiveInventory("DESilencerIsOn", 1)
-		DE2S BA 1
-		TNT1 AAAAA 1
-		Goto Ready2
-	SilencerOff:
-		TNT1 A 0 A_TakeInventory("DESilencerIsOn", 1)
-		DE3S BA 1
-		TNT1 AAAAA 1
-		Goto Ready
 	
 	Ready:
 

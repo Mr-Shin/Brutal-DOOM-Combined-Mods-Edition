@@ -28,7 +28,7 @@ ACTOR G7 : CMEWeapon
 	Obituary "%o went splat to %k's G7 Designated Marskam Pistol"
     AttackSound "None"
     Inventory.PickupSound "M9BFULL"
-	Inventory.Pickupmessage "You got a G7 Marksman Pistol!"
+	Inventory.Pickupmessage "You got a G7 Marksman Pistol!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -109,6 +109,7 @@ ACTOR G7 : CMEWeapon
 		G7GR ABC 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -135,8 +136,7 @@ ACTOR G7 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise
 		Goto Ready
 	
     Fire:

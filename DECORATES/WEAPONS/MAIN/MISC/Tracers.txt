@@ -142,7 +142,23 @@ Actor MinigunTracer: Tracer
 seesound "weapons/minigunfire"
 damagetype Cutless
 }
-
+ACTOR FlackTracer: Tracer
+{
++BLOODSPLATTER 
++THRUGHOST
++Friendly
++DONTSPLASH
+speed 80
+damage 12
+Decal "BulletChip"
+DamageType FriendBullet
+States
+{
+Death:
+    TNT1 A 1 A_SpawnItem("HitPuff")
+    Stop
+}
+}
 
 Actor ExplosiveTracer: Tracer
 {

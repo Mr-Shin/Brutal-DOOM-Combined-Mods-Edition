@@ -49,18 +49,18 @@ ACTOR MiniHellRocketAmmo : Ammo
 ACTOR BuzzSawAmmo : Ammo
 {
    Inventory.Amount 0
-   Inventory.MaxAmount 600
+   Inventory.MaxAmount 1000
    Ammo.BackpackAmount 20
-   Ammo.BackpackMaxAmount 600
+   Ammo.BackpackMaxAmount 1000
    Inventory.Icon "HBUSD0"
 }
 
 ACTOR Gas : Ammo
 {
    Inventory.Amount 500
-   Inventory.MaxAmount 999
+   Inventory.MaxAmount 3000
    Ammo.BackpackAmount 500
-   Ammo.BackpackMaxAmount 999
+   Ammo.BackpackMaxAmount 3000
    Inventory.Icon "GSLNA0"
    Inventory.PickupMessage "You got Gasoline."
 }
@@ -324,10 +324,10 @@ ACTOR Clip1 : Ammo
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a Pistol Mag."
 	Inventory.Amount 20
-	Inventory.MaxAmount 400
+	Inventory.MaxAmount 500
 	Ammo.BackpackAmount 20
 	inventory.pickupsound "clip/pkup"
-	Ammo.BackpackMaxAmount 800
+	Ammo.BackpackMaxAmount 1000
 	Inventory.Icon "AMO1A0"
 	States
 	{

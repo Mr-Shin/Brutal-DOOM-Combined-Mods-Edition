@@ -1,7 +1,7 @@
 #library "ssplash"
 #include "zcommon.acs"
 
-script 373 (void) //Water Small Splash
+script "BDCheckFloorType" (void) //Water Small Splash
 {
   if (CheckActorFloorTexture(0, "FWATER1"))    GiveInventory("IsOverWater", 1);
   if (CheckActorFloorTexture(0, "FWATER2"))    GiveInventory("IsOverWater", 1);
@@ -45,7 +45,7 @@ script 373 (void) //Water Small Splash
 }
 
 
-script 374 (void) // Footstep Sounds
+script "BDCheckFloorType2" (void) // Footstep Sounds
 {  
   
   if (CheckActorFloorTexture(0, "FWATER1"))    GiveInventory("IsOverWater", 1);
@@ -98,10 +98,30 @@ script 374 (void) // Footstep Sounds
   if (CheckActorFloorTexture(0, "FLAT23"))    GiveInventory("IsOverMetal", 1);
   if (CheckActorFloorTexture(0, "FLAT22"))    GiveInventory("IsOverMetal", 1);
   
+  if (CheckActorFloorTexture(0, "SLIME14"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "SLIME15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "SLIME16"))    GiveInventory("IsOverMetal2", 1);
   if (CheckActorFloorTexture(0, "GATE1"))    GiveInventory("IsOverMetal2", 1);
   if (CheckActorFloorTexture(0, "GATE2"))    GiveInventory("IsOverMetal2", 1);
   if (CheckActorFloorTexture(0, "GATE3"))    GiveInventory("IsOverMetal2", 1);
   if (CheckActorFloorTexture(0, "GATE4"))    GiveInventory("IsOverMetal2", 1);
+  
+  if (CheckActorFloorTexture(0, "METAL17"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "METAL35"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "METAL37"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "METAL38"))    GiveInventory("IsOverMetal", 1);
+  if (CheckActorFloorTexture(0, "METAL40"))    GiveInventory("IsOverMetal", 1);
+  
+  if (CheckActorFloorTexture(0, "METAL12"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL13"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL13B"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL13C"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL14"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL15"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL16"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL36"))    GiveInventory("IsOverMetal2", 1);
+  if (CheckActorFloorTexture(0, "METAL51"))    GiveInventory("IsOverMetal2", 1);
+  
   
   if (CheckActorFloorTexture(0, "FLAT1"))    GiveInventory("IsOverRock", 1);
   if (CheckActorFloorTexture(0, "FLAT1_1"))    GiveInventory("IsOverRock", 1);
@@ -112,7 +132,7 @@ script 374 (void) // Footstep Sounds
   if (CheckActorFloorTexture(0, "FLAT5_8"))    GiveInventory("IsOverRock", 1);
   if (CheckActorFloorTexture(0, "FLOOR5_4"))    GiveInventory("IsOverRock", 1);
   if (CheckActorFloorTexture(0, "GRNROCK"))    GiveInventory("IsOverRock", 1);
-  if (CheckActorFloorTexture(0, "MFLR8_2"))    GiveInventory("IsOverRock", 1);
+  if (CheckActorFloorTexture(0, "MFLR8_2"))    GiveInventory("IsOverGravel", 1);
   if (CheckActorFloorTexture(0, "MFLR8_3"))    GiveInventory("IsOverGravel", 1);
   if (CheckActorFloorTexture(0, "RROCK03"))    GiveInventory("IsOverRock", 1);
   if (CheckActorFloorTexture(0, "RROCK03"))    GiveInventory("IsOverRock", 1);
@@ -187,7 +207,7 @@ script 374 (void) // Footstep Sounds
 
 
 
-script 375 (void) ///Check if Over Dirt or Grass for explosions
+script "BDCheckFloorType3" (void) ///Check if Over Dirt or Grass for explosions
 {
   if (CheckActorFloorTexture(0, "GRASS1"))    GiveInventory("IsOverGrass", 1);
   if (CheckActorFloorTexture(0, "GRASS2"))    GiveInventory("IsOverGrass", 1);
@@ -218,6 +238,12 @@ script 375 (void) ///Check if Over Dirt or Grass for explosions
   if (CheckActorFloorTexture(0, "SANDS1"))    GiveInventory("IsOverSand", 1);
   if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
   
+  if (CheckActorFloorTexture(0, "SANDS2"))    GiveInventory("IsOverSand", 1);
+  
+  if (CheckActorFloorTexture(0, "SFLR6_1"))    GiveInventory("IsOverFlesh", 1);
+  if (CheckActorFloorTexture(0, "SFLR6_4"))    GiveInventory("IsOverFlesh", 1);
+  if (CheckActorFloorTexture(0, "SFLR7_1"))    GiveInventory("IsOverFlesh", 1);
+  if (CheckActorFloorTexture(0, "SFLR7_4"))    GiveInventory("IsOverFlesh", 1);
   
 
 }

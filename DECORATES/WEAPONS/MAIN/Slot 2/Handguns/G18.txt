@@ -156,7 +156,6 @@ ACTOR G18 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 		TNT1 A 0 A_Raise
 		Goto Ready
 		

@@ -7,10 +7,10 @@ ACTOR HandGrenades : DoomWeapon
 	Weapon.SelectionOrder 99999
 	Weapon.AmmoType1 "GrenadeAmmo"
 	Weapon.AmmoType2 "GrenadeAmmo"
-	Obituary "%o was blewn up by %k's grenade."
+	Obituary "%o was shreded by %k's grenade."
     AttackSound "None"
     Inventory.PickupSound "AmmoAPIN"
-	Inventory.Pickupmessage "You picked up a Frag Grenade!"
+	Inventory.Pickupmessage "You got a Frag Grenade!  (Slot 0)"
 	
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -196,6 +196,23 @@ ACTOR HandGrenades : DoomWeapon
 }
 
 
+
+Actor GrenadeTime : Inventory
+{
+inventory.maxamount 6
+}
+
+Actor TossGrenade : Inventory
+{
+inventory.maxamount 1
+}
+
+
+Actor FiredGrenade : Inventory
+{
+inventory.maxamount 1
+}
+
 ACTOR HandGrenade
 {
 	Radius 4
@@ -258,14 +275,15 @@ actor FragGrenadeExplosion
 {
 +NOBLOCKMAP
 +MISSILE
-+DONTSPLASH
 Damagetype ExplosiveImpact
 DeathSound "Explosion"
 States    {
     Spawn:
 	TNT1 A 0
 	
-		TNT1 AAAA 0 A_Explode(50,400, 0)
+TNT1 A 0 A_Explode(200,400, 0)
+
+TNT1 A 0 A_Explode(200,200, 0)
 
 		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -15)
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)

@@ -25,7 +25,7 @@ ACTOR XM1014 : CMEWeapon
 	Weapon.AmmoGive2 0
 	Weapon.AmmoType1 "Shell2"
 	Weapon.AmmoType2 "XM1014Ammo"
-	Inventory.PickupMessage "You got the XM1014!"
+	Inventory.PickupMessage "You got the XM1014!!! (Slot 3)"
 	tag "XM 1014"
     Inventory.PickupSound "XM1014/pickup"
 	Obituary "%o was demolished by %k's XM1014"
@@ -103,9 +103,10 @@ ACTOR XM1014 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		X1SS DCBA 1
-		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower	
 		Wait
 	
 	Select:
@@ -113,7 +114,7 @@ ACTOR XM1014 : CMEWeapon
 		TNT1 A 0 A_Takeinventory("Unloading",1)
 		TNT1 A 0 A_Takeinventory("FistsSelected",1)
 		TNT1 A 0 A_Takeinventory("SawSelected",1)
-		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+TNT1 A 0 A_Giveinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
@@ -131,7 +132,7 @@ ACTOR XM1014 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 	
 	RecoilFlash:

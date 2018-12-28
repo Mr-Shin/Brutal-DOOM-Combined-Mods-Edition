@@ -31,7 +31,7 @@ ACTOR CoachGun : CMEWeapon
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	tag "Ye' Ole COACHGUN"
-	Inventory.PickupMessage "You got the CoachGun!"
+	Inventory.PickupMessage "You got the Coach Gun!!! (Slot 3)"
 	Obituary "%o got castrated by %k's coachgun"
     Inventory.PickupSound "WWCLOSE"
 	Scale 0.9
@@ -76,6 +76,7 @@ ACTOR CoachGun : CMEWeapon
 		2SGS ABCD 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -100,7 +101,7 @@ ACTOR CoachGun : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 
 		TNT1 A 0 A_GiveInventory ("Pumping", 1)
         2SGF R 1

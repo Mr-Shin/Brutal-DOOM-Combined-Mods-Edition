@@ -2,6 +2,7 @@ ACTOR DoPunch : Inventory
 {
 Inventory.MaxAmount 1
 }
+Actor GoSilencerAbility: Inventory { Inventory.MaxAmount 1 }
 Actor GrabbedBarrel : Inventory 
 {
 	Inventory.MaxAmount 1
@@ -30,7 +31,7 @@ ACTOR DoElecPod : Inventory
 {
 Inventory.MaxAmount 1
 }
-Actor GrenadeAmmo : Inventory {}
+
 Actor Swarmers : Inventory {}
 Actor SwarmerPodSet : Inventory {}
 ACTOR KickHasHitAnObject : Inventory {}
@@ -40,6 +41,24 @@ Actor DoGrenade : Inventory {}
 Actor ElecPod : Inventory {}
 Actor BarrelThrower : Inventory {}
 Actor GoEmergencyGunAbility : Inventory {}
+
+ACTOR GrenadeAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Grenade."
+	Inventory.Amount 1
+	Inventory.MaxAmount 20
+	Ammo.BackpackAmount 5
+	Ammo.BackpackMaxAmount 40
+	Inventory.Icon "GRNDA"
+	Scale 0.3
+	States
+	{
+	Spawn:
+		GRND H -1
+		Stop
+	}
+}
 
 //**
 
@@ -55,7 +74,7 @@ ACTOR CMEWeapon : DoomWeapon
 	Weapon.BobRangeX 0.3
 	Weapon.BobRangeY 0.5
 	Weapon.BobStyle InverseSmooth
-	Weapon.BobSpeed 2.4
+	Weapon.BobSpeed 2.0
  VisibleToPlayerClass Doomer
  Inventory.ForbiddenTo Purist
 	States
@@ -270,7 +289,7 @@ ACTOR CMEWeapon : DoomWeapon
 		TNT1 A 0 A_PLaySound ("GRNTOSS")
 		GRTH HI 1
 		TNT1 A 0 A_TakeInventory("GrenadeAmmo", 1)
-		TNT1 A 0 A_FireCustomMissile("HandGrenade", random(-2,2), 0, 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("HandGrenades", random(-2,2), 0, 0, 0, 0, 0)
 	    TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
 		GRTH JKLM 1
 		TNT1 A 1 

@@ -1,0 +1,1567 @@
+Actor HasSlugs : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+Actor HasDragonBreath : Inventory
+{
+Inventory.MaxAmount 1
+}
+Actor HasFlameThrowerShotty : Inventory {Inventory.MaxAmount 1}
+
+Actor DragonBreathUpgrade : Inventory {Inventory.MaxAmount 1}
+
+ACTOR DragonsBreathTracer: FastProjectile
+{
+	Projectile
+	+RANDOMIZE
++FORCEXYBILLBOARD
++DONTSPLASH
++NOEXTREMEDEATH
+Damagetype Shotgun
+Damage 7
+PoisonDamageType Fire
+PoisonDamage 7
++ADDITIVEPOISONDURATION
+radius 2
+height 2
+speed 80
+Gravity 0.4
+renderstyle ADD
+alpha 0.95
+scale 0.45
+    Decal "SmallerScorch"
+states
+	{
+	Spawn:
+		DBAC A 3 BRIGHT
+		TNT1 A 0 A_SpawnItemEx("ShotgunParticles", random(8,-8), random(8,-8), random(8,-8), 0, 0, 0, 0, 128, 0)
+		TNT1 A 0 A_SpawnItemEx("ExplosionParticleVerySlow", random(8,-8), random(8,-8), random(19,-19), 0, 0, 0, 0, 128, 0)
+		Loop
+Death:
+XDeath:
+	TNT1 A 0 A_Explode(5, 30, 0)
+	TNT1 A 0 A_Playsound("ricochet/hit")
+    TNT1 A 0 A_SpawnItemEx ("DragonBreath",0,0,1,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    Stop
+	}
+}
+Actor DragonBreath
+{
+	Projectile
+	+RANDOMIZE
++FORCEXYBILLBOARD
++RIPPER
++NOEXTREMEDEATH
+damage 5
+radius 1
+height 1
+speed 40
+renderstyle ADD
+alpha 0.9
+scale .15
+    DamageType Fire
+	SeeSound "Afrit/Hellfire"
+    Decal "SmallerScorch"
+states
+	{
+	Spawn:
+	TNT1 A 0 A_Playsound("Afrit/Hellfire")
+	TNT1 A 0 A_Explode(21, 66, 0)
+	TNT1 AAAA 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	EXPL A 0 A_SpawnItemEx ("ExplosionParticleSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	EXPL AAAAAAAAAAA 0 A_CustomMissile ("ShotgunParticles", 6, 0, random (0, 360), 2, random (0, 90))//ShotgunParticles
+	TNT1 A 0 A_Jump(76, 2, 3)
+	TNT1 A 0 A_SpawnItemEx("DragonsBreathPiece1", random (-15, 15), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("DragonsBreathPiece2", random (-35, 35), random (-35, 35))
+	TNT1 A 0 A_SpawnItemEx("DragonsBreathPiece3", random (-45, 45), random (-45, 35))
+	TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (0, 360))
+    TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	Stop
+Death:
+    Stop
+XDeath:
+TNT1 A 0
+Stop
+	}
+}
+
+ACTOR ShotgunFlamethrower
+{
+	Game Doom
+	Radius 2
+	Height 2
+	Speed 22
+	Damage 1 
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+	Damage 1
+	+RIPPER
+	+NOBLOOD
+	+NOBLOODDECALS
+	+BLOODLESSIMPACT
+	-BLOODSPLATTER
+	RenderStyle Add
+    DamageType Fire
+    Scale 0.5
+	Alpha 1.0
+	Gravity 0
+	States
+	{
+    Spawn:
+	    TNT1 A 0
+		TNT1 A 0 A_Explode(20, 15, 0)
+		FIR5 A 1 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		FIR5 B 1 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		FIR5 C 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+        FIR3 A 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		FIR3 B 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		FIR3 D 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		FIR3 E 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		FIR3 F 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		FIR3 G 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		FIR3 H 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, 0)
+		FIR3 I 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 40, 0,0,40)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		//EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, 0, 2, 0)
+		FIR3 JKL 1 BRIGHT A_SpawnItem("RedFlare", 0, 0)
+		TNT1 A 0 A_Explode(3, 60, 0,0,60)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		//EXPL A 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, 0)
+		TNT1 A 0 A_Playsound("Afrit/Hellfire")
+		Stop
+	Death:
+	TNT1 A 0 A_Explode(20, 150, 0)
+	TNT1 A 0 A_Explode(3, 50)
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-25, 25), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
+	TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (0, 360))
+	EXPL AA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (10, 90))
+	Stop
+	}
+}
+ACTOR ShotgunParticles
+{
+ game Doom
+ speed 20
+ radius 8
+ height 1
+ Gravity 0.6
+  RenderStyle Add
+  Scale 0.1
+  Alpha 0.9
+   +MISSILE
+   +CLIENTSIDEONLY
+   +NOTELEPORT
+   +NOBLOCKMAP
+   -RIPPER
+   +BLOODLESSIMPACT 
+   +FORCEXYBILLBOARD
+  +FORCEXYBILLBOARD
+  +CLIENTSIDEONLY
+    +DONTSPLASH
+   +GHOST
+   +NOGRAVITY
+   Damage 0
+    States
+    {
+     Spawn:
+	  TNT1 A 2
+       SPRK SSS 1 Bright A_FadeOut(0.02)
+	   TNT1 A 0 A_ChangeFlag(NOGRAVITY, 0)
+	   SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.03)
+        stop
+     Death:
+       Stop
+    }
+}
+ACTOR Chunk21
+{
+   Radius 3
+   Height 4
+   Speed 65
+   Damage 10
+   Mass 200
+   Scale 0.2
+   Damagetype Cutless
+   +MISSILE
+   +DOOMBOUNCE
+   +BLOODSPLATTER
+   BounceFactor 0.65
+   SeeSound "weapon/smcasebounce"
+   States
+   {
+   Spawn:
+      FLAS A 1 Bright A_CustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+      loop
+   Death:
+      EXPL AAA 0 A_CustomMissile ("ExplosionSmokeSmall22", 4, 0, random (0, 360), 2, random (0, 360))
+      Stop
+   }
+}
+
+ACTOR Chunk22 : Chunk21
+{
+   Damagetype Saw
+   States
+   {
+   Spawn:
+      FLAS B 1 Bright A_CustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+      loop
+   }
+}
+
+ACTOR Chunk23 : Chunk21
+{
+	Damagetype Blast
+    States
+    {
+    Spawn:
+        FLAS C 1 Bright A_CustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+        loop
+    }
+}
+
+ACTOR Chunk24 : Chunk21
+{
+	Damagetype Shotgun
+    States
+    {
+    Spawn:
+        FLAS D 1 Bright A_CustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+        loop
+    }
+}
+
+
+ACTOR XR12 : CMEWeapon
+{
+	Weapon.BobRangeX 0.3
+	Weapon.BobRangeY 0.5
+	Weapon.BobStyle InverseSmooth
+	Weapon.BobSpeed 2.0
+	+FLOORCLIP
+	+DONTGIB
+	Game Doom
+	SpawnID 27
+	Weapon.SelectionOrder 1300
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+	Weapon.AmmoGive1 4
+	Weapon.AmmoGive2 0
+	Weapon.AmmoType1 "Shell2"
+	Weapon.AmmoType2 "XR12Ammo"
+	Inventory.PickupMessage "You got the XR-12!!! (Slot 3)"
+    Inventory.PickupSound "SHOTPICK"
+	Obituary "%o sucked %k's Shotgun"
+    AttackSound "None"
+	Tag "Shotgun"
+    +WEAPON.NOALERT
+    +WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
+	Scale 0.5
+	States
+	{
+	NoAmmo:
+		TNT1 A 0 A_PlaySound("weapons/empty")
+		TNT1 A 0 A_TakeInventory("Zoomed", 1)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("ADSmode", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		RX2G A 1 A_WeaponReady
+		Goto Ready+14
+		
+	Wood_NoAmmo:
+		TNT1 A 0 A_PlaySound("weapons/empty")
+		TNT1 A 0 A_TakeInventory("Zoomed", 1)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("ADSmode", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		5HTG A 1 A_WeaponReady
+		Goto Ready+14
+
+
+	Steady:
+	TNT1 A 1
+	Goto Ready
+	Ready:
+        TNT1 AAAA 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("weapons/sgmvpump")
+        TNT1 AAAAAAAAAAAAAAA 0
+      TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		RX2G A 1 A_WeaponReady
+		Goto Ready+14
+		
+	Wood_Ready:
+        TNT1 AAAA 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("weapons/sgmvpump")
+		5HTG CBA 0
+        5HSS ABCD 1 A_JumpIfInventory("GoFatality", 1, "Steady")
+        TNT1 A 0 A_PlaySound("weapons/sgmvpump")
+	Wood_ReadyReal:
+        TNT1 AAAAAAAAAAAAAAA 0
+       		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		5HTG A 1 A_WeaponReady
+		Goto Wood_Ready+14
+
+		Ready2:
+        		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		RX28 A 8 A_WeaponReady
+
+				TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		RX28 B 8 A_WeaponReady
+
+				TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+		RX28 C 8 A_WeaponReady
+		Loop
+		
+	Wood_Ready2:
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		5HT8 A 8 A_WeaponReady
+
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		5HT8 B 8 A_WeaponReady
+
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+	    TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+	    TNT1 A 0 A_JumpIfInventory("DoGrenade", 1, "ThrowGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("DoHealBackpack", 1, "UseHealthBackPack")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		5HT8 C 8 A_WeaponReady
+		Loop
+		
+		
+	WeaponSpecialPurist:
+		TNT1 A 0 A_Print("Weapon Special Not Available in Classic Mode!")
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		Goto Ready+14
+		
+	WeaponSpecial:
+		TNT1 AAAAA 0
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "WeaponSpecialPurist")
+		TNT1 A 0 A_JumpIfInventory("HasSlugs", 1, "SwitchToDragonBreath")
+		TNT1 A 0 A_JumpIfInventory("HasDragonBreath", 1, "SwitchToFlamethrower")
+		TNT1 A 0 A_JumpIfInventory("HasFlameThrowerShotty", 1, "SwitchToBuckshot")
+		TNT1 A 0 A_Print("Slug Shells Loaded")
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_GiveInventory("HasSlugs")
+		Goto FakeReload
+		
+	SwitchToDragonBreath:
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsDeathBringer", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("DragonBreathUpgrade", 1, 2)
+		Goto SwitchToBuckshot
+		TNT1 AAA 0
+		TNT1 A 0 A_Print("Dragon's Breath Shells Loaded")
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_Takeinventory("HasSlugs", 1)
+		TNT1 A 0 A_GiveInventory("HasDragonBreath")
+		Goto FakeReload
+		
+		
+	SwitchToFlamethrower:
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsDeathBringer", 1, 2)
+		TNT1 A 0 A_JumpIfInventory("DragonBreathUpgrade", 1, 2)
+		Goto SwitchToBuckshot
+		TNT1 AAA 0
+		TNT1 A 0 A_Print("Dragon's Inferno Rounds Loaded")
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_Takeinventory("HasDragonBreath", 1)
+		TNT1 A 0 A_GiveInventory("HasFlameThrowerShotty")
+		Goto FakeReload
+		
+	SwitchToBuckshot:
+		TNT1 A 0 A_Print("Buckshot Shells Loaded")
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_Takeinventory("HasSlugs", 1)
+		TNT1 A 0 A_Takeinventory("HasDragonBreath",1)
+		TNT1 A 0 A_Takeinventory("HasFlameThrowerShotty",1)
+		Goto FakeReload
+
+	Deselect:
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_TakeInventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("ADSmode",1)
+        RX3S DCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		TNT1 A 1 A_Lower		Wait
+        5HSS DCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		TNT1 A 1 A_Lower		Wait
+
+	Select:
+TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+TNT1 A 0 A_Giveinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 A 0 A_Raise
+
+		Wait
+
+    Fire:
+		TNT1 A 0 A_JumpIfInventory("HasDragonBreath", 1, "DragonFire")
+		TNT1 A 0 A_JumpIfInventory("HasSlugs", 1, "SlugFire")
+		TNT1 A 0 A_JumpIfInventory("HasFlameThrowerShotty", 1, "MiniFlamethrowerFire")
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("weapons/sg", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("Tracer", Random(-5, 5), 0, -1, Random(-5, 5))
+	//	TNT1 AAAAA 0 A_FireCustomMissile("DragonsBreathTracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        RX2F AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, 3)
+		RX2G A 0 A_FireBullets(3.65, 1.85, 11, 10, "ShotgunPuff")////////////////////////////////////// Project Brutality Pump Shotgun
+		TNT1 A 0 A_Jump(256, 3)
+		TNT1 A 0
+		RX2G A 0 A_FireBullets(2.7, 2.7, 10, 10, "ShotgunPuff")////////////////////////////////////// Classic v20 Pump Shotgun
+		TNT1 A 0 
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		RX2F CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		RX2G A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		RX2G H 1
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        //RX2G A 1 Offset(10,36)
+        RX2G A 1 Offset(9,40)
+        //RX2G A 1 Offset(4,40)
+        RX2G A 1 Offset(0,32)
+        RX2G A 0 A_ReFire
+        RX2G A 0
+		Goto Ready+14
+		
+	Wood_Fire:
+		TNT1 A 0 A_JumpIfInventory("HasDragonBreath", 1, "Wood_DragonFire")
+		TNT1 A 0 A_JumpIfInventory("HasSlugs", 1, "Wood_SlugFire")
+		TNT1 A 0 A_JumpIfInventory("HasFlameThrowerShotty", 1, "Wood_MiniFlamethrowerFire")
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Wood_Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("weapons/sg", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("Tracer", Random(-5, 5), 0, -1, Random(-5, 5))
+	//	TNT1 AAAAA 0 A_FireCustomMissile("DragonsBreathTracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        5HTF AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, 3)
+		RX2G A 0 A_FireBullets(3.65, 1.85, 11, 10, "ShotgunPuff")//////////////////////////////////////
+		TNT1 A 0 A_Jump(256, 3)
+		TNT1 A 0
+		RX2G A 0 A_FireBullets(2.7, 2.7, 10, 10, "ShotgunPuff")//////////////////////////////////////
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		5HTF CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		5HTG A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		5HTG H 1
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        //5HTG A 1 Offset(10,36)
+        5HTG A 1 Offset(9,40)
+        //5HTG A 1 Offset(4,40)
+        5HTG A 1 Offset(0,32)
+        5HTG A 0 A_ReFire
+        5HTG A 0
+		Goto Wood_Ready+14
+		
+	SlugFire:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("SlugShot", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        RX2F AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		//RX2G A 0 A_FireBullets(1.5, 0.5, 1, 67, "ShotgunPuff")
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,1,15,-18)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,18,13)
+		FLAK B 0 A_FireCustomMissile("Chunk23",0,1,13,5)
+		//FLAK B 0 A_FireCustomMissile("Chunk23",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk24",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,-18,12)
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,0,-13,8)
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		RX2F CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		RX2G A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		RX2G H 1
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        RX2G A 1 Offset(10,36)
+        RX2G A 1 Offset(9,40)
+        RX2G A 1 Offset(4,40)
+        RX2G A 1 Offset(0,32)
+        RX2G A 0 A_ReFire
+        RX2G A 0
+		Goto Ready+14
+		
+	Wood_SlugFire:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Wood_Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("SlugShot", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        5HTF AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		//5HTG A 0 A_FireBullets(1.5, 0.5, 1, 67, "ShotgunPuff")
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,1,15,-18)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,18,13)
+		FLAK B 0 A_FireCustomMissile("Chunk23",0,1,13,5)
+		//FLAK B 0 A_FireCustomMissile("Chunk23",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk24",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,-18,12)
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,0,-13,8)
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		5HTF CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		5HTG A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		5HTG H 1
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        5HTG A 1 Offset(10,36)
+        5HTG A 1 Offset(9,40)
+        5HTG A 1 Offset(4,40)
+        5HTG A 1 Offset(0,32)
+        5HTG A 0 A_ReFire
+        5HTG A 0
+		Goto Wood_Ready+14
+		
+	DragonFire:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("Tracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 AAAAA 0 A_FireCustomMissile("DragonsBreathTracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        RX2F AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		//RX2G A 0 A_FireBullets(3.65, 1.85, 9, 7, "ShotgunPuff")//////////////////////////////////////
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		RX2F CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		RX2G A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		RX2G H 1
+		TNT1 A 0 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G I 3 //A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        //RX2G A 1 Offset(10,36)
+        RX2G A 1 Offset(9,40)
+        //RX2G A 1 Offset(4,40)
+        RX2G A 1 Offset(0,32)
+        RX2G A 0 A_ReFire
+        RX2G A 0
+		Goto Ready+14
+		
+	MiniFlamethrowerFire:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunFlamethrower", Random(-5, 5), 0, 0, Random(-5, 5))
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        RX2F AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		//RX2G A 0 A_FireBullets(3.65, 1.85, 9, 7, "ShotgunPuff")//////////////////////////////////////
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		RX2F CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		RX2G A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		RX2G H 1
+		TNT1 A 0 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G I 3 //A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        RX2G A 1 Offset(10,36)
+        RX2G A 1 Offset(9,40)
+        RX2G A 1 Offset(4,40)
+        RX2G A 1 Offset(0,32)
+        RX2G A 0 A_ReFire
+        RX2G A 0
+		Goto Ready+14
+		
+	Wood_DragonFire:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Wood_Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("Tracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 AAAAA 0 A_FireCustomMissile("DragonsBreathTracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        5HTF AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		//RX2G A 0 A_FireBullets(3.65, 1.85, 9, 7, "ShotgunPuff")//////////////////////////////////////
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		5HTF CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		5HTG A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		5HTG H 1
+		TNT1 A 0 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG I 3 //A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        //5HTG A 1 Offset(10,36)
+        5HTG A 1 Offset(9,40)
+        //5HTG A 1 Offset(4,40)
+        5HTG A 1 Offset(0,32)
+        5HTG A 0 A_ReFire
+        5HTG A 0
+		Goto Wood_Ready+14
+		
+	Wood_MiniFlamethrowerFire:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_JumpIfInventory("Zoomed", 1, "Wood_Fire2")
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunFlamethrower", Random(-5, 5), 0, 0, Random(-5, 5))
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0)
+        5HTF AB 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(0.95)
+		//RX2G A 0 A_FireBullets(3.65, 1.85, 9, 7, "ShotgunPuff")//////////////////////////////////////
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		5HTF CDE 1
+		TNT1 A 0 A_ZoomFactor(0.975)
+		5HTG A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",0,0,-4,-4)
+		5HTG H 1
+		TNT1 A 0 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG I 3 //A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+        5HTG A 1 Offset(10,36)
+        5HTG A 1 Offset(9,40)
+        5HTG A 1 Offset(4,40)
+        5HTG A 1 Offset(0,32)
+        5HTG A 0 A_ReFire
+        5HTG A 0
+		Goto Wood_Ready+14
+		
+	Fire2:
+		TNT1 A 0 A_JumpIfInventory("HasDragonBreath", 1, "DragonFire2")
+		TNT1 A 0 A_JumpIfInventory("HasSlugs", 1, "SlugFire2")
+		TNT1 A 0 A_JumpIfInventory("HasFlameThrowerShotty", 1, "MiniFlamethrowerFire2")
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("weapons/sg", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, 3)
+		RX2G A 0 A_FireBullets(2.85, 1.35, 11, 10, "ShotgunPuff")
+		TNT1 A 0 A_Jump(256, 3)
+		TNT1 A 0
+		RX2G A 0 A_FireBullets(1.7, 1.7, 10, 10, "ShotgunPuff")
+		TNT1 A 0
+		
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAAA 0 A_FireCustomMissile("Tracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        RX28 F 2 BRIGHT
+		RX28 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        RX28 A 1
+		RX28 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		RX2G H 1
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		RX28 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Ready2
+		
+	Wood_Fire2:
+		TNT1 A 0 A_JumpIfInventory("HasDragonBreath", 1, "Wood_DragonFire2")
+		TNT1 A 0 A_JumpIfInventory("HasSlugs", 1, "Wood_SlugFire2")
+		TNT1 A 0 A_JumpIfInventory("HasFlameThrowerShotty", 1, "Wood_MiniFlamethrowerFire2")
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("weapons/sg", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		
+		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, 3)
+		RX2G A 0 A_FireBullets(2.85, 1.35, 9, 10, "ShotgunPuff")
+		TNT1 A 0 A_Jump(256, 3)
+		TNT1 A 0
+		RX2G A 0 A_FireBullets(1.7, 1.7, 10, 10, "ShotgunPuff")
+		TNT1 A 0
+		
+		TNT1 AAAAA 0 A_FireCustomMissile("Tracer", Random(-5, 5), 0, -1, Random(-5, 5))
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        5HT8 F 2 BRIGHT
+		5HT8 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        5HT8 A 1
+		5HT8 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		5HTG H 1
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		5HT8 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Wood_Ready2
+		
+	SlugFire2:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("SlugShot", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		//RX2G A 0 A_FireCustomMissile("SlugTracer", Random(-1, 1), 0, 0)
+		//RX2G A 0 A_FireBullets(1.1, 0.25, 1, 67, "ShotgunPuff")
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,1,15,-18)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,18,13)
+		FLAK B 0 A_FireCustomMissile("Chunk23",0,1,13,5)
+		//FLAK B 0 A_FireCustomMissile("Chunk23",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk24",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,-18,12)
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,0,-13,8)
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        RX28 F 2 BRIGHT
+		RX28 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        RX28 A 1
+		RX28 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		RX2G H 1
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		RX28 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Ready2
+				
+	Wood_SlugFire2:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("SlugShot", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		//RX2G A 0 A_FireCustomMissile("SlugTracer", Random(-1, 1), 0, 0)
+		//5HTG A 0 A_FireBullets(1.1, 0.25, 1, 67, "ShotgunPuff")
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,1,15,-18)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,18,13)
+		FLAK B 0 A_FireCustomMissile("Chunk23",0,1,13,5)
+		//FLAK B 0 A_FireCustomMissile("Chunk23",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk24",0,1,0,-15)
+		FLAK B 0 A_FireCustomMissile("Chunk22",0,1,-18,12)
+		FLAK B 0 A_FireCustomMissile("Chunk21",0,0,-13,8)
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        5HT8 F 2 BRIGHT
+		5HT8 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        5HT8 A 1
+		5HT8 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		5HTG H 1
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		5HT8 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Wood_Ready2
+		
+	DragonFire2:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("DragonsBreathTracer", Random(-5, 5), 0, -1, Random(-3, 3))
+		RX2G A 0 //A_FireBullets(1.1, 0.25, 1, 67, "ShotgunPuff")
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        RX28 F 2 BRIGHT
+		RX28 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        RX28 A 1
+		RX28 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		RX2G H 1
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		RX28 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Ready2
+		
+	Wood_DragonFire2:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("DragonsBreathTracer", Random(-5, 5), 0, -1, Random(-3, 3))
+		5HTG A 0 //A_FireBullets(1.1, 0.25, 1, 67, "ShotgunPuff")
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        5HT8 F 2 BRIGHT
+		5HT8 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        5HT8 A 1
+		5HT8 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		5HTG H 1
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		5HT8 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Wood_Ready2
+		
+	MiniFlamethrowerFire2:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunFlamethrower", Random(-5, 5), 0, -1, Random(-5, 5))
+		RX2G A 0 //A_FireBullets(1.1, 0.25, 1, 67, "ShotgunPuff")
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        RX28 F 2 BRIGHT
+		RX28 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        RX28 A 1
+		RX28 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		RX2G H 1
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		RX28 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Ready2
+		
+		
+	Wood_MiniFlamethrowerFire2:
+        TNT1 A 0 A_TakeInventory("Reloading", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, 2)
+        Goto Reload
+        TNT1 AAAA 0
+        TNT1 A 0 A_AlertMonsters
+        TNT1 A 0 A_PlaySound("DRBTFIRE", 5)
+        TNT1 A 0
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn", 0, 0, 0, 0)
+		TNT1 AAAAA 0 A_FireCustomMissile("ShotgunFlamethrower", Random(-5, 5), 0, -1, Random(-5, 5))
+		5HTG A 0 //A_FireBullets(1.1, 0.25, 1, 67, "ShotgunPuff")
+		TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
+		TNT1 A 0 A_TakeInventory("XR12Ammo", 1)
+		TNT1 AAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17))
+		TNT1 AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 2, 0, 0)
+        5HT8 F 2 BRIGHT
+		5HT8 GA 2
+		TNT1 A 0 A_ZoomFactor(1.0)
+        5HT8 A 1
+		5HT8 DHE 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG BCDEFG 1
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn", 0, 0, -4, -4)
+		5HTG H 1
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_ZoomFactor(1.8)
+		5HT8 EHD 1
+		TNT1 A 0 A_ReFire
+		Goto Wood_Ready2
+
+	AltFire:
+		TNT1 A 0 A_PlaySound("IronSights", 0)
+		TNT1 A 0 A_JumpIfInventory("Zoomed",1,8)
+		TNT1 A 0 A_GiveInventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.65)
+		TNT1 A 0 A_SetCrosshair(5)
+		TNT1 A 0 A_GiveInventory("ADSmode",1)
+        RX28 E 2
+		RX28 HD 1
+        Goto Ready2
+        TNT1 AAAAAAAAAAAAA 0
+        RX28 DH 1
+		RX28 E 2
+		TNT1 A 0 A_TakeInventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_SetCrosshair(0)
+		TNT1 A 0 A_TakeInventory("ADSmode",1)
+        Goto Ready+16
+		
+	Wood_AltFire:
+		TNT1 A 0 A_PlaySound("IronSights", 0)
+		TNT1 A 0 A_JumpIfInventory("Zoomed",1,8)
+		TNT1 A 0 A_SetCrosshair(5)
+		TNT1 A 0 A_GiveInventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.65)
+		TNT1 A 0 A_GiveInventory("ADSmode",1)
+        5HT8 E 2
+		5HT8 HD 1
+        Goto Wood_Ready2
+        TNT1 AAAAAAAAAAAAA 0
+        5HT8 DH 1
+		5HT8 E 2
+		TNT1 A 0 A_TakeInventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_SetCrosshair(0)
+		TNT1 A 0 A_TakeInventory("ADSmode",1)
+        Goto Wood_Ready+16
+
+	Spawn:
+		RX2C A -1
+		Stop
+		
+		
+   Pump2:
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+	    TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_Takeinventory("ShotgunWasEmpty",1)
+		Goto ReadyToFireAgain
+   
+   Wood_Pump2:
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+	    TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_Takeinventory("ShotgunWasEmpty",1)
+		Goto Wood_ReadyToFireAgain
+		
+	ReadyToFireAgain:	
+   //RX2G A 6 <-- Old frame
+        RX2G A 1 Offset(10,36) // <-- New frames
+        RX2G A 1 Offset(9,40) //
+        RX2G A 1 Offset(4,40) //
+        RX2G A 1 Offset(0,32) //
+        RX2G A 0 A_Refire
+        RX2G A 0 //A_Refire
+		Goto Ready+14
+		
+	Wood_ReadyToFireAgain:	
+   //RX2G A 6 <-- Old frame
+        5HTG A 1 Offset(10,36) // <-- New frames
+        5HTG A 1 Offset(9,40) //
+        5HTG A 1 Offset(4,40) //
+        5HTG A 1 Offset(0,32) //
+        5HTG A 0 A_Refire
+        5HTG A 0 //A_Refire
+		Goto Wood_Ready+14
+		
+	ReloadWithNoAmmoLeft:
+    Reload:
+	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+	    TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		RX2G A 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("XR12Ammo",11,"OkToFire")
+		TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, "ReloadNormally")
+		TNT1 A 0 A_GiveInventory("ShotgunWasEmpty", 1)
+	ReloadNormally:	
+        TNT1 A 0 A_JumpIfInventory("Shell2",1,3)
+        Goto Ready+14
+        TNT1 AAA 0
+		RX2G B 1 //A_PlaySound("weapons/sgpump")
+				TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		RX2G CDE 1
+
+        TNT1 AAAA 0
+        TNT1 A 0 A_JumpIfInventory("Shell2",1,2)
+        Goto Reload+53
+        TNT1 AAAAA 0
+
+
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo",11,23)
+		//TNT1 A 0 A_JumpIfInventory("Shell2",0,23)
+        TNT1 A 0
+        TNT1 A 0 A_Giveinventory("XR12Ammo",1)
+		TNT1 A 0 A_Takeinventory("Shell2",1)
+
+
+        SSHR ABC 1
+        SSHR D 1 A_PlaySound("insertshell")
+        SSHR EFG 1
+        SSHR A 2 A_Refire
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+
+
+        Goto Reload+18
+        TNT1 AAAAA 0
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 AAAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+		RX2G FEDCBA 1 A_WeaponReady
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 //A_Giveinventory("SGFullReloaded",1)
+		Goto Ready+23
+	//////////////////////////////////////
+	
+	Wood_ReloadWithNoAmmoLeft:
+    Wood_Reload:
+	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+	    TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		5HTG A 1 A_WeaponReady
+		
+		TNT1 A 0 A_JumpIfInventory("XR12Ammo",11,"Wood_OkToFire")
+		TNT1 A 0 A_JumpIfInventory("XR12Ammo", 1, "Wood_ReloadNormally")
+		TNT1 A 0 A_GiveInventory("ShotgunWasEmpty", 1)
+	Wood_ReloadNormally:	
+        TNT1 A 0 A_JumpIfInventory("Shell2",1,3)
+        Goto Wood_Ready+14
+        TNT1 AAA 0
+		5HTG B 1 //A_PlaySound("weapons/sgpump")
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		5HTG CDE 1
+
+        TNT1 AAAA 0
+        TNT1 A 0 A_JumpIfInventory("Shell2",1,2)
+        Goto Wood_Reload+53
+        TNT1 AAAAA 0
+
+
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo",11,23)
+		//TNT1 A 0 A_JumpIfInventory("Shell2",0,23)
+        TNT1 A 0
+        TNT1 A 0 A_Giveinventory("XR12Ammo",1)
+		TNT1 A 0 A_Takeinventory("Shell2",1)
+
+
+        5SHR ABC 1
+        5SHR D 1 A_PlaySound("insertshell")
+        5SHR EFG 1
+        5SHR A 2 A_Refire
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+
+
+        Goto Wood_Reload+18
+        TNT1 AAAAA 0
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 AAAAA 0
+		TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2")
+		5HTG FEDCBA 1 A_WeaponReady
+		TNT1 A 0 A_Takeinventory("Reloading",1)
+		TNT1 A 0 //A_Giveinventory("SGFullReloaded",1)
+		Goto Wood_Ready+23
+	
+	//////////////////////////////////////
+		
+	OkToFire:
+		RX2G A 1 A_WeaponReady
+		Goto Ready+14
+		
+	Wood_OkToFire:
+		5HTG A 1 A_WeaponReady
+		Goto Ready+14
+		
+	FakeReload:
+		TNT1 A 0 A_TakeInventory("Zoomed", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		RX2G A 1 A_WeaponReady
+        TNT1 AAAA 0
+		RX2G B 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		RX2G CDEFGHI 1
+        TNT1 AAAAAAAA 0
+        TNT1 AAAAA 0
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+        TNT1 A 0
+       // TNT1 A 0 A_GiveInventory("XR12Ammo", 1)
+		//TNT1 A 0 A_TakeInventory("Shell2", 1)
+        SSHR ABC 1
+        SSHR D 1 A_PlaySound("insertshell")
+        SSHR EFGHI 1
+        SSHR A 1 
+        TNT1 A 0 A_JumpIfInventory("Kicking", 1, "DoKick")
+        TNT1 AAAAA 0
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		RX2G GGGGGGGGGGGGGG 0
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 1)
+		RX2G FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0
+		Goto Ready+23
+		
+	Wood_FakeReload:
+		TNT1 A 0 A_TakeInventory("Zoomed", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		5HTG A 1 A_WeaponReady
+        TNT1 AAAA 0
+		5HTG B 1
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+		5HTG CDEFGHI 1
+        TNT1 AAAAAAAA 0
+        TNT1 AAAAA 0
+		TNT1 A 0 A_GiveInventory("IsCocking", 1)
+        TNT1 A 0
+       // TNT1 A 0 A_GiveInventory("XR12Ammo", 1)
+		//TNT1 A 0 A_TakeInventory("Shell2", 1)
+        5SHR ABC 1
+        5SHR D 1 A_PlaySound("insertshell")
+        5SHR EFGHI 1
+        5SHR A 1 
+        TNT1 A 0 A_JumpIfInventory("Kicking", 1, "DoKick")
+        TNT1 AAAAA 0
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		5HTG GGGGGGGGGGGGGG 0
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 1)
+		5HTG FEDCB 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_TakeInventory("Reloading", 1)
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0
+		Goto Wood_Ready+23
+		
+		
+	Unload:
+		RX2G A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_GiveInventory("ShotgunWasEmpty", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo",1,3)
+        Goto OkToFire
+        TNT1 AAA 0
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		RX2G ABCDEF 1
+		
+	RemoveBullets:
+		TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("XR12Ammo",1,3)
+		Goto FinishUnload
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Takeinventory("XR12Ammo",1)
+		TNT1 A 0 A_Giveinventory("Shell2",1)
+		
+		RX2G I 1 A_PlaySound("weapons/sgmvpump", 1)
+		RX2G JKLMLKJI 1
+        RX2G I 1 A_PlaySound("weapons/sgpump", 2)
+		
+		RX2G FED 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+	   TNT1 A 0 A_Giveinventory("ShotgunWasEmpty",1)
+	//   RX2G GF 1
+		Goto RemoveBullets
+		
+	Wood_Unload:
+		5HTG A 1
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_GiveInventory("ShotgunWasEmpty", 1)
+        TNT1 A 0 A_JumpIfInventory("XR12Ammo",1,3)
+        Goto Wood_OkToFire
+        TNT1 AAA 0
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		5HTG ABCDEF 1
+		
+	Wood_RemoveBullets:
+		TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("XR12Ammo",1,3)
+		Goto Wood_FinishUnload
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Takeinventory("XR12Ammo",1)
+		TNT1 A 0 A_Giveinventory("Shell2",1)
+		
+		5HTG I 1 A_PlaySound("weapons/sgmvpump", 1)
+		5HTG JKLMLKJI 1
+        5HTG I 1 A_PlaySound("weapons/sgpump", 2)
+		
+		5HTG FED 1 A_JumpIfInventory("Kicking", 1, "DoKick")
+		TNT1 A 0 A_Giveinventory("ShotgunWasEmpty",1)
+		Goto Wood_RemoveBullets
+	
+	FInishUnload:
+		RX2G EDCBA 1
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		Goto OkToFire
+		
+	Wood_FInishUnload:
+		5HTG EDCBA 1
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		Goto Wood_OkToFire
+		
+	}
+}
+
+ACTOR XR12Ammo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 11
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 11
+}

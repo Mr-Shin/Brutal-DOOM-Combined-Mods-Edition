@@ -223,7 +223,7 @@ ACTOR ClassicWeapon : Weapon
 		TNT1 A 0 A_PLaySound ("GRNTOSS")
 		GRTH HI 1
 		TNT1 A 0 A_TakeInventory("GrenadeAmmo", 1)
-		TNT1 A 0 A_FireCustomMissile("HandGrenade", random(-2,2), 0, 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("HandGrenades", random(-2,2), 0, 0, 0, 0, 0)
 	    TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
 		GRTH JKLM 1
 		TNT1 A 1 

@@ -27,7 +27,7 @@ ACTOR MP7 : CMEWeapon
 	Obituary "%o went bang-bang-DEAD %k's MP7"
     AttackSound "None"
     Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "You got the MP7... wait, I thought the MP27 was it's successor, so why do we still have this pile of shit?"
+	Inventory.Pickupmessage "You got the MP7!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -103,6 +103,7 @@ ACTOR MP7 : CMEWeapon
 		M7FS CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -130,7 +131,7 @@ TNT1 A 0 A_Takeinventory("HasUnloaded",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise
 		Goto Ready
 	
     Fire:

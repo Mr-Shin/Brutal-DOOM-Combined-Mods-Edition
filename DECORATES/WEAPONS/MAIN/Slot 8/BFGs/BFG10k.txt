@@ -234,3 +234,7 @@ ACTOR GreenExplosionFireSmall: GreenExplosionFire
 {
     Scale 0.6
 }
+ACTOR GreenExplosionFireSmall: GreenExplosionFire
+{
+    Scale 0.6
+}

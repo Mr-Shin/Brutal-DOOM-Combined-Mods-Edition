@@ -30,7 +30,7 @@ ACTOR ASRIOT4 : CMEWeapon
 	Obituary "%o met 60 gauge slugs from %k"
     AttackSound "None"
     Inventory.PickupSound "RIOTCIN"
-	Inventory.Pickupmessage "You got the AS-RIOT-4!"
+	Inventory.Pickupmessage "You got the AS-RIOT-4!!! (Slot 3)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -92,6 +92,7 @@ ACTOR ASRIOT4 : CMEWeapon
 		ASTS CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -99,7 +100,7 @@ ACTOR ASRIOT4 : CMEWeapon
 		TNT1 A 0 A_Takeinventory("Unloading",1)
 		TNT1 A 0 A_Takeinventory("FistsSelected",1)
 		TNT1 A 0 A_Takeinventory("SawSelected",1)
-		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+TNT1 A 0 A_Giveinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
@@ -117,9 +118,8 @@ ACTOR ASRIOT4 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise
+
 		Goto Ready
 	
 	RecoilFlash:

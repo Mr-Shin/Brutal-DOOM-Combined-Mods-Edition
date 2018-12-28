@@ -3,21 +3,23 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 	Game Doom
 	Height 20
 	SpawnID 31
-	Weapon.SelectionOrder 2800
-	Weapon.AmmoUse 40
+	Weapon.AmmoUse 0
 	Weapon.AmmoGive 0
-	Weapon.AmmoType "cell2"
+	Weapon.AmmoType "Cell2"
     Inventory.PickupSound "BFGREADY"
 	//DamageType Desintegrate
 	+FORCEXYBILLBOARD
+	+WEAPON.NOAUTOFIRE
+	Tag "BFG 9000"
     Inventory.PickupMessage "You got the BFG-9000! FUCK YEAH!"
 	States
 	{
 	
 	Ready3:
 	Ready:
-		BFGG A 1 A_WeaponReady
-        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+	Reload:
+		BFGN A 1 A_WeaponReady
+       TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
 		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -35,18 +37,23 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
 		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
 		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
-		
 		Loop
 		
-	
+	NoAmmo:
+		BFGN A 1
+		BFGN A 2 A_PlaySound("weapons/empty", 4)
+		Goto Ready3
+		
+		
 	Deselect:
 	    TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
-				TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		BFGG A 1 A_Lower
+		BFGN A 1 A_Lower
 		Loop
 		
 	Select:
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
 		TNT1 A 0 A_Takeinventory("Unloading",1)
 		TNT1 A 0 A_Takeinventory("FistsSelected",1)
@@ -57,7 +64,7 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
-		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Giveinventory("BFGSelected",1)
 		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
 		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
 		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
@@ -69,7 +76,6 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 		TNT1 A 0 A_GunFlash
 		TNT1 A 1 A_Raise
 		TNT1 AAAAAAAA 0 A_Raise
@@ -78,83 +84,72 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 		SelectAnimation:
 		BFGS ABCDE 1
 		Goto Ready
-		
-		
+
 		
 	Fire:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("Cell2",40,2)
+        Goto NoAmmo	
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("Cell2", 40)
         TNT1 A 0 A_PlaySound("BFGCHARGE")
-		BFGC ABABABABABABABAB 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
-        BFGF A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		BFGC ABCDABCDABCDABCD 1 BRIGHT
+		BFGC ABCDABCDABCDABCD 1 BRIGHT
+        BFGA A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         TNT1 A 0 A_PlaySound("BFGFIRE")
 		TNT1 AAA 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         TNT1 A 0 A_Recoil(8)
-        //TNT1 A 0 A_ZoomFactor(1.3)
-        TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
-		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBall")
-		BFGF B 2 BRIGHT// A_FireCustomMissile("SuperBFGBall", 0, 1, 0, 0)
-		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
-        BFGF CDEF 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
-        //TNT1 A 0 A_ZoomFactor(1.0)
-        BFGG A 1 BRIGHT
-		BFGG A 4
-        TNT1 A 0  A_Refire
-		Goto Ready
+        
 		
-	AltFire:
-		BFGG A 1
-		TNT1 A 0 A_JumpIfInventory("cell2", 40, 5)
-		BFGG A 10
+        TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
+		TNT1 A 0 A_JumpIfInventory("DMgame", 1, 4)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBall")
+		TNT1 A 0
+		Goto RecoilFire
+		TNT1 AAA 0
+		TNT1 A 0 BRIGHT A_FireCustomMissile("BFGBallDM")
+		
+	RecoilFire:	
+		TNT1 A 0 A_ZoomFactor(0.9)
+		BFGA B 2 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.0)
+		BFGA CDCB 2 BRIGHT
+        BFGN A 1
+		BFGN A 8
+        TNT1 A 0 A_Refire
+		Goto Ready3
+		
+		
+	//Alpha Doom Attack, discontinued.	
+	//AltFire:
+		BFGN A 1
+		TNT1 A 0 A_JumpIfInventory("Cell2", 40, 5)
+		BFGN A 10
 		Goto Ready
 		TNT1 AAAAAA 0
-		TNT1 A 0 A_TakeInventory("cell2", 40)
+		TNT1 A 0 A_TakeInventory("Cell2", 40)
         TNT1 A 0 A_PlaySound("BFGCHARGE")
-		BFGC ABABABABABABABAB 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
-        BFGF A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
+		BFGC ABCDABCDABCDABCD 1 BRIGHT
+		BFGC ABCDABCDABCDABCD 1 BRIGHT
+        BFGA A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         TNT1 A 0 A_PlaySound("BFGFIRE")
 		TNT1 AAA 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         TNT1 A 0 A_Recoil(8)
         //TNT1 A 0 A_ZoomFactor(1.3)
         TNT1 A 0 BRIGHT A_FireCustomMissile("Alerter", 0, 0, -1, 0)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
-        BFGF BCBCBCBCBCB 2 BRIGHT A_FireCustomMissile("AlphaBFGBall", random(-6, 6), 0, 0, 0, 0, random(-2, 2))
-		BFGF DE 2 BRIGHT
+        BFGA BCBCBCBCBCB 2 BRIGHT A_FireCustomMissile("AlphaBFGBall", random(-6, 6), 0, 0, 0, 0, random(-2, 2))
+		BFGA DE 2 BRIGHT
         //TNT1 A 0 A_ZoomFactor(1.0)
-        BFGG A 1 BRIGHT
-		BFGG A 4
+        BFGN A 1 BRIGHT
+		BFGN A 4
         TNT1 A 0  A_Refire
 		Goto Ready	
 
 	
    
-	PuristGun:
-		TNT1 A 1
-		TNT1 A 0 A_GiveInventory("VanillaBFG9000", 1)
-		TNT1 A 0 A_TakeInventory("BIG_FUCKING_GUN", 1)
-		TNT1 A 10
-		Goto Ready	
-		
-	Spawn:	
-		BFUG A 0
-		BFUG A 0 Thing_ChangeTID(0,748)
-		BFUG A 3
-		TNT1 A 0 A_JumpIfInventory("NaziVerification1", 1, "VerificateNazi")
-		Goto Spawn2
-		
-	VerificateNazi:
-		TNT1 A 1
-		TNT1 A 0 A_JumpIfInventory("NaziVerification2", 1, "IsANazi")
-		Goto Spawn2
-			
-	ISANazi:
-		TNT1 A 0
-		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
-		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
-		TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 1)
-		TNT1 A 0 A_SpawnItemEx("HitlersBuzzsaw", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG)
-		Stop
 	
-	Spawn2:
+	Spawn:
 		BFUG A -1
 		Stop	
 	}
@@ -165,19 +160,79 @@ ACTOR BIG_FUCKING_GUN : CMEWeapon
 Actor SuperBFGBall : BFGBall replaces BFGBall
 {
     +EXTREMEDEATH
-	Damage 100
+	Damage (random(1500, 1500))
   Decal BFGLightning
 	DeathSound "BFGEXPLO"
-	MissileType "DreadfulShockwaveTrail"
-	MissileHeight 0.8
-    //DamageType Desintegrate
+    DamageType Desintegrate
 	Scale 0.7
 	Species "Marines"
+	Height 1
 	+THRUSPECIES
 	+MTHRUSPECIES
   States
   {
-  DM:
+ Spawn:
+    TNT1 A 0 A_SpawnItemEx("BFGFOG", 0, 0)
+    BFS1 AB 1 BRIGHT A_SpawnItemEx("BFGTrailParticle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
+    Loop
+ 
+ Death:
+    TNT1 A 0
+    TNT1 A 0 Radius_Quake(4,34,0,12,0)
+	TNT1 A 0 Radius_Quake(1,34,0,32,0)
+	TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
+	TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    TNT1 AA 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	
+	TNT1 A 0 Bright A_SpawnItem("GreenShockWave",0,0,0)
+    //BFE1 A 0 A_SpawnItemEx("BFGDeathParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+    //BFE1 A 0 A_SpawnItemEx("BFGSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", 0, 0, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", 50, 0, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", -50, 0, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", 0, 50, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", 0, -50, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", 50, 50, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", 50, -50, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", -50, 50, 0)
+	EXPL A 0 A_SpawnItemEx("BFGBigFlare", -50, -50, 0)
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleSuperFast", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT1 A 0 A_SpawnItem("MegaGibRemoving")
+	TNT1 A 0 A_Explode(100,400,0)
+	BFGB A 2 BRIGHT
+    BFGB F 0 Bright A_BFGSpray("SuperBFGExtra", 50)
+	BFGB BCDEFG 2 Bright
+	TNT1 A 0 A_SPawnItem("SuperBFGExtraGiant")
+    TNT1 A 12
+    Stop
+  }
+}
+
+Actor BFGBallDM : SuperBFGBall
+{
+
+	Species "NOne"
+	-THRUSPECIES
+	-MTHRUSPECIES
+}
+
+
+Actor AlphaBFGBAll : SuperBFGBall
+{
+
+	Scale 0.3
+	Species "Marines"
+	+THRUSPECIES
+	+MTHRUSPECIES
+	DeathSound "Explosion"
+	Damage (random(100, 150))
+  States
+  {
+	DM:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("THRUSPECIES", 0)
 		TNT1 A 0 A_ChangeFLag("MTHRUSPECIES", 0)
@@ -188,52 +243,78 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
 		TNT1 A 0 ACS_ExecuteAlways(719, 0, 0, 0, 0)//Check if Coop
 
 	Spawn1:
-	BFS1 A 1 BRIGHT A_SpawnItemEx("BFGTrailParticle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
-	TNT1 A 0 A_SpawnItem("GreenFlareMedium",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulShockwaveTrail",0,0)
-	TNT1 A 0 A_SpawnItem("BFGGreenBlur",0,0)
-	TNT1 A 0 A_SpawnItemEx("BFGFOG", 0, 0)
-	TNT1 A 0 A_Spawnitem("DreadfulFlightSmoke",0,0)
-	
-	BFS1 B 1 BRIGHT A_SpawnItemEx("BFGTrailParticle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
-    TNT1 A 0 A_SpawnItem("GreenFlareMedium",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulShockwaveTrail",0,0)
-	TNT1 A 0 A_SpawnItem("BFGGreenBlur",0,0)
-	TNT1 A 0 A_SpawnItemEx("BFGFOG", 0, 0)
-	TNT1 A 0 A_Spawnitem("DreadfulFlightSmoke",0,0)
-	Loop
+    BFS1 AB 1 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
+    Loop
  
  Death:
     TNT1 A 0
-    TNT1 A 0 Radius_Quake(4,34,0,12,0)
-	TNT1 A 0 A_Spawnitem("DreadfulLightning",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulLightning",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulShockwave",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulSmoker",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulParticler",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulShockwave",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulSmoker",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulParticler",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulSmoker",0,0)
-	TNT1 A 0 A_Spawnitem("DreadfulParticler",0,0)
-	TNT1 A 0 Bright A_SpawnItem("GreenShockWave",0,0,0)
-    BFE1 A 0 A_SpawnItemEx("BFGDeathParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-    BFE1 A 0 A_SpawnItemEx("BFGSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
-	EXPL AAAAA 0 A_CustomMissile ("DreadfulSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_Explode(35,100,0)
+	Goto Death2
+	
+ Death2:	
+    TNT1 A 0 Radius_Quake(2,34,0,12,0)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    //BFE1 A 0 A_SpawnItemEx("BFGDeathParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+    //BFE1 A 0 A_SpawnItemEx("BFGSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+	EXPL AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleSuperFast", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAAAAAA 0 A_CustomMissile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360))
     TNT1 A 0 A_SpawnItem("MegaGibRemoving")
-	BFGB ABCDEFGHIJK 1 Bright A_SpawnItem("GreenFlare",0,0)
-	TNT1 A 0 A_Explode(80,300,0)
-    BFE1 F 1 Bright A_BFGSpray
-	//TNT1 A 0 A_SPawnItem("SuperBFGExtraGiant")
-    BFE1 GGHHIIJJKK 1 Bright A_SpawnItem("GreenFlare",0,0)
+	
+	BFGB ABCDE 1 Bright A_SpawnItem("GreenFlare",0,0)
+    BFGB GHIJK 1 Bright A_SpawnItem("GreenFlare",0,0)
     Stop
   }
 }
 
+
+
+Actor AlphaBFGBAll2 : AlphaBFGBAll
+{
+
+	Scale 0.15
+	Speed 50
+	Damagetype "Extreme"
+	DeathSound "Explosion"
+	Damage (random(200, 250))
+	States
+	{
+	 Death:
+    TNT1 A 0
+	TNT1 A 0 A_Explode(100,200,0)
+	Goto Death2
+	}
+}
+
+Actor FriendlyBFGBAll : SuperBFGBall
+{
+    Damagetype "FriendBullet"
+	+EXTREMEDEATH
+  States
+  {
+ Death:
+    TNT1 A 0
+    //TNT1 A 0 Radius_Quake(4,34,0,12,0)
+	
+	TNT1 A 0 Bright A_SpawnItem("GreenShockWave",0,0,0)
+	TNT1 A 0 A_SpawnItemEx ("ExplosionSplashSpawner", 0, 0, -20)
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    //BFE1 A 0 A_SpawnItemEx("BFGDeathParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+    //BFE1 A 0 A_SpawnItemEx("BFGSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleSuperFast", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGDeathParticleFast", 0, 0, random (0, 360), 2, random (0, 360))
+    TNT1 A 0 A_SpawnItem("MegaGibRemoving")
+	TNT1 A 0 A_Explode(120,350,0)
+	BFGB ABCDE 1 Bright A_SpawnItem("GreenFlare",0,0)
+	TNT1 A 0 A_SPawnItem("SuperBFGExtraGiant")
+    BFGB GHIJK 1 Bright A_SpawnItem("GreenFlare",0,0)
+    Stop
+  }
+}
 
 Actor BFGTrailParticle
 {
@@ -280,16 +361,40 @@ Actor BFGDeathParticle
   }
 }
 
+
+
+Actor BFGDeathParticleFast: BFGDeathParticle
+{
+  Speed 10
+  Scale 0.1
+  States
+  {
+  Spawn:
+  Death:
+	SPKG A 11 BRIGHT
+    SPKG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 Bright A_FadeOut(0.06)
+    Stop
+  }
+}
+
+Actor BFGDeathParticleSuperFast: BFGDeathParticleFast
+{
+  Speed 20
+}
+
 Actor SuperBFGExtra : BFGExtra Replaces BFGExtra
 {
   +NoBlockMap
   +NoGravity
   RenderStyle Add
   +FORCERADIUSDMG
-  +EXTREMEDEATH
+  +THRUGHOST
   Alpha 0.75
-  Damage 0
+  Damage 2
   Scale 0.6
+  Radius 1
+  Height 1
+  DamageType "Desintegrate"
   States
   {
   Spawn:
@@ -310,10 +415,7 @@ Actor SuperBFGExtraGiant : SuperBFGExtra
   {
   Spawn:
     BFE2 A 0
-    TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-    TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-    TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-	BFGB ABCDEFGHIJK 3 Bright A_SpawnItem("GreenFlareMedium",0,0)
+    BFGB ABCDEFGH 2 Bright
 	Stop
 }}
 
@@ -349,15 +451,40 @@ ACTOR GreenShockWave
    +DROPOFF 
    +NOBLOCKMAP 
    +NOGRAVITY 
+   +CLIENTSIDEONLY
    States 
    { 
    Spawn: 
       SHOK A 1 BRIGHT
       Goto Death 
    Death: 
-      SHOK BCDEFFGGHHIIIJJJKKKLLMMNNOPQR 1 BRIGHT A_FadeOut(0.03)
+      SHOK BCDEFGHIJKLMNOPQR 1 BRIGHT A_FadeOut(0.05)
       Stop 
    } 
+} 
+
+
+ACTOR WhiteShockWave: GreenShockwave
+{ 
+Scale 2.0
+Alpha 0.12
+   States 
+   { 
+   Spawn: 
+      SHWK A 1
+      SHWK CEGIKMOQ 1 A_FadeOut(0.01)
+      Stop 
+   } 
+} 
+
+ACTOR WhiteShockWaveBig: WhiteShockWave
+{ 
+Scale 3.0
+} 
+
+ACTOR WhiteShockWaveSmall: WhiteShockWave
+{ 
+Scale 1.0
 } 
 
 ACTOR BFGFOG
@@ -378,10 +505,8 @@ ACTOR BFGFOG
     States
     {
     Spawn:
-        BFOG ABCDEF 6 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
-        Goto Death
-	Death:
-	    BFOG G 3 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
+		TNT1 A 2
+        BFOG ABCDEF 1 BRIGHT 
 		Stop
     }
 }
@@ -457,152 +582,64 @@ Actor BFGSuperParticle
     Loop
   }
 }
-
-//Small Ass Particle
-
-ACTOR BFGSmallSphere
+ACTOR BFGSmallSphere : BaronBall
 {
-	Radius 6
-	Height 10
-	Speed 30
-	Damage 50
-    DamageType Desintegrate
-	Decal "Scorch"
+	Radius 10
+	Height 8
+	Speed 45
+	FastSpeed 50
+	DamageType GreenFire
 	Projectile
-    Renderstyle ADD
-    Alpha 0.90
-    Scale 1.2
-	DeathSound "weapons/plasmax"
-    SeeSound "None"
-	+NOEXTREMEDEATH
-	+PUFFONACTORS
-    +PUFFGETSOWNER
+	//+RANDOMIZE
+	+FORCEXYBILLBOARD
+	-THRUGHOST
+    Damage 30
+	RenderStyle Add
+	Alpha 1
+	Scale 0.45
+	DeathSound "BFGALPP"
+	SeeSound "None"
+	Decal "Scorch"
+	Species "Marines"
+	+THRUSPECIES
+	+MTHRUSPECIES
+	+DONTHURTSPECIES
 	States
 	{
 	Spawn:
-	//TNT1 A 0 A_PlaySound("weapons/plasmaloop",6,1,1)
-    FRPG J 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
-    TNT1 A 0 A_SpawnItemEx("SMALLBFGFOG", 0, 0)
-    FRPG K 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
-    TNT1 A 0 A_SpawnItemEx("SMALLBFGFOG", 0, 0)
-    FRPG J 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
-	Loop
+	   TNT1 A 0 A_PlaySound("weapons/plasmaloop",6,1,1)
+	   Fly:
+	   DB57 AB 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
+	   TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+	   TNT1 A 0 A_SpawnItemEx("BFGAltTrail", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128)
+	   DB57 C 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
+	   Loop
 	Death:
+		TNT1 A 0 A_StopSound(6)
+	   TNT1 AAA 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 6, 6, 6, 0, 128)
+	   TNT1 A 0 A_SpawnItemEx ("BFGAltExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	   TNT1 A 0 A_SpawnItem("BFGAltShockWave",0,0)
+	   EXPG ABCDEFG 2 BRIGHT A_SpawnItem("GreenFlare",0,0)
+	   TNT1 AAAAA 19 A_CustomMissile("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+	   Stop
+	XDeath:
+		TNT1 A 0 A_StopSound(6)
+	   TNT1 AAA 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+	   TNT1 A 0 A_SpawnItemEx ("BFGAltExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	   TNT1 A 0 A_SpawnItem("BFGAltShockWave",0,0)
 	TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	TNT1 B 0 A_Explode(6,50,1)
-	TNT1 A 0 A_CustomMissile ("GreenFlareSpawn", 0, 0, random (0, 360), 2, random (0, 360))
-	TNT1 AAAAA 0 A_CustomMissile ("SmallGreenShockWave", 0, 0, random (0, 360), 2, random (0, 360))
-    TNT1 A 0 A_SpawnItem("BFGSmallExp")
-	TNT1 A 0 A_SpawnItem("BFGSmallExpII")
-	Stop
-	}
-}
-
-ACTOR SMALLBFGFOG
-{
-    Radius 1
-    Height 1
-	Alpha 0.7
-	RenderStyle Add
-	Scale 0.1
-	Speed 8
-	Gravity 0
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +DONTSPLASH
-	+MISSILE
-	+FORCEXYBILLBOARD
-    +CLIENTSIDEONLY
-    +PUFFONACTORS
-    +PUFFGETSOWNER
-    States
-    {
-    Spawn:
-        BFOG ABCDEF 3 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
-        Goto Death
-	Death:
-	    BFOG G 3 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
-		Stop
-    }
-}
-
-ACTOR SmallGreenShockWave 
-{ 
-   Speed 0
-   Height 16
-   Radius 8
-   Scale 0.5
-   Damage 0
-   RenderStyle ADD
-   Alpha 0.9
-   +DROPOFF 
-   +NOBLOCKMAP 
-   +NOGRAVITY
-   +PUFFONACTORS
-   +PUFFGETSOWNER
-   States 
-   { 
-   Spawn: 
-      SHOK A 1 BRIGHT
-      TNT1 A 0 A_PlaySound("9KEXPL")
-      Goto Death 
-   Death: 
-      SHOK BCEFGIJKLNOQR 1 BRIGHT A_FadeOut(0.03)
-      Stop 
-   } 
-}
-
-ACTOR BFGSmallExpII
-{
-	Game Doom
-	Radius 1
-	Height 1
-	Speed 3
-	Damage 20
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +DONTSPLASH
-	+MISSILE
-	+FORCEXYBILLBOARD
-    +CLIENTSIDEONLY
-    +NOINTERACTION
-	+NOCLIP
-	RenderStyle Add
-    DamageType Flames
-    Scale 0.8
-	Alpha 1
-	Gravity 0
-	States
-	{
-    Spawn:
-        TNT1 A 1
-      TNT1 A 0 A_PlaySound("9KEXPL")
-        EXPG ABCDEFG 3 BRIGHT
-        Stop
-	}
-}
-
-ACTOR BFGSmallExp
-{
-   Speed 0
-   Height 25
-   Radius 30
-   Scale 0.5
-   Renderstyle ADD
-   +DROPOFF
-   +NOBLOCKMAP
-   +NOGRAVITY
-   +PUFFONACTORS
-   +PUFFGETSOWNER
-   States
-   {
-   Spawn:
-      TNT1 A 0 A_PlaySound("9KEXPL")
-      BFE1 ABCDEF 1 BRIGHT
-	  TNT1 A 0 A_SpawnItem("BFGExtraParticle")
-	  TNT1 A 0 A_SpawnItem("BFGDeathParticle")
-	  TNT1 A 0 A_SpawnItem("BFGTrailParticle")
-      Stop
+	   EXPG ABCDEFG 2 A_SpawnItem("GreenFlare",0,0)
+	   Stop
+	Crash:
+		TNT1 A 0 A_StopSound(6)
+	   TNT1 AAA 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 6, 6, 6, 0, 128)
+	   TNT1 A 0 A_SpawnItemEx ("BFGAltExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	   TNT1 A 0 A_SpawnItem("BFGAltShockWave",0,0)
+	TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	   FRPG ABCDEFGH 2 BRIGHT A_SpawnItem("GreenFlare",0,0)
+	   TNT1 AAAAA 19 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+	   Stop
 	}
 }

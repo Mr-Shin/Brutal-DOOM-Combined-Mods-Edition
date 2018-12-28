@@ -157,7 +157,7 @@ ACTOR TesticleImploder : CMEWeapon
 		
 	UseTesticle:
 		TNT1 A 0 A_Giveinventory("TesticleMode",1)
-		TNT1 A 0 A_Print("SHIT MY BALLS!")
+		TNT1 A 0 A_Print("Buckshot Mode")
 		TNT1 A 0 A_playsound("RCLICK", 4)
 		REVG A 6 A_WeaponReady
 		Goto RealReady
@@ -165,7 +165,7 @@ ACTOR TesticleImploder : CMEWeapon
 	UseImploder:
 		TNT1 A 0 A_Takeinventory("TesticleMode",1)
 		TNT1 A 0 A_giveinventory("ImploderMode",1)
-		TNT1 A 0 A_Print("Imploder Mode")
+		TNT1 A 0 A_Print("Frag Round Mode")
 		TNT1 A 0 A_playsound("RCLICK", 4)
 		REVG A 6 A_WeaponReady
 		Goto RealReady
@@ -173,7 +173,7 @@ ACTOR TesticleImploder : CMEWeapon
 	UseNormal:
 		TNT1 A 0 A_Takeinventory("TesticleMode",1)
 		TNT1 A 0 A_Takeinventory("ImploderMode",1)
-		TNT1 A 0 A_Print("Slugs")
+		TNT1 A 0 A_Print("Slug Round Mode")
 		TNT1 A 0 A_playsound("RCLICK", 4)
 		REVG A 6 A_WeaponReady
 		Goto RealReady

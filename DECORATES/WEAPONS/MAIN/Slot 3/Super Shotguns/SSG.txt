@@ -33,7 +33,7 @@ ACTOR UAC1881 : CMEWeapon
 	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
-	Inventory.PickupMessage "$GOTSHOTGUN2"
+	Inventory.PickupMessage "You got the Dragon Super Shotgun!!! (Slot 3)"
 	tag "Dragon SSG"
 	Obituary "$OB_MPSSHOTGUN"
     Inventory.PickupSound "CLIPINSS"
@@ -80,6 +80,7 @@ ACTOR UAC1881 : CMEWeapon
 		SHT5 DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -104,7 +105,7 @@ ACTOR UAC1881 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 
 		
 		SHT2 U 1 Offset(20,46)

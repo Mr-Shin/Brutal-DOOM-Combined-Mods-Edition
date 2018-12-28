@@ -31,7 +31,7 @@ ACTOR SawedOff : CMEWeapon
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	tag "Black Market Maxwell Sawed Off"
-	Inventory.PickupMessage "You got the Sawed Off Super Shotgun!"
+	Inventory.PickupMessage "You got the Maxwell SSG"
 	Obituary "%o was executed by a Sawed Off Shotgun"
     Inventory.PickupSound "WWCLOSE"
 	Scale 0.9
@@ -76,6 +76,7 @@ ACTOR SawedOff : CMEWeapon
 		WWT5 DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -100,7 +101,7 @@ ACTOR SawedOff : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		WWT2 U 1 Offset(20,46)
 		WWT2 V 1 Offset(1,33)

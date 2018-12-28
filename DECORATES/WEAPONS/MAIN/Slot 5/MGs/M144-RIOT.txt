@@ -157,16 +157,19 @@ ACTOR M144Riot : CMEWeapon
 			
 		ReloadGrenade:	
 		Reload:
-			TNT1 A 0
+TNT1 A 0
+			MGN2 GHIJJJJ 1
 			TNT1 A 0 A_PlaySound("GRLLO1")
-			MGN2 GHIJJJJJJJJKLM 1
-			MGN2 M 30
+			MGN2 KLMLLL 1
+			MGN2 NOPQ 1
+			MGN2 Q 15
+			MGN2 RST 1
 			TNT1 A 0 A_PlaySound("insertshell")
-			MGN2 NOPON 1
-			MGN2 M 30
+			MGN2 UUWVVVXY 1
+			MGN2 NMMMMMML 1
 			TNT1 A 0 A_PlaySound("GRLLO2")
 			TNT1 A 0 A_TakeInventory("FiredMGGrenade", 1)
-			MGN2 MLKJJJJJJJJIHG 1
+			MGN2 JJJJIHG 1
 			TNT1 A 0 A_Refire
 			Goto Ready
 		

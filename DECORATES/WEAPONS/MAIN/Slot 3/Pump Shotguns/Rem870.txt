@@ -24,7 +24,7 @@ ACTOR R870 : CMEWeapon
 	Weapon.AmmoGive2 0
 	Weapon.AmmoType1 "Shell2"
 	Weapon.AmmoType2 "Rem870Ammo"
-	Inventory.PickupMessage "You got the Remington 870!"
+	Inventory.PickupMessage "You got the Remington 870 MCS!!! (Slot 3)"
     Inventory.PickupSound "870/pump/back"
 	Obituary "%o was ripped apart by %k's Remington 870"
 	tag "Remington 870 12-Gauge"
@@ -119,17 +119,17 @@ TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		RMGZ BA 1
 		RMGG DCBA 1
 		RMGS DCBA 1
-		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
-		Wait
+		TNT1 A 1 A_Lower		Wait
 	
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
 		TNT1 A 0 A_Takeinventory("Unloading",1)
 		TNT1 A 0 A_Takeinventory("FistsSelected",1)
 		TNT1 A 0 A_Takeinventory("SawSelected",1)
-		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Giveinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
@@ -147,7 +147,7 @@ TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 	RecoilFlash:
 		TNT1 A 1 A_SetPitch(-8.0 + pitch)

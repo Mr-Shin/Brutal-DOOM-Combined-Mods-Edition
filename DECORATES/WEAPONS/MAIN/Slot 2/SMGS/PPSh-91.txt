@@ -35,7 +35,7 @@ ACTOR PPSH91 : CMEWeapon
 	Obituary "%o felt the power of Russian Power by %k's PPSH-91."
     AttackSound "None"
     Inventory.PickupSound "blackops2/mag/in"
-	Inventory.Pickupmessage "You got the PPSH-91! What the fuck is a WW2 weapon doing in the future? Ask me later why they still use Model 1887s in the UAC bases."
+	Inventory.Pickupmessage "You got the PPSH-91!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -112,6 +112,7 @@ RealReady:
 		PPSS CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -138,8 +139,7 @@ RealReady:
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise	
 		Goto Ready
 	
     Fire:

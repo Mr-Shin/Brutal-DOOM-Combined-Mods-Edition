@@ -29,7 +29,7 @@ ACTOR MP5 : CMEWeapon
 	Obituary "%o ate %k's 16mm MP5 Parabellum"
     AttackSound "None"
     Inventory.PickupSound "MP5BOLT"
-	Inventory.Pickupmessage "You got the MP5! After a decade or so, don't you think this thing will go bye-bye?"
+	Inventory.Pickupmessage "You got the MP5!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT

@@ -155,7 +155,6 @@ ACTOR Grenade_Launcher : CMEWeapon
 		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
 		GLAF A 2 BRIGHT A_FireCustomMissile("GrenadeMissileHE", 0, 1, 0, 0)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-        TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
 		GLAF B 2 BRIGHT
 		GLAF C 2
 		GLAN A 4
@@ -205,7 +204,6 @@ ACTOR Grenade_Launcher : CMEWeapon
 		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
 		GLAF A 2 BRIGHT A_FireCustomMissile("GrenadeMissileFrag", 0, 1, 0, 0)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-        TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
 		GLAF B 2 BRIGHT
 		GLAF C 2
 		GLAN A 4
@@ -258,7 +256,6 @@ AltFire:
 		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
 		GLAF A 2 BRIGHT A_FireCustomMissile("BouncingGrenadeHE", 0, 1, 0, 0)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-        TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
 		GLAF B 2 BRIGHT
 		GLAN C 2
 		GLAN A 4
@@ -307,7 +304,6 @@ AltFireFrag:
 		TNT1 AAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9))
 		GLAF A 2 BRIGHT A_FireCustomMissile("BouncingGrenadeFrag", 0, 1, 0, 0)
 		TNT1 A 0 A_PlaySound("weapons/firegrenade", 1)
-        TNT1 A 0 ACS_NamedExecute("Recoil282", 0, 0, 0, 0)
 		GLAF B 2 BRIGHT
 		GLAF C 2
 		GLAN A 4

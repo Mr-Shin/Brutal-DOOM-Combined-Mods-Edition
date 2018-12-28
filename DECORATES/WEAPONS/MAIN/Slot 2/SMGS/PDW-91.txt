@@ -30,7 +30,7 @@ ACTOR PDW91 : CMEWeapon
 	Obituary "%o played PEE PEE dead %k's PDW-91"
     AttackSound "None"
     Inventory.PickupSound "MP7BOLT"
-	Inventory.Pickupmessage "You got the PDW-91! Ruskies n shit got tired of the PP-Bizon, so they made it smaller!"
+	Inventory.Pickupmessage "You got the PDW-91!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -106,6 +106,7 @@ ACTOR PDW91 : CMEWeapon
 		PDWS CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -132,8 +133,7 @@ ACTOR PDW91 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise
 		Goto Ready
 		
 	WeaponSpecial:

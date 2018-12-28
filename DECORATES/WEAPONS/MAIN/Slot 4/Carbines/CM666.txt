@@ -53,7 +53,7 @@ ACTOR CM666 : CMEWeapon
 	Obituary "%o was shot down by %k's CM666."
     AttackSound "None"
     Inventory.PickupSound "CM666/Bolt"
-	Inventory.Pickupmessage "You got the CM666 Carbine!"
+	Inventory.Pickupmessage "You got the CM666 Carbine!!! (Slot 4)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -188,6 +188,7 @@ ACTOR CM666 : CMEWeapon
 		CMFS EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:

@@ -35,7 +35,7 @@ ACTOR QuadShotgun : CMEWeapon
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	tag "Hydra Quad Shotgun - Devestation Unit Switching"
-	Inventory.PickupMessage "You got something that will always be in every one of my projects!!"
+	Inventory.PickupMessage "You got the Quad Barrel Shotgun!!! (Slot 3)"
 	Obituary "%o was blasted into gibs by %k's Quad Shotgun"
     Inventory.PickupSound "QUADPKUP"
 	Scale 0.9
@@ -80,6 +80,7 @@ ACTOR QuadShotgun : CMEWeapon
 		QHT5 DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -104,7 +105,7 @@ ACTOR QuadShotgun : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		QHT2 U 1 Offset(20,46)
 		QHT2 V 1 Offset(1,33)

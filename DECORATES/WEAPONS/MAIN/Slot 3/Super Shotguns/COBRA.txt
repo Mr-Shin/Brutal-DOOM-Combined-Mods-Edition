@@ -32,7 +32,7 @@ ACTOR COBRA : CMEWeapon
 	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
-	Inventory.PickupMessage "You got the C.O.B.R.A!"
+	Inventory.PickupMessage "You got the C.O.B.R.A!!! (Slot 3)"
 	tag "Close-Offensive-Brutal-Raping-Apparatus Shotgun"
 	Obituary "%o was mutilated by %k's C.O.B.R.A"
     Inventory.PickupSound "cobra/close"
@@ -97,6 +97,7 @@ ACTOR COBRA : CMEWeapon
 		CO2S DCBA 1 Offset(0,32)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -122,7 +123,7 @@ ACTOR COBRA : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 		
     NoAmmo:

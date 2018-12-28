@@ -11,45 +11,46 @@ Slot 2:
 Hanguns:
 
 M9 Berreta
-TAC-15 IB
-G17C IB
-G18 IB
-FN-67 IB
-USP .45 IB
+TAC-15 
+G17C 
+G18 
+FN-67 
+USP .45 
 DOOM 2016 Blaster
+Quake Blaster
 
 Magnums & Revolvers:
 
-Desert Eagle MK1 IB
-Desert Eagle MK3 IB
-Skull Cracker IB
-Testicle Imploder IB
+Desert Eagle MK1 
+Desert Eagle MK3 
+Skull Cracker 
+Testicle Imploder 
 
 Sub-Machine Guns:
 
 TMP-62
-PPSh-91 IB
-MP27 IB
-UMP-50 IB
-MP5 IB
-MP7 IB
+PPSh-91 
+MP27 
+UMP-50 
+MP5 
+MP7 
 MP40 
-G7Bullpup IB
-PDW-91 IB
-TMP-9 IB
-POW-90 IB
-UZI IB
+G7Bullpup 
+PDW-91 
+TMP-9 
+POW-90 
+UZI 
  
 Machine Pistols: 
 
 BD v21 Machine Pistol
-Soviet Machine Pistol IB
+Soviet Machine Pistol 
 
 Slot 3:
 
 Auto Shotguns:
 
-XM1618
+DAO-12
 AA48
 M1216
 AS-RIOT-4
@@ -76,6 +77,7 @@ Remington 870 MCS
 
 Super Shotguns:
 
+Bone Duster
 BD v21 SSG
 LOS Cannonos 
 UAC1881 SSG
@@ -167,6 +169,7 @@ Slot 6:
 
 Rocket Launchers:
 
+V20 Rocket Launcher
 AT5
 Duke RPG
 UT2004 RL
@@ -192,7 +195,6 @@ Slot 7:
 
 Plasma Guns:
 
-Quake Blaster Pistol
 BD v19 Plasma Gun
 BD v21 Plasma Rifle
 PM-9

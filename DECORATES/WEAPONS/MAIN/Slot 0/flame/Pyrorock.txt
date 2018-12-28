@@ -1,0 +1,94 @@
+Actor PyroRocket1
+{
+	Radius 10
+	Height 8
+	Projectile
+	Speed 10
+	FastSpeed 10
+    Damage 35
+	DamageType "Fire"
+    MeleeDamage 0
+    Gravity 0.00
+	Scale 0.7
+    Decal "Scorch"
+    -NOGRAVITY
+    +EXTREMEDEATH
+    +BLOODSPLATTER 
+	+SEEKERMISSILE
+	//SeeSound "weapons/RLL"
+	DeathSound "PYHIT"
+	Obituary "$OB_MPROCKET"
+	MONSTER
+	+FRIENDLY
+States
+	{
+	Spawn:
+	    TNT1 A 0
+		TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0)//Check Effects
+	
+	Spawn1:
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
+		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
+		MANF A 1 BRIGHT A_SpawnItem("RedFlare22")
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		
+		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
+		MANF B 1 BRIGHT A_SpawnItem("RedFlare22")
+		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		
+		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
+		MANF A 1 BRIGHT A_SpawnItem("RedFlare22")
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		
+		TNT1 A 0 A_CustomMissile ("FireballExplosionFlamesSmall", 0, 0, random (0, 360), 2, random (00, 360))
+		MANF B 1 BRIGHT A_SpawnItem("RedFlare22")
+		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		Loop
+		
+	SpawnCheap:
+		TNT1 A 0 A_SpawnItem ("FireballExplosionFlamesSmall")
+		MANF AB 1 BRIGHT A_SpawnItem("RedFlare22")
+		Loop
+	
+	Death:
+        EXPL A 0 Radius_Quake (3, 16, 0, 15, 0)
+		TNT1 AAAA 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	EXPL A 0 A_SpawnItem("ExplosionParticleSpawner")
+	EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
+		TNT1 A 0 Bright A_SpawnItem("GrayShockWave",0,0,0)
+		TNT1 AAA 10 A_CustomMissile ("BigBlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
+		TNT1 a 0 A_playsound("QEXPLO2")
+		//TNT1 AAAAA 0 A_CustomMissile ("FireBall_", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -40, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -30, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -22, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -15, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -9, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 0, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 9, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 15, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 22, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 30, 270)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 40, 270)
+		
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -40, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -30, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -22, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -15, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, -9, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 0, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 9, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 15, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 22, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 30, 0)
+		TNT1 A 0 A_CustomMissile("FireBall_", 36, 15, 40, 0)
+		
+		BXPL A 0 Bright A_Explode(85*random(3,4),180, 0) // Simulated impact damage 
+		BXPL A 0 Bright A_Explode(random(50,55), 315, 0) // Freezy radius damage. (was 128)
+		BXPL AAAAAAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke", 0, 0, 0, random(10, 30)*0.1, 0, random(0, 10)*0.1, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
+		BXPL AAAAA 0 Bright A_SpawnItemEx("CryoSmoke3", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		BXPL AAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke2", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+		Stop
+	}
+}

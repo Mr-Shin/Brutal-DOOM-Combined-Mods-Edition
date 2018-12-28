@@ -1,0 +1,419 @@
+ACTOR v21SSG : CMEWeapon
+{
+	Game Doom
+	SpawnID 33
+   Weapon.Kickback 50
+	Weapon.SelectionOrder 400
+	Weapon.AmmoGive1 4
+	Weapon.AmmoGive2 0
+	Weapon.AmmoType1 "Shell2"
+	Weapon.AmmoType2 "V21SSGAmmo"
+	Weapon.AmmoUse1 0
+	Weapon.AmmoUse2 0
+    +WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
+	+FORCEXYBILLBOARD
+	Inventory.PickupMessage "$GOTSHOTGUN2"
+	Obituary "$OB_MPSSHOTGUN"
+    Inventory.PickupSound "CLIPINSS"
+	Scale 0.9
+	States
+	{
+	
+    SelectAnimation:    
+	Ready:
+	Ready3:
+	    21SS A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+        TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")	
+		TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+		
+		Loop
+		
+		
+	CheckSprint:
+		21SS A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
+		Goto Ready
+		
+	StartSprint:
+		21SS A 1 A_WeaponReady(WRF_NOFIRE)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
+		
+	Sprinting:	
+		SSRU A 0 offset(-9,32) 
+		TNT1 A 0 offset(-9,32) A_JumpIfInventory("IsStandingStill", 1, "Ready3")
+		TNT1 A 0 offset(-9,32) A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
+		PLAY A 0 offset(-9,32) ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
+		TNT1 A 0 offset(-9,32) A_JumpIfInventory("PowerStrength", 1, 2)
+		TNT1 A 0 offset(-9,32) A_GiveInventory("UsedStamina", 6)
+		TNT1 A 0 offset(-9,32)
+		SSRU A 1 offset(-9,34) A_SetPitch(pitch -0.5)
+		SSRU A 1 offset(-6,36) A_SetPitch(pitch -0.5)
+		SSRU A 1 offset(-3,38) A_SetPitch(pitch -0.5)
+		SSRU A 1 offset(0,38) A_SetPitch(pitch -0.5)
+		SSRU A 1 offset(3,36) A_SetPitch(pitch -0.5)
+		SSRU A 1 offset(6,34) A_SetPitch(pitch -0.5)
+		SSRU A 1 offset(9,32) A_SetPitch(pitch -0.5)
+		TNT1 A 0 offset(9,32) A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 offset(-9,32) A_GiveInventory("UsedStamina", 6)
+		TNT1 A 0 offset(9,33) A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
+		SSRU A 1 offset(9,34) A_SetPitch(pitch +0.5)
+		SSRU A 1 offset(6,36) A_SetPitch(pitch +0.5)
+		SSRU A 1 offset(3,38) A_SetPitch(pitch +0.5)
+		SSRU A 1 offset(0,38) A_SetPitch(pitch +0.5)
+		SSRU A 1 offset(-3,36) A_SetPitch(pitch +0.5)
+		SSRU A 1 offset(-6,34) A_SetPitch(pitch +0.5)
+		SSRU A 1 offset(-9,32) A_SetPitch(pitch +0.5)
+		TNT1 A 0 offset(-9,32) A_WeaponReady(WRF_NOBOB)
+		TNT1 A 0 offset(-9,32) A_JumpIfInventory("IsRunning", 1, "Sprinting")
+		
+		Goto StopSprint
+	StopSprintTired:
+		21SS A 1
+		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		TNT1 A 0 A_PlaySound("Tired", 2)
+		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
+		21SS A 5 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
+		21SS A 5 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
+		21SS A 5 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
+		21SS A 5 A_WeaponReady
+		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
+		21SS A 5 A_WeaponReady
+		Goto Ready
+	StopSprint:
+		SSRU A 1
+		TNT1 A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
+		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+		Goto Ready
+		
+	PuristGun:
+		TNT1 A 1
+		TNT1 A 0 A_GiveInventory("ClassicSSG", 1)
+		TNT1 A 0 A_TakeInventory("SSG", 1)
+		TNT1 A 10
+		Goto Ready
+		
+	Deselect:
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		21S5 DCBA 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Select:
+		TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Giveinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1) 
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_GunFlash
+		21S5 ABCD 1
+		TNT1 A 0 A_PlaySound("weapons/sshotc")
+		Goto Ready
+		
+    NoAmmo:
+        21SS A 4 A_PlaySound("weapons/empty", 2)
+		TNT1 A 0 A_TakeInventory("SSGAlt",1)
+		TNT1 A 0 A_JumpIfInventory("Shell2", 1, "Reload")
+        Goto Ready
+	 Fire:
+		TNT1 A 0 A_TakeInventory("Reloading",1)
+		TNT1 A 0 A_JumpIfInventory("SSGAlt",1,"AltFire")
+		TNT1 A 0 A_JumpIfInventory("V21SSGAmmo", 2, 1)
+		Goto NoAmmo
+		//TNT1 A 0 A_JumpIfInventory("V21SSGAmmo", 2, 1)
+		//Goto AltFire
+		
+		TNT1 A 0 A_TakeInventory("V21SSGAmmo", 2)
+		TNT1 A 0 A_ZoomFactor(1.6)
+		TNT1 A 0 A_Recoil(3)
+		RIFF A 0 A_FireCustomMissile("DistantFireSoundSSG", random(-1,1), 0, 0, -12, 0, random(-1,1))
+		22GS A 0 A_firebullets (0,0,1,15,"shotpuff",0,220)
+        22GS A 0 BRIGHT A_playsound("SSHFIRE", 5)
+		TNT1 AAAAAAAAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-10,10), 0, 0, -12, 0, random(-5,5))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-19,19), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-19,19), 0, -1, 0, 0, random(-9,9))
+		TNT1 AA 0 A_FireCustomMissile("YellowFlareSpawn",15,0,0,0)
+		TNT1 AA 0 A_FireCustomMissile("YellowFlareSpawn",-15,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		SHOF A 1 BRIGHT
+		TNT1 A 0 A_FireBullets (7, 3, 10, 11, "ShotgunPuff", FBF_NORANDOM)
+		TNT1 A 0 A_FireBullets (7, 3, 10, 11, "ShotgunPuff", FBF_NORANDOM)
+		TNT1 A 0 A_SetPitch(-11.0 + pitch)
+		
+        SHOF B 1 BRIGHT
+		TNT1 A 0 A_ZoomFactor(1.00)
+		RIFF AA 0 A_FireCustomMissile("GunFireSmokE", 0, 0, 2, 0, 0, 0)
+		RIFF AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0)
+        TNT1 A 0 A_TakeInventory("SSGAlt",1)
+        TNT1 A 0 A_TakeInventory("Reloading",1)
+    
+		SHOF CCCCDEFGHII 1 A_SetPitch(+1.0 + pitch)
+		21SS AAA 1 A_WeaponReady(WRF_NOFIRE | WRF_NOBOB)
+		Goto Reload
+		
+		
+		
+		
+		
+	Reload:	
+		TNT1 A 0
+		
+		TNT1 A 0 A_TakeInventory("Reloading",1)
+		
+		
+		TNT1 A 0 A_JumpIfInventory("SSGAlt", 1, "Reload2")//Check if still has a shell on left barrel
+		
+		TNT1 A 0 A_JumpIfInventory("V21SSGAmmo", 2, "Ready")//Check if still has a shell on left barrel
+		
+		
+		TNT1 A 0 A_JumpIfInventory("Shell2", 1, 1)//Check if has any ammo left to reload
+		Goto Ready
+		
+		
+		TNT1 A 0 A_JumpIfInventory("Shell2", 2, 1)//Check if has ammo to reload 2 shells
+		Goto Reload2
+		
+	
+		
+		
+		//Reload 2 barrels
+		
+		21SS B 2 Offset(20,48) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+        21SS B 2 Offset(10,36) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		21SS BCDEF 1
+		21SS GH 1
+		21SS IJ 1
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        
+        TNT1 A 0 A_PlaySound("weapons/sshotc")
+		TNT1 A 0 A_JumpIfInventory("HasUnloaded", 1, 3)
+		TNT1 AA 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
+        21SS K 2
+		21SS L 2
+		21SS MNOO 1
+        TNT1 A 0 A_playsound("weapons/sshotl")
+		  21SS P 1 Offset(10,36)
+		  21SS P 1 Offset(20,46)
+		  21SS Q 1 Offset(30,56)
+		  21SS Q 1 Offset(40,66)
+		  21SS R 1 Offset(50,76)
+		  21SS S 1
+		  TNT1 A 0 A_GiveInventory ("Pumping", 1)
+			
+		21SS T 1 Offset(30,56)
+		21SS U 1 Offset(20,46)
+		21SS V 1 Offset(1,33)
+			
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_PlaySound("weapons/sshotc")
+		TNT1 A 0 A_TakeInventory("Shell2", 2)
+		TNT1 A 0 A_GiveInventory("V21SSGAmmo", 2)
+		TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+			
+			21SS WX 1
+			21SS YZ 1
+		  TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		  TNT1 A 0 A_TakeInventory("SSGAlt",1)
+			22GS DE 1
+			22GS FG 1
+		  TNT1 A 0 A_ReFire
+		 21SS A 2
+        Goto Ready
+		
+
+AltFire:
+		TNT1 A 0 A_TakeInventory("Reloading",1)
+		TNT1 A 0 A_JumpIfInventory("V21SSGAmmo",1,3)
+        Goto NoAmmo
+        TNT1 AAAAA 0
+		TNT1 A 0 A_JumpIfInventory("SSGAlt",1,"AltFire2")
+
+
+		TNT1 A 0 A_TakeInventory("V21SSGAmmo",1)
+		TNT1 A 0 A_GiveInventory("SSGAlt",1)
+        TNT1 A 0 A_Recoil(2)
+        TNT1 A 0 A_ALertMonsters
+		RIFF AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, 2, 0, 0, 0)
+		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
+        22SG A 1 BRIGHT A_PlaySound("weapons/sg")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        22SG A 1 BRIGHT A_FireBullets (5, 3, 10, 11, "ShotgunPuff", FBF_NORANDOM)
+        TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5), 0, 0, -12, 0, random(-5,5))
+		TNT1 A 0 A_SetPitch(-5.0 + pitch)
+		SHOF EFGHI 1 A_SetPitch(+1.0 + pitch)
+        TNT1 A 0
+        Goto Ready
+
+	AltFire2:
+		TNT1 A 0 A_TakeInventory("V21SSGAmmo", 1)
+        TNT1 A 0 A_Recoil(2)
+        TNT1 A 0 A_ALertMonsters
+		RIFF AA 0 A_FireCustomMissile("GunFireSmoke", 0, 0, -2, 0, 0, 0)
+		TNT1 AAAAAAAAAAAAAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles", random(-12,12), 0, -1, 0, 0, random(-9,9))
+		TNT1 AAAAA 0 BRIGHT A_FireCustomMissile("ShotgunParticles2", random(-12,12), 0, -1, 0, 0, random(-9,9))
+        22SG B 1 BRIGHT A_PlaySound("weapons/sg")
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		RIFF A 0 A_FireCustomMissile("DistantFireSoundShotgun", random(-1,1), 0, 0, -12, 0, random(-1,1))
+        22SG B 1 BRIGHT A_FireBullets (5, 3, 10, 11, "ShotgunPuff", FBF_NORANDOM)
+        TNT1 AAAAA 0 A_FireCustomMissile("DecorativeTracer", random(-5,5), 0, 0, -12, 0, random(-5,5))
+		 TNT1 A 0 A_SetPitch(-4.0 + pitch)
+        SHOF EFGHI 1 A_SetPitch(+1.0 + pitch)
+		
+		TNT1 A 0 A_TakeInventory("SSGAlt", 1)
+		TNT1 A 0 A_JumpIfInventory("Shell2",1,1)
+		TNT1 A 0 A_GiveInventory("Reloading", 1)
+		Goto Ready
+        
+	Reload2:
+		TNT1 A 0 A_TakeInventory("Reloading",1)
+		TNT1 A 0 A_JumpIfInventory("Shell2",1,1)
+		Goto NoAmmo
+		TNT1 A 0 A_TakeInventory("SSGAlt",1)
+		
+		21SS B 2 Offset(20,48) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		TNT1 A 0 
+	    TNT1 A 0 
+        21SS B 2 Offset(10,36) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		TNT1 A 0 
+	    TNT1 A 0 
+		21SS BCDEF 1
+		TNT1 A 0 
+	    TNT1 A 0 
+		21SS GH 1
+		TNT1 A 0 
+	    TNT1 A 0 
+		21SS IJ 1
+		TNT1 A 0
+	    TNT1 A 0
+		
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        
+        TNT1 A 0 A_PlaySound("weapons/sshotc")
+		TNT1 A 0 A_FireCustomMissile("SSGCaseSpawner",0,0,-10, -20)
+        21SS K 2
+		SHT7 L 2
+		SHT7 MNOO 1
+        TNT1 A 0 A_playsound("weapons/sshotl")
+		SHT7 P 1 Offset(10,36)
+		SHT7 P 1 Offset(20,46)
+		21SS Q 1 Offset(30,56)
+		21SS Q 1 Offset(40,66)
+		21SS R 1 Offset(50,76)
+		TNT1 A 0
+		21SS S 1
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        
+		21SS T 1 Offset(30,56)
+		21SS U 1 Offset(20,46)
+		21SS V 1 Offset(1,33)
+        
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        TNT1 A 0 A_PlaySound("weapons/sshotc")
+		TNT1 A 0 A_TakeInventory("Shell2", 1)
+		TNT1 A 0 A_GiveInventory("V21SSGAmmo", 1)
+        21SS WX 1
+		21SS YZ 1
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		22GS DE 1
+		22GS FG 1
+		TNT1 A 0 A_ReFire
+		21SS A 2
+		
+	  Goto Ready
+
+	Spawn:
+		SS22 A -1
+		Stop
+	
+    
+		
+	
+	Unload:
+		21SS A 1 A_WeaponReady
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+        TNT1 A 0 A_JumpIfInventory("V21SSGAmmo",1,3)
+        Goto Ready
+        TNT1 AAA 0
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		
+	RemoveBullets:
+		TNT1 AAAA 0
+		TNT1 A 0 A_JumpIfInventory("V21SSGAmmo",1,3)
+		Goto FinishUnload
+        TNT1 AAAAAA 0
+		TNT1 A 0 A_Takeinventory("V21SSGAmmo",1)
+		TNT1 A 0 A_Giveinventory("Shell2",1)
+		Goto RemoveBullets
+	
+	FInishUnload:
+		21SS B 2 Offset(20,48) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+        21SS B 2 Offset(10,36) //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		21SS BCDEF 1
+		21SS GH 1
+		TNT1 A 0 A_PlaySound("weapons/sshotc")
+		21SS IJ 1
+        21SS K 2
+		TNT1 A 20
+		TNT1 A 0 A_GiveInventory("HasUnloaded", 1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		21SS U 1 Offset(20,46)
+		21SS V 1 Offset(1,33)
+        
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        TNT1 A 0 A_PlaySound("weapons/sshotc")
+        21SS WX 1
+		21SS YZ 1
+		TNT1 A 0 A_PlaySound("CLIPINSS")
+		TNT1 A 0 A_GiveInventory ("Pumping", 1)
+        22GS DE 1
+		22GS FG 1
+		Goto Ready
+	}
+}
+Actor V21SSGAmmo : Ammo
+{
+Inventory.Amount 0
+Inventory.MaxAmount 2
+Ammo.BackpackAmount 0
+Ammo.BackpackMaxAmount 2
+Inventory.Icon "ss22A0"
+}

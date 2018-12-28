@@ -1,0 +1,267 @@
+//---------------------The Projectile-----------------------------------------//
+Actor DMBall
+{
+Radius 13
+Height 8
+Speed 17
+Damage 50
+Projectile
++FORCEXYBILLBOARD
++NODAMAGETHRUST
++RIPPER
++Friendly
+//+FORCERADIUSDMG
+-THRUGHOST
+Renderstyle Translucent
+Damagetype Explosive
+Alpha 0.55
+SeeSound "DSKTESLA"
+DeathSound "DMBall/Impact"
+//Decal "Scorch"
+States
+{
+Spawn:
+	TNT1 A 0 A_playsound("DSNUKBID", 5)
+	TNT1 A 0 Thing_ChangeTid(0,1796)
+	VOIP A 1 Bright A_SpawnItem("RedFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItem("CacodemonRedBlur",0,0)
+		TNT1 A 0 A_SpawnItem("CacodemonBlueBlur",0,0)
+	//TNT1 A 0 A_SpawnItem("BHGPurpleBlur",0,0)//A_RadiusThrust(-220,130)
+	TNT1 A 0 A_Explode(20,90,0)
+	TNT1 A 0 A_SpawnItem("DMBTrail",0,0,0)
+	VOIP B 1 Bright A_SpawnItem("RedFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItem("CacodemonRedBlur",0,0)
+		TNT1 A 0 A_SpawnItem("CacodemonBlueBlur",0,0)
+	//TNT1 A 0 A_SpawnItem("BHGPurpleBlur",0,0)//A_RadiusThrust(-220,130)
+	TNT1 A 0 A_Explode(20,90,0)
+	TNT1 A 0 A_SpawnItem("DMBTrail",0,0,0)
+	VOIP C 1 Bright A_SpawnItem("RedFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItem("CacodemonRedBlur",0,0)
+		TNT1 A 0 A_SpawnItem("CacodemonBlueBlur",0,0)
+	//TNT1 A 0 A_SpawnItem("BHGPurpleBlur",0,0)//A_RadiusThrust(-220,130)
+	TNT1 A 0 A_Explode(20,90,0)
+	TNT1 A 0 A_SpawnItem("DMBTrail",0,0,0)
+	VOIP D 1 Bright A_SpawnItem("RedFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItem("CacodemonRedBlur",0,0)
+		TNT1 A 0 A_SpawnItem("CacodemonBlueBlur",0,0)
+	//TNT1 A 0 A_SpawnItem("BHGPurpleBlur",0,0)//A_RadiusThrust(-220,130)
+	TNT1 A 0 A_Explode(20,90,0)
+	TNT1 A 0 A_SpawnItem("DMBTrail",0,0,0)
+	VOIP E 1 Bright A_SpawnItem("RedFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItem("CacodemonRedBlur",0,0)
+		TNT1 A 0 A_SpawnItem("CacodemonBlueBlur",0,0)
+	//TNT1 A 0 A_SpawnItem("BHGPurpleBlur",0,0)//A_RadiusThrust(-220,130)
+	TNT1 A 0 A_Explode(20,90,0)
+	TNT1 A 0 A_SpawnItem("DMBTrail",0,0,0)
+	VOIP F 1 Bright A_SpawnItem("RedFlareMedium",0,0)
+	TNT1 A 0 A_SpawnItem("CacodemonRedBlur",0,0)
+		TNT1 A 0 A_SpawnItem("CacodemonBlueBlur",0,0)
+	//TNT1 A 0 A_SpawnItem("BHGPurpleBlur",0,0)//A_RadiusThrust(-220,130)
+	TNT1 A 0 A_Explode(20,90,0)
+	TNT1 A 0 A_SpawnItem("DMBTrail",0,0,0)
+	loop
+Death:
+	TNT1 A 0 Thing_ChangeTid(0,1796)
+	TNT1 A 0 A_SpawnItem("BlackHole",0,0,0)
+	TNT1 A 0 A_SetScale(1.2)
+	VORX ABCDEFGH 2 Bright
+	Stop
+}
+}
+
+Actor DMBTrail
+{
++NOGRAVITY
++FORCEXYBILLBOARD
+RenderStyle Translucent
+Alpha 0.70
+Scale 0.7
+States
+{
+Spawn:
+	VORX ABCDEFGH 2 Bright A_FadeOut(0.1)
+	Stop
+}
+}
+
+Actor BHTimer : Inventory
+{inventory.maxamount 30}
+
+Actor BlackHole
+{
+Radius 20
+Height 20
+Speed 0
+SpawnID 176
+Projectile
+//+NOCLIP
++NOBLOCKMAP
++DONTHARMSPECIES
++BLOCKEDBYSOLIDACTORS
++NODAMAGETHRUST
+-THRUGHOST
++Ripper
++ForcePain
++FORCEXYBILLBOARD
++FORCERADIUSDMG
++EXTREMEDEATH
++Friendly
+RenderStyle Translucent
+Damagetype Explosive
+Alpha 0.85
+Scale 1.75
+ReactionTime 30
+Obituary "%o got absorbed by the darkness."
+States
+{
+Spawn:
+	TNT1 A 0 A_JumpIfInventory("BHTimer", 30,"Death")
+	TNT1 A 0 A_PlaySoundEx("BHole/Suck","Voice",1)
+	TNT1 A 0 A_giveinventory("BHTimer",1)
+	BHOL A 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 A_Explode(20,150)
+	BHOL B 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 A_Explode(20,150)
+	BHOL C 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 Bright A_SpawnItem("PurpleShockWave",0,0,0)
+	EXPL A 0 Radius_Quake (3, 60, 0, 11, 0)
+	TNT1 A 0 A_Explode(20,150)
+	TNT1 A 0 A_giveinventory("BHTimer",1)
+	BHOL D 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 A_Explode(20,150)
+	BHOL E 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 Bright A_SpawnItem("PurpleShockWave",0,0,0)
+	EXPL A 0 Radius_Quake (3, 60, 0, 11, 0)
+	TNT1 A 0 A_Explode(20,150)
+	BHOL F 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 A_Explode(20,150)
+	TNT1 A 0 A_giveinventory("BHTimer",1)
+	BHOL G 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 Bright A_SpawnItem("PurpleShockWave",0,0,0)
+	EXPL A 0 Radius_Quake (3, 60, 0, 11, 0)
+	TNT1 A 0 A_Explode(20,150)
+	BHOL H 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_Explode(20,150)
+	BHOL I 1 Light("BHOLE_1") A_RadiusThrust(-1400,2000, RTF_NOIMPACTDAMAGE)
+	TNT1 A 1 A_CustomMissile ("BHMiniSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360))
+	Loop
+Death:
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	TNT1 A 0 Bright A_SpawnItem("PurpleShockWave",0,0,0)
+	EXPL A 0 Radius_Quake (3, 60, 0, 11, 0)
+	TNT1 A 0 A_Explode(20,150)
+	
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BHSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BHSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BHSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_StopSoundEx("Voice")
+	TNT1 A 0 A_playsound("BHEX",7)
+	TNT1 A 0 A_SpawnItem("BHSmoke",0,0,0)
+	//TNT1 A 0 A_SpawnItem("BHExplosion",0,0,0)
+	TNT1 A 0 A_PlaySound("BHole/Explosion")
+	TNT1 A 0 Bright A_SpawnItem("PurpleShockWave",0,0,0)
+    BHOL A 0 A_SpawnItemEx("BFGDeathParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+    BHOL A 0 A_SpawnItemEx("BFGSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+	BHOL A 1 Light("BHOLE_2") A_FadeOut(0.08)
+	BHOL B 1 Light("BHOLE_3") A_FadeOut(0.08)
+	BHOL C 1 Light("BHOLE_4") A_FadeOut(0.08)
+	BHOL D 1 Light("BHOLE_5") A_FadeOut(0.08)
+	BHOL E 1 Light("BHOLE_6") A_FadeOut(0.08)
+	BHOL F 1 Light("BHOLE_7") A_FadeOut(0.08)
+	BHOL G 1 Light("BHOLE_8") A_FadeOut(0.08)
+	BHOL H 1 Light("BHOLE_9") A_FadeOut(0.08)
+	BHOL I 1 Light("BHOLE_10") A_FadeOut(0.08)
+	Stop
+}
+}
+
+
+
+Actor BHSmoke : DMBTrail
+{
+Scale 2.2
+Damagetype BlackHole
++NOCLIP
++NOGRAVITY
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+	BHXP ABCDEFGHIJKLMNO 2 A_FadeOut(0.03)
+	Stop
+}
+}
+
+Actor BHMiniSmokeSpawner
+{
+  +NoClip
+  +NoBlockMap
+  +NoGravity
+  +Missile
+  +FORCEXYBILLBOARD
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 AAAAAAAAAAA 0 A_SpawnItemEx("BHMiniSmoke", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
+    TNT1 AAAAAAAAAAA 0 A_SpawnItemEx("BHMiniSmoke", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
+    TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("BHMiniSmoke", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
+    TNT1 A 1
+    Stop
+  }
+}
+
+Actor BHMiniSmoke : DMBTrail
+{
+Scale 0.65
+Alpha 0.45
+Damagetype BlackHole
++NOCLIP
++NOGRAVITY
++FORCEXYBILLBOARD
+States
+{
+Spawn:
+	BHXP ABCDEFGHIJKLMNO 2 A_FadeOut(0.03)
+	Stop
+}
+}
+
+
+ACTOR PurpleShockWave 
+{ 
+   Speed 0
+   Height 64 
+   Radius 32
+   Scale 2.25 
+   RenderStyle add
+   Alpha 0.9
+   +DROPOFF 
+   +NOBLOCKMAP 
+   +NOGRAVITY 
+   States 
+   { 
+   Spawn: 
+      SH0K A 1 BRIGHT
+      Goto Death 
+   Death: 
+      SH0K BCDEFFGGHHIIIJJJKKKLLMMNNOPQR 1 BRIGHT A_FadeOut(0.03)
+      Stop 
+	}
+}

@@ -1,214 +1,94 @@
+
+// Textures
 #include doomwalls.bm
+#include BMAP/Ammo.txt
+#include BMAP/Armor.txt
+#include BMAP/AutoShotgun.txt
+#include BMAP/BHG.txt
+#include BMAP/Carbine.txt
+#include BMAP/DemonTech.txt
+#include BMAP/DMR.txt
+#include BMAP/FlameCannon.txt
+#include BMAP/HMG.txt
+#include BMAP/LMG.txt
+#include BMAP/M2Plasma.txt
+#include BMAP/Minigun.txt
+#include BMAP/Pistol.txt
+#include BMAP/Plasma.txt
+#include BMAP/PulseCannon.txt
+#include BMAP/Railgun.txt
+#include BMAP/Revolver.txt
+#include BMAP/Shields.txt
+#include BMAP/Shotgun.txt
+#include BMAP/SMG.txt
+#include BMAP/SuperGrenadeLauncher.txt
+#include BMAP/Throwables.txt
+#include BMAP/Weapons.txt
+#include BMAP/RocketLauncher.txt
+#include BMAP/AssaultZombie.txt
+#include BMAP/AutoShotgunGuy.txt
+#include BMAP/Daedabus.txt
+#include BMAP/InfernalCacodemon.txt
+#include BMAP/MinigunZombie.txt
+#include BMAP/NamiDarkImp.txt
+#include BMAP/PistolZombie.txt
+#include BMAP/RiotShieldGuy.txt
+#include BMAP/ShotgunGuy.txt
+#include BMAP/Watcher.txt
+#include BMAP/Zombieman.txt
+#include BMAP/ZombieScientist.txt
+
+#include BMAP/Draugr.txt
+#include BMAP/Arachnophyte.txt
+#include BMAP/SmartScavenger.txt
+#include BMAP/Health.txt
+// Monsters
 #include doommonsters.bm
 
+// Decorations
 
-brightmap sprite BG2GA0
-{
-	map "brightmaps/BFG10K/B10BA0.png"
-}
 
-brightmap sprite BG2GB0
-{
-	map "brightmaps/BFG10K/B10BB0.png"
-}
-
-brightmap sprite BG2GC0
-{
-	map "brightmaps/BFG10K/B10BC0.png"
-}
-
-brightmap sprite BG2GD0
-{
-	map "brightmaps/BFG10K/B10BD0.png"
-}
-
-brightmap sprite BG2GE0
-{
-	map "brightmaps/BFG10K/B10BE0.png"
-}
-
-brightmap sprite BG2GF0
-{
-	map "brightmaps/BFG10K/B10BF0.png"
-}
-
-brightmap sprite BG2GG0
-{
-	map "brightmaps/BFG10K/B10BG0.png"
-}
-
-brightmap sprite BG2GH0
-{
-	map "brightmaps/BFG10K/B10BH0.png"
-}
-
-brightmap sprite BG2GI0
-{
-	map "brightmaps/BFG10K/B10BI0.png"
-}
-
-brightmap sprite BG2GJ0
-{
-	map "brightmaps/BFG10K/B10BJ0.png"
-}
-
-brightmap sprite BG2GK0
-{
-	map "brightmaps/BFG10K/B10BK0.png"
-}
-
-brightmap sprite BG2GL0
-{
-	map "brightmaps/BFG10K/B10BL0.png"
-}
-
-brightmap sprite BG2GM0
-{
-	map "brightmaps/BFG10K/B10BM0.png"
-}
-
-brightmap sprite BG2GN0
-{
-	map "brightmaps/BFG10K/B10BN0.png"
-}
-
-brightmap sprite BG2GO0
-{
-	map "brightmaps/BFG10K/B10BO0.png"
-}
+brightmap sprite BAR1A0 { map "brightmaps/Decoration/BAR1A0.png" }
+brightmap sprite BAR1B0 { map "brightmaps/Decoration/BAR1B0.png" }
+brightmap sprite BAR1C0 { map "brightmaps/Decoration/BAR1C0.png" }
+brightmap sprite BAR1D0 { map "brightmaps/Decoration/BAR1D0.png" }
+brightmap sprite BAR1E0 { map "brightmaps/Decoration/BAR1E0.png" }
+brightmap sprite BAR1F0 { map "brightmaps/Decoration/BAR1F0.png" }
+brightmap sprite BAR1G0 { map "brightmaps/Decoration/BAR1G0.png" }
+brightmap sprite BAR1H0 { map "brightmaps/Decoration/BAR1H0.png" }
+brightmap sprite BAR1I0 { map "brightmaps/Decoration/BAR1I0.png" }
+brightmap sprite BAR1J0 { map "brightmaps/Decoration/BAR1J0.png" }
+brightmap sprite BAR1K0 { map "brightmaps/Decoration/BAR1K0.png" }
+brightmap sprite BAR1L0 { map "brightmaps/Decoration/BAR1L0.png" }
+brightmap sprite BAR1M0 { map "brightmaps/Decoration/BAR1M0.png" }
+//Bloody Barrel
+brightmap sprite BARBA0 { map "brightmaps/Decoration/BAR1A0.png" }
+brightmap sprite BARBB0 { map "brightmaps/Decoration/BAR1B0.png" }
+brightmap sprite BARBC0 { map "brightmaps/Decoration/BAR1C0.png" }
+brightmap sprite BARBD0 { map "brightmaps/Decoration/BAR1D0.png" }
+brightmap sprite BARBE0 { map "brightmaps/Decoration/BAR1E0.png" }
+brightmap sprite BARBF0 { map "brightmaps/Decoration/BAR1F0.png" }
+brightmap sprite BARBG0 { map "brightmaps/Decoration/BAR1G0.png" }
+brightmap sprite BARBH0 { map "brightmaps/Decoration/BAR1H0.png" }
+brightmap sprite BARBI0 { map "brightmaps/Decoration/BAR1I0.png" }
+brightmap sprite BARBJ0 { map "brightmaps/Decoration/BAR1J0.png" }
+brightmap sprite BARBK0 { map "brightmaps/Decoration/BAR1K0.png" }
+brightmap sprite BARBL0 { map "brightmaps/Decoration/BAR1L0.png" }
+brightmap sprite BARBM0 { map "brightmaps/Decoration/BAR1M0.png" }
 
 
 
-brightmap sprite BARIA0
-{
-	map "brightmaps/doom/BARBRI.png"
-}
-
-brightmap sprite BARIB0
-{
-	map "brightmaps/doom/BARBRI.png"
-}
-
-brightmap sprite BARIC0
-{
-	map "brightmaps/doom/BARBRI.png"
-}
-
-brightmap sprite BARID0
-{
-	map "brightmaps/doom/BARBRI.png"
-}
-
-brightmap sprite THRGA0
-{
-	map "brightmaps/barrelweapon/THRGAB.png"
-}
-
-brightmap sprite THRGE0
-{
-	map "brightmaps/barrelweapon/THRGEB.png"
-}
-
-brightmap sprite THRGB0
-{
-	map "brightmaps/barrelweapon/THRGBB.png"
-}
-
-brightmap sprite THRGC0
-{
-	map "brightmaps/barrelweapon/THRGCB.png"
-}
-
-brightmap sprite THRGD0
-{
-	map "brightmaps/barrelweapon/THRGDB.png"
-}
-
-brightmap sprite CBRAB0
-{
-	map "brightmaps/doom/LABRABR1.png"
-}
-
-brightmap sprite CBRAC0
-{
-	map "brightmaps/doom/LABRABR3.png"
-}
-
-brightmap sprite CBRAD0
-{
-	map "brightmaps/doom/LABRABR4.png"
-}
-
-brightmap sprite CBRAE0
-{
-	map "brightmaps/doom/LABRABR2.png"
-}
+brightmap sprite FSKXA0 { map "brightmaps/Decoration/FSKUA0.png" }
+brightmap sprite FSKXB0 { map "brightmaps/Decoration/FSKUA0.png" }
+brightmap sprite FSKXC0 { map "brightmaps/Decoration/FSKUB0.png" }
+brightmap sprite FSKXD0 { map "brightmaps/Decoration/FSKUB0.png" }
+brightmap sprite FSKXE0 { map "brightmaps/Decoration/FSKUC0.png" }
+brightmap sprite FSKXF0 { map "brightmaps/Decoration/FSKUC0.png" }
 
 
-brightmap sprite BURBA0
-{
-	map "brightmaps/doom/BURBAB1.png"
-}
-
-brightmap sprite BURBB0
-{
-	map "brightmaps/doom/BURBAB2.png"
-}
-
-brightmap sprite BURBC0
-{
-	map "brightmaps/doom/BURBAB3.png"
-}
-
-brightmap sprite BON2B0
-{
-	map "brightmaps/doom/BON2BR.png"
-}
-
-brightmap sprite BON2C0
-{
-	map "brightmaps/doom/BON2CR.png"
-}
-
-brightmap sprite BON2D0
-{
-	map "brightmaps/doom/BON2DR.png"
-}
+brightmap sprite POL3A0 { map "brightmaps/Decoration/POL3A0.png" }
+brightmap sprite POL3B0 { map "brightmaps/Decoration/POL3A0.png" }
+brightmap sprite POL3C0 { map "brightmaps/Decoration/POL3B0.png" }
+brightmap sprite POL3D0 { map "brightmaps/Decoration/POL3B0.png" }
 
 
-brightmap sprite RAILA0 {	map "brightmaps/doom/RAIBA.png" }
-brightmap sprite RAILB0 {	map "brightmaps/doom/RAIBA.png" }
-brightmap sprite RAILC0 {	map "brightmaps/doom/RAIBA.png" }
-brightmap sprite RAILD0 {	map "brightmaps/doom/RAIBA.png" }
-
-brightmap sprite FLMTA0 {	map "brightmaps/doom/FLMBA0.png" }
-brightmap sprite FLMTB0 {	map "brightmaps/doom/FLMBB0.png" }
-brightmap sprite FLMTC0 {	map "brightmaps/doom/FLMBC0.png" }
-
-
-brightmap texture LITEBLU3
-{
-	map "brightmaps/LITB3.PNG"
-}
-
-
-
-brightmap Texture SPACM1
-{
-   map "brightmaps/SPACOM1B.png"
-}
-
-brightmap Texture SPACM2
-{
-   map "brightmaps/SPACOM1B.png"
-}
-
-brightmap Texture SPACM3
-{
-   map "brightmaps/SPACOM1B.png"
-}
-
-brightmap Texture SPACM4
-{
-   map "brightmaps/SPACOM1B.png"
-}

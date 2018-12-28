@@ -31,7 +31,7 @@ ACTOR Stryker : CMEWeapon
 	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
-	Inventory.PickupMessage "You got the Stryker Tactical Sawed Off!"
+	Inventory.PickupMessage "You got the Stryker Tactical Sawed Off!!! (Slot 3)"
 	tag "Stryker 'Tactical' Sawed Off"
 	Obituary "%o had his organs channeled %k's stryker"
     Inventory.PickupSound "cobra/close"
@@ -96,6 +96,7 @@ ACTOR Stryker : CMEWeapon
 		J4TS DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -121,7 +122,7 @@ ACTOR Stryker : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 		
     NoAmmo:

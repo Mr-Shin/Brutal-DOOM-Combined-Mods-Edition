@@ -30,7 +30,7 @@ ACTOR Doom2016SSG : CMEWeapon
 	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
-	Inventory.PickupMessage "You got the Doom 2016 Super Shotgun!"
+	Inventory.PickupMessage "You got the Doom 2016 Super Shotgun!!! (Slot 3)"
 	tag "Doom 2016 Super Shotgun"
 	Obituary "%o was blasted by %k's Doom 2016 Super Shotgun"
     Inventory.PickupSound "2016/SSG/Close"
@@ -84,6 +84,7 @@ ACTOR Doom2016SSG : CMEWeapon
 		4SSS EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -108,7 +109,7 @@ ACTOR Doom2016SSG : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		TNT1 A 0 A_PlaySound("2016/SSG/Close",6)
 		TNT1 A 0 A_GiveInventory ("Pumping", 1)

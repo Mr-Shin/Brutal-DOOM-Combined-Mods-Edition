@@ -28,7 +28,7 @@ ACTOR SovietMP : CMEWeapon
 	Obituary "%o played PEE PEE dead %k's Soviet Machine Pistole"
     AttackSound "None"
     Inventory.PickupSound "STAUGBLT"
-	Inventory.Pickupmessage "You got the Soviet Machine Pistol! Bolsheviks will yell at demons for you.!"
+	Inventory.Pickupmessage "You got the Soviet Machine Pistol!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -89,6 +89,7 @@ TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		SVPS DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -115,8 +116,7 @@ TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise
 		Goto Ready
 		
 	RecoilFlash:

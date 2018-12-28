@@ -24,7 +24,7 @@ ACTOR Quake4SG : CMEWeapon
 	Weapon.AmmoGive2 0
 	Weapon.AmmoType1 "Shell2"
 	Weapon.AmmoType2 "Quake4SGAmmo"
-	Inventory.PickupMessage "You got a Quake 4 Shotgun"
+	Inventory.PickupMessage "You got a Quake 4 Shotgun!!! (Slot 3)"
 	tag "Quake 4 Shotgun"
     Inventory.PickupSound "Q2SGPUMP"
 	Obituary "%o Met %k's Quake 4 Shotgun"
@@ -85,9 +85,10 @@ ACTOR Quake4SG : CMEWeapon
 			TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
         TNT1 A 0 A_ZoomFactor(1.0)
 		Q4SS DCBA 1
-		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 0 A_Takeinventory("ADSmode",1)
+			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	
 	Select:
@@ -108,7 +109,7 @@ ACTOR Quake4SG : CMEWeapon
 		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
 		TNT1 A 0 A_Takeinventory("HasBarrel",1)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 	
 	RecoilFlash:

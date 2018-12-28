@@ -35,7 +35,7 @@ ACTOR MP27 : CMEWeapon
 	Obituary "%o didn't understood %k's power of an MP7 and an M27 combined together..."
     AttackSound "None"
     Inventory.PickupSound "MP27BOLT"
-	Inventory.Pickupmessage "You got the MP27! Even though the MP7 was good, and the M27 was shit, they decided to combine them both for no reason, and they got this!"
+	Inventory.Pickupmessage "You got the MP27!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -113,6 +113,7 @@ ACTOR MP27 : CMEWeapon
 		MP7S CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -139,8 +140,7 @@ ACTOR MP27 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise
 		Goto Ready
 	
     Fire:

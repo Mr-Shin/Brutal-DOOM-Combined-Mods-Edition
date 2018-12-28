@@ -11,7 +11,6 @@ ACTOR L96A5Ammo : Ammo
    Inventory.MaxAmount 10
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 10
-   Inventory.Icon "SNIPA0"
 }
 
 //// --------------------------------------------------------------------------
@@ -35,7 +34,7 @@ ACTOR L96A5 : CMEWeapon
 	Obituary "%o had his balls hunted down %k's L96A5."
     AttackSound "None"
     Inventory.PickupSound "L96BOLT1"
-	Inventory.Pickupmessage "You got the L96A5!"
+	Inventory.Pickupmessage "You got the L96A5!!! (Slot 0)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -111,6 +110,7 @@ ACTOR L96A5 : CMEWeapon
 		SPSL ABCDEFGHIJ 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -136,11 +136,7 @@ ACTOR L96A5 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
-
-		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+		TNT1 A 0 A_Raise
 		Goto Ready
 	
 	WeaponSpecial:
@@ -153,7 +149,7 @@ ACTOR L96A5 : CMEWeapon
 		
 	UseRod:
 		TNT1 A 0 A_Giveinventory("L96Mode1",1)
-		TNT1 A 0 A_Print("Roasted Demon Kebab Mode")
+		TNT1 A 0 A_Print("Gauss ROD Mode")
 		TNT1 A 0 A_playsound("FAL/click", 4)
 		TNT1 A 0 A_playsound("STEAM", 5)
 		SNPG A 6 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -161,7 +157,7 @@ ACTOR L96A5 : CMEWeapon
 		
 	UseNormal:
 		TNT1 A 0 A_Takeinventory("L96Mode1",1)
-		TNT1 A 0 A_Print("Someone hates Demon Kebabs")
+		TNT1 A 0 A_Print("Normal Mode")
 		TNT1 A 0 A_playsound("FAL/click", 4)
 		TNT1 A 0 A_playsound("STEAM", 5)
 		SNPG A 6 A_JumpIfInventory("Kicking",1,"DoKick")

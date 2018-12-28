@@ -30,7 +30,7 @@ ACTOR CoachGunMK2 : CMEWeapon
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	tag "Coachgun Mark 2"
-	Inventory.PickupMessage "You got the a sawed off coach gun Mark 2!"
+	Inventory.PickupMessage "You got the Coach Gun Mark 2!!! (Slot 3)"
 	Obituary "%o got castrated by %k's other coachgun"
     Inventory.PickupSound "CG2CLOSE"
 	Scale 0.9
@@ -76,6 +76,7 @@ ACTOR CoachGunMK2 : CMEWeapon
 		ZHT5 DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -100,7 +101,7 @@ ACTOR CoachGunMK2 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 
 		ZHT2 U 1 Offset(20,46)
 		ZHT2 V 1 Offset(1,33)
