@@ -137,35 +137,33 @@ BounceFactor 0.01
 actor Brutal_Blood Replaces Blood
 {
 Decal BrutalBloodSplat
+Renderstyle Translucent
  game Doom
 +FORCEXYBILLBOARD
 +NOGRAVITY
 +THRUACTORS
 +CLIENTSIDEONLY
-Scale 0.5
+Scale 0.6
+Alpha 0.6
 Speed 0
 Mass 999999
  states
  {
   Spawn:
-        TNT1 A 0
+        BLHT A 0
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
 		TNT1 A 0 A_CustomMissile ("WaterBloodCHecker", 7, 0, random (0, 360), 2, random (30, 60))
 		TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)//Check Blood density
 		TNT1 A 0 A_Stop
-		TNT1 A 2
-		Spawn2:
-		//TNT1 A 0 A_CustomMissile ("Brutal_LiquidBlood3", 1, 0, random (0, 360), 2, random (0, 40))
-        TNT1 AA 0 A_CustomMissile ("Brutal_FlyingBloodFake", 0, 0, random (0, 360), 2, random (0, 90))
+		BLHT A 1
+		BLHT A 1
+	Spawn2:
         TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60))
-		
-		
-		TNT1 A 0 A_CustomMissile ("BloodHit", 0, 0, random (0, 360), 2, random (0, 90))
-		//TNT1 A 1 A_Chase("","")
-		//TNT1 A 0 A_FaceTarget
-		//TNT1 A 0 A_CustomMissile ("SuperWallRedBlood", 1, 0, random (170, 190), 2, random (0, 20))
+		TNT1 AA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
 		TNT1 A 0 A_Stop
-		//TNT1 A 0 A_Jump(128, "Spawn2")
+		BLHT ABCDEFG 1
+		BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
+		Stop
 	Splash:
         BLOD A 0
 		TNT1 AAA 0 A_CustomMissile ("Underblood1", 7, 0, random (0, 360), 2, random (30, 150))
@@ -175,8 +173,10 @@ Mass 999999
        TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodLevel3", 7, 0, random (0, 360), 2, random (40, 60))
 	   TNT1 A 0 A_CustomMissile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (20, 40))
 	   TNT1 A 0 A_CustomMissile ("BloodmistSmall", 0, 0, random (0, 360), 2, random (10, 40))
-	   //TNT1 AA 0 A_CustomMissile ("SuperGoreMistTiny", 0, 0, random (0, 360), 2, random (60, 90))
-	   TNT1 A 0 A_CustomMissile ("BloodHit", 0, 0, random (0, 360), 2, random (0, 90))
+	   TNT1 A 0 A_CustomMissile ("SuperGoreMistTiny", 0, 0, random (0, 360), 2, random (60, 90))
+	   TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
+	   BLHT ABCDEFG 1
+	   BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
 	   Stop
 	AbsurdBlood:
 	   TNT1 A 2
@@ -186,22 +186,26 @@ Mass 999999
 	   TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodLevel3", 7, 0, random (0, 360), 2, random (40, 60))
 	   TNT1 AAA 0 A_CustomMissile ("BloodmistSmall", 7, 0, random (0, 360), 2, random (30, 90))
 	   TNT1 AA 0 A_CustomMissile ("SuperGoreMistSmall", 0, 0, random (0, 360), 2, random (10, 90))
-	   TNT1 A 0 A_CustomMissile ("BloodHit", 0, 0, random (0, 360), 2, random (0, 90))
+	   TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
+	   BLHT ABCDEFG 1
+	   BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
 	   Stop  
 	  AnimuGore:
-	   TNT1 AAAAAAAA 0 A_CustomMissile ("Brutal_FlyingBloodFake", 0, 0, random (0, 360), 2, random (0, 90))
-       TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodLevel3", 7, 0, random (0, 360), 2, random (10, 50))
+	   TNT1 AAAA 0 A_CustomMissile ("Brutal_FlyingBloodLevel3", 7, 0, random (0, 360), 2, random (10, 50))
 	   TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodLevel3", 7, 0, random (0, 360), 2, random (40, 60))
-	   TNT1 AAA 0 A_CustomMissile ("BloodmistSmall", 7, 0, random (0, 360), 2, random (30, 90))
+	   TNT1 AAA 0 A_CustomMissile ("Bloodmist", 7, 0, random (0, 360), 2, random (30, 90))
 	   TNT1 AA 0 A_CustomMissile ("SuperGoreMistSmall", 0, 0, random (0, 360), 2, random (10, 90))
 	   TNT1 AA 0 A_CustomMissile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 360))
+	   
 	   TNT1 A 0 A_CustomMissile ("SuperGoreSpawner2", 0, 0, random (0, 360), 2, random (10, 90))
-	   TNT1 A 0 A_CustomMissile ("BloodHit", 0, 0, random (0, 360), 2, random (0, 90))
+	   BLHT ABCDEFG 1
+	   BLHT GGGGGGGGGGGGGGGGGG 1 A_FadeOut(0.05)
 	   Stop   
 	 LowBlood:
 		TNT1 A 0
 		TNT1 A 0 A_CustomMissile ("Brutal_FlyingBloodFake", 0, 0, random (0, 360), 2, random (0, 90))
-		TNT1 A 0 A_SpawnItem("BloodHit")
+		TNT1 AA 0 A_CustomMissile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 90))
+		BLHT ABCDEFG 1
 		Stop
  }
 }

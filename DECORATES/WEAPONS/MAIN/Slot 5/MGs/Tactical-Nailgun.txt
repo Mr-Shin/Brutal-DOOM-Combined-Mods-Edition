@@ -29,7 +29,7 @@ ACTOR Tactical_Nail_Gun : CMEWeapon
     AttackSound "None"
     Inventory.PickupSound "NAILCLPN"
 	tag "Tactical Stroggos Nailgun - x8 Zoom"
-	Inventory.Pickupmessage "You got the Tactical Nailgun!"
+	Inventory.Pickupmessage "You got the Tactical Nailgun!!! (Slot 4)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -107,6 +107,7 @@ ACTOR Tactical_Nail_Gun : CMEWeapon
 		7HRS DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -133,7 +134,7 @@ ACTOR Tactical_Nail_Gun : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	
@@ -275,7 +276,7 @@ ACTOR Tactical_Nail_Gun : CMEWeapon
         Goto RealReady
 		
  	Spawn:
-		7HRP U -1
+		7HRP A -1
 		Stop
 	}
 }

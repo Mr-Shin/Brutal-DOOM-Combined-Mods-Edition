@@ -74,7 +74,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 	MaxDropOffHeight 32
     BloodType "Brutal_Blood", "BloodSPlatterReplacer", "SawBlood"
 	SeeSound "grunt/sight"
-	AttackSound "weapons/rifle"
+	AttackSound "weapons/rifle2"
 	PainSound "grunt/pain"
 	DeathSound "grunt/death"
 	ActiveSound "grunt/active"
@@ -83,12 +83,13 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 	damagefactor "Shrapnel", 0.4
 	damagefactor "ExplosiveImpact", 0.6
 	damagefactor "killme", 0.0
-	DropItem "DropedRifle"
+	DropItem "RifleSpawner"
 	DropItem "DropedGrenade" 7
 	Obituary "%o has been gunned down by a Zombie Soldier."
 	damagefactor "Taunt", 1.0
 	DamageFactor "CauseObjectsToSplash", 0.0
-	DropItem "PistolDrop"
+	DropItem "M9Spawner"
+	dropitem "SoulEnergy" 255
 	States
 	{
 	
@@ -388,7 +389,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 36, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		POSS F 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-8, 8), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
@@ -397,7 +398,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 36, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		POSS F 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-8, 8), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
@@ -406,7 +407,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 36, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		POSS F 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-8, 8), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
@@ -432,7 +433,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 42, 16, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 39, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 E 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
@@ -442,7 +443,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 42, 16, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 39, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 E 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
@@ -452,7 +453,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 42, 18, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 39, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 E 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
@@ -462,7 +463,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 42, 18, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 39, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 E 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 6, 40,0)
@@ -488,7 +489,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 16, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 32, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 F 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 35,0)
@@ -498,7 +499,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 16, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 32, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 F 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 35,0)
@@ -508,7 +509,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 32, 18, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 39, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 F 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 35,0)
@@ -518,7 +519,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("LegTarget12", 10)
         TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 42, 18, 15, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 39, 4) 
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		P055 F 2 BRIGHT A_CustomMissile("ZombieManTracer", 32, 0, random(-4, 4), 1, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 36,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 35,0)
@@ -568,7 +569,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 AA 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 BB 2 BRIGHT 
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -578,7 +579,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 CC 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 DD 2 BRIGHT
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -588,7 +589,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 AA 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+192, 2, 0, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 BB 2 BRIGHT 
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -598,7 +599,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 CC 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 DD 2 BRIGHT
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -613,7 +614,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 AA 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 0)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 BB 2 BRIGHT 
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -623,7 +624,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 CC 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 0)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 DD 2 BRIGHT
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -633,7 +634,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 AA 2 A_FaceTarget
 		TNT1 A 0 ThrustThing(angle*256/360+64, 2, 0, 0)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 0)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 BB 2 BRIGHT 
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -643,7 +644,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 CC 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 0)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 DD 2 BRIGHT
 		TNT1 A 0 A_CustomMissile("ZombieManTracer", 42, 0, 0, 0)
@@ -659,7 +660,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 AA 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(-2)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 BB 2 BRIGHT 
@@ -670,7 +671,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 CC 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 DD 2 BRIGHT
@@ -681,7 +682,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 AA 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(-2)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 BB 2 BRIGHT 
@@ -692,7 +693,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 CC 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 DD 2 BRIGHT
@@ -709,7 +710,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 DD 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(2)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 CC 2 BRIGHT 
@@ -720,7 +721,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		P055 BB 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 AA 2 BRIGHT
@@ -731,7 +732,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		P055 DD 2 A_FaceTarget
 		TNT1 A 0 A_Recoil(2)
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 CC 2 BRIGHT 
@@ -743,7 +744,7 @@ ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 BB 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile("MarineMuzzle1", 34, 6)
-        TNT1 A 0 A_PlaySound("weapons/rifle")
+        TNT1 A 0 A_PlaySound("weapons/rifle2")
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 5, 44,0)
 		TNT1 A 0 A_JumpIf(Momx == 0 || Momy == 0, "JustShootTheFuckingRifle1")
 		P055 AA 2 BRIGHT

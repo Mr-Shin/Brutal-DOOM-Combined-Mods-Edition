@@ -28,7 +28,7 @@ ACTOR AUGA9 : CMEWeapon
     AttackSound "None"
     Inventory.PickupSound "cs/aug/bolt"
 	tag "AUG A-9 - 10 Cal. Drum Mag - Scope x5 Zoom"
-	Inventory.Pickupmessage "You got the AUG-A9!"
+	Inventory.Pickupmessage "You got the AUG-A9!!! (Slot 5)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -106,6 +106,7 @@ ACTOR AUGA9 : CMEWeapon
 		AUGS CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -132,7 +133,7 @@ ACTOR AUGA9 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	

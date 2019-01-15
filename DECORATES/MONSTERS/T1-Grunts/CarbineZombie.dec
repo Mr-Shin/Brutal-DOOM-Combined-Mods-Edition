@@ -19,8 +19,9 @@ ACTOR ARZombieMan: Zombie_Man Replaces ZombieMan
 	DeathSound "grunt/death"
 	ActiveSound "grunt/active"
 	Obituary "%o was perforated by an Assault Gunner."
-	DropItem "G41K"
-	DropItem "HandGrenades" 15
+	DropItem "CarbineDroper" 255
+	DropItem "DropedGrenade" 15
+	DropItem "SoulEnergy" 255
 	Damagefactor "ExtremePunches", 1.25
 	Damagefactor "Fatality", 1.25
 	States
@@ -1435,7 +1436,7 @@ States{Spawn:
 Actor Vanilla_ARZombieMan : ARZombieMan
 {
 	DropItem "DropedVanillaRifle" 256
-	DropItem "HandGrenades" 5
+	DropItem "DropedGrenade" 5
 	States
 	{
 		Spawn:

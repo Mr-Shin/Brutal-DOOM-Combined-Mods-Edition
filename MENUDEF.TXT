@@ -1,3 +1,79 @@
+
+
+ListMenu "MainMenu"
+{
+IfGame(Doom, Chex)
+	{
+		StaticPatch 94, 2, "M_DOOM"
+		Position 97, 72
+		IfOption(ReadThis)
+		{
+			Position 97, 64
+		}
+	}
+	IfGame(Strife)
+	{
+		StaticPatch 84, 2, "M_STRIFE"
+		Position 97, 45
+	}
+	IfGame(Heretic)
+	{
+		StaticPatch 88, 0, "M_HTIC"
+		StaticPatch 40, 10, "M_SKL01"
+		StaticPatch 232, 10, "M_SKL00"
+		Position 110, 56
+	}
+	IfGame(Hexen)
+	{
+		StaticPatch 88, 0, "M_HTIC"
+		StaticPatch 37, 80, "FBULB0"
+		StaticPatch 278, 80, "FBULA0"
+		Position 110, 56
+	}
+	
+	IfGame(Doom, Strife, Chex)
+	{
+		TextItem "New Game", "n", "PlayerclassMenu"
+		ifOption(SwapMenu)
+		{
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Options", "o", "OptionsMenu"/////////////
+			TextItem "Combined Mods Options", "b", "BrutalMenu"
+			TextItem "Credits", "c", "BrutalCreditsMenu"
+		}
+		else
+		{
+			TextItem "Options", "o", "OptionsMenu"/////////////////////
+			TextItem "Combined Mods Options", "b", "BrutalMenu"
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Credits", "c", "BrutalCreditsMenu"
+		}
+		ifOption(ReadThis)
+		{
+			TextItem "Read This!","r", "ReadThisMenu"
+		}
+		TextItem "Quit Game", "q", "QuitMenu"
+	}
+	
+	IfGame(Heretic, Hexen)
+	{
+		TextItem "$MNU_NEWGAME", "n", "PlayerclassMenu"
+		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"/////////////////////
+		TextItem "Combined Mods Options", "b", "BrutalMenu"
+		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
+		TextItem "$MNU_INFO", "i", "ReadThisMenu"
+		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
+	}
+}
+
+ListMenu "PlayerclassMenu"
+{
+	StaticTextCentered 160, 15, "Select Game Mode"
+	Position -5, 50
+	// The rest of this menu will be set up based on the actual player definitions.
+}
 OptionMenu "OptionsMenu"
 {
 	Title "OPTIONS"
@@ -26,8 +102,27 @@ OptionMenu "OptionsMenu"
 	Command "Go to console",			"menuconsole"
 }
 
+OptionMenu "BrutalMenu"
+{
+	Title "COMBINED MODS EDITION OPTIONS"
+	Submenu "CME Performance Options",		"BrutalDoomOptionsPerformance"
+	Submenu "CME Level Options",			"BrutalDoomOptionsLevel"
+	Submenu "CME Doom Gameplay Options",			"BrutalDoomOptionsGame"
+	Submenu "CME Hud Options", 							"CMEHUDS"
+	StaticText " "
+	Command "Go to Weapons Testing Map",			"map test"
+}
 
+OptionMenu "CMEHUDS"
+{
+		Title "What Hud do you want to use?"
+		Command "Brutal DOOM Simple Hud 16:9", "bd_sbartype 1"
+		Command "Brutal DOOM Simple Hud 4:3",  "bd_sbartype 2"
+		Command "New School Classic  Hud",       "bd_sbartype 3"
+		StaticText "------------------------------------" 
+		Command "Force HUD to Restart",			"puke 649"
 
+}
 OptionMenu "BrutalDoomOptionsPerformance"
 {
 
@@ -53,7 +148,8 @@ OptionMenu "BrutalDoomOptionsPerformance"
   Option "Enable Janitor  (Server)", "zdoombrutaljanitor", "YesOrNo"
   StaticText "Makes gibs disappear after 30 seconds."
   StaticText " "
-  
+  Option "Remove and Choke Smoke Effects", "bd_smokechoke", "YesOrNo"
+  StaticText "Lowers smoke effects for performance."
 
 }
 
@@ -72,14 +168,6 @@ OptionMenu "BrutalDoomOptionsLevel"
   StaticText " "
   
 
-   Option "Brutal Doom v18", "bd_v18stuff", "YesOrNo"
-  StaticText "Are you playing Brutal DOOM v18 Class?"
-  StaticText " "
-  
-  Option "Brutal Doom v20", "bd_v20stuff", "YesOrNo"
-  StaticText "Are you playing Brutal DOOM v20 Class?"
-  StaticText " "
-  
   Option "Advanced Decorative Objects", "bd_disabledecorations", "DisabledOption"
   StaticText "Fancy particle effects for torches and lamps are disabled"
   StaticText " "
@@ -202,6 +290,7 @@ OptionMenu "BDDFLO"
 	StaticText " "
 	Slider "Horizontal Flashlight position", "b_flashlighthpos", -255, 255, 1, 0
 }
+
 
 OptionValue "FlMode"
 {

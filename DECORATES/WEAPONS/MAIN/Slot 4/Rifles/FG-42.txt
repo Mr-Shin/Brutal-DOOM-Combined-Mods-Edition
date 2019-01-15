@@ -4,7 +4,6 @@ ACTOR FG42Ammo : Ammo
    Inventory.MaxAmount 20
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 20
-   Inventory.Icon "FG42P0"
 }
 
 //// --------------------------------------------------------------------------
@@ -32,7 +31,7 @@ ACTOR FG42 : CMEWeapon
 	Obituary "%k turned %o into a nazi"
     AttackSound "None"
     Inventory.PickupSound "FG42PKUP"
-	Inventory.Pickupmessage "You got the FG42! NAZI to the limit"
+	Inventory.Pickupmessage "You got the FG-42!!! (Slot 4)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -98,6 +97,7 @@ ACTOR FG42 : CMEWeapon
 		G42S CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -141,7 +141,7 @@ ACTOR FG42 : CMEWeapon
 		TNT1 A 0 A_GiveInventory("HandgunSelected",1)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 

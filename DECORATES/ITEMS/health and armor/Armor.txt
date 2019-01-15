@@ -364,7 +364,7 @@ Actor ArmorShard : BasicArmorBonus// Replaces ArmorBonus
 	Inventory.Pickupmessage "Picked up an Armor Shard"
 	inventory.pickupsound "ABONUS"
 	Inventory.Icon "BON2A0"
-	Armor.Savepercent 70
+	Armor.Savepercent 35
 	Armor.Saveamount 2
 	Armor.Maxsaveamount 9999
 	+COUNTITEM

@@ -32,7 +32,7 @@ ACTOR HAMR5 : CMEWeapon
     AttackSound "None"
     Inventory.PickupSound "OMRPKUP2"
 	tag "HAMR-5 - Multiple Devestation Select Fire Units"
-	Inventory.Pickupmessage "You got the HAMR-5!"
+	Inventory.Pickupmessage "You got the HAMR-5!!! (Slot 5)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -109,6 +109,7 @@ ACTOR HAMR5 : CMEWeapon
 		OMRS EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -135,7 +136,7 @@ ACTOR HAMR5 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 		WeaponSpecial:

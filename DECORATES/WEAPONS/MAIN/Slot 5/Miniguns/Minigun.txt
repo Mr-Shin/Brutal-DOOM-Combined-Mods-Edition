@@ -22,7 +22,7 @@ Weapon.AmmoUse1 0
 	tag "Rapid Rotary Barreled Bullet Dispenser"
 	+WEAPON.NO_AUTO_SWITCH
 Inventory.PickupSound "CBOXPKUP"
-Inventory.PickupMessage "You got the Minigun!"
+Inventory.PickupMessage "You got the Minigun!!! (Slot 5)"
 Obituary "%o was mowed down by %k's Minigun."
 AttackSound "none"
 Scale 0.9
@@ -110,8 +110,9 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 	 TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
 	 TNT1 A 0 SetPlayerProperty(0,0,0)
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 
     Select:
@@ -122,7 +123,7 @@ Ready2:
 		TNT1 A 0 A_Takeinventory("SawSelected",1)
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
-		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Giveinventory("MinigunSelected",1)
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
@@ -138,10 +139,10 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
+
 		Goto Ready
 
     NoAmmo:
@@ -178,7 +179,7 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("APBullets", 1)
 		
 	    TNT1 A 0 A_PlaySound("CHAINSPI", 3)
-         TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
+         TNT1 A 0 A_PlaySound("MINISHOT", 1)
         TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
 		////TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
@@ -196,7 +197,7 @@ Ready2:
 		TNT1 AAAAAA 0
 		
 		TNT1 A 0 A_TakeInventory("APBullets", 1)
-		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
+		TNT1 A 0 A_PlaySound("MINISHOT", 1)
 		////TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
         CHAF J 1 BRIGHT A_FireBullets(6, 4, 1, 9, "MachineGunBulletPuff", 1)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
@@ -260,7 +261,7 @@ Fire2:
 		TNT1 AAAAAA 0
 		
 		TNT1 A 0 A_TakeInventory("APBullets", 1)
-		 TNT1 A 0 A_PlaySound("CHGNSHOT")
+		 TNT1 A 0 A_PlaySound("MINISHOT")
         TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0)
 		////TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
@@ -279,7 +280,7 @@ Fire2:
 		TNT1 AAAAAA 0
 		
 		TNT1 A 0 A_TakeInventory("APBullets", 1)
-		TNT1 A 0 A_PlaySound("CHGNSHOT")
+		TNT1 A 0 A_PlaySound("MINISHOT")
 		////TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
         CHAF J 1 BRIGHT A_FireBullets(6, 4, 1, 9, "MachineGunBulletPuff", 1)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)

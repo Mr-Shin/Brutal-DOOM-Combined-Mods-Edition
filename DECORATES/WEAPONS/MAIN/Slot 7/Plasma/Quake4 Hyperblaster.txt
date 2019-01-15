@@ -19,7 +19,7 @@ ACTOR Quake4HyperBlaster : CMEWeapon
     AttackSound "None"
     Inventory.PickupSound "FRZUP"
 	tag "Quake 4 Hyperblaster"
-	Inventory.Pickupmessage "you got a Quake 4 Hyperblaster"
+	Inventory.Pickupmessage "you got a Quake 4 Hyperblaster!!! (Slot 7)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -356,6 +356,7 @@ ACTOR Quake4HyperBlaster : CMEWeapon
 		H2PS DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -366,7 +367,7 @@ ACTOR Quake4HyperBlaster : CMEWeapon
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
-		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("BFGSelected",1)
@@ -381,10 +382,9 @@ ACTOR Quake4HyperBlaster : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
-		
+				TNT1 A 0 A_Raise
+
 		Goto Ready
 	
     Fire:

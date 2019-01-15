@@ -35,7 +35,7 @@ Weapon.AmmoUse1 0
 	+WEAPON.NO_AUTO_SWITCH
 	tag "BFG Minigun - Select Fire"
 Inventory.PickupSound "PMPKUP"
-Inventory.PickupMessage "You got the Big Fucking Minigun! FUCKING FUCKIDY FUCK YEAH!"
+Inventory.PickupMessage "You got the Big Fucking Minigun!!!!!!!!!!! (Slot 8)"
 Obituary "%o was blown to pieces by %k's BFG Minigun."
 AttackSound "none"
 Scale 0.9
@@ -94,6 +94,7 @@ Ready:
 		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
 		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
       BFMG A 1 A_WeaponReady
+	  
       TNT1 A 0 A_JumpIfInventory("Spin4",1,"Ready2")
 	  TNT1 A 0 A_JumpIfInventory("Clip2",1,"Idle")
       Goto IdleNoAmmo
@@ -120,8 +121,9 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 	 TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
 	 TNT1 A 0 SetPlayerProperty(0,0,0)
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 
     Select:
@@ -148,9 +150,8 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 
     NoAmmo:

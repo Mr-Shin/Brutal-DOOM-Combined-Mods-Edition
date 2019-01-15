@@ -11,7 +11,7 @@ ACTOR BlasterPistol : CMEWeapon
     AttackSound "None"
 	tag "Quake Blaster?!"
     Inventory.PickupSound "PLSDRAW"
-	Inventory.Pickupmessage "You got a Quake Blaster?!"
+	Inventory.Pickupmessage "You got a Quake Blaster!!! (Slot 2)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOAUTOFIRE

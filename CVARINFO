@@ -2,7 +2,8 @@ user int bd_bloodamount	= 2;
 user int bd_lowgraphicsmode = 0;
 
 user int bd_enablesprint = 0;
-user int bdcme_pbkick = 0;
+
+user int bd_sbartype = 1;
 
 server int bd_v20stuff = 0;
 server int zdoombrutalblood	= 2;
@@ -28,3 +29,171 @@ user int b_flashlightvpos = 18;
 user int b_flashlighthpos = 0;
 user int b_flashlightmode = 0;
 user int b_flashlightlowq = 0;
+
+//user bool saehud_togglestats = true;
+user bool saehud_togglemug = true;
+user bool saehud_toggleinv = true;
+user bool saehud_toggledamage = true;
+user bool saehud_dynamicmug = true;
+//user bool saehud_togglesound = true;
+user bool saehud_autosave;
+user int saehud_savetime = 2;
+user bool saehud_toggleammo = true;
+user bool saehud_togglelist = true;
+user bool saehud_togglemessage = true;
+user int saehud_flashlightpos = 4;
+user Int udv_sounds = 0;
+user bool UDV_FlashlightLQ = false;
+user bool udv_toggleLQ = false; 
+user bool UDV_RadarEnabled = false;
+user bool UDV_Mradaron = false;
+user bool UDV_RadarStart = false;
+user bool udv_togglename = true;
+user bool udv_toggletime = true;
+user bool UDV_Reflect = false;
+user bool UDV_FaceAlways = false;
+user float UDV_FaceAlpha = 0.08;
+user bool udv_toggleAMvisor = false;
+user int udv_ambientmusic = 0;
+user bool udv_ambientsound = false;
+user bool udv_batterydisplay = true;
+user bool udv_splatter = true;
+user bool udv_helmettoggle = true;
+user bool udv_helmettoggleOnStart = true;
+user bool udv_redtint = false;
+user bool udv_togglekills = true;
+user bool udv_togglesecrets = true;
+user bool udv_toggleitems = true;
+user bool udv_totalstats = true;
+user int udv_ExtraCrack = 0;
+user bool udv_dangeralarm = false;
+user bool udv_disableweapon = false;
+user bool udv_autoclean = false;
+user int UDV_RadarMode = 0;
+
+//server variables
+server int saehud_startarmor = 0;
+server bool UDV_toggleRealAim = false;
+server bool UDV_toggleBleeding = false;
+server int UDV_HealthCritical = 20;
+server int UDV_HealthEnergize = 180;
+server int UDV_EMSHealth = 21;
+server int UDV_ToolArmor = 0;
+server int UDV_EMSBattery = 75;
+server int udv_berserk = 0;
+server int udv_skyarmor = 0;
+server int udv_skydamagetime = 10;
+server bool udv_skydamage = false;
+server bool UDV_ToggleShake = false;
+server int UDV_SourcePort = 1;
+server bool udv_radarpower = false;
+server bool udv_lightpower = false;
+server bool udv_spawnbattery = true;
+server int udv_accamt = 3;
+server int udv_accexamt = 2;
+server int udv_hevamt = 1;
+server int udv_infamt = 1;
+server bool udv_AssignName = true;
+//server int UDV_BattMult = 1;
+server int UDV_AccBatteryAmt = 100;
+server bool UDV_DisableGiver = false;
+server bool udv_cooplives = false;
+server int udv_numcooplives = 8;
+
+/*
+//server variables to be implemented later
+server int saehud_startarmor = 0;
+server bool UDV_toggleRealAim = false;
+server bool UDV_toggleBleeding = false;
+server int UDV_EMSHealth = 25;
+server int UDV_EMSArmor = 80;
+server int UDV_EMSBattery = 80;
+server int udv_berserk = 0;
+server int udv_skyarmor = 0;
+server int udv_skydamagetime = 10;
+server bool udv_skydamage = false;
+server bool udv_lightarmor = false;
+*/
+
+//item variables
+server bool udv_HevSuitSpawn = false;
+server bool udv_gogglesspawn = false;
+server bool udv_smartmedikitspawn = false;
+
+
+//Color Light variables
+server bool udv_enabdes = false;
+server bool udv_togglelight = false;
+server int udv_getlred = 0;
+server int udv_getlgreen = 0;
+server int udv_getlblue = 0;
+server int udv_getldesat = 75;
+server int udv_lightcolor = 0;
+server int save_lightred = 0;
+server int save_lightgreen = 0;
+server int save_lightblue = 0;
+server int save_ldesat = 0;
+server int save_enabdes = 0;
+
+/*
+user bool udv_enabdes = false;
+user bool udv_togglelight = false;
+user int udv_getlred = 0;
+user int udv_getlgreen = 0;
+user int udv_getlblue = 0;
+user int udv_getldesat = 75;
+user int udv_lightcolor = 0;
+user int save_lightred = 0;
+user int save_lightgreen = 0;
+user int save_lightblue = 0;
+user int save_ldesat = 0;
+user int save_enabdes = 0;
+*/
+
+//Dark doom variables
+server Int udv_darkdoom = 0;
+//server int udv_darkdoom_save = 0;
+server bool udv_darkrandom = false;
+server bool udv_enabledark = false;
+
+//Variables for Fog
+server bool udv_togglefog = false;
+server int udv_fogdensity = 5;
+server bool udv_fograndom = false;
+server int udv_getred = 0;
+server int udv_getgreen = 0;
+server int udv_getblue = 0;
+server bool udv_fogcolor = false;
+server int save_fogred = 0;
+server int save_foggreen = 0;
+server int save_fogblue = 0;
+server int save_fogdensity = 0;
+
+// Enemy Health Bar //
+User Bool udv_hud_usegeneric = false;
+User Bool udv_hud_drawenemytag = true;
+User Int udv_hud_enemyhealthbar = 1;
+User Bool udv_hud_drawHealth = false;
+User Int udv_hud_MinimumHP = 10;
+User Int udv_hud_xresolution = 1030;
+User Int udv_hud_yresolution = 745;
+User Int udv_hud_font_xresolution = 1030;
+User Int udv_hud_font_yresolution = 745;
+
+User Int hud_h_globalxoffset = 360;
+User Int hud_h_globalyoffset = 15;
+User Int HUD_h_BarXOffset;
+User Int HUD_h_BarYOffset;
+User Int HUD_h_HPXOffset;
+User Int HUD_h_HPYOffset = 10;
+User Int HUD_h_TagXOffset;
+User Int HUD_h_TagYOffset;
+
+User Int hud_v_globalxoffset = 1095;
+User Int hud_v_globalyoffset = 215;
+User Int HUD_v_BarXOffset;
+User Int HUD_v_BarYOffset;
+User Int HUD_v_HPXOffset;
+User Int HUD_v_HPYOffset = 10;
+User Int HUD_v_TagXOffset;
+User Int HUD_v_TagYOffset;

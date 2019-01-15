@@ -25,6 +25,7 @@ script 649 REspawn NET
 	if	(GetCvar( "bd_sbartype") == 5) { GiveInventory("sbartype5", 1); }
 	if	(GetCvar( "bd_sbartype") == 6) { GiveInventory("sbartype6", 1); }
 	if	(GetCvar( "bd_sbartype") == 7) { GiveInventory("sbartype7", 1); }
+	if 	(GetCvar( "bd_sbartype") == 8) { GiveInventory("sbartype8", 1); }
 	// Detect Player Gender
 		
 		
@@ -52,8 +53,8 @@ script 647 enter
 		HudMessageBold(s:"a"; HUDMSG_FADEOUT, 1, CR_BLACK, 1.2, 0.1, 0.5, 1.0);
 		}
 
-	//setfont("SmallFONT");
-	//HudMessageBold(s:"Dev Build August 21 2018"; HUDMSG_PLAIN, 8, CR_WHITE, 2.0, 0.01, 9999.1, 1.0);
+	setfont("SmallFONT");
+	HudMessageBold(s:"Combined Mods Editon Beta"; HUDMSG_PLAIN, 8, CR_WHITE, 2.0, 0.01, 9999.1, 1.0);
 		
 		
 	//===================	

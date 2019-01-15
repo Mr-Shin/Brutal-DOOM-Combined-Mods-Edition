@@ -678,6 +678,7 @@ states
 }
 
 
+
 Actor LensFlareAlt : Flare_General
 {
 alpha 0.5

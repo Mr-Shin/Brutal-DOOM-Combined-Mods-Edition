@@ -14,9 +14,11 @@ Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
   ActiveSound "grunt/active"
   Obituary "%o was splattered by a Quad-Shotgun Zombie"
   DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
-  DropItem "NewShell"
-  DropItem "DropedSSG"
+  DropItem "Shellbox2" 255
+  DropItem "CoachGunSpawner" 50
   DropItem "DropedGrenade" 5
+     DropItem "SoulEnergy" 255
+
   States
   {
   Death.Shrink:
@@ -250,7 +252,7 @@ Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
     QSZM EEEE 5 A_FaceTarget
-    QSZM F 0 Bright A_PlaySound("QSGFIRE1", 12)
+    QSZM F 0 Bright A_PlaySound("QSGFIRE2", 12)
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
     QSZM F 0 Bright A_GiveInventory("QuadShotgunZombieCounter", 4)
@@ -275,7 +277,7 @@ Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
     QSZM EE 5 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
-    QSZM F 0 Bright A_PlaySound("weapons/shh2", 8)
+    QSZM F 0 Bright A_PlaySound("weapons/sga", 8)
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
     QSZM F 0 Bright A_GiveInventory("QuadShotgunZombieCounter", 1)
@@ -283,7 +285,7 @@ Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
 	TNT1 A 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
     TNT1 AA 0 A_CustomMissile("QuadSingeTracer", random(28, 50), 0, random(-14, 14), 0, random(-17, 17))
-    QSZM F 4 Bright A_PlaySound("weapons/shh2", 8)
+    QSZM F 4 Bright A_PlaySound("weapons/sga", 8)
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
 	TNT1 AA 0 A_CustomMissile("QuadSingeTracer", random(28, 50), 0, random(-14, 14), 0, random(-17, 17))
@@ -307,7 +309,7 @@ Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
 	QSZM A 4 A_FaceTarget
     QSZX FABCDE 3
-	TNT1 A 0 A_PlaySoundEx("QuadShotgunZombie/Reload2", "SoundSlot6", 0)
+	TNT1 A 0 A_PlaySoundEx("SSLOAD", "SoundSlot6", 0)
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
     QSZM E 0 A_TakeInventory("QuadShotgunZombieCounter", 4)
@@ -315,7 +317,7 @@ Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
 	QSZM A 4 A_FaceTarget
     QSZX FABCDE 3 
-	TNT1 A 0 A_PlaySoundEx("QuadShotgunZombie/Reload2", "SoundSlot6", 0)
+	TNT1 A 0 A_PlaySoundEx("SSLOAD", "SoundSlot6", 0)
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 	TNT1 A 0 A_SpawnItem ("LegTargetBase", 10)
     Goto SeeContinue
@@ -1351,7 +1353,7 @@ ACTOR BeheadedHFQSZZombie: DeadHFQSZ_NoHead
 
 Actor Vanilla_QuadShotgunZombie : QuadShotgunZombie
 {
-	DropItem "DropedSSG" 256
+	DropItem "CoachGunSpawner" 256
 	DropItem "DropedGrenade" 5
 	States
 	{

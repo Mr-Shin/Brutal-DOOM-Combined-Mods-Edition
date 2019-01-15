@@ -30,7 +30,7 @@ Weapon.AmmoUse1 0
 	tag "'Anarchy' 50.cal Beltfed Machinegun"
 	+WEAPON.NO_AUTO_SWITCH
 Inventory.PickupSound "Anarchy50/Pickup"
-Inventory.PickupMessage "You got the 'Anarchy' 50.cal Beltfed Machinegun!"
+Inventory.PickupMessage "You got the 'Anarchy' 50.cal Beltfed Machinegun!!! (Slot 5)"
 Obituary "%o said good fucking bye to the sweet smell of %k's 'Anarchy' 50.cal Beltfed Machinegun."
 AttackSound "none"
 Scale 0.9
@@ -149,8 +149,9 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
 		TNT1 A 0 SetPlayerProperty(0,0,0)
-		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectTurret:
 		TNT1 A 0
@@ -179,6 +180,7 @@ Ready2:
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 
     Select:
@@ -206,7 +208,7 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 
     NoAmmo:

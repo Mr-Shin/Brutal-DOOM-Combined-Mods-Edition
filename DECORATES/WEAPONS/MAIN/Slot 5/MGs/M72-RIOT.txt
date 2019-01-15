@@ -28,7 +28,7 @@ ACTOR M72RIOT : CMEWeapon
     AttackSound "None"
     Inventory.PickupSound "M72PKUP"
 	tag "M72 RIOT - Underbarreled Rocket Grenade Launcher"
-	Inventory.Pickupmessage "You got the M72 RIOT !"
+	Inventory.Pickupmessage "You got the M72 RIOT!!! (Slot 5)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -105,6 +105,7 @@ ACTOR M72RIOT : CMEWeapon
 		M72S CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -131,7 +132,7 @@ ACTOR M72RIOT : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	

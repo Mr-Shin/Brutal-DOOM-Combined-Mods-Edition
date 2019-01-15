@@ -51,7 +51,7 @@ ACTOR PHALANX : CMEWeapon
 	Obituary "%o was shot down by %k's PHALANX."
     AttackSound "None"
     Inventory.PickupSound "PHALANX/select"
-	Inventory.Pickupmessage "You got the PHALANX SFR-T3 Rapid 5.56 Dispenser!"
+	Inventory.Pickupmessage "You got the PHALANX SFR-T3 Rapid 5.56 Dispenser!!! (Slot 4)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -161,6 +161,7 @@ ACTOR PHALANX : CMEWeapon
 		PHNS EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -187,7 +188,7 @@ ACTOR PHALANX : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	

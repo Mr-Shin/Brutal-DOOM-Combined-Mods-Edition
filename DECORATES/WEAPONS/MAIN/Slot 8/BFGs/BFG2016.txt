@@ -22,7 +22,7 @@ ACTOR BFG2016 : CMEWeapon
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	tag "BFG MK3"
-    Inventory.PickupMessage "You got the BFG-2016"
+    Inventory.PickupMessage "You got the DOOM 2016 BFG!!!!!!!!! (Slot 8)"
 	States
 	{
 	
@@ -184,10 +184,12 @@ ACTOR BFG2016 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("Salute2", 1)
 		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-	    TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		BFGG A 0 A_Lower
 		16BG A 1 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Loop
 	Select:
 	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -200,7 +202,7 @@ ACTOR BFG2016 : CMEWeapon
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
-		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Giveinventory("BFGSelected",1)
 		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
 		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
 		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
@@ -212,9 +214,10 @@ ACTOR BFG2016 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 		BFGG A 0 A_Raise
 		16BG A 1 A_Raise
+				TNT1 A 0 A_Raise
+
 		wait
 		
 	Spawn:

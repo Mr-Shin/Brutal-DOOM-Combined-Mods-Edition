@@ -4,7 +4,6 @@ ACTOR M110AMRMagazineAmmo : Ammo
    Inventory.MaxAmount 11
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 11
-   Inventory.Icon "AMRPA0"
 }
 
 Actor ZoomedM110 : Inventory {inventory.maxamount 2}
@@ -36,7 +35,7 @@ ACTOR M110AMR : CMEWeapon
 	+WEAPON.AXEBLOOD
 	+WEAPON.NO_AUTO_SWITCH
 	+WEAPON.NOALERT
-	Inventory.PickupMessage "You got the M110 Explosive Sniper Rifle"
+	Inventory.PickupMessage "You got the M110 Explosive DMR!!! (Slot 4)"
 	States
 	{
 	
@@ -104,6 +103,7 @@ ACTOR M110AMR : CMEWeapon
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -130,6 +130,8 @@ ACTOR M110AMR : CMEWeapon
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 	
 		MISG A 0 A_Raise
+				TNT1 A 0 A_Raise
+
 		Wait
 		
 	//Weapon Special

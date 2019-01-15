@@ -21,7 +21,7 @@ ACTOR Nazi: WolfensteinSS
 	PainSound "none"
 	DeathSound "nazi/death"
 	Obituary "%o was terminated by a Nazi."
-	DropItem "None"
+	DropItem "MP40"
 	DamageFactor "Melee", 2.0
 	DamageFactor "KillMe", 0.0
 	DamageFactor "SSG", 10.0

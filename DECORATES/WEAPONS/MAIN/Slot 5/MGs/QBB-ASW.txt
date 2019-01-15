@@ -28,7 +28,7 @@ ACTOR QBBASW : CMEWeapon
     AttackSound "None"
     Inventory.PickupSound "m4a6/bolt"
 	tag "QBB-ASW Light Machine Bullpup"
-	Inventory.Pickupmessage "You got the QBB-ASW!"
+	Inventory.Pickupmessage "You got the QBB-ASW!!! (Slot 5)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -107,6 +107,7 @@ ACTOR QBBASW : CMEWeapon
 		0MSS DCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -133,7 +134,7 @@ ACTOR QBBASW : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	

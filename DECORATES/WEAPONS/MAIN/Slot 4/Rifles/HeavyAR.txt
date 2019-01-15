@@ -26,7 +26,7 @@ ACTOR HeavyAR : CMEWeapon
 	Obituary "%o was shot down by %k's Heavy Assault Rifle."
     AttackSound "None"
     Inventory.PickupSound "HAR/Select"
-	Inventory.Pickupmessage "You got the Heavy Assault Rifle!"
+	Inventory.Pickupmessage "You got the DOOM 2016 Heavy Assault Rifle!!! (Slot 4)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -181,21 +181,25 @@ ACTOR HeavyAR : CMEWeapon
 		HARS EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectScoped:
 		HZRS EDCBA 1 A_Takeinventory("ZoomedHAR",1)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectMissile:
 		HMRS EDCBA 1 A_Takeinventory("ZoomedHAR",1)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectMissile2:
 		HMAS EDCBA 1 A_Takeinventory("ZoomedHAR",1)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -222,7 +226,7 @@ ACTOR HeavyAR : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	

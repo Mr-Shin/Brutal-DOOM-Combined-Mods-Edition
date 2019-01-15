@@ -1,5 +1,4 @@
 
-// IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS
 
 Actor IsFlashLightOn : Inventory {}
 Actor DebrisGeneral
@@ -67,7 +66,9 @@ Actor PBKick : Inventory {}
 
 
 //MISC
+#include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
 #include "decorates/weapons/main/misc/Flashlight.txt"
+#include "decorates/weapons/main/slot 0/Grenades.txt"
 #include "decorates/effects/decorations/PARTICLES.txt"
 #include "decorates/effects/decorations/SMOKE.txt"
 #include "decorates/effects/decorations/CASING.txt"
@@ -84,21 +85,26 @@ Actor PBKick : Inventory {}
 #include "decorates/effects/blood stuff/EXECUTIONS.txt"
 //#include ARACHBOX
 #include "decorates/IBStuff/IBStuff.txt"
+
 #include "decorates/SPAWNERS/WeaponSpawn.txt"
 
 //Base weapons
-#include "Decorates/WEAPONS/MAIN/Slot 2/Handguns/M9.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 1/MELEE.txt"
-#include "Decorates/WEAPONS/MAIN/Slot 1/SAW.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 1/Dual Saw.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 1/Saw.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 2/Handguns/M9.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 2/Handguns/DualPistol.txt"
+
 #include "Decorates/WEAPONS/MAIN/Slot 4/Rifles/RIFLE.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 4/Rifles/DUalRifle.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Pump Shotguns/SHOTGUN.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 3/Super Shotguns/SSG.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 5/Miniguns/MINIGUN.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 6/RLs/ROCKETLAUNCHER.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/EXPLOSIVES.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 7/Plasma/PLASMA.txt"
+#include "Decorates/WEAPONS/MAIN/Slot 7/Plasma/DualPlasma.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 8/BFGs/BFG.txt"
-#include "Decorates/WEAPONS/MAIN/MISC/TRACERS.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/Throwables.txt"
 
 
@@ -146,6 +152,11 @@ Actor PBKick : Inventory {}
 #include "Decorates/Monsters/T1-Grunts/MinigunGuy.dec"
 #include "Decorates/Monsters/T1-Grunts/ZombieScientist.dec"
 #include "Decorates/Monsters/T1-Grunts/ChainsawZombie.dec"
+#include "Decorates/Monsters/T1-Grunts/CGCommando.txt"
+#include "Decorates/Monsters/T1-Grunts/BrutalGuards.txt"
+#include "Decorates/Monsters/T1-Grunts/Ubersoldat.txt"
+#include "Decorates/Monsters/T1-Grunts/NAZI_SG.txt"
+#include "Decorates/Monsters/T1-Grunts/BlasterZombie.txt"
 
 #include "Decorates/Monsters/T1-Grunts/SergeantVariant.dec"
 #include "Decorates/Monsters/T1-Grunts/RocketZombie.dec"
@@ -208,7 +219,7 @@ Actor PBKick : Inventory {}
 
 #include "Decorates/Monsters/T3-Arachnos/Aracnorb.dec"
 #include "Decorates/Monsters/T1-Grunts/ZombieFlyer.dec"
-
+#include "decorates/Monsters/Tz-Bosses/Juggernaut.dec"
 
 #include "Decorates/WEAPONS/MAIN/Slot 2/SMGS/MP40.txt"
 
@@ -230,11 +241,15 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 2/M&RS/Skull Cracker Rico.txt"
 #include "decorates/weapons/main/slot 2/MPS/SovietMachinePistol.txt"
 #include "decorates/weapons/main/slot 2/MPS/v21MachinePistol.txt"
+#include "decorates/weapons/main/slot 2/MPS/DualSMG.txt"
+#include "decorates/weapons/main/slot 2/MPS/TMP-61.txt"
 #include "decorates/weapons/main/slot 2/Handguns/TAC-15.txt"
 #include "decorates/weapons/main/slot 2/M&RS/TesticleImploder.dat"
 #include "decorates/weapons/main/slot 2/M&RS/Testicle Imploder Explo.txt"
 #include "decorates/weapons/main/slot 2/SMGS/G7Bullpup.txt"
 #include "decorates/weapons/main/slot 2/Handguns/G17C.txt"
+#include "decorates/weapons/main/slot 2/Handguns/Luger.txt"
+#include "decorates/weapons/main/slot 2/Handguns/DualLuger.txt"
 #include "decorates/weapons/main/slot 1/SLEDGEHAMMER.txt"
 #include "decorates/weapons/main/slot 2/M&RS/DesertEagle.txt"
 #include "decorates/weapons/main/slot 2/Handguns/USP-45.txt"
@@ -246,6 +261,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 2/SMGS/UMP-50.txt"
 #include "decorates/weapons/main/slot 2/SMGS/UZI.txt"
 #include "decorates/weapons/main/slot 2/SMGS/TMP9.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/SuppSG.txt"
 #include "decorates/weapons/main/slot 3/Pump Shotguns/Model 1887.txt"
 #include "decorates/weapons/main/slot 3/Pump Shotguns/UTS-15.txt"
 #include "decorates/weapons/main/slot 3/Pump Shotguns/NailSG.txt"
@@ -261,6 +277,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 3/Pump Shotguns/Grenade2016.txt"
 #include "decorates/weapons/main/slot 3/Pump Shotguns/Rem870.txt"
 #include "decorates/weapons/main/slot 3/Pump Shotguns/XR-12.txt"
+#include "decorates/weapons/main/slot 3/Pump Shotguns/M500.txt"
 #include "decorates/weapons/main/slot 3/Super Shotguns/Sawed-OFF.txt"
 #include "decorates/weapons/main/slot 3/Super Shotguns/BoneDust.txt"
 #include "decorates/weapons/main/slot 3/Super Shotguns/Coach Gun.txt"
@@ -271,6 +288,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 3/Super Shotguns/V21SSG.txt"
 #include "decorates/weapons/main/slot 3/Super Shotguns/Doom2016SSG.txt"
 #include "decorates/weapons/main/slot 3/Super Shotguns/QSG.txt"
+#include "decorates/weapons/main/slot 3/Super Shotguns/Los Cannonos.txt"
 #include "decorates/weapons/main/slot 3/Auto Shotguns/AA48.txt"
 #include "decorates/weapons/main/slot 3/Auto Shotguns/Strucker.txt"
 #include "decorates/weapons/main/slot 3/Auto Shotguns/MK23.txt"
@@ -280,6 +298,8 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 3/Auto SHotguns/XM1014.txt"
 #include "decorates/weapons/main/slot 3/Auto Shotguns/CQW-9.txt"
 #include "decorates/weapons/main/slot 3/Auto Shotguns/HK70.txt"
+#include "decorates/weapons/main/slot 4/Rifles/AM-1.txt"
+#include "decorates/weapons/main/slot 4/Rifles/M4.txt"
 #include "decorates/weapons/main/slot 4/Rifles/FG-42.txt"
 #include "decorates/weapons/main/slot 4/Rifles/Repeater.txt"
 #include "decorates/weapons/main/slot 4/Rifles/XM30.txt"
@@ -295,6 +315,9 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 4/Rifles/2016HARUpgrade.txt"
 #include "decorates/weapons/main/slot 4/Rifles/2016HARUpgrade2.txt"
 #include "decorates/weapons/main/slot 4/Rifles/S-94.txt"
+#include "decorates/weapons/main/slot 4/Rifles/MP15.txt"
+#include "decorates/weapons/main/slot 4/Rifles/SIG-COW.txt"
+#include "decorates/weapons/main/slot 4/Rifles/ACTM-91.txt"
 #include "decorates/weapons/main/slot 4/DMRs/FAL.dat"
 #include "decorates/weapons/main/slot 4/DMRs/M110AMR.txt"
 #include "decorates/weapons/main/slot 4/DMRs/AMRound.txt"
@@ -306,9 +329,11 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 4/Carbines/CZ-805.txt"
 #include "decorates/weapons/main/slot 4/Carbines/M4A6.txt"
 #include "decorates/weapons/main/slot 5/MGs/Q4MG.txt"
+#include "decorates/weapons/main/slot 5/MGs/MK61.txt"
 #include "decorates/weapons/main/slot 5/MGs/AUG-A9.txt"
 #include "decorates/weapons/main/slot 5/MGs/AUGR-DM1.txt"
 #include "decorates/weapons/main/slot 5/MGs/M72-RIOT.txt"
+#include "decorates/weapons/main/slot 5/MGs/MK61.txt"
 #include "decorates/weapons/main/slot 5/MGs/HAMR-5.txt"
 #include "decorates/weapons/main/slot 5/MGs/Nailgun.txt"
 #include "decorates/weapons/main/slot 5/MGs/M60.txt"
@@ -326,6 +351,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 5/Miniguns/Hailstorm.txt"
 #include "decorates/weapons/main/slot 5/Miniguns/Chaingun.txt"
 #include "decorates/weapons/main/slot 5/Miniguns/M160.txt"
+#include "decorates/weapons/main/slot 5/Miniguns/M401.txt"
 #include "decorates/weapons/main/slot 5/Miniguns/DN34.txt"
 #include "decorates/weapons/main/slot 5/Miniguns/Doom16Chaingun.txt"
 #include "decorates/weapons/main/slot 5/Miniguns/2016ChainGunUpgrade.txt"
@@ -333,6 +359,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 5/Miniguns/TEMPST-50.txt"
 #include "decorates/weapons/main/slot 6/Rls/DukeRocket.txt"
 #include "decorates/weapons/main/slot 6/Rls/DukeRPG.txt"
+#include "decorates/weapons/main/slot 6/Rls/AT5.txt"
 #include "decorates/weapons/main/slot 6/Rls/UTRocket.txt"
 #include "decorates/weapons/main/slot 6/RLs/UT2004RL.txt"
 #include "decorates/weapons/main/slot 6/RLs/DSRocket.txt"
@@ -351,6 +378,7 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 6/GLs/EXCAVATOR.txt"
 #include "decorates/weapons/main/slot 7/plasma/Quake4 Hyperblaster.txt"
 #include "decorates/weapons/main/slot 7/plasma/IC-9.txt"
+#include "decorates/weapons/main/slot 7/plasma/v20 Plasma.txt"
 #include "decorates/weapons/main/slot 7/plasma/PlasmaGun2016.txt"
 #include "decorates/weapons/main/slot 7/plasma/Hyperblaster.txt"
 #include "decorates/weapons/main/slot 7/plasma/Hyperblaster MK2.txt"
@@ -358,9 +386,11 @@ Actor PBKick : Inventory {}
 #include "decorates/weapons/main/slot 7/plasma/Petrovic M2.txt"
 #include "decorates/weapons/main/slot 7/plasma/Plasma Minigun.txt"
 #include "decorates/weapons/main/slot 7/plasma/CML-6.txt"
+#include "decorates/weapons/main/slot 7/plasma/v19Plasma.txt"
 #include "decorates/weapons/main/slot 7/Railguns/Railgun.txt"
 #include "decorates/weapons/main/slot 7/Railguns/GaussCannon2016.txt"
 #include "decorates/weapons/main/slot 7/MISC/Freezer.txt"
+#include "decorates/weapons/main/slot 7/MISC/Lightninggun.txt"
 #include "decorates/weapons/main/slot 7/Pulse/ION.txt"
 #include "decorates/weapons/main/slot 7/Pulse/VortexRifle.txt"
 #include "decorates/weapons/main/slot 8/BFGs/BFG2016.txt"
@@ -446,8 +476,11 @@ Actor PBKick : Inventory {}
 #include "Decorates/WEAPONS/MAIN/Slot 9/FlameCannon.txt"
 #include "Decorates/WEAPONS/MAIN/Slot 9/HellishMissile.txt"
 
+#include "Decorates/Monsters/T1-Grunts/ZOMBIEMEN_DeathAnim.dec"
+
 //Player Classes
 #include PLAYER.txt
+#include NEWPLAYE.txt
 #include "decorates/player classes/Purist.txt"
 #include "Decorates/WEAPONS/MAIN/MISC/ClassicWeapons.txt"
 #include "decorates/SPAWNERS/MonsterSpawn.txt"

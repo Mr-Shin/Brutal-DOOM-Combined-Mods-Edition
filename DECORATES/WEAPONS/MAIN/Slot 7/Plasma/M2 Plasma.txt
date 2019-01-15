@@ -4,6 +4,7 @@ ACTOR M2Ammo : Ammo
    Inventory.MaxAmount 50
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 50
+   Inventory.Icon "M2PPA0"
 }
 
 Actor M2PlasmaFuckMode1 : Inventory {inventory.maxamount 1}
@@ -30,7 +31,7 @@ ACTOR M2 : CMEWeapon
 	+FORCEXYBILLBOARD
 	tag "M2 Plasma Rifle - Select Fire"
 	+WEAPON.NO_AUTO_SWITCH
-	Inventory.PickupMessage "You got the M2 plasma rifle!"
+	Inventory.PickupMessage "You got the M2 plasma rifle!!! (Slot 7)"
 	States
 	{
 	
@@ -96,8 +97,9 @@ ACTOR M2 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
         M2PS CBA 1
-		TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 	    TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "PuristGun")
@@ -109,7 +111,7 @@ ACTOR M2 : CMEWeapon
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
-		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("BFGSelected",1)
@@ -124,7 +126,6 @@ ACTOR M2 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 
 		TNT1 A 0 A_Raise
 		Wait

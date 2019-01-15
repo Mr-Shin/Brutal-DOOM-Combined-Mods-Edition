@@ -38,7 +38,7 @@ ACTOR UT2004RocketLauncher: CMEWeapon
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.nOALERT
 	scale 0.25
-	Inventory.PickupMessage "You got an Unreal Tournament 2004 Rocket Launcher!"
+	Inventory.PickupMessage "You got an Unreal Tournament 2004 Rocket Launcher!!! (Slot 6)"
 	States
 	{
 	
@@ -81,6 +81,7 @@ ACTOR UT2004RocketLauncher: CMEWeapon
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -105,9 +106,10 @@ ACTOR UT2004RocketLauncher: CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 
 		NISG A 0 A_Raise
+				TNT1 A 0 A_Raise
+
 		Wait
 	
 	Fire:

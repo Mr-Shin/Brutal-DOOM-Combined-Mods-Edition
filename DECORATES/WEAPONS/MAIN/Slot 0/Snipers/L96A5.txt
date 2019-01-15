@@ -11,6 +11,7 @@ ACTOR L96A5Ammo : Ammo
    Inventory.MaxAmount 10
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 10
+   Inventory.Icon "L96AA0"
 }
 
 //// --------------------------------------------------------------------------
@@ -301,7 +302,7 @@ ACTOR L96A5 : CMEWeapon
         Goto RealReady
 
  	Spawn:
-		SNIP A -1
+		L96A A -1
 		Stop
 		
 		FireRod:

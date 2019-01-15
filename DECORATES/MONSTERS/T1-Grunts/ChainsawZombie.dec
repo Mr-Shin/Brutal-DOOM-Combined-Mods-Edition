@@ -2,6 +2,8 @@ ACTOR ChainsawLabguy : Labguy replaces ZombieMan //10828
 {
 	Health 95
 	SpawnID 1160
+		DropItem "SoulEnergy" 255
+
 	States
 	{
 	

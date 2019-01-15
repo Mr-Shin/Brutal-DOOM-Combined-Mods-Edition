@@ -1,7 +1,7 @@
 ACTOR Rifle: CMEWeapon
 {
 	Weapon.AmmoUse1 0
-	Weapon.AmmoGive1 15
+	Weapon.AmmoGive1 5
 	Weapon.AmmoUse2 0
 	Weapon.AmmoGive2 0
 	YScale 0.6
@@ -12,7 +12,7 @@ ACTOR Rifle: CMEWeapon
 	Obituary "%o was shot down by %k's assault rifle."
     AttackSound "None"
     Inventory.PickupSound "CLIPIN"
-	Inventory.Pickupmessage "$GOTRIFLE"
+	Inventory.Pickupmessage "You got the XM10!!! (Slot 4)"
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
     +WEAPON.NOAUTOFIRE
@@ -20,91 +20,15 @@ ACTOR Rifle: CMEWeapon
     Scale 0.8
 	States
 	{
-	
-	TacticalWarning:
-		TNT1 A 4
-		Goto LetsGetStarted
-	WarmUp:
-		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("JustStartedGame", 1)
-		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "TacticalWarning")
-		
-	LetsGetStarted:	
-		TNT1 A 5 A_WeaponReady
-		PUNS ABCD 1 A_WeaponReady
-		TNT1 A 0 A_PlaySound("Knuckled")
-		PUNS E 7 A_WeaponReady
-		PUNS FGFE 3 A_WeaponReady
-		PUNS DCB 1 A_WeaponReady
-		TNT1 A 5 A_WeaponReady
-		R2RL ABCDE 1 A_WeaponReady
-        R2RL E 1 A_WeaponReady
-		RIFR HIKL 1 A_WeaponReady
-		TNT1 A 0 A_PlaySound("DryFire")
-		RIFR M 1 A_WeaponReady
-		RIFR NOPQRST 1 A_WeaponReady
-		Goto Ready3
+		Steady:
+	TNT1 A 1
+	Goto Ready3
 	
 	
 	
 	
 	
-	
-	CheckSprint:
-		RIFG A 1 A_WeaponReady(WRF_NOFIRE)
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready3
-		
-	CheckSprint2:
-		RI2G A 1 A_WeaponReady(WRF_NOFIRE)
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "StartSprint")
-		Goto Ready2	
-		
-	StartSprint:
-		RIFG A 1 A_WeaponReady(WRF_NOFIRE)
-		TNT1 A 0 A_Takeinventory("Zoomed",1)
-		TNT1 A 0 A_Takeinventory("ADSmode",1)
-		TNT1 A 0 A_ZoomFactor(1.0)
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 40, "StopSprintTired")
-		
-	Sprinting:	
-		RISP A 0
-		TNT1 A 0 A_JumpIfInventory("IsStandingStill", 1, "Ready3")
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 100, "StopSprintTired")
-		PLAY A 0 ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
-		TNT1 A 0 A_JumpIfInventory("PowerStrength", 1, 2)
-		TNT1 A 0 A_GiveInventory("UsedStamina", 7)
-		TNT1 A 0
-		RISP BCDEFG 1 A_SetPitch(pitch -0.5)
-		TNT1 A 0 A_JumpIfInventory("IsRunning", 1, 2)
-		Goto StopSprint
-		TNT1 AA 0
-		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 2, 0, 0, -4)
-		RISP GFEDCB 1 A_SetPitch(pitch +0.5)
-		TNT1 A 0 A_JumpIfInventory("IsRunning", 1, "Sprinting")
-		Goto StopSprint
-	StopSprintTired:
-		RIFG A 1
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
-		TNT1 A 0 A_PlaySound("Tired", 2)
-		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
-		RIFG A 5 A_WeaponReady
-		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
-		RIFG A 5 A_WeaponReady
-		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
-		RIFG A 5 A_WeaponReady
-		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
-		RIFG A 5 A_WeaponReady
-		TNT1 A 0 A_TakeInventory("UsedStamina", 2)
-		RIFG A 5 A_WeaponReady
-		Goto Ready3
-	StopSprint:
-		RISP A 1
-		TNT1 A 0 A_JumpIfInventory("UsedStamina", 60, "StopSprintTired")
-		PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
-		Goto Ready3
+
 	
 	
 	SelectAnimation:
@@ -112,7 +36,6 @@ ACTOR Rifle: CMEWeapon
 		TNT1 A 0 A_GunFlash
 		TNT1 A 0 A_JumpIfInventory("JustStartedGame",1,"WarmUp")
         TNT1 A 0 A_PlaySound("CLIPIN")
-		TNT1 A 0 A_Takeinventory("BDWeaponACtion",1)
 
 		RIFS ABC 1
         TNT1 AAAA 0
@@ -136,7 +59,7 @@ ACTOR Rifle: CMEWeapon
 		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
 		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
 		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
-		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "WeaponSpecial")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "DualWield")
 		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
 		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
 		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
@@ -176,6 +99,7 @@ ACTOR Rifle: CMEWeapon
 		RIFS CBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -207,7 +131,6 @@ ACTOR Rifle: CMEWeapon
 		
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
 		TNT1 A 1 A_Raise
-		TNT1 AAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
 	
     Fire:
@@ -411,6 +334,28 @@ AltFire:
  	Spawn:
 		RIFL A -1
 		Stop
+		
+		DualWield:
+		RIFG A 1
+		TNT1 A 0 A_Takeinventory("StartDualWield",1)
+		TNT1 A 0 A_JumpIfInventory("DualRifles", 1, "GetDual")
+		TNT1 A 0 A_Print("You must have two identical weapons to dual wield.")
+		Goto Ready
+		
+	 GetDual:	
+		TNT1 A 0 A_SetCrosshair(0)
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("Kicking",1)
+        TNT1 A 0 A_TakeInventory("Taunting",1)
+        TNT1 A 0 A_TakeInventory("Reloading",1)
+		TNT1 A 0 A_TakeInventory("Unloading",1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_SelectWEapon("DualRifles")
+		Goto Ready
 		
 	}
 }

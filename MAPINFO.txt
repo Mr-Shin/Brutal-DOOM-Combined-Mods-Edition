@@ -1,7 +1,3 @@
-map TITLEMAP "BrutalDoom:CME_Introduction"
-{
-	music = "IBTITLE"
-}
 
 episode EDAY01
 {
@@ -9,6 +5,10 @@ optional
 name = "Extermination Day"
 }
 
+GameInfo
+{ 
+	StatusBarClass = "HXRTCStatusBar"
+}
 ClearSkills
 
 

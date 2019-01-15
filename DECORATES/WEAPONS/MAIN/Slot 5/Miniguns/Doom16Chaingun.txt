@@ -40,7 +40,7 @@ Weapon.AmmoUse1 0
 	tag "Doom 2016 Chaingun"
 	+WEAPON.NO_AUTO_SWITCH
 Inventory.PickupSound "MINIPKP"
-Inventory.PickupMessage "You got the Doom 2016 Chaingun!"
+Inventory.PickupMessage "You got the DOOM 2016 Chaingun!!! (Slot 5)"
 Obituary "%o was mowed down by %k's Doom 2016 Chaingun."
 AttackSound "none"
 Scale 0.9
@@ -314,12 +314,14 @@ DeployStalinGodDammit:
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectRotator:
 		16RT IHGFE 1
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectTurret:
 		TNT1 A 0
@@ -339,6 +341,7 @@ DeployStalinGodDammit:
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 
@@ -367,7 +370,7 @@ DeployStalinGodDammit:
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 		
 	WeaponSpecial:

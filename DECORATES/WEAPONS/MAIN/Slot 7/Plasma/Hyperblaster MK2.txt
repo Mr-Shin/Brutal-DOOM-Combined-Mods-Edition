@@ -30,7 +30,7 @@ ACTOR HyperBlasterMK2 : CMEWeapon
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	tag "Hyper blaster MK3 - Select Fire"
-	Inventory.PickupMessage "You got a Mark 3 hyperblaster!"
+	Inventory.PickupMessage "You got a Mark II Hyperblaster!!! (Slot 7)"
 	States
 	{
 	
@@ -93,8 +93,9 @@ ACTOR HyperBlasterMK2 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
         HPB9 CBA 1
-		TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 	    TNT1 A 0 A_Giveinventory("HasPlasmaWeapon",1)
@@ -105,7 +106,7 @@ ACTOR HyperBlasterMK2 : CMEWeapon
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
-		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("BFGSelected",1)
@@ -120,7 +121,6 @@ ACTOR HyperBlasterMK2 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 		TNT1 A 0 A_Raise
 		Wait
 	

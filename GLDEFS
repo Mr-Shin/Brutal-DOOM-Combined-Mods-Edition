@@ -7461,3 +7461,26 @@ pointlight BDECOrangeLightShaft
 	offset 0 0 -64
 }
 
+pointlight LightningGun
+{
+    color 0.0 0.25 0.45
+    size 25
+    offset 0 15 0
+	dontlightself 1
+}
+
+object LightningGun
+{
+	frame LTGN { light LightningGun }
+}
+
+brightmap sprite LTGNA0 { map "Brightmaps/WEAPONS/LTGNA0.png" }
+
+brightmap sprite LTGGA0 { map "Brightmaps/WEAPONS/LightningGun/LTGRA0.png" }
+brightmap sprite LTGRA0 { map "Brightmaps/WEAPONS/LightningGun/LTGRA0.png" }
+brightmap sprite LTGRB0 { map "Brightmaps/WEAPONS/LightningGun/LTGRA0.png" }
+brightmap sprite LTGRC0 { map "Brightmaps/WEAPONS/LightningGun/LTGRA0.png" }
+brightmap sprite LTGRD0 { map "Brightmaps/WEAPONS/LightningGun/LTGRA0.png" }
+brightmap sprite LTGRE0 { map "Brightmaps/WEAPONS/LightningGun/LTGRA0.png" }
+brightmap sprite LTGRF0 { map "Brightmaps/WEAPONS/LightningGun/LTGRA0.png" }
+

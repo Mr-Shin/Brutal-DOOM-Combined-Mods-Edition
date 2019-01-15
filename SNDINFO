@@ -3547,3 +3547,346 @@ DMTSTEAM	DMTSTEAM
 DMTEXPL		DMTEXPL
 DMTFIREA	DMTFIREA
 DMTFIREL	DMTFIREL
+
+uzi/bolt		DEAGBOLT //Actually it's the desert eagle bolt sound from the RGA2 mod/MW2
+uzi/fire/nb		UZIFIRNB
+uzi/fire/b		UZIFIRB
+
+HS_FIRE1	HS_FIRE1
+HS_FIRE2	HS_FIRE2
+SGPMP10		SGPMP10
+
+$random weapons/rifle { HYPADDF1 HYPADDF2 HYPADDF3 }
+HYPADDF1 HYPADDF1
+HYPADDF2 HYPADDF2
+HYPADDF3 HYPADDF3
+$volume weapons/rifle 1.0
+
+RIFCL_OU RIFCL_OU
+RIFCL_IN RIFCL_IN
+RIFCL_CL RIFCL_CL
+RIFCL_CK RIFCL_CK
+
+RAIL_ZM RAIL_ZM
+RAIL_UZ RAIL_UZ
+
+weapons/canSG CNSGFIR1
+weapons/canSG2 SHFIRE2
+BROPEN1 BROPEN1
+BROPEN2 BROPEN2
+BRCLOSE1 BRCLOSE1
+BRCLOSE2 BRCLOSE2
+CSHELL1 CSHELL1
+CSHELL2 CSHELL2
+CSHELL3 CSHELL3
+CSHELL4 CSHELL4
+$random barrel/open { BROPEN1 BROPEN2 }
+$random barrel/close { BRCLOSE1 BRCLOSE2 }
+$random barrel/shell { CSHELL1 CSHELL2 CSHELL3 CSHELL4 }
+
+$random FAMFIRE {FAMFIRE1 FAMFIRE2}
+FAMFIRE1	FAMFIRE1
+FAMFIRE2	FAMFIRE2
+FAMABOLT	FAMABOLT
+M4A1CLIP	M4A1CLIP
+SUPPIN	SUPPIN
+
+QSGFIRE2	QSGFIRE2
+SSOPEN		SSOPEN
+SSLOAD		SSLOAD
+SSCLOSE		SSCLOSE
+
+SEMIGET		SEMIGET
+SEMIRELOAD	SEMIRELD
+$random SEMIFIRE { RIFLEF1 RIFLEF2 RIFLEF3 }
+RIFLEF1	RIFLEF1
+RIFLEF2 RIFLEF2
+RIFLEF3 RIFLEF3
+RIFLEF3 RIFLEF3
+
+SIGGET		AR_SELCT
+//SIGFIRE		ALTES
+SIGRELOAD	SIGRELD
+$random SIGFIRE {SIG1 SIG2 SIG3 }
+SIG1	SHOT1
+SIG2	SHOT2
+SIG3	SHOT3
+
+ATFIRE	ATFIRE
+ATOUT	ATOUT
+ATIN	ATIN
+RCLICK	RCLICK
+
+m16/fire	M16FIRE
+m16/fire2	QBBSHT3
+HKCLIP		DSD3SP1
+HKFIRE		DSGOLAM1
+HKRELOAD	HKRELOAD
+AMRIN		AMRIN
+AMROUT		AMROUT
+FAMAS_MP	FAMAS_MP
+RIFLESNA	RIFLESNA
+
+$random carbinefire {CBF1	CBF2	CBF3}
+CBF1	CBF1
+CBF2	CBF2
+CBF3	CBF3
+
+MKGET		DSRPCLIP
+//SIGFIRE		ALTES
+MKReload	MP40LOAD
+$random MKFIRE {MK1 MK2 MK3 MK4 MK5 }
+MK1		SR-FIRE1
+MK2		SR-FIRE2
+MK3		SR-FIRE3
+MK4		SR-FIRE4
+MK5		SR-FIRE5
+MKFIRE2	MKFIRE2
+MAGOUT	MAGOUT
+MAGIN	MAGIN
+
+$random scar-h/fire {scar-h/fire1 scar-h/fire2 scar-h/fire3}
+scar-h/fire1	SCARFIR1
+scar-h/fire2	SCARFIR2
+scar-h/fire3	SCARFIR3
+
+scar-h/clip/out		SCAROUT
+scar-h/clip/in		SCARIN
+scar-h/clip/slap	SCARSLAP
+
+electrogun/pickup       PZAPPICK
+electrogun/shoot		PZAPSEE	
+electrogun/fire 		PZAPFIRE
+electrogun/loop         PZAPLOOP
+electrogun/hit			PZAPHIT
+electrogun/charge		PZAPCHRG	
+electrogun/cooloff      PZAPRMBL
+electrogun/charge2		PZAPCHR2
+electrogun/bomb         PZAPBOMB
+electrogun/explode      PZAPBEXP
+electrogun/hum          PZAPHUM
+electrogun/select       PZAPSEL
+electrogun/fly          PZAPFLY
+
+$rolloff electrogun/explode 1400 3200
+
+REVCYC REVCYC
+HRSteam HREXH
+FLAMER2 FLAMER2
+flamersh FLAMER
+flameren FLAMSTOP
+BREATHOF BREATHOF
+FLMDRAW FLMDRAW
+barlp1		barloop1
+bralp2		barloop2
+BIOSHOOT BIOSHOOT
+FlmrStr FlmrStr
+F1stsup F1stsup
+FLMSWTC FLMSWTC
+
+SMLFRBL SMLFRBL
+$rolloff SMLFRBL 800 1200
+
+BGFLMBL BGFLMBL
+$rolloff BGFLMBL 900 1300
+FLMRIDL FLMRIDL
+REVTWHIZ REVTWHIZ
+REVTBOOM REVTBOOM
+REVTSTOP REVTSTOP
+$random hellishmissle/fire { RHEAT1 RHEAT2 RHEAT3 }
+RHEAT1	RHEAT1
+RHEAT2	RHEAT2
+RHEAT3	RHEAT3
+revup revup
+
+weapons/21sg		21sgfire
+SSHFIRE2 SSHFIRE2
+DSRFIRE4 DSRFIRE4
+
+MINISHOT MINISHOT
+BMINISHOT BMINISHOT
+MINIGN4 MINIGN4
+$limit MINIGN4 999
+
+19PGFIRE 19PGFIRE
+
+ICSHOT ICSHOT
+
+weapons/luger lugerf1
+Lug1 LugOut
+Lug2 lugIN
+Close/Reload/Luger LugCOck
+LUG4 LugOu2
+
+$random PSHOT {PSHOT1 PSHOT2 PSHOT3}
+PSHOT1	PSHOT1
+PSHOT2	PSHOT2
+PSHOT3	PSHOT3
+
+OVRHTBEP	OVRHTBEP
+DMTSTEAM	DMTSTEAM
+
+Weapons/FreezerFire	STNRFIRE2
+Weapons/FreezerHit	STNRHIT
+Weapons/FreezerReady FRRDY
+Weapons/FreezerFire FREFIRE
+Weapons/FreezerRecharge FRSRLD
+Weapons/CellEject CLEJECT
+Weapons/CellKickIn CLKICKIN
+Weapons/PistolDraw PSTDRAW
+Weapons/PistolHolster PSTHOLS
+Weapons/DeadMansClick DMANC
+weapons/cryobowflyby    FRZSTRM
+DSBOWREL DSBOWREL
+
+
+M500SEL M500SEL
+
+SGSEL SGSEL
+
+$random weapons/M500	 { SGBU1 SGBU2 SGBU3 SGBU4 }
+SGBU1 SGBU1
+SGBU2 SGBU2
+SGBU3 SGBU3
+SGBU4 SGBU4
+
+M5SLUG M5SLUG
+
+M5DB M5DB
+
+$random M500/Insert { M5LD1 M5LD2 M5LD3 M5LD4 }
+M5LD1 M5LD1
+M5LD2 M5LD2
+M5LD3 M5LD3
+M5LD4 M5LD4
+
+TIMGRN TIMGRN
+ALRTGRN ALRTGRN
+$rolloff TIMGRN 320 240
+$rolloff ALRTGRN 400 320
+OPNGRN OPNGRN
+THRGRN THRGRN
+GBOUNCE GBOUNCE
+
+//Better Explosions
+$random Explosion { rexpl1 rexpl2 rexpl3 rexpl4 rexpl5 rexpl6 rexpl7 rexpl8 rexpl9 rexpl10 rexpl11 rexpl12 rexpl13 }
+rexpl1 expl_1
+rexpl2 expl_2
+rexpl3 expl_3
+rexpl4 expl_4
+rexpl5 expl_5
+rexpl6 expl_6
+rexpl7 expl_7
+rexpl8 expl_8
+rexpl9 expl_9
+rexpl10 expl_10
+rexpl11 expl_11
+rexpl12 expl_12
+rexpl13 expl_13
+
+weapons/m500pump M5PUMP
+
+KICK2 KICK2
+SPARTA	SPARTA
+
+UAC-12/Fire		D3SGFM
+Doom3/Doom4/Pump	D34SGP
+
+HellPickup HELLPK
+$random SlideKick/Start { SLYDSTRT1 SLYDSTRT2 SLYDSTRT3 }
+SLYDSTRT1	SLIDSTR1
+SLYDSTRT2	SLIDSTR2
+SLYDSTRT3	SLIDSTR3
+
+$random SlideKick/Loop { SLYDLUP1 SLYDLUP2 SLYDLUP3 SLYDLUP4 }
+SLYDLUP1	SLIDLUP1
+SLYDLUP2	SLIDLUP2
+SLYDLUP3	SLIDLUP3
+SLYDLUP4	SLIDLUP4
+
+$random SlideKick/End { SLYDEND1 SLYDEND2 }
+SLYDEND1	SLIDEND1
+SLYDEND2	SLIDEND2
+
+DTHDLRST DTHDLRST
+
+$random draugr/fire { DRHEAT1 DRHEAT2 DRHEAT3 DRHEAT4 }
+DRHEAT1 DRHEAT1
+DRHEAT2 DRHEAT2
+DRHEAT3 DRHEAT3
+DRHEAT4 DRHEAT4
+
+// ARACHNOPHYTE
+$random arachnophyte/pain  { arachnophyte/pain1 arachnophyte/pain2 arachnophyte/pain3 }
+arachnophyte/sight		dsaphsit
+arachnophyte/engine		dsapheng
+arachnophyte/pain1		dsaphpn1
+arachnophyte/pain2		dsaphpn2
+arachnophyte/pain3		dsaphpn3
+arachnophyte/death		dsaphdth
+
+//Beam Revenant
+$random weapons/revrailgf { revrail1 revrail2 revrail3 }
+revrail1 REILGF1
+revrail2 REILGF2
+revrail3 REILGF3
+
+REILAIM REILAIM
+RAIL_I RAIL_I
+
+//Heavy Chaingun
+weapons/chagan/fire CGFIRE1
+
+//CyberNobles
+cbaron/sight	 cbarnsit
+cbaron/pain		 cbarnpai
+cbaron/death	 cbarndth
+cbaron/active	 cbarnact
+$random cbaron/metal { DSTEKFS1 DSTEKFS2 DSTEKFS3 DSTEKFS4 }
+DSTEKFS1 DSTEKFS1
+DSTEKFS2 DSTEKFS2
+DSTEKFS3 DSTEKFS3
+DSTEKFS4 DSTEKFS4
+
+monster/brusit dsbrusit
+monster/brudth dsbrudth
+$random monster/bruwlk  { DSBRUWK1 DSBRUWK2 DSBRUWK3 DSBRUWK4 DSBRUWK5 }
+DSBRUWK1 DSBRUWK1
+DSBRUWK2 DSBRUWK2
+DSBRUWK3 DSBRUWK3
+DSBRUWK4 DSBRUWK4
+DSBRUWK5 DSBRUWK5
+monster/brufir dsbrufir
+weapons/hellex dshellex
+
+//Magma Cacodemon
+monster/infsit               DSINFSIT
+monster/infpai               DSINFPAI
+monster/infact               DSINFACT
+
+//MeanDemons
+monster/sg2sit dssg2sit
+monster/sg2atk dssg2atk
+
+
+//New Heavy Fireball sounds
+heavyfireball/throw MACOBAL3
+
+$random heavyfireball/explode { MACOBAL1 MACOBAL2 }
+MACOBAL1 MACOBAL1
+MACOBAL2 MACOBAL2
+
+//CyberDemon Laser
+CYBRLZR CYBRLZR
+$rolloff CYBRLZR 1500 2500
+
+//Belphegor Charge!!!!
+BELCHRG BELCHRG
+
+$random belphegor/missile { BELMSL1 BELMSL2 }
+BELMSL1 BELMSL1
+BELMSL2 BELMSL2
+$rolloff belphegor/missile 1300 1800
+Weapons/NailFlight	NAILFLY
+Weapons/NailHit		NAILHIT
+

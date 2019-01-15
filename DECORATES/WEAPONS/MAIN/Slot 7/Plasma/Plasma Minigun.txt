@@ -25,7 +25,7 @@ Weapon.AmmoUse1 0
 	+WEAPON.NO_AUTO_SWITCH
 Inventory.PickupSound "PMPKUP"
 tag "Plasma Minigun"
-Inventory.PickupMessage "You got the a Plasma Minigun?"
+Inventory.PickupMessage "You got the a Plasma Minigun!!! (Slot 7)"
 Obituary "%o was turned into carbon by %k's Plasma Minigun Minigun."
 AttackSound "none"
 Scale 0.9
@@ -110,8 +110,9 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 	 TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
 	 TNT1 A 0 SetPlayerProperty(0,0,0)
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 
     Select:
@@ -123,7 +124,7 @@ Ready2:
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
-		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("BFGSelected",1)
@@ -138,9 +139,9 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+				TNT1 A 0 A_Raise
+
 		Goto Ready
 
     NoAmmo:

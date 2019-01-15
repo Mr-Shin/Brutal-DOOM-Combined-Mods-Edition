@@ -7,10 +7,10 @@ ACTOR Unmaker : CMEWeapon
 	Height 20
 	Weapon.AmmoUse1 2
 	Weapon.AmmoGive 100
-	Weapon.AmmoType1 "gas"
+	Weapon.AmmoType1 "DemonAmmo"
     Inventory.PickupSound "BFGREADY"
     +WEAPON.NOAUTOAIM
-	Inventory.PickupMessage "You got the sinister Unmaker, the power of hell itself. (Slot 8)"
+	Inventory.PickupMessage "You got the sinister Unmaker, a weapon fused with power of hell itself!!!!!!!!! (Slot 9)"
 	States
 	{
 	Steady:
@@ -90,6 +90,9 @@ ACTOR Unmaker : CMEWeapon
 		TNT1 A 0 A_StopSOund(6)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+				TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Loop
 	Select:
 		TNT1 A 0 A_Giveinventory("GoSpecial",1)
@@ -115,9 +118,8 @@ TNT1 A 0 A_Takeinventory("HasUnloaded",1)
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 A 1 A_Raise
 		TNT1 A 0 A_PlaySound("BFGREADY")
-        TNT1 AAA 0
+		TNT1 A 0 A_Raise
 		
 		Goto SelectAnimation
 		

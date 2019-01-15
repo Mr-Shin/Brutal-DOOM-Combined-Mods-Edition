@@ -41,7 +41,7 @@ Weapon.AmmoUse2 0
 	tag "TEMPST-50 VULKN 20mm Dispenser"
 	+WEAPON.NO_AUTO_SWITCH
 Inventory.PickupSound "TEMPST/Pickup"
-Inventory.PickupMessage "You got the TEMPST-50 VULKN 20mm Dispenser!"
+Inventory.PickupMessage "You got the TEMPST-50 VULKN 20mm Dispenser!!! (Slot 5)"
 Obituary "%o was mowed down by %k's TEMPST-50 VULKN 20mm Dispenser."
 AttackSound "none"
 Scale 0.9
@@ -191,6 +191,7 @@ Ready2:
 		TNT1 A 0 SetPlayerProperty(0,0,0)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 
     Select:
@@ -218,7 +219,7 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 
     NoAmmo:

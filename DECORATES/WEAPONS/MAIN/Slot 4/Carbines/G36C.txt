@@ -45,7 +45,7 @@ ACTOR G36C : CMEWeapon
 	Obituary "%o was shot down by %k's G36C."
     AttackSound "None"
     Inventory.PickupSound "G36C/Bolt"
-	Inventory.Pickupmessage "You got the G36C Carbine!"
+	Inventory.Pickupmessage "You got the G36C Carbine!!! (Slot 4)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -131,6 +131,7 @@ ACTOR G36C : CMEWeapon
 		G36S EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectZoomed:
 		TNT1 A 0 A_Takeinventory("ZoomedG36C",1)
@@ -150,6 +151,7 @@ ACTOR G36C : CMEWeapon
 		G36S EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -176,7 +178,7 @@ ACTOR G36C : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	

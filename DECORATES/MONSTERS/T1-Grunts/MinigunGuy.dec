@@ -1,7 +1,10 @@
 ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 {
-	DropItem "NewClipBox", 50
-	DropItem "DropedMinigun"
+	DropItem "APChain", 255
+	DropItem "MinigunDroper" 50
+	   DropItem "SoulEnergy" 255
+
+
 	SpawnID 1170
 	Obituary "%o became a Minigun Zombie's target practice."
 	States
@@ -262,7 +265,7 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 	MGZM E 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("weapons/minigunfire2")
+	TNT1 A 0 A_PlaySound("MINISHOT")
 	MGZM FF 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-11, 11), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -271,7 +274,7 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 	MGZM E 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("weapons/minigunfire2")
+	TNT1 A 0 A_PlaySound("MINISHOT")
 	MGZM FF 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-11, 11), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -280,7 +283,7 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 	MGZM E 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("weapons/minigunfire2")
+	TNT1 A 0 A_PlaySound("MINISHOT")
 	MGZM F 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-11, 11), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -289,7 +292,7 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 	MGZM E 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("weapons/minigunfire2")
+	TNT1 A 0 A_PlaySound("MINISHOT")
 	MGZM FF 3 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-11, 11), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -298,7 +301,7 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 	MGZM E 2 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("weapons/minigunfire2")
+	TNT1 A 0 A_PlaySound("MINISHOT")
 	MGZM FF 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-11, 11), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -308,7 +311,7 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 	MGZM E 2 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("weapons/minigunfire2")
+	TNT1 A 0 A_PlaySound("MINISHOT")
 	MGZM FF 1 BRIGHT A_CustomMissile("MonsterMinigunTracer", 38, 0, random(-11, 11), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)

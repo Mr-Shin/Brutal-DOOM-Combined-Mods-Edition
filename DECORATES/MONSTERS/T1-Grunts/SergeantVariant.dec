@@ -62,7 +62,7 @@ ACTOR RiotShieldGuy : ShotgunGuy1 Replaces ShotgunGuy
 {
 	SpawnID 1220
 	DropItem "DropedGrenade" 4
-	DropItem "PistolDrop"
+	DropItem "M9Spawner"
 	DropItem "RiotShieldDrop"
 	+MissileEvenMore
 	States
@@ -462,7 +462,7 @@ ACTOR ShotgunGuy2 : ShotgunGuy1 Replaces ShotgunGuy
 {
 	SpawnID 1210
 	DropItem "DropedGrenade" 7
-	DropItem "PistolDrop"
+	DropItem "M9Spawner"
 	DropItem "DropedShotgun"
 	+MissileEvenMore
 	States
@@ -1371,6 +1371,8 @@ Actor PyroSergeant: ShotgunGuy2 replaces ShotgunGuy
 	SpawnID 1250
 	Scale 1.04
 	DropItem "FlameCannon"
+	   DropItem "SoulEnergy" 255
+
 	PainChance "Fire", 12
 	PainChance "Flames", 12
 	PainChance "Burn", 12

@@ -48,7 +48,7 @@ ACTOR MI4 : CMEWeapon
 	Obituary "%o was shot down by %k's MI-4."
     AttackSound "None"
     Inventory.PickupSound "mi-4/bolt"
-	Inventory.Pickupmessage "You got the MI-4!"
+	Inventory.Pickupmessage "You got the MI-4!!! (Slot 4)"
 	+WEAPON.WIMPY_WEAPON
     +WEAPON.NOAUTOAIM
     +WEAPON.NOALERT
@@ -150,6 +150,7 @@ ACTOR MI4 : CMEWeapon
 		M14S EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectZoomed:
 		TNT1 A 0 A_Takeinventory("ZoomedMI-4",1)
@@ -170,11 +171,13 @@ ACTOR MI4 : CMEWeapon
 		M14S EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectSil:
 		MI4S EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	DeselectSil2:
 		MI4Z EDCBA 1
@@ -182,6 +185,7 @@ ACTOR MI4 : CMEWeapon
 		MI4S EDCBA 1
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 		
 	Select:
@@ -208,7 +212,7 @@ ACTOR MI4 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		
 		Goto Ready
 	

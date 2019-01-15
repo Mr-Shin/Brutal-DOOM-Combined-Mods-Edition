@@ -1,15 +1,16 @@
 Slot 1:
 
 Fists
-PB 3.0 Chainsaw
+v21 Chainsaw
 Dual Bladed Chainsaw
 Axe
 Sledgehammer
 
 Slot 2:
 
-Hanguns:
+Handguns:
 
+Luger
 M9 Berreta
 TAC-15 
 G17C 
@@ -28,7 +29,6 @@ Testicle Imploder
 
 Sub-Machine Guns:
 
-TMP-62
 PPSh-91 
 MP27 
 UMP-50 
@@ -43,6 +43,7 @@ UZI
  
 Machine Pistols: 
 
+TMP-61
 BD v21 Machine Pistol
 Soviet Machine Pistol 
 
@@ -94,6 +95,8 @@ Slot 4:
 
 Assault Rifles:
 
+MP15
+ACTM-91
 AM-1
 M4
 FG-42
@@ -122,8 +125,6 @@ MI-4-EBR
 Carbines:
 
 G41K
-MV-21
-QK-54E61
 G36C
 CM666
 PHALANTAX
@@ -170,7 +171,7 @@ Slot 6:
 Rocket Launchers:
 
 V20 Rocket Launcher
-AT5
+v21 Rocket Launcher
 Duke RPG
 UT2004 RL
 DS-9000
@@ -182,7 +183,7 @@ RPG-7
 
 Grenade Launchers:
 
-War Machine
+
 Skulltag Grenade Launcher
 Insanity Launcher
 Quake 1 Launcher
@@ -197,7 +198,7 @@ Plasma Guns:
 
 BD v19 Plasma Gun
 BD v21 Plasma Rifle
-PM-9
+v20 Plasma Rifle
 IRC-1
 Quake 4 Hyperblaster
 DOOM 2016 Plasma Gun
@@ -210,7 +211,7 @@ CML-6
 
 Railguns:
 
-Skulltag Railgun
+v21 Railgun
 Gauss Cannon
 
 Misc:

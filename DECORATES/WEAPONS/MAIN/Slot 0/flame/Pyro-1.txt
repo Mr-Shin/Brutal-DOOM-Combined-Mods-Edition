@@ -70,9 +70,9 @@ Weapon.BobRangeX 0.3
         PYRS DCBA 1
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
-		
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 	TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -91,15 +91,14 @@ Weapon.BobRangeX 0.3
 		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
-		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Giveinventory("FlameCannonSelected",1)
 		TNT1 A 0 A_Takeinventory("HasBarrel",1)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
-
 		NISG A 0 A_Raise
+		TNT1 A 0 A_Raise
 		Wait
 	
 	Fire:

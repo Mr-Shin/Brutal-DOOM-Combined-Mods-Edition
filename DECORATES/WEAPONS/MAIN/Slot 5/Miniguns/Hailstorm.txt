@@ -25,7 +25,7 @@ Weapon.AmmoUse1 0
 	+WEAPON.NO_AUTO_SWITCH
 Inventory.PickupSound "HALPKUP"
 tag "Hailstorm Devestator"
-Inventory.PickupMessage "You got the Hailstorm!"
+Inventory.PickupMessage "You got the Hailstorm!!! (Slot 5)"
 Obituary "General Victor wanted %k to convince %o to play Bulletstorm"
 AttackSound "none"
 Scale 0.3
@@ -115,8 +115,9 @@ Ready2:
 	 TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
 	 TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 	 TNT1 A 0 SetPlayerProperty(0,0,0)
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 
     Select:
@@ -144,7 +145,7 @@ Ready2:
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 
     NoAmmo:

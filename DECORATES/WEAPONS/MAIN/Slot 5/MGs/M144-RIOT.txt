@@ -11,7 +11,7 @@ ACTOR M144Riot : CMEWeapon
 	+WEAPON.NOAUTOFIRE
 	+FORCEXYBILLBOARD
 	Inventory.PickupSound "CBOXPKUP"
-	Inventory.PickupMessage "You got the Machine Gun!"
+	Inventory.PickupMessage "You got the M144-RIOT!!! (Slot 5)"
 	Obituary "%o was mowed down by %k's Machine Gun."
 	AttackSound "none"
 	Scale 0.7
@@ -59,8 +59,9 @@ ACTOR M144Riot : CMEWeapon
 			TNT1 A 0 A_Takeinventory("HeavyAutomaticWeapon",1)
 			TNT1 A 0 SetPlayerProperty(0,0,0)
 			MGS1 DCBA 1
-			TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
-			TNT1 A 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		TNT1 A 1 A_Lower
 			Wait
 
 		Select:
@@ -89,7 +90,7 @@ ACTOR M144Riot : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 
 
 			MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.

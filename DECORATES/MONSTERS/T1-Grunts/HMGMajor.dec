@@ -8,7 +8,8 @@ Actor ChaingunMajor : ChaingunGuy1 Replaces ChaingunGuy
   SpawnID 1330
   Obituary "%o was perforated by a heavy weapons major."
   Decal Bulletchip
-  Dropitem "DropedHMG", 256
+  Dropitem "QBBASW", 256
+  dropitem "SoulEnergy" 255
   States
   {
   Death.Shrink:
@@ -189,7 +190,7 @@ AvoidRight:
 		Goto SeeContinue
 	
   Missile:
-    TNT1 A 0 A_PlaySound("weapons/chagan/start")
+    TNT1 A 0 A_PlaySound("CHAINSTA")
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
 	TNT1 A 0 A_TakeInventory("SKChaingunGuy", 1)
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
@@ -204,7 +205,7 @@ AvoidRight:
 	CPS2 EE 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("hmgun")
+	TNT1 A 0 A_PlaySound("QBBFIRE")
 	CPS2 F 1 BRIGHT A_CustomMissile("MonsterNewchaingunTracer", 38, 0, random(-8, 8), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -213,7 +214,7 @@ AvoidRight:
 	CPS2 EE 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("hmgun")
+	TNT1 A 0 A_PlaySound("QBBFIRE")
 	CPS2 F 1 BRIGHT A_CustomMissile("MonsterNewchaingunTracer", 38, 0, random(-8, 8), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -222,7 +223,7 @@ AvoidRight:
 	CPS2 EE 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("hmgun")
+	TNT1 A 0 A_PlaySound("QBBFIRE")
 	CPS2 F 1 BRIGHT A_CustomMissile("MonsterNewchaingunTracer", 38, 0, random(-8, 8), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -231,7 +232,7 @@ AvoidRight:
 	CPS2 EE 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("hmgun")
+	TNT1 A 0 A_PlaySound("QBBFIRE")
 	CPS2 F 1 BRIGHT A_CustomMissile("MonsterNewchaingunTracer", 38, 0, random(-8, 8), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -240,7 +241,7 @@ AvoidRight:
 	CPS2 EE 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("hmgun")
+	TNT1 A 0 A_PlaySound("QBBFIRE")
 	CPS2 F 1 BRIGHT A_CustomMissile("MonsterNewchaingunTracer", 38, 0, random(-8, 8), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
@@ -250,7 +251,7 @@ AvoidRight:
 	CPS2 EE 1 A_FaceTarget
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 AA 0 A_CustomMissile("OrangeLensFlareAltFast", 34, 10, 15, 0)
-	TNT1 A 0 A_PlaySound("hmgun")
+	TNT1 A 0 A_PlaySound("QBBFIRE")
 	CPS2 F 1 BRIGHT A_CustomMissile("MonsterNewchaingunTracer", 38, 0, random(-8, 8), 0) //A_CPosAttack
 	TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 42,0)
     TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)

@@ -4,7 +4,6 @@ ACTOR BoneDusterAmmo : Ammo
    Inventory.MaxAmount 4
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 4
-   Inventory.Icon "BDGSA0"
 }
 
 ACTOR BoneDusterAlt : Inventory {Inventory.MaxAmount 2}
@@ -91,7 +90,7 @@ TNT1 A 0 A_TakeInventory("TossGrenade", 1)
 		TNT1 A 0 A_Takeinventory("FistsSelected",1)
 		TNT1 A 0 A_Takeinventory("SawSelected",1)
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
-		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Giveinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
 		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)

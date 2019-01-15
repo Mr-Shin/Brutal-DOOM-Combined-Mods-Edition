@@ -148,7 +148,7 @@ States
 ACTOR ShotgunParticles
 {
  game Doom
- speed 15
+ speed 20
  radius 8
  height 1
  Gravity 0.6
@@ -159,6 +159,7 @@ ACTOR ShotgunParticles
    +CLIENTSIDEONLY
    +NOTELEPORT
    +NOBLOCKMAP
+   -RIPPER
    +BLOODLESSIMPACT 
    +FORCEXYBILLBOARD
   +FORCEXYBILLBOARD
@@ -171,14 +172,15 @@ ACTOR ShotgunParticles
     {
      Spawn:
 	  TNT1 A 2
-       SPKO BBBB 1 Bright A_FadeOut(0.02)
+       SPRK SSS 1 Bright A_FadeOut(0.02)
 	   TNT1 A 0 A_ChangeFlag(NOGRAVITY, 0)
-	   SPKO BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 Bright A_FadeOut(0.04)
+	   SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.03)
         stop
      Death:
        Stop
     }
 }
+
 
 ACTOR ShotgunParticles2 : ShotgunParticles
 {
@@ -204,8 +206,6 @@ ACTOR HitSpark: ExplosionParticleHeavy
        Stop
     }
 }
-
-
 
 
 
@@ -240,11 +240,11 @@ Actor ExplosionParticle
   +FORCEXYBILLBOARD
   +CLIENTSIDEONLY
   RenderStyle Add
-  Scale 0.8
+  Scale 0.05
   States
   {
   Spawn:
-    SPKO B 1 Bright A_FadeOut(0.02)
+    SPKO A 1 Bright A_FadeOut(0.02)
     Loop
   }
 }
@@ -793,6 +793,9 @@ ACTOR SparkXNoModel: SparkX
 {
  Gravity 0.7
 }
+
+
+
 
 
 

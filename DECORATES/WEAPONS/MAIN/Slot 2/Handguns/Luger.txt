@@ -1,0 +1,311 @@
+ACTOR ZioLuger : CMEWeapon
+{
+Weapon.AmmoUse1 0
+Weapon.AmmoGive1 0
+Weapon.AmmoUse2 0
+Weapon.AmmoGive2 0
+Weapon.AmmoType1 "Clip1"
+Weapon.AmmoType2 "LugerClip"
+Obituary "%o was shot down by %k's Luger."
+AttackSound "None"
+Tag "Luger"
+Weapon.SlotNumber 2
+Inventory.PickupSound "CLIPIN"
+Inventory.Pickupmessage "You got a Luger!!! (Slot 2)"
++WEAPON.NOAUTOAIM
++WEAPON.NOAUTOFIRE
++FORCEXYBILLBOARD
++Weapon.NoAlert 
+Scale 0.9
+States
+{
+Ready3:
+Ready:
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+        TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoMine", 1, "ThrowMine")
+		TNT1 A 0 A_JumpIfInventory("DoElecPod", 1, "ThrowElecPod")
+		TNT1 A 0 A_JumpIfInventory("DoSwarmPod", 1, "ThrowSwarmPod")
+		TNT1 A 0 A_JumpIfInventory("GrabbedBarrel", 1, "GrabBarrel")
+		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility", 1, "DualWield")
+		TNT1 A 0 A_JumpIfInventory("ThrowPipeBomb",1,"ThrowPipeBomb")
+		TNT1 A 0 A_JumpIfInventory("DetonatePipeBomb",1,"DetonatePipeBomb")//
+		TNT1 A 0 A_JumpIfInventory("GoEmergencyGunAbility", 1, "FireEmergency")
+		TNT1 A 0 A_JumpIfInventory("GoSwitchAmmo", 1, "SwitchEmergency")
+TNT1 A 0 A_GunFlash//A ritardato!
+LUGG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+Loop
+
+
+Deselect:
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_TakeInventory("Zoomed",1)
+TNT1 A 0 A_TakeInventory("ADSMODE",1)
+LUGS BA 1
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		TNT1 A 1 A_Lower
+		Wait
+		
+Select:
+TNT1 A 0 A_Giveinventory("GoSpecial",1)
+		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+		TNT1 A 0 A_Takeinventory("Unloading",1)
+		TNT1 A 0 A_Takeinventory("FistsSelected",1)
+		TNT1 A 0 A_Takeinventory("SawSelected",1)
+		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
+		TNT1 A 0 A_Takeinventory("SSGSelected",1)
+		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
+		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("BFGSelected",1)
+		TNT1 A 0 A_Takeinventory("BFG10kSelected",1)
+		TNT1 A 0 A_Takeinventory("RailGunSelected",1)
+		TNT1 A 0 A_Takeinventory("SubMachineGunSelected",1)
+		TNT1 A 0 A_Takeinventory("RevenantLauncherSelected",1)
+		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
+		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
+		TNT1 A 0 A_Takeinventory("HasBarrel",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
+		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
+		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
+		TNT1 A 0 A_Raise
+
+Goto SelectAnimation
+		
+		
+SelectAnimation:
+TNT1 A 1
+TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+TNT1 A 0 A_PlaySound("CLIPIN")
+LUGS AB 1
+TNT1 A 0 A_GunFlash
+Goto Ready
+
+
+Fire:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Fire2")
+TNT1 A 0 A_JumpIfInventory("LugerClip",1,2)
+Goto Reload
+TNT1 AAAA 0 
+TNT1 A 0 A_PlaySound("weapons/luger")
+TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+LUGG A 1 BRIGHT A_FireBullets (2, 2, -1, 15, "HitPuff")
+LUGG B 1 BRIGHT A_AlertMonsters
+RIFF A 0 A_FireCustomMissile("Tracer", random(-2,2), 0, -1, 0)
+TNT1 A 0 A_Takeinventory("LugerClip",1)
+LUGG C 1
+TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
+TNT1 A 0 A_JumpIfInventory("IsTacticalClass", 1, "FireEndTactical")
+LUGG A 2
+Goto Ready
+
+FireEndTactical:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("IsRunning", 1, "FireEndTactical2")
+PLAY A 0 ACS_ExecuteAlways(853, 0, 0, 0, 0)//Makes player slower.
+LUGG A 2 A_WeaponReady(1)
+Goto Ready
+		
+FireEndTactical2:
+TNT1 A 0
+PLAY A 0 ACS_ExecuteAlways(852, 0, 0, 0, 0)//Makes player faster.
+TNT1 A 0 A_GiveInventory("UsedStamina", 4)
+LUGG A 2 A_WeaponReady(1)
+Goto Sprinting
+
+AltFire:
+TNT1 A 0 A_JumpIfInventory("Zoomed",1,"AimLeave")
+TNT1 A 0 A_ZoomFactor(1.7)
+TNT1 A 0 A_GiveInventory("Zoomed",1)
+TNT1 A 0 A_Giveinventory("ADSmode",1)
+LUAM B 1 
+Goto Ready2
+
+AimLeave:
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_TakeInventory("Zoomed",1)
+TNT1 A 0 A_TakeInventory("ADSMODE",1)
+LUAM BA 1 
+Goto Ready3
+
+
+Ready2:
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
+LUG1 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+TNT1 A 0 A_JumpIfInventory("IsRunning",1,"CheckSprint")
+Loop
+DualWield:
+		TNT1 A 1
+		TNT1 A 0 A_Takeinventory("GoWeaponSpecialAbility",1)
+		TNT1 A 0 A_JumpIfInventory("ZioDoubleLuger", 1, "GetDual")
+		TNT1 A 0 A_Print("You must have two identical weapons to dual wield.")
+		Goto Ready
+		
+	 GetDual:	
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_TakeInventory("Kicking",1)
+        TNT1 A 0 A_TakeInventory("Taunting",1)
+        TNT1 A 0 A_TakeInventory("Reloading",1)
+		TNT1 A 0 A_TakeInventory("Unloading",1)
+		TNT1 A 0 A_TakeInventory("Salute1", 1)
+		TNT1 A 0 A_TakeInventory("Salute2", 1)
+        TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_SelectWEapon("ZioDoubleLuger")
+		Goto Ready	
+		
+Fire2:
+TNT1 A 0
+TNT1 A 0 A_JumpIfInventory("LugerClip",1,2)
+Goto Reload
+TNT1 AAAA 0 
+TNT1 A 0 A_PlaySound("weapons/luger")
+TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
+LUG1 A 1 BRIGHT A_FireBullets (0, 0, -1, 15, "HitPuff")
+LUG1 B 1 BRIGHT A_AlertMonsters
+RIFF A 0 A_FireCustomMissile("Tracer", random(-2,2), 0, -1, 0)
+TNT1 A 0 A_Takeinventory("LugerClip",1)
+LUG1 C 1
+TNT1 A 0 A_FireCustomMissile("PistolCaseSpawn",5,0,0,-9)
+LUG1 A 2
+Goto Ready2
+
+NoAmmo:
+LUGG A 1
+Goto Ready
+
+Reload:
+LUGG A 1 A_WeaponReady
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_JumpIfInventory("LugerClip",9,"Ready")
+TNT1 A 0 A_JumpIfInventory("Clip1",1,3)
+Goto NoAmmo
+TNT1 AAA 0
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_GiveInventory ("Pumping", 1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_JumpIfInventory("TurboReload",1,"TurboReload")
+TNT1 A 0 A_JumpIfInventory("HasUnloaded", 1, 3)
+RIFR C 0 A_FireCustomMissile("EmptyClipSpawn",-5,0,8,-4)
+TNT1 AA 0
+TNT1 a 0 a_playsound("Lug1")
+LURR ABC 4
+TNT1 A 0 
+TNT1 AAAAA 0
+LURR CC 2
+TNT1 a 0 a_playsound("LUG2")
+LURR C 1
+LUR3 CBA 4
+LURR DE 3
+TNT1 A 0 A_PlayWeaponSound("Close/Reload/Luger")
+LURR FFGG 1
+LURR GGG 1
+LURR GGFFHHII 1
+TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+TNT1 A 0 
+TNT1 A 0 A_JumpIfInventory("LugerClip",1,"InsertBullets2")
+TNT1 A 0
+Goto InsertBullets
+		
+TurboReload:
+TNT1 A 0 A_Takeinventory("HasUnloaded",1)
+PISS BA 0
+Goto InsertBullets
+
+InsertBullets:
+TNT1 AAAA 0
+TNT1 A 0 A_JumpIfInventory("LugerClip",8,"EndReload")
+TNT1 A 0 A_JumpIfInventory("Clip1",1,3)
+Goto Ready
+TNT1 AAAAAA 0
+TNT1 A 0 A_Giveinventory("LugerClip",1)
+TNT1 A 0 A_Giveinventory("LugerDoubleClip",1)
+TNT1 A 0 A_Takeinventory("Clip1",1)
+Goto InsertBullets
+
+EndReload:
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_Refire
+Goto Ready
+
+InsertBullets2:
+TNT1 AAAA 0
+TNT1 A 0 A_JumpIfInventory("LugerClip",9,"EndReload")
+TNT1 A 0 A_JumpIfInventory("Clip1",1,3)
+Goto Ready
+TNT1 AAAAAA 0
+TNT1 A 0 A_Giveinventory("LugerClip",1)
+TNT1 A 0 A_Giveinventory("LugerDoubleClip",1)
+TNT1 A 0 A_Takeinventory("Clip1",1)
+Goto InsertBullets2
+
+Spawn:
+LPCK A -1
+Stop
+		
+Steady:
+TNT1 A 1
+Goto Ready	
+
+Unload:
+LUGG A 1 A_WeaponReady
+TNT1 A 0 A_Takeinventory("Unloading",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_JumpIfInventory("LugerClip",1,3)
+Goto NoAmmo
+TNT1 AAA 0
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_GiveInventory ("Pumping", 1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_Giveinventory("HasUnloaded",1)
+TNT1 a 0 a_playsound("Lug1")
+LURR ABC 4
+LURR CBA 4
+TNT1 A 0 
+TNT1 A 0 A_JumpIfInventory("LugerClip",1,"RemoveBullets")
+
+RemoveBullets:
+TNT1 AAAA 0
+TNT1 A 0 A_JumpIfInventory("LugerClip",1,3)
+Goto Ready
+TNT1 AAAAAA 0
+TNT1 A 0 A_Takeinventory("LugerClip",1)
+TNT1 A 0 A_Takeinventory("LugerDoubleClip",1)
+TNT1 A 0 A_Giveinventory("Clip1",1)
+Goto RemoveBullets
+}
+}
+
+
+ACTOR LugerClip : Ammo
+{
+Inventory.Amount 0
+Inventory.MaxAmount 9
+Ammo.BackpackAmount 0
+Ammo.BackpackMaxAmount 9
+Inventory.Icon "LPCKA0"
+}
+

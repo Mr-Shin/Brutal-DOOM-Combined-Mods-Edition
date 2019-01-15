@@ -1213,3 +1213,22 @@ Actor Vanilla_STDarkImp : STDarkImp
 		Goto Stand
 	}
 }
+ACTOR RailGunTrailSpark
+{ 
+    RenderStyle Add
+    Scale 0.010
+    Alpha 0.95
+	//Translation "0:255=%[0,0,0]:[0,0,1]"
+    +NOINTERACTION
+    +NOGRAVITY
+    +CLIENTSIDEONLY
+    States
+    {
+    Spawn:
+	YAE5 A 0 NoDelay A_JumpIf(ScaleX <= 0, "NULL")
+	YAE5 A 0 A_SetScale(ScaleX-0.0008)
+    YAE5 A 1 bright A_ChangeVelocity (frandom(-0.2, 0.2), frandom(-0.2, 0.2), frandom(-0.2, 0.2), 0)
+    YAE5 A 2 bright A_FadeOut(0.05)
+    Loop
+    }
+}

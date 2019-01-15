@@ -1,0 +1,297 @@
+#library "CVARSOLD"
+#include "zcommon.acs"
+
+script 647 enter
+{
+    //ClearInventory();
+    GiveInventory("CheckMarines", 1);
+}
+
+Script 799 (VOID)
+{
+
+if
+	(GetCvar("isrunningzandronum") == 1)
+{
+if	(GetCvar("bd_bloodamount") == 0) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("bd_bloodamount") == 1) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("bd_bloodamount") == 3) { SetActorState(0,"LotsOfBlood"); }
+if	(GetCvar("bd_bloodamount") >= 4) { SetActorState(0,"AbsurdBlood"); }
+}
+
+
+if
+	(GetCvar("isrunningzandronum") == 0)
+{
+if	(GetCvar("zdoombrutalblood") == 0) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("zdoombrutalblood") == 1) { SetActorState(0,"LowBlood"); }
+if	(GetCvar("zdoombrutalblood") == 3) { SetActorState(0,"LotsOfBlood"); }
+if	(GetCvar("zdoombrutalblood") >= 4) { SetActorState(0,"AbsurdBlood"); }
+}
+
+
+if
+	(GetCvar("isrunningzandronum") == 1)
+{
+if	(GetCvar("bd_bloodamount") == 666)
+	{
+	SetActorState(0,"AbsurdBlood"); 
+	GiveInventory("AnimuGore", 1);
+	}
+}
+
+if
+	(GetCvar("isrunningzandronum") == 0)
+{
+if	(GetCvar("zdoombrutalblood") == 666)
+	{
+	SetActorState(0,"AbsurdBlood"); 
+	GiveInventory("AnimuGore", 1);
+	}
+}
+
+
+}
+
+Script 798 (VOID)
+{
+if	(GetCvar("bd_lowgraphicsmode") == 1) { GiveInventory("LowGraphicsMode", 1); }
+if	(GetCvar("zdoombrutaljanitor") == 1) { GiveInventory("LowGraphicsMode", 1); }
+else {TakeInventory("LowGraphicsMode", 1);}
+}
+
+Script "PerformanceMode" (VOID)
+{
+if	(GetCvar("performancemode") == 1) { SetActorState(0,"Performance"); }
+}
+
+Script "MonsterPerformanceMode" (VOID)
+{
+if	(GetCvar("performancemode") == 1) { GiveInventory("PerformanceMode", 1); }
+else {TakeInventory("PerformanceMode", 1);}
+}
+
+//Project Brutality for casings
+Script 7798 (VOID)
+{
+if	(GetCvar("zdoombrutaljanitorcasings") == 1) { GiveInventory("CasingsJanitor", 1); }
+else {TakeInventory("CasingsJanitor", 1);}
+}
+
+
+Script 797 (VOID)
+{
+if	(GetCvar("bd_bloodamount") == 1) { SetActorState(0,"Vanish"); }
+if	(GetCvar("bd_bloodamount") == 0) { SetActorState(0,"Vanish"); }
+}
+
+
+Script 796 (VOID)
+{
+if	(GetCvar("bd_classicmonsters") == 1) { SetActorState(0,"ReplaceVanilla"); }
+}
+
+
+
+Script 719 (VOID)
+{
+if	(GameType () == GAME_NET_DEATHMATCH) 
+	SetActorState(0,"DM"); 
+}
+
+Script 728 (VOID)
+{
+if	(GetCvar("bd_nobulletpenetration") == 0) { TakeInventory("nopenetration", 1);}
+if	(GetCvar("bd_nobulletpenetration") == 1) { GiveInventory("nopenetration", 1);}
+}
+
+Script 345 (VOID) NET
+{
+ GiveInventory("DoGrenade", 1);
+}
+
+Script 5922 (VOID) NET
+{
+	//Sets the player's height to 28 and reduces their speed for slide kicks
+ SetActorProperty(0, APROP_HEIGHT, 28);
+ SetActorProperty(0, APROP_SPEED, 0.0);
+}
+
+Script 5923 (VOID) NET
+{
+	//Sets the player's height to 58 and resets their speed to normal after slide kicking
+ SetActorProperty(0, APROP_HEIGHT, 58);
+ SetActorProperty(0, APROP_SPEED, 1.0);
+}
+
+Script 3755 (VOID) NET
+{
+ GiveInventory("DoMine", 1);
+}
+
+Script 281 (void) // Shotgun Recoil
+{
+SetActorPitch(0, (GetActorPitch(0) - 700)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+}
+
+script 374 (void) // 1-Barreled SSG Shot
+{
+SetActorPitch(0, (GetActorPitch(0) - 700)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+}
+
+Script 375 (void) // 2-Barreled SSG Shot
+{
+SetActorPitch(0, (GetActorPitch(0) - 1200)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+}
+
+script 32754 (VOID) NET
+{
+    ThrustThing(GetActorAngle(0) >> 8, 20, 1, 0);
+}
+
+script "CrueltyBonus" (VOID) NET
+{
+	if(GetCvar("nodoomguytalk") == 1)
+	{
+		
+		SetActorProperty(0, APROP_HEALTH, GetActorProperty(0,APROP_HEALTH)+5);
+	}
+	else
+	{
+		ActivatorSound("CrueltyBonus",127);
+		SetActorProperty(0, APROP_HEALTH, GetActorProperty(0,APROP_HEALTH)+5);
+	}
+}
+
+script "CrueltyBonus10" (VOID) NET
+{
+    SetActorProperty(0, APROP_HEALTH, GetActorProperty(0,APROP_HEALTH)+10);
+}
+
+//Based on Trial Blazer's "Macheterang" script since I couldn't figure this out myself...
+script "DemonSoulSeeker" (void)
+{
+	int machposx, machposy, playposx, playposy, totalposx, totalposy;
+	machposx = GetActorX(0); 
+	machposy = GetActorY(0);
+	SetActivatorToTarget(0); 
+	playposx = GetActorX(0); 
+	playposy = GetActorY(0);
+	totalposx = (machposx - playposx) >> 16; 
+	totalposy = (machposy - playposy) >> 16;
+	if (sqrt(totalposx*totalposx + totalposy*totalposy) <= 48) 
+	{
+		SetResultValue(True); 
+	}
+	else {SetResultValue(False);} 
+}
+
+Script "GuranteeGameMode" ENTER NET
+{
+	if(PlayerClass(PlayerNumber()) == 1)
+		SetCVar("bd_classicmonsters", 1);
+	else
+		SetCVar("bd_classicmonsters", 0);
+		
+	if(PlayerClass(PlayerNumber()) == 2)
+		{
+			SetCVar("bd_restrictedmode", 1);
+			Thing_Hate(643, 0, 0);
+		}
+	else
+		SetCVar("bd_restrictedmode", 0);
+	
+}
+
+script "WeaponSwapSound" (VOID) NET
+{
+		ActivatorSound("weapons/swapping",127);
+}
+
+Script "ReplaceRestrictedMode" (VOID)
+{
+if	(GetCvar("bd_restrictedmode") == 1) { SetActorState(0,"ReplaceRestricted"); }
+}
+
+Script "Regen" ENTER NET
+{
+	int health;
+	While(1)
+	{
+		if (GetCVar("cl_regen"))
+		{
+			health = GetActorProperty(0, APROP_Health);
+			if(health < GetCVar("cl_regenamount"))
+			{
+				if (!GetCVar("sv_forceregen"))
+					HealThing(1);
+				else
+					SetActorProperty(0, APROP_Health, health+1);
+			}
+		}
+		Delay(35);
+	}
+}
+
+Script "ReplaceMarines" (VOID)
+{
+if	(GetCvar("bd_replacemarines") == 1) { SetActorState(0,"ReplaceMarine"); }
+}
+
+Script 363 (VOID) NET
+{
+ GiveInventory("Unloading", 1);
+ GiveInventory("GoSpecial", 1);
+}

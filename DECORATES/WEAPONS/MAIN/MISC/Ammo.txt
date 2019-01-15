@@ -12,8 +12,8 @@ ACTOR AmmoSuply : BackpackItem Replaces Backpack
 	States
 	{
 	Spawn:
-		CMPK ABCDEFG -1
-		Stop
+		CMPK ABCDEFG 1 
+		Loop
     Pickup:
         TNT1 A 0 A_GiveInventory("ShellBox", 1)
         TNT1 A 0 A_GiveInventory("ClipBox", 1)
@@ -40,9 +40,10 @@ ACTOR PlasmaAmmo : Ammo
 ACTOR MiniHellRocketAmmo : Ammo
 {
    Inventory.Amount 0
-   Inventory.MaxAmount 50
+   Inventory.MaxAmount 500
    Ammo.BackpackAmount 0
-   Ammo.BackpackMaxAmount 100
+   Ammo.BackpackMaxAmount 1000
+   Inventory.Icon "FATBD0"
 }
 
 
@@ -323,9 +324,9 @@ ACTOR Clip1 : Ammo
 	Game Doom
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a Pistol Mag."
-	Inventory.Amount 20
+	Inventory.Amount 5
 	Inventory.MaxAmount 500
-	Ammo.BackpackAmount 20
+	Ammo.BackpackAmount 5
 	inventory.pickupsound "clip/pkup"
 	Ammo.BackpackMaxAmount 1000
 	Inventory.Icon "AMO1A0"
@@ -341,7 +342,7 @@ ACTOR Clip12: Clip1
 	Game Doom
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a Full Pistol Mag."
-	Inventory.Amount 40
+	Inventory.Amount 10
 	inventory.pickupsound "clip/pkup"
 	States
 	{
@@ -410,12 +411,12 @@ ACTOR 50CalAmmo : Ammo
 	Game Doom
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a row of Magnum Rounds"
-	Inventory.Amount 40
-	Inventory.MaxAmount 375
-	Ammo.BackpackAmount 40
+	Inventory.Amount 50
+	Inventory.MaxAmount 500
+	Ammo.BackpackAmount 50
 	scale 0.7
 	inventory.pickupsound "50PICKUP"
-	Ammo.BackpackMaxAmount 750
+	Ammo.BackpackMaxAmount 1000
 	Inventory.Icon "50CLA0"
 	States
 	{
@@ -792,6 +793,8 @@ ACTOR NailBox1 : NailAmmo
 		Stop
 	}
 }
+
+
 
 Actor ClipBoxSpawn : RandomSpawner Replaces ClipBox
 {

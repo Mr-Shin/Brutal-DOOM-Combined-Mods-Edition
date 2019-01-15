@@ -46,7 +46,7 @@ ACTOR StingRAY9 : CMEWeapon
 	+WEAPON.NO_AUTO_SWITCH
 	+WEAPON.NOALERT
 	+WEAPON.NOAUTOFIRE
-	Inventory.PickupMessage "You got the Sting RAY-9 Heavy Rocket Dispenser!"
+	Inventory.PickupMessage "You got the Sting RAY-9 Heavy Rocket Dispenser!!! (Slot 6)"
 	States
 	{
 	
@@ -248,6 +248,7 @@ ACTOR StingRAY9 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_Takeinventory("HasUnloaded",1)
@@ -272,9 +273,10 @@ ACTOR StingRAY9 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
 
 		MISG A 0 A_Raise
+				TNT1 A 0 A_Raise
+
 		Wait
 		
 	//Weapon Special

@@ -12,7 +12,7 @@ ACTOR ASGGuy : ShotgunGuy1 Replaces ShotgunGuy
     MONSTER
     +FLOORCLIP
     SeeSound "grunt/sight"
-    AttackSound "asgguy/asgfir"
+    AttackSound "A12FIR"
     PainSound "grunt/pain"
     DeathSound "grunt/death"
     ActiveSound "grunt/active"
@@ -20,9 +20,10 @@ ACTOR ASGGuy : ShotgunGuy1 Replaces ShotgunGuy
 	DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
 	damagefactor "killme", 0.0
 	dAMAGEFACTOR "Avoid", 0.0
-	DropItem "XM1014"
+	DropItem "AutoSGSpawner"
     DropItem "Shell2"
-	DropItem "HandGrenades" 5
+	DropItem "SoulEnergy" 255
+	DropItem "DropedGrenade" 5
     States
     {
 	
@@ -377,41 +378,41 @@ ACTOR ASGGuy : ShotgunGuy1 Replaces ShotgunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
         AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
+        TNT1 A 0 A_PlaySound("insertShell2")
 		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
         AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
-		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
-		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
-		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
-        AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
+        TNT1 A 0 A_PlaySound("insertShell2")
 		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
         AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
+        TNT1 A 0 A_PlaySound("insertShell2")
+		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
+		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
+		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
+        AD12 EFG 3
+        TNT1 A 0 A_PlaySound("insertShell2")
 		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
 		AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
+        TNT1 A 0 A_PlaySound("insertShell2")
 		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
 		AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
+        TNT1 A 0 A_PlaySound("insertShell2")
 		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
 		AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
+        TNT1 A 0 A_PlaySound("insertShell2")
 		TNT1 A 0 A_TakeInventory("ASGZAmmo", 1)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
 		AD12 EFG 3
-        TNT1 A 0 A_PlaySound("insertshell")
+        TNT1 A 0 A_PlaySound("insertShell2")
 		TNT1 A 0 A_TakeInventory("ASGZAmmo", 4)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget20", 0, 40,0)
 		TNT1 A 0 A_SpawnItem ("LegTarget20", 10)
@@ -2311,7 +2312,7 @@ Actor Vanilla_ASGGuy : ASGGuy
 {
 	DropItem "DropedShotgun"
     DropItem "Shell2"
-	DropItem "HandGrenades" 5
+	DropItem "DropedGrenade" 5
 	States
 	{
 		Spawn:

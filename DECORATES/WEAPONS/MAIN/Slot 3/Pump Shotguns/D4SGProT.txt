@@ -10,7 +10,7 @@ ACTOR Doom4ShotgunAmmo : Ammo
    Inventory.MaxAmount 12
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 12
-   Inventory.Icon "DM4PA0"
+   Inventory.Icon "PT4PA0"
 }
 
 
@@ -260,7 +260,7 @@ TNT1 A 0 A_Giveinventory("ShotgunSelected",1)
         TNT1 AAAA 0
 
 	
-	InsertShell:
+	insertShell2:
 		TNT1 A 0 A_JumpIfInventory("Shell2",2,2)
         Goto DoneReloading
         TNT1 AAAAA 0
@@ -272,7 +272,7 @@ TNT1 A 0 A_Giveinventory("ShotgunSelected",1)
 
 
         DPSR EFGH 1
-        DPSR I 1 A_PlaySound("insertshell")
+        DPSR I 1 A_PlaySound("insertShell2")
         DPSR JKLM 1
         
 		TNT1 A 0 A_Giveinventory("Doom4ShotgunAmmo",2)

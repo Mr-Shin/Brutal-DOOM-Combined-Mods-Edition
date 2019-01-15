@@ -31,7 +31,7 @@ ACTOR IC9 : CMEWeapon
 	+FORCEXYBILLBOARD
 	+WEAPON.NO_AUTO_SWITCH
 	tag "IC-9 Plasma Repeater"
-	Inventory.PickupMessage "You got the IC-9 Plasma Repeater!"
+	Inventory.PickupMessage "You got the IC-9 Plasma Repeater!!! (Slot 7)"
 	States
 	{
 	
@@ -105,8 +105,9 @@ ACTOR IC9 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("GoSilencerAbility", 1)
 		TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
         J7SS CBA 1
-		TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
+		TNT1 A 1 A_Lower
 		Wait
 	Select2:
 		//TNT1 A 0 ACS_NamedExecuteAlways("DualWieldJRMYXDDammit")
@@ -120,7 +121,7 @@ ACTOR IC9 : CMEWeapon
 		TNT1 A 0 A_Takeinventory("ShotgunSelected",1)
 		TNT1 A 0 A_Takeinventory("SSGSelected",1)
 		TNT1 A 0 A_Takeinventory("MinigunSelected",1)
-		TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1)
+		TNT1 A 0 A_Giveinventory("PlasmaGunSelected",1)
 		TNT1 A 0 A_Takeinventory("RocketLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("GrenadeLauncherSelected",1)
 		TNT1 A 0 A_Takeinventory("BFGSelected",1)
@@ -135,7 +136,7 @@ ACTOR IC9 : CMEWeapon
 		TNT1 A 0 A_TakeInventory("LandMineSelected",1)
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
-		TNT1 AAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Wait
 		
 	SilencerToggle:

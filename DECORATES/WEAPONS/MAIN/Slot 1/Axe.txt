@@ -3,6 +3,7 @@ ACTOR BrutalAxe : CMEWeapon
 	Obituary "%o was choped down by %k's axe."
     AttackSound "None"
     Inventory.PickupSound "KNIFUP"
+	
 	Inventory.Pickupmessage "You got the Axe!!! (Slot 1)"
     +WEAPON.NOAUTOAIM
     +WEAPON.NOAUTOFIRE

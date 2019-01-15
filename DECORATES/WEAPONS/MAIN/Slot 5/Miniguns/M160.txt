@@ -30,7 +30,7 @@ Weapon.AmmoUse1 0
 	+WEAPON.NO_AUTO_SWITCH
 Inventory.PickupSound "CBOXPKUP"
 tag "M160 Gauss Minigun - Ammo Switch"
-Inventory.PickupMessage "You got the Rotary Gauss Dispenser! "
+Inventory.PickupMessage "You got the M160 Rotary Gauss Dispenser!!! (Slot 5)"
 Obituary "%o never thought of a ''Gauss Minigun''"
 AttackSound "none"
 Scale 0.9
@@ -121,8 +121,9 @@ Deselect:
 	TNT1 A 0 A_TakeInventory("GoWeaponSpecialAbility", 1)
 	TNT1 A 0 A_Takeinventory("RandomHeadExploder",1)
 	TNT1 A 0 SetPlayerProperty(0,0,0)
-	TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
-	TNT1 A 1
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		TNT1 A 1 A_Lower
 	Wait
 
     Select:
@@ -150,7 +151,7 @@ Deselect:
 		TNT1 A 0 A_TakeInventory("HasBurningBarrel",1)
 		TNT1 A 0 A_Takeinventory("HasCutingWeapon",1)
 		MARN A 0 ACS_ExecuteAlways(728, 0, 0, 0, 0)//Check if penetration is on.
-		TNT1 AAAAAAAAAAAAAA 0 A_Raise
+		TNT1 A 0 A_Raise
 		Goto Ready
 
     NoAmmo:

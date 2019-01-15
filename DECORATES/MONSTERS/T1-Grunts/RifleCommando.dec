@@ -18,7 +18,8 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
    -MISSILEMORE
    -MISSILEEVENMORE
    Damagefactor "Taunt", 0.01
-   DropItem "NewClip"
+   DropItem "ClipBox2"
+   DropItem "SoulEnergy" 255
  //  DropItem "LMG"
    Obituary "%o was assaulted by a commando." 
    States 
@@ -204,7 +205,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		ACPS E 3 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 34, 10, 15, 0)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -212,7 +213,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", 38, 0, random(-8, 8), 0, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
@@ -221,42 +222,42 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", random(30, 42), 0, random(-9, 9), 0, random(-4, 6))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
 		ACPS E 1 A_FaceTarget
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", 38, 0, random(-10, 10), 0, random(-3, 3))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
 		ACPS E 1 A_FaceTarget
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", random(30, 42), 0, random(-9, 9), 0, random(-4, 6))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
 		ACPS E 1 A_FaceTarget
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", random(30, 42), 0, random(-9, 9), 0, random(-4, 6))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
 		ACPS E 1 A_FaceTarget
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", random(30, 42), 0, random(-9, 9), 0, random(-4, 6))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
 		
 		ACPS E 1 A_FaceTarget
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
 		ACPS F 3 BRIGHT A_CustomMissile("MonsterLMGTracer", random(30, 42), 0, random(-9, 9), 0, random(-4, 6))
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 42,0)
@@ -280,7 +281,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACPS E 2 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 34, 10, 15, 0)
 		ACPS F 2 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -288,7 +289,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACPS E 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 34, 10, 15, 0)
 		ACPS F 2 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -296,7 +297,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACPS E 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 34, 10, 15, 0)
 		ACPS F 2 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -304,7 +305,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACPS E 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 34, 10, 15, 0)
 		ACPS F 2 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -312,7 +313,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACPS E 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 34, 10, 15, 0)
 		ACPS F 1 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -332,7 +333,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		ACPS E 5 A_FaceTarget
 		ACP1 A 5 A_FaceTarget
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
-        TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+        TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 29, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 29, 10, 15, 0)
 		ACP1 B 2 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -340,7 +341,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACP1 A 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 29, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 29, 10, 15, 0)
 		ACP1 B 2 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -348,7 +349,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACP1 A 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 29, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 29, 10, 15, 0)
 		ACP1 B 2 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -356,7 +357,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACP1 A 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 29, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 29, 10, 15, 0)
 		ACP1 B 1 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))
@@ -364,7 +365,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
 		TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 0, 40,0)
 		ACP1 A 2 A_facetarget
         TNT1 A 0 A_SpawnItem ("HeadshotTarget10", 5, 46,0)
-		TNT1 A 0 A_PlaySound("LMGFIRE", 1)
+		TNT1 A 0 A_PlaySound("weapons/rifle2", 1)
         TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 29, 20, 15, 0)
         TNT1 A 0 A_CustomMissile("SmokeSpawner", 34, 10, 15, 0)
 		ACP1 B 1 BRIGHT A_CustomMissile("MonsterLMGTracer", 32, 0, random(-8, 8), 0, random(-3, 3))

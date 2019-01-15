@@ -1,6 +1,8 @@
 ACTOR RocketZombie: ShotgunGuy1 Replaces ShotgunGuy
 {
-	DropItem "RocketAmmo"
+	DropItem "RocketAmmo2"
+	   DropItem "SoulEnergy" 255
+
 	SpawnID 1260
 	+NOTARGET
 	Painchance "Avoid", 0
@@ -86,7 +88,8 @@ ACTOR RocketZombie: ShotgunGuy1 Replaces ShotgunGuy
 	Missile:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 0, 40,0)
 		TNT1 A 0 A_TakeInventory("SKShotgunGuy", 1)
-		
+		        TNT1 A 0 A_PlaySound ("DSRFIRE")
+
 		
 
 		MP0S E 11 A_FaceTarget

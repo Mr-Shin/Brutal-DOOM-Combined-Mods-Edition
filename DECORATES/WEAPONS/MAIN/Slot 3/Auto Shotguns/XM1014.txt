@@ -10,7 +10,6 @@ ACTOR XM1014Ammo : Ammo
    Inventory.MaxAmount 7
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 7
-
    
 }
 
